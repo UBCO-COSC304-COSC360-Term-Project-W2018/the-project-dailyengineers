@@ -4,7 +4,7 @@
 
 **Overview:**
 
-The project is designed to help develop your skills for full stack development.  With this project, you will build an online application that will allow users to register, create and participate in different features of your site.  ***The project is s group project of 3 to four people.  This project can be done in conjunction with the COSC 304 project. Please note that the grading rubric for different aspects of the project per course may be different and are graded separately.**
+The project is designed to help develop your skills for full stack development.  With this project, you will build an online application that will allow users to register, create and participate in different features of your site.  **The project is s group project of 3 to four people.  This project can be done in conjunction with the COSC 304 project. Please note that the grading rubric for different aspects of the project per course may be different and are graded separately.**
 
 **Hardware and Software:**
 
@@ -18,7 +18,7 @@ The MyAmazon online store will allow users to buy goods on the web site. You dec
 
 To build a web-based store that that allows users engage in activities permitted for registered users and un-registered users.  Registered users will be allowed to buy products online and manages inventory and shipping information from the stores. Registered used will be able to track the status of their orders, search and browse for items to buy, and feel confident and secure in the purchasing process.   Registered users will be able to access specific portions/features of your site that are not accessible to unregistered users.  Registered users will be able to comment on specific items as well as browse comments.  Unregistered users will be able to browse the catalog, review comments and add items to a cart, but before processing the order, the account must be converted to a registered user.  Unregistered users will not be able to comment on items.  State must be maintained in terms of the cart, order history and login/logoff status.   If a user has items in the cart, logs off and then logs back in, the cart must be persistent.  Proper practices must be put in place to ensure that data is not leaked when users log on/log off.  The system must also support internal use by administrators who can track the volume and type of goods sold, add/remove items from the store, handle customer problems (such as forgotten passwords), manage product inventory levels, and generate sales reports.  Administrators must have separate accounts and be accessed through the standard logon portal
 
-A first goal is to create the layout for the site.  The layout is to be a 2 or 3-column layout with navigation links along the top.  **No styling frameworks are not permitted as you are to develop the styling for the page using CSS.**  The page requires a masthead as well as a footer.  The navigation links need to be available regardless of the where a user is viewing the page.    You will need to think about the required of what pages look like based on the needs of an online store.
+A first goal is to create the layout for the site.  The layout is to be a 2 or 3-column layout with navigation links along the top.  **No styling frameworks are permitted as you are to develop the styling for the page using CSS.**  The page requires a masthead as well as a footer.  The navigation links need to be available regardless of the where a user is viewing the page.    You will need to think about the required of what pages look like based on the needs of an online store.
 
 Pages will need to be created for user registration that allows for the entry of user information along with user image.  The form will need to be validated before being submitted using the appropriate technology.  
 
@@ -30,20 +30,20 @@ The system must also support internal use by administrators who can track featur
 
 Website user’s objectives:
 
-*Browse items without registering
-*Add/remote items from cart
-*Search for items/posts by keyword without registering
-*Register at the site by providing their name, e-mail and image
-*Allow user login by providing user id and password
-*Create and comment on (specific for each project) when logged into the site
-*Users are required to be able to view/edit their profile
-*User password recovery (via email)
+* Browse items without registering
+* Add/remove items from cart
+* Search for items/posts by keyword without registering
+* Register at the site by providing their name, e-mail and image
+* Allow user login by providing user id and password
+* Create and comment on (specific for each project) when logged into the site
+* Users are required to be able to view/edit their profile
+* User password recovery (via email)
 
 Website administrator’s objectives:
 
-*Search for user by name, email or post
-*Enable/disable users
-*Edit/remove items and comments
+* Search for user by name, email or post
+* Enable/disable users
+* Edit/remove items and comments
 
  As this project is about demonstrating and applying different web technologies, you will utilize different technologies in the construction of the site.
  
