@@ -1,7 +1,8 @@
 .navi {
-    display: inline-block;
+    display: block;
     background-color: #272727;
     width: 100%;
+    height: 5.25em;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -9,24 +10,56 @@
 
 .navUnit {
     margin: 0;
-}
-
-.navUnit li {
-    display: relative;
-    margin: 0;
     padding: 0;
-    float: right;
-    text-align: right;
-    list-style-type: none;
 }
 
 .navUnit a {
+    background-color: #373737;
     display: block;
     color: #fff;
-    margin: 0;
-    padding: 1em 1em 1em 1em;
+    margin: 0.25em;
+    padding: 0.75em;
+    float: left;
     text-align: center;
+    list-style-type: none;
     text-decoration: none;
+}
+
+.patherino {
+    display: block;
+    clear: both;
+    margin-left: 0.25em;
+    color: #fff;
+}
+
+.searcheree {
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bar {
+    position: relative;
+    border-radius: 10px;
+    padding-top: .25em;
+    border: none;
+    margin-right: 16px;
+    font-size: .95em;
+}
+
+.barButton {
+    position: relative;
+    padding-top: .25em;
+    left: -3em;
+    background-color: #C00;
+    border-radius: 50%;
+    border: 0;
+    color: #FFF;
+    width: 3em;
+    height: 1.25em;
+    outline: 0;
 }
 
 .navUnit a:hover {
@@ -76,7 +109,7 @@ footer {
     white-space: pre;
 }
 
-.copyrighto a:link{
+.copyrighto a:link {
     color: inherit;
     text-decoration: none;
 }
@@ -180,16 +213,17 @@ img {
 }
 
 .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1s;
-  animation-name: fade;
-  animation-duration: 1s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 1s;
 }
 
 @-webkit-keyframes fade {
     0% {
         opacity: 0;
-    } 
+    }
+
     100% {
         opacity: 1;
     }
@@ -198,7 +232,8 @@ img {
 @keyframes fade {
     0% {
         opacity: 0;
-    } 
+    }
+
     100% {
         opacity: 1;
     }
