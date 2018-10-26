@@ -4,7 +4,12 @@
 
 .searchEntry {
   border: #FF8800 solid 0.25em;
+  border-bottom: none;
   padding: 1em;
+}
+
+.searchEntry:last-child {
+  border-bottom: #FF8800 solid 0.25em;
 }
 
 /* .searchCol {
@@ -118,8 +123,21 @@
   padding: 0.5em;
   width: 25%;
   border: #FF8800 1px solid;
+  /* align-items: center; */
 }
+
+/* .midTopFlex div p {
+  display: inline-block;
+} */
 
 .searchDescription {
   margin-top: 1em;
 }
+
+/* .searchMilage img {
+  height: 1em;
+} */
+
+/* #test {
+  height: 2em;
+} */
