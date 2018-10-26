@@ -1,0 +1,40 @@
+.centerBox {
+    border: orange 1px solid;
+    padding: 1em;
+    width: 20em;
+    margin: 5em auto;
+}
+.centerBox form input {
+    width: 100%;
+    margin: 0.5em 0;
+    height: 1.5em;
+    
+    border: black 2px solid;
+}
+/* Login Button*/
+.centerBox form input:last-child {
+    border: white 2px outset;
+    display: block;
+    width: 33%;
+    margin: auto;
+    background-color: orange;
+    color: #454545;
+    font-weight: bold;
+    padding: 0.25em;
+    height: 2.5em;
+}
+
+#options {
+    border: 1px orange solid;
+    margin: 0.5em auto 0;
+}
+#options button:last-child {
+    float: right;
+}
+#options button {
+    margin: 0.25em;
+    background-color: orange;
+    font-weight: bold;
+    color: #454545;
+    padding: 0.25em;
+}
