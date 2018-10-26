@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vehicle Emporium</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/mad.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="headerContainer">
+      <div class="flexHeaderTop">
+        <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
+        <form action="search.html" class="searchForm">
+          <input type="text" placeholder="Search our database..." name="search" id="searchField">
+          <button type="submit"></button>
+        </form>
+      </div>
+      <div class="flexHeaderBottom">
+        <div class="flexBottomLeft">
+          <nav class="navHeader">
+            <ul class="inlineNav">
+              <li><a href="#">Root</a></li>
+              <li><a href="#">Category 1</a></li>
+              <li><a href="#">Category 3</a></li>
+              <li><a href="#">Category 4</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="flexBottomRight">
+          <ul class="headerRightLinks">
+            <li><a href="#" id="trending">Trending</a></li>
+            <li><a href="#" id="deals">Deals</a></li>
+            <li><a href="#" id="loginSignup">Login/Sign-up</a></li>
+            <li><a href="cart.html" id="cart">Cart</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="columnContainer">
+
+      <section class="cartLeftSidebar">
+        <div class="cartSubtotal">
+          <h1>Subtotal:</h1>
+          <p>$xxx,xxx.00</p>
+          <div class="displaySubtotal">
+          </div>
+        </div>
+
+        <div class="cartItemCount">
+          <h1>Quantity:</h1>
+          <p>x items</p>
+          <div class="displayItemCount">
+          </div>
+        </div>
+
+        <div class="cartCheckout">
+            <a class="checkoutButton" href="checkout.html">Proceed to Checkout</a>
+        </div>
+
+        <div class="cartRecentlyViewed">
+          <h1>Recently Viewed</h1>
+        </div>
+      </section>
+
+      <section class="mainView">
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non. Quisque
+          consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus. Proin ipsum sapien, volutpat at lorem id, rhoncus pellentesque erat. Quisque posuere sagittis vulputate. Nullam gravida neque congue eros varius
+          suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>
+        <p>Ut mi ante, egestas nec lobortis luctus, cursus vel nisi. Maecenas porttitor egestas metus id ultrices. Ut sit amet hendrerit turpis. Donec vel ligula a erat aliquet consequat eu eget quam. Sed at pretium ipsum. Nulla consequat purus ex,
+          quis blandit sem ultrices malesuada. Duis lacinia fermentum diam eget facilisis. Phasellus facilisis mi sed augue cursus, tristique fringilla sem tincidunt. Aenean consectetur consectetur ex, vel semper felis placerat id. Vestibulum
+          egestas, lorem et tincidunt posuere, odio orci tempus lacus, et laoreet dolor ex ut urna.
+        </p>
+        <p>Suspendisse tempor et magna in molestie. Praesent imperdiet vel lorem in viverra. Proin fringilla sem scelerisque orci fringilla placerat. Suspendisse sit amet mollis elit. Aenean nulla tortor, aliquam sit amet tempus in, suscipit id
+          neque. Vivamus auctor ligula quis est tincidunt, et tincidunt tellus euismod. In lacus lectus, dignissim sed enim facilisis, congue venenatis nisi. Integer elementum massa vel elit pretium varius. Cras rutrum varius enim, lacinia luctus
+          sem mollis sed. Nunc molestie felis erat. Morbi vitae odio ornare lorem auctor rutrum sed in felis. In ex nisi, rutrum a libero eu, scelerisque cursus ex. Ut ullamcorper efficitur ante et rutrum. Morbi vestibulum ligula quis nulla rhoncus,
+          vitae condimentum eros feugiat. Suspendisse hendrerit, tellus vitae iaculis dapibus, dui quam porttitor nisl, nec vehicula nulla elit sit amet enim.
+        </p>
+        <p>Integer vel tellus et lectus fermentum dignissim. Ut hendrerit mi quis hendrerit molestie. Duis justo sem, cursus vitae orci eu, vehicula iaculis sapien. Ut sit amet massa tempus, suscipit sem vel, consectetur turpis. Quisque hendrerit
+          leo vel eros porta, eget aliquam lorem aliquam. Vivamus gravida, orci sed tempus condimentum, leo est facilisis erat, ac laoreet enim leo eu massa. Nullam posuere leo pharetra, varius lectus ac, porttitor lectus. Ut id ornare purus, vel
+          egestas tortor. Sed consectetur dui non arcu fringilla, non pharetra tortor consectetur. Nullam vel fringilla massa. Aenean aliquet imperdiet purus, a rhoncus lacus placerat id. Quisque quis magna id justo sollicitudin fringilla ut a
+          nulla. Nulla tortor purus, feugiat et lorem a, pretium tristique lacus.
+        </p>
+        <p>Morbi laoreet rhoncus ligula, sed porttitor tellus lobortis id. In placerat sapien nec aliquet vulputate. Sed tempus lectus vulputate mi porta feugiat. In venenatis neque sit amet gravida rutrum. Ut ullamcorper, velit at auctor posuere,
+          nisi odio aliquet elit, at dictum leo justo sed velit. Maecenas tellus diam, pellentesque a elit ac, sodales euismod ligula. Praesent et magna posuere neque gravida pulvinar. Morbi vel tincidunt augue, quis sagittis dui. In malesuada quam
+          sapien, nec fringilla mauris volutpat quis. Proin sed sem vel dolor placerat tincidunt. Phasellus eros est, euismod sed erat vitae, ultrices auctor est. Suspendisse semper tempus sapien, eu aliquet ante efficitur vitae.
+        </p> -->
+      </section>
+    </div>
+
+    <footer>
+
+    </footer>
+
+  </main>
+
+</body>
+
+</html>
