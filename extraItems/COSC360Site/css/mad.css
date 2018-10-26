@@ -46,19 +46,19 @@
     border: none;
     margin-right: 16px;
     font-size: .95em;
-    width: 20em;
+    width: 300px;
     height: 2em;
 }
 
 .barButton {
     position: relative;
     top: -2px;
-    left: -50px;
+    left: -55px;
     background-color: #C00;
     border-radius: 10px;
     border: 3px;
     color: #FFF;
-    width: 2.5em;
+    width: 30px;
     height: 2em;
     outline: 0;
 }
