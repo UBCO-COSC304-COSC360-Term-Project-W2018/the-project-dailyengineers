@@ -25,16 +25,23 @@
 }
 
 #options {
-    border: 1px orange solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* border: 1px orange solid; */
     margin: 0.5em auto 0;
 }
-#options button:last-child {
+#options a:last-child {
     float: right;
 }
-#options button {
+#options a {
+    position: relative;
+    text-decoration: none;
+    height: 1.25em;
     margin: 0.25em;
     background-color: orange;
     font-weight: bold;
     color: #454545;
+    border: white 2px outset;
     padding: 0.25em;
 }

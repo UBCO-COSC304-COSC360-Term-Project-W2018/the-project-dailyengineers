@@ -1,0 +1,35 @@
+.mainView form {
+    margin: 2em auto;
+    width: 32.5em;
+}
+#imgInput {
+    float: right;
+    padding: 0;
+    border: none;
+}
+#imgInput img {
+    display: block;
+    width: 7.5em;
+    height: 7.5em;
+}
+.mainView form input:not(:last-child) {
+    width: 18em;
+    height: 1.5em;
+    border: black 2px inset;
+}
+.mainView form input:not(:last-child) {
+    width: 18em;
+    height: 1.5em;
+    border: black 2px inset;
+}
+#createButton {
+    border: white 2px outset;
+    display: block;
+    width: 33%;
+    margin: 1em auto;
+    background-color: orange;
+    color: #454545;
+    font-weight: bold;
+    padding: 0.25em;
+    height: 2.5em;
+}

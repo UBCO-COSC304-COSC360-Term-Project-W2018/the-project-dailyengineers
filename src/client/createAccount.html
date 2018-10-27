@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE pass Reset</title>
+    <title>COSC VE Login</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/passReset.css">
+    <link rel="stylesheet" href="css/createAccount.css">
 </head>
 
 <body>
@@ -180,22 +180,23 @@
             </section>
 
             <section class="mainView">
-                <div class="centerBox">
-                    <form id="default" method="GET" action="#">
-                        <h3>Account Email</h3>
-                        <input name="email" type="email">
-                        <input id="send code" type="submit" value="Send Reset Code">
-                    </form>
-                    <!-- should swap from one to the other when either the user click send or they follow the link in email -->
-                    <form id="sent" method="POST" action="#">
-                        <h3>Reset Code</h3>
-                        <input name="code" type="text">
-                        <h3>New Password</h3>
-                        <input id="newPass" name="pass" type="password">
-                        <input id="newPassConfirm" type="password">
-                        <input id="sendCode" type="submit" value="Reset Password">
-                    </form>
-                </div>
+                <form>
+                    <fieldset id="imgInput">
+                        <img src="images/220px-Darth_Vader.jpg">
+                        <input type="file" name="profile" accept="image/*">
+                    </fieldset>
+
+                    <p>Username:</p>
+                    <input name="user" type="text">
+                    <p>Email:</p>
+                    <input name="email" type="email">
+                    <p>Password:</p>
+                    <input name="pass" type="password">
+                    <p>Confirm Password:</p>
+                    <input type="password">
+                    <br />
+                    <input id="createButton" type="submit" value="Create Account">
+                </form>
             </section>
         </div>
 

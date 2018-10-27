@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE pass Reset</title>
+    <title>COSC VE Login</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/passReset.css">
+    <link rel="stylesheet" href="css/loginout.css">
 </head>
 
 <body>
@@ -181,20 +181,12 @@
 
             <section class="mainView">
                 <div class="centerBox">
-                    <form id="default" method="GET" action="#">
-                        <h3>Account Email</h3>
-                        <input name="email" type="email">
-                        <input id="send code" type="submit" value="Send Reset Code">
-                    </form>
-                    <!-- should swap from one to the other when either the user click send or they follow the link in email -->
-                    <form id="sent" method="POST" action="#">
-                        <h3>Reset Code</h3>
-                        <input name="code" type="text">
-                        <h3>New Password</h3>
-                        <input id="newPass" name="pass" type="password">
-                        <input id="newPassConfirm" type="password">
-                        <input id="sendCode" type="submit" value="Reset Password">
-                    </form>
+                    <h3>Thank you $username you have been signed-out.</h3>
+                    <div id="options">
+                        <!-- <a href="login.html">Sign-in</a> -->
+                        <a href="search.html">Continue Shopping</a>
+                        <a href="index.html">Return to Main</a>
+                    </div>
                 </div>
             </section>
         </div>
@@ -204,7 +196,6 @@
         </footer>
 
     </main>
-
 </body>
 
 </html>
