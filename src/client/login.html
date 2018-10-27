@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/loginout.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                     <ul class="headerRightLinks">
                         <li><a href="#" id="trending">Trending</a></li>
                         <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="#" id="loginSignup">Login/Sign-up</a></li>
+                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
                         <li><a href="cart.html" id="cart">Cart</a></li>
                     </ul>
                 </div>
@@ -181,7 +181,7 @@
 
             <section class="mainView">
                 <div class="centerBox">
-                    <form method="GET" action="#">
+                    <form method="GET" action="logout.html">
                         <h3>Username</h3>
                         <input name="username" type="textBox">
                         <h3>Password</h3>
@@ -189,8 +189,8 @@
                         <input id="login" type="submit" value="Login">
                     </form>
                     <div id="options">
-                        <button>Create Account</button>
-                        <button>Forgot Password</button>
+                        <a href="createAccount.html">Create Account</a>
+                        <a href="passReset.html">Forgot Password</a>
                     </div>
 
                 </div>
