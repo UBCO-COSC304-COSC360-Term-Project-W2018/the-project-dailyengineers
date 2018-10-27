@@ -1,0 +1,101 @@
+.adminButton {
+    display: block;
+    text-align: center;
+    background: #FF8800;
+    color: #353535;
+    font-weight: bold;
+    padding: 1em 0em 1em -0em;
+    margin-bottom: 0.25em;
+    text-decoration: none;
+}
+
+.titleAdmin {
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+    border-bottom: solid 1px orange;
+}
+
+.subtitleAdmin {
+    font-size: 1.4em;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5em;
+    border-bottom: solid 1px orange;
+}
+
+.adminDiv {
+    background-color: #666;
+    padding: 1em;
+    margin: .5em;
+    margin-top: 1em;
+    border-radius: 10px;
+}
+
+.manageusersButton {
+    font-weight: bold;
+    text-decoration: none;
+    float: right;
+    display: inline-block;
+    border-radius: 10px;
+    padding: .5em;
+    margin: .25em;
+    background-color: orange;
+    color: #353535;
+}
+
+table, td, th {
+    border: 1px solid orange;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.manageusersTable {
+    text-align: center;
+}
+.manageusersTable tr th {
+    background-color: orange;
+    color: #353535;
+}
+.manageusersTableFeatures {
+    text-align: left;
+    width: 30%;
+}
+
+.manageusersTableFeatures tr th {
+    background-color: orange;
+    color: #353535;
+    width: 40%;
+}
+
+.profilePicture {
+    width: 30px;
+}
+
+.emailUser {
+    text-decoration: none;
+    color: white;
+}
+
+.undersubtitleAdmin {
+    font-size: 1.2em;
+    padding-top: 0.5em;
+    margin: 0;
+    border-bottom: solid 1px orange;
+}
+
+.barnameButton {
+    position: relative;
+    top: -1px;
+    left: -79px;
+    background-color: orange;
+    border-radius: 10px;
+    border: 3px;
+    color: #FFF;
+    width: 55px;
+    height: 2em;
+    outline: 0;
+}

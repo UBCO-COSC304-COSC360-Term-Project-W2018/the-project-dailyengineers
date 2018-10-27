@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vehicle Emporium</title>
+    <title>Vehicle Emporium | Admin</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/mad.css">
 </head>
 
 <body>
@@ -45,127 +46,93 @@
         <div class="columnContainer">
             <section class="leftSidebar">
                 <div class="custom-select">
-                    <select>
-                        <option value="0">Make:</option>
-                        <option value="1">Acura:</option>
-                        <option value="2">Aston Martin</option>
-                        <option value="3">Audi</option>
-                        <option value="4">Bentley</option>
-                        <option value="5">BMW</option>
-                        <option value="6">Bugatti</option>
-                        <option value="7">Buick</option>
-                        <option value="8">Cadillac</option>
-                        <option value="9">Chevrolet</option>
-                        <option value="10">Chrystler</option>
-                        <option value="11">Citroen</option>
-                        <option value="12">Dodge</option>
-                        <option value="13">Ferarri</option>
-                        <option value="14">Fiat</option>
-                        <option value="15">Ford</option>
-                        <option value="16">GMC</option>
-                        <option value="17">Honda</option>
-                        <option value="18">Hyundai</option>
-                        <option value="19">Infiniti</option>
-                        <option value="20">Jaguar</option>
-                        <option value="21">Jeep</option>
-                        <option value="22">Kia</option>
-                        <option value="23">Koenigsegg</option>
-                        <option value="24">Lamborghini</option>
-                        <option value="25">Land Rover</option>
-                        <option value="26">Lexus</option>
-                        <option value="27">Maserati</option>
-                        <option value="28">Mazda</option>
-                        <option value="29">McLaren</option>
-                        <option value="30">Mercedes-Benz</option>
-                        <option value="31">Mini</option>
-                        <option value="32">Mitsubishi</option>
-                        <option value="33">Nissan</option>
-                        <option value="34">Pagani</option>
-                        <option value="35">Peugeot</option>
-                        <option value="36">Porsche</option>
-                        <option value="37">Ram</option>
-                        <option value="38">Renault</option>
-                        <option value="39">Rolls Royce</option>
-                        <option value="40">Saab</option>
-                        <option value="41">Subaru</option>
-                        <option value="42">Suzuki</option>
-                        <option value="43">Tesla</option>
-                        <option value="44">Toyota</option>
-                        <option value="45">Volkswagen</option>
-                        <option value="46">Volvo</option>
-                    </select>
-                    <select>
-                        <option value="0">Model:</option>
-                    </select>
-                    <select>
-                        <option value="0">Year:</option>
-                    </select>
-                    <select>
-                        <option value="0">Type:</option>
-                        <option value="1">Coupe</option>
-                        <option value="2">Hatchback</option>
-                        <option value="3">Sedan</option>
-                        <option value="4">SUV</option>
-                        <option value="5">Truck</option>
-                        <option value="6">Other</option>
-                    </select>
-                    <select>
-                        <option value="0">Engine:</option>
-                        <option value="1">3-Cylinder</option>
-                        <option value="1">4-Cylinder</option>
-                        <option value="1">6-Cylinder</option>
-                        <option value="1">8-Cylinder</option>
-                        <option value="1">10-Cylinder</option>
-                        <option value="1">12-Cylinder</option>
-                        <option value="1">Electric</option>
-                        <option value="1">Rotary</option>
-                        <option value="1">Other</option>
-                    </select>
-                    <select>
-                        <option value="0">Drivetrain:</option>
-                        <option value="0">All-Wheel Drive</option>
-                        <option value="0">Four-Wheel Drive</option>
-                        <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Rear-Wheel Drive</option>
-                    </select>
-                    <select>
-                        <option value="0">Transmission:</option>
-                        <option value="1">Automatic</option>
-                        <option value="2">Manual</option>
-                    </select>
-                    <select>
-                        <option value="0">Colour:</option>
-                        <option value="1">Black</option>
-                        <option value="2">Blue</option>
-                        <option value="3">Brown</option>
-                        <option value="4">Green</option>
-                        <option value="5">Grey</option>
-                        <option value="6">Orange</option>
-                        <option value="7">Red</option>
-                        <option value="8">Silver</option>
-                        <option value="9">White</option>
-                        <option value="10">Yellow</option>
-                        <option value="11">Other</option>
-                    </select>
-                    <select>
-                        <option value="0">Seats:</option>
-                        <option value="1">2 seats</option>
-                        <option value="2">3 seats</option>
-                        <option value="3">4 seats</option>
-                        <option value="4">5 seats</option>
-                        <option value="5">6+ seats</option>
-                    </select>
-                    <select>
-                        <option value="0">Doors:</option>
-                        <option value="1">2-Door</option>
-                        <option value="2">3-Door</option>
-                        <option value="3">4-Door</option>
-                        <option value="4">Other</option>
-                    </select>
+                    <a class="adminButton" href="#manageusers">Manage Users</a>
+                    <a class="adminButton" href="#managedatabase">Manage Database</a>
+                    <a class="adminButton" href="#salesreport">Sales Report</a>
+                    <a class="adminButton" href="#featuretracking">Feature Tracking</a>
+                    <a class="adminButton" href="#salestracking">Sales Tracking</a>
                 </div>
             </section>
             <section class="mainView">
                 <section class="mainPageBody">
+                    <h1 class="titleAdmin">Admin</h1>
+                    <div class="adminDiv" id="manageusers">
+                        <p class="subtitleAdmin">Manage Users</p>
+                        <form class="searcheree" action="searcher.php">
+                            <input id="bar" type="text" name="searchBar" placeholder="Search Users">
+                            <button class="barButton" type="submit">Go</button>
+                        </form>
+                        <a href="#" class="manageusersButton">Reset Password</a>
+                        <a href="#" class="manageusersButton">Enable/Disable</a>
+                        <table class="manageusersTable">
+                            <tr>
+                                <th>Username</th>
+                                <th>Profile Picture</th>
+                                <th>Email</th>
+                            </tr>
+                            <tr>
+                                <td>user_1</td>
+                                <td>
+                                    <img src="images/patrick.png" class="profilePicture">
+                                    <a href="#" class="manageusersButton">Reset Default</a>
+                                </td>
+                                <td><a href="mailto:fakeuser1@email.com" class="emailUser">fakeuser1@email.com</a></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <p class="undersubtitleAdmin">Posts</p>
+                            <table class="manageusersTable">
+                                <tr>
+                                    <th>Post:</th>
+                                    <td>Peel P50 - 102,030km - $3400</td>
+                                </tr>
+                                <tr>
+                                    <th>Comment:</th>
+                                    <td>Wow! This is a comment!</td>
+                                </tr>
+                                <tr>
+                                    <th>Comment:</th>
+                                    <td>Check Engine Light</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <p class="undersubtitleAdmin">Change Username</p>
+                            <form class="searcheree" action="searcher.php">
+                                <input id="bar" type="text" name="searchBar" placeholder="Change Username">
+                                <button class="barnameButton" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="adminDiv" id="managedatabase">
+                        <p class="subtitleAdmin">Manage Database</p>
+                        <p>PLACEHOLDER</p>
+                    </div>
+                    <div class="adminDiv" id="salesreport">
+                        <p class="subtitleAdmin">Sales Report</p>
+                        <p>PLACEHOLDER</p>
+                    </div>
+                    <div class="adminDiv" id="featuretracking">
+                        <p class="subtitleAdmin">Feature Tracking</p>
+                        <table class="manageusersTableFeatures">
+                            <tr>
+                                <th>10/20/2018</th>
+                                <td><ul><li>Added page</li></ul></td>
+                            </tr>
+                            <tr>
+                                <th>10/12/2018</th>
+                                <td><ul><li>Added search functions</li></ul></td>
+                            </tr>
+                            <tr>
+                                <th>10/9/2018</th>
+                                <td><ul><li>Added Comments</li><li>Added Pictures</li></ul></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="adminDiv" id="salestracking">
+                        <p class="subtitleAdmin">Sales Tracking</p>
+                        <p>PLACEHOLDER</p>
+                    </div>
                 </section>
             </section>
         </div>
