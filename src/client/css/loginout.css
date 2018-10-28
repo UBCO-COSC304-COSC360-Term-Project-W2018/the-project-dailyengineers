@@ -1,5 +1,5 @@
 .centerBox {
-    border: #ff312e 1px solid;
+    border: orange 1px solid;
     padding: 1em;
     width: 20em;
     margin: 5em auto;
@@ -17,7 +17,7 @@
     display: block;
     width: 33%;
     margin: auto;
-    background-color: #ff312e;
+    background-color: orange;
     color: #454545;
     font-weight: bold;
     padding: 0.25em;
@@ -28,7 +28,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* border: 1px #ff312e solid; */
+    /* border: 1px orange solid; */
     margin: 0.5em auto 0;
 }
 #options a:last-child {
@@ -39,7 +39,7 @@
     text-decoration: none;
     height: 1.25em;
     margin: 0.25em;
-    background-color: #ff312e;
+    background-color: orange;
     font-weight: bold;
     color: #454545;
     border: white 2px outset;
