@@ -1,6 +1,6 @@
 .mainView div {
     border: #FF8800 1px solid;
-    /* background-color: orange; */
+    /* background-color: #ff312e; */
 }
 .half > div:last-child, .half > div:first-child {
     margin: 0.75em 0;
