@@ -1,0 +1,50 @@
+.left {
+    float: left;
+    width: 10em;
+}
+.left button {
+    margin: 1em 0;
+    width: 12em;
+}
+
+button, #saveBt {
+    background-color: orange;
+    height: 2.5em;
+    font-weight: bold;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+fieldset:not(#imgInput){
+    height: 4em;
+    width: 18.5em;
+}
+
+#imgInput {
+    width: 10em;
+}
+#imgInput img {
+    display: block;
+    width: 10em;
+    height: 10em;
+}
+
+.acRight {
+    margin-left: 14em;
+}
+.acRight p, .acRight div {
+    background-color: orange;
+    float:left;
+    border: black 2px solid;
+    color: #454545;
+    padding: 0.5em;
+    height: 1em;
+    min-width: 14em;
+}
+.acRight input, .passConfirmh3 {
+    display: none;
+}
