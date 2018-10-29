@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE Login</title>
+    <title>Vehicle Emporium - Create Account</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
@@ -35,8 +35,8 @@
                 </div>
                 <div class="flexBottomRight">
                     <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
+                        <li><a href="trending.html" id="trending">Trending</a></li>
+                        <li><a href="deals.html" id="deals">Deals</a></li>
                         <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
                         <li><a href="cart.html" id="cart">Cart</a></li>
                     </ul>
@@ -180,11 +180,14 @@
             </section>
 
             <section class="mainView">
+              <h1>Create Account</h1>
                 <form>
-                    <fieldset id="imgInput">
+                  <fieldset>
+                    <legend>Account Information</legend>
+                    <div id="imgInput">
                         <img src="images/220px-Darth_Vader.jpg">
                         <input type="file" name="profile" accept="image/*">
-                    </fieldset>
+                    </div>
 
                     <p>Username:</p>
                     <input name="user" type="text">
@@ -196,6 +199,7 @@
                     <input type="password">
                     <br />
                     <input id="createButton" type="submit" value="Create Account">
+                  </fieldset>
                 </form>
             </section>
         </div>
