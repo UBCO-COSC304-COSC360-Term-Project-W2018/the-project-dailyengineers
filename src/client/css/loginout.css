@@ -8,7 +8,7 @@
     width: 100%;
     margin: 0.5em 0;
     height: 1.5em;
-    
+
     border: black 2px solid;
 }
 /* Login Button*/
@@ -44,4 +44,10 @@
     color: #454545;
     border: white 2px outset;
     padding: 0.25em;
+}
+
+h1 {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #FF8800;
+  padding-bottom: 1em;
 }
