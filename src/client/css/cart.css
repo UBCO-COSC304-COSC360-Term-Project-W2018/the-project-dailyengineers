@@ -9,13 +9,15 @@
 .checkoutButton {
   font-weight: bold;
   text-decoration: none;
-  margin: 1em 0 1em 0;
+  margin: 1em auto 1em auto;
   display: block;
   border: 1px solid #FF8800;
   border-radius: 1em;
   padding: 1em 3em 1em 3em;
   background-color: #FF8800;
   color: #353535;
+  text-align: center;
+  font-size: 1em;
 }
 
 .checkoutButton:hover {
@@ -142,6 +144,10 @@ h1 {
   padding: 1em;
 }
 
+.cartEntry:first-of-type {
+  border-top: none;
+}
+
 .cartEntry:last-of-type {
   border-bottom: #FF8800 solid 1px;
 }
@@ -180,4 +186,86 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+h1 {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #FF8800;
+  padding-bottom: 1em;
+}
+
+h2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.shippingBilling {
+  display: flex;
+  justify-content: center;
+}
+
+#billingForm {
+  margin-left: 2em;
+}
+
+.paymentMethodContainer {
+  margin: auto;
+}
+
+.shippingMethodContainer {
+  margin: auto;
+}
+
+.checkoutTotalsContainer {
+  margin:auto;
+}
+
+form input[type=text] {
+  width: 18em;
+  height: 1.5em;
+  /* border: black 2px inset; */
+}
+form input[type=text].cardCVV {
+  width: 5em;
+  height: 1.5em;
+  /* border: black 2px inset; */
+}
+form input[type=text].cardExpiry {
+  width: 10em;
+  height: 1.5em;
+  /* border: black 2px inset; */
+}
+
+#savedCardLegend {
+  margin-left: 1.5em;
+}
+#radioLegend {
+  font-size: 1em;
+  color: #DEE7E7;
+}
+
+#paymentMethod {
+  width: 30em;
+  margin: 1em auto;
+}
+
+#shippingMethod {
+  width: 30em;
+  margin: 1em auto;
+}
+
+#checkoutTotals {
+  width: 30em;
+  margin: 1em auto;
+}
+
+#checkoutTotals p {
+  font-size: 1.5em;
+  color: #FF8800;
+  text-align: center;
+}
+
+.savePaymentCheckbox {
+  display: inline-block;
+  color: red;
 }
