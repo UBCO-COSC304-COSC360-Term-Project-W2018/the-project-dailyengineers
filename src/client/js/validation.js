@@ -24,7 +24,7 @@ window.onload = function() {
         // console.log(input[i].name + " is required!");
         e.preventDefault();
       } else if (input[i].value == "" || input[i].value == null) {
-        modal.style.display = "block";
+        error.style.display = "block";
         // document.getElementById("errorMessage").innerHTML = input[i].name + " is required!";
         // console.log(input[i].name + " is required!");
         input[i].classList.add("errorField");
@@ -36,7 +36,7 @@ window.onload = function() {
   });
 
   // Get the modal
-  var modal = document.getElementById('myModal');
+  var error = document.getElementById('createError');
 
   // Get the button that opens the modal
   var btn = document.getElementById("myBtn");
@@ -51,8 +51,8 @@ window.onload = function() {
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    if (event.target == error) {
+      error.style.display = "none";
     }
   }
 }
