@@ -1,0 +1,36 @@
+.statusBar {
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 3em;
+	height: 3em;
+	background-color: #3f3f3f;
+}
+
+.progressIn {
+	width: 73%;
+	border-radius: 10px;
+	height: 3em;
+	background-color: orange;
+}
+
+#ordered {
+	display: inline-block;
+	float: left;
+	width: 33.33%;
+	text-align: left;
+
+}
+
+#shipped {
+	display: inline-block;
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+
+#delivered {
+	display: inline-block;
+	float: left;
+	width: 33.33%;
+	text-align: right;
+}
