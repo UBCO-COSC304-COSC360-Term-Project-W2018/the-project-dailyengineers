@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/validation.css">
+  <script type="text/javascript" src="js/validation.js"></script>
 </head>
 
 <body>
@@ -93,7 +95,7 @@
               <fieldset>
                 <legend>Shipping</legend>
                 <h2>Full Name:</h2>
-                <input type="text" name="shippingFullName">
+                <input type="text" name="shippingFullName" class="required">
                 <h2>Address:</h2>
                 <input type="text" name="shippingAddress">
                 <h2>City:</h2>
@@ -164,6 +166,18 @@
             </fieldset>
           </div>
         </form>
+
+        <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <!-- <span class="close">&times;</span> -->
+    <h2 id="errorMessage">Required fields are empty. Please check for and complete highlighted fields.</h2>
+    <p>Click outside this window to close.</p>
+  </div>
+
+</div>
 
       </section>
     </div>
