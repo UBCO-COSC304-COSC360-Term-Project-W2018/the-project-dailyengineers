@@ -53,3 +53,9 @@
 .prodComment p {
     margin: 0.5em;
 }
+
+h1 {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #FF8800;
+  padding-bottom: 1em;
+}
