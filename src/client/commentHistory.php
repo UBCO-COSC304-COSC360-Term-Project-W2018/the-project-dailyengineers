@@ -156,8 +156,7 @@
                 </section>
             </section>
         </div>
-        <footer>
-        </footer>
+        <?php include "footer.php" ?>
     </main>
 </body>
 <script type="text/javascript" src="js/lad.js"></script>

@@ -157,9 +157,7 @@
       </section>
     </div>
 
-    <footer>
-
-    </footer>
+    <?php include "footer.php" ?>
 
   </main>
 
