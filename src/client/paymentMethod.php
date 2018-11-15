@@ -1,54 +1,20 @@
 <!DOCTYPE HTML>
-
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE pass Reset</title>
+    <title>Vehicle Emporium</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/passReset.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/orderProgress.css">
 </head>
 
 <body>
-
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include 'header.php';?>
     <main>
-
         <div class="columnContainer">
-
             <section class="leftSidebar">
                 <div class="custom-select">
                     <select>
@@ -100,15 +66,12 @@
                         <option value="45">Volkswagen</option>
                         <option value="46">Volvo</option>
                     </select>
-
                     <select>
                         <option value="0">Model:</option>
                     </select>
-
                     <select>
                         <option value="0">Year:</option>
                     </select>
-
                     <select>
                         <option value="0">Type:</option>
                         <option value="1">Coupe</option>
@@ -118,7 +81,6 @@
                         <option value="5">Truck</option>
                         <option value="6">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Engine:</option>
                         <option value="1">3-Cylinder</option>
@@ -131,21 +93,18 @@
                         <option value="1">Rotary</option>
                         <option value="1">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Drivetrain:</option>
                         <option value="0">All-Wheel Drive</option>
                         <option value="0">Four-Wheel Drive</option>
                         <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Read-Wheel Drive</option>
+                        <option value="0">Rear-Wheel Drive</option>
                     </select>
-
                     <select>
                         <option value="0">Transmission:</option>
                         <option value="1">Automatic</option>
                         <option value="2">Manual</option>
                     </select>
-
                     <select>
                         <option value="0">Colour:</option>
                         <option value="1">Black</option>
@@ -160,7 +119,6 @@
                         <option value="10">Yellow</option>
                         <option value="11">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Seats:</option>
                         <option value="1">2 seats</option>
@@ -178,35 +136,36 @@
                     </select>
                 </div>
             </section>
-
             <section class="mainView">
-              <h1>Reset Password</h1>
-                <div class="centerBox">
-                    <form id="default" method="GET" action="#">
-                        <h3>Account Email</h3>
-                        <input name="email" type="email">
-                        <input id="send code" type="submit" value="Send Reset Code">
-                    </form>
-                    <!-- should swap from one to the other when either the user click send or they follow the link in email -->
-                    <form id="sent" method="POST" action="#">
-                        <h3>Reset Code</h3>
-                        <input name="code" type="text">
-                        <h3>New Password</h3>
-                        <input id="newPass" name="pass" type="password">
-                        <h3>Confirm Password</h3>
-                        <input id="newPassConfirm" type="password">
-                        <input id="sendCode" type="submit" value="Reset Password">
-                    </form>
-                </div>
+                <section class="mainPageBody">
+                    <div class="adminDiv">
+                        <p class="subtitleAdmin">Payment Method</p>
+                        <div class="paymentContainer">
+                            <form action="">
+                                <h3>Billing Address</h3>
+                                <label for="fname"><i class="name"></i> Full Name</label>
+                                <input type="text" id="fname" name="firstname" placeholder="Dale M. Earnheardt">
+                                <label for="email"><i class="email"></i> Email</label>
+                                <input type="text" id="email" name="email" placeholder="dale@earnheardt.com">
+                                <label for="adr"><i class="address"></i> Address</label>
+                                <input type="text" id="adr" name="address" placeholder="Nascar Street">
+                                <label for="city"><i class="city"></i> City</label>
+                                <input type="text" id="city" name="city" placeholder="New York">
+                                <label for="">Card Number</label>
+                                <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                <label>EXP DATE</label>
+                                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="232">
+                            </form>
+                        </div>
+                    </div>
+                </section>
             </section>
         </div>
-
-        <footer>
-
-        </footer>
-
+        <?php include "footer.php" ?>
     </main>
-
 </body>
+<script type="text/javascript" src="js/lad.js"></script>
 
 </html>
