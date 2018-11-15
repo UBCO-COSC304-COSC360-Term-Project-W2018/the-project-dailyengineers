@@ -1,54 +1,20 @@
 <!DOCTYPE HTML>
-
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE Login</title>
+    <title>Vehicle Emporium</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/orderProgress.css">
 </head>
 
 <body>
-
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include 'header.php';?>
     <main>
-
         <div class="columnContainer">
-
             <section class="leftSidebar">
                 <div class="custom-select">
                     <select>
@@ -100,15 +66,12 @@
                         <option value="45">Volkswagen</option>
                         <option value="46">Volvo</option>
                     </select>
-
                     <select>
                         <option value="0">Model:</option>
                     </select>
-
                     <select>
                         <option value="0">Year:</option>
                     </select>
-
                     <select>
                         <option value="0">Type:</option>
                         <option value="1">Coupe</option>
@@ -118,7 +81,6 @@
                         <option value="5">Truck</option>
                         <option value="6">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Engine:</option>
                         <option value="1">3-Cylinder</option>
@@ -131,21 +93,18 @@
                         <option value="1">Rotary</option>
                         <option value="1">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Drivetrain:</option>
                         <option value="0">All-Wheel Drive</option>
                         <option value="0">Four-Wheel Drive</option>
                         <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Read-Wheel Drive</option>
+                        <option value="0">Rear-Wheel Drive</option>
                     </select>
-
                     <select>
                         <option value="0">Transmission:</option>
                         <option value="1">Automatic</option>
                         <option value="2">Manual</option>
                     </select>
-
                     <select>
                         <option value="0">Colour:</option>
                         <option value="1">Black</option>
@@ -160,7 +119,6 @@
                         <option value="10">Yellow</option>
                         <option value="11">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Seats:</option>
                         <option value="1">2 seats</option>
@@ -178,67 +136,32 @@
                     </select>
                 </div>
             </section>
-
             <section class="mainView">
-                <form method="GET" action="#">
-                    <div class="left">
-                        <fieldset id="imgInput">
-                            <img src="images/220px-Darth_Vader.jpg">
-                            <input type="file" name="profile" accept="image/*">
-                        </fieldset>
-                        <button>Payment Method</button>
-                        <button>Order History</button>
-                        <button>Comment History</button>
+                <section class="mainPageBody">
+                    <div class="adminDiv">
+                        <p class="subtitleAdmin">Order Status</p>
+                        <div class="statusBar">
+                            <div class="progressIn"></div>
+                            <p id="ordered">Ordered</p>
+                            <p id="shipped">Shipped</p>
+                            <p id="delivered">Delivered</p>
+                            <p>Porsche - Project Gold - $4.1m</p>
+                        </div>
                     </div>
-                    <fieldset class="acRight">
-                        <h3>Username:</h3>
-                        <input name="user" type="text">
-                        <p>Lord_Vader</p>
-                        <button>Edit</button>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Email:</h3>
-                        <input name="email" type="email">
-                        <p>darksider@hotmail.com</p>
-                        <button>Edit</button>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Password:</h3>
-                        <input name="pass" type="password">
-                        <h3 class="passConfirmh3">Confirm Password:</h3>
-                        <input id="passConfirm" type="password">
-                        <div></div>
-                        <button>Edit</button>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>First name:</h3>
-                        <input name="firstname" type="text">
-                        <p>Anakin</p>
-                        <button>Edit</button>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Last name:</h3>
-                        <input name="lastname" type="text">
-                        <p>Skywalker</p>
-                        <button>Edit</button>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Address:</h3>
-                        <input name="addr" type="text">
-                        <p>423 Lava Rd. Mustafar</p>
-                        <button>Edit</button>
-                    </fieldset>
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes">
-                </form>
+                    <div class="adminDiv">
+                        <p>Delivered</p>
+                        <p>Ford - Focus RS - $32K</p>
+                    </div>
+                    <div class="adminDiv">
+                        <p>Delivered</p>
+                        <p>Renault - Megane RS - $65K</p>
+                    </div>
+                </section>
             </section>
         </div>
-
-        <footer>
-
-        </footer>
-
+        <?php include "footer.php" ?>
     </main>
-
 </body>
+<script type="text/javascript" src="js/lad.js"></script>
 
 </html>
