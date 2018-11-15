@@ -12,7 +12,9 @@
 </head>
 
 <body>
+
     <?php include 'header.php';?>
+	
     <main>
         <div class="columnContainer">
             <section class="leftSidebar">
@@ -163,7 +165,9 @@
                 </section>
             </section>
         </div>
+		
         <?php include "footer.php" ?>
+		
     </main>
 </body>
 <script type="text/javascript" src="js/lad.js"></script>
