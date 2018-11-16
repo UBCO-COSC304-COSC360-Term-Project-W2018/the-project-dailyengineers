@@ -4,46 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE pass Reset</title>
+    <title>COSC VE Login</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/passReset.css">
+    <link rel="stylesheet" href="css/loginout.css">
+    <link rel="stylesheet" href="css/validation.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php';?>
 
     <main>
 
@@ -180,28 +151,32 @@
             </section>
 
             <section class="mainView">
+              <h1>Login/Create Account</h1>
                 <div class="centerBox">
-                    <form id="default" method="GET" action="#">
-                        <h3>Account Email</h3>
-                        <input name="email" type="email">
-                        <input id="send code" type="submit" value="Send Reset Code">
+                    <form method="GET" action="logout.html">
+                        <h3>Username</h3>
+                        <input name="username" type="textBox" class="required">
+                        <h3>Password</h3>
+                        <input name="password" type="password" class="required">
+                        <input id="login" type="submit" value="Login">
                     </form>
-                    <!-- should swap from one to the other when either the user click send or they follow the link in email -->
-                    <form id="sent" method="POST" action="#">
-                        <h3>Reset Code</h3>
-                        <input name="code" type="text">
-                        <h3>New Password</h3>
-                        <input id="newPass" name="pass" type="password">
-                        <input id="newPassConfirm" type="password">
-                        <input id="sendCode" type="submit" value="Reset Password">
-                    </form>
+                    <div id="options">
+                        <a href="createAccount.html">Create Account</a>
+                        <a href="passReset.html">Forgot Password</a>
+                    </div>
+
+                </div>
+
+                <div id="createError" class="error">
+                  <div class="errorContent">
+                    <h2 id="errorMessage">Required fields are empty. Please check for and complete highlighted fields.</h2>
+                    <p>Click outside this window to close.</p>
+                  </div>
                 </div>
             </section>
         </div>
 
-        <footer>
-
-        </footer>
+        <?php include "footer.php" ?>
 
     </main>
 
