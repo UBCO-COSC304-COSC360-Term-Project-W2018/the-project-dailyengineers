@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE Login</title>
+    <title>Vehicle Emporium - Create Account</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
@@ -13,37 +13,7 @@
 
 <body>
 
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php';?>
 
     <main>
 
@@ -180,11 +150,14 @@
             </section>
 
             <section class="mainView">
-                <form>
-                    <fieldset id="imgInput">
+              <h1>Create Account</h1>
+                <form action="account.html">
+                  <fieldset>
+                    <legend>Account Information</legend>
+                    <div id="imgInput">
                         <img src="images/220px-Darth_Vader.jpg">
                         <input type="file" name="profile" accept="image/*">
-                    </fieldset>
+                    </div>
 
                     <p>Username:</p>
                     <input name="user" type="text">
@@ -196,6 +169,7 @@
                     <input type="password">
                     <br />
                     <input id="createButton" type="submit" value="Create Account">
+                  </fieldset>
                 </form>
             </section>
         </div>

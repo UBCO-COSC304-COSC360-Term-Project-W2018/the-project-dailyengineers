@@ -1,54 +1,20 @@
 <!DOCTYPE HTML>
-
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>COSC VE Login</title>
+    <title>Vehicle Emporium</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/loginout.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/orderProgress.css">
 </head>
 
 <body>
-
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include 'header.php';?>
     <main>
-
         <div class="columnContainer">
-
             <section class="leftSidebar">
                 <div class="custom-select">
                     <select>
@@ -100,15 +66,12 @@
                         <option value="45">Volkswagen</option>
                         <option value="46">Volvo</option>
                     </select>
-
                     <select>
                         <option value="0">Model:</option>
                     </select>
-
                     <select>
                         <option value="0">Year:</option>
                     </select>
-
                     <select>
                         <option value="0">Type:</option>
                         <option value="1">Coupe</option>
@@ -118,7 +81,6 @@
                         <option value="5">Truck</option>
                         <option value="6">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Engine:</option>
                         <option value="1">3-Cylinder</option>
@@ -131,21 +93,18 @@
                         <option value="1">Rotary</option>
                         <option value="1">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Drivetrain:</option>
                         <option value="0">All-Wheel Drive</option>
                         <option value="0">Four-Wheel Drive</option>
                         <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Read-Wheel Drive</option>
+                        <option value="0">Rear-Wheel Drive</option>
                     </select>
-
                     <select>
                         <option value="0">Transmission:</option>
                         <option value="1">Automatic</option>
                         <option value="2">Manual</option>
                     </select>
-
                     <select>
                         <option value="0">Colour:</option>
                         <option value="1">Black</option>
@@ -160,7 +119,6 @@
                         <option value="10">Yellow</option>
                         <option value="11">Other</option>
                     </select>
-
                     <select>
                         <option value="0">Seats:</option>
                         <option value="1">2 seats</option>
@@ -178,24 +136,32 @@
                     </select>
                 </div>
             </section>
-
             <section class="mainView">
-                <div class="centerBox">
-                    <h3>Thank you $username you have been signed-out.</h3>
-                    <div id="options">
-                        <!-- <a href="login.html">Sign-in</a> -->
-                        <a href="search.html">Continue Shopping</a>
-                        <a href="index.html">Return to Main</a>
+                <section class="mainPageBody">
+                    <div class="adminDiv">
+                        <p class="subtitleAdmin">Order Status</p>
+                        <div class="statusBar">
+                            <div class="progressIn"></div>
+                            <p id="ordered">Ordered</p>
+                            <p id="shipped">Shipped</p>
+                            <p id="delivered">Delivered</p>
+                            <p>Porsche - Project Gold - $4.1m</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="adminDiv">
+                        <p>Delivered</p>
+                        <p>Ford - Focus RS - $32K</p>
+                    </div>
+                    <div class="adminDiv">
+                        <p>Delivered</p>
+                        <p>Renault - Megane RS - $65K</p>
+                    </div>
+                </section>
             </section>
         </div>
-
-        <footer>
-
-        </footer>
-
+        <?php include "footer.php" ?>
     </main>
 </body>
+<script type="text/javascript" src="js/lad.js"></script>
 
 </html>

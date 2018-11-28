@@ -187,3 +187,40 @@ select {
   padding-left: 1em;
   /* padding: 0.5em 0em 0.5em 2em; */
 }
+
+/*************************** FORM STYLING **********************/
+
+fieldset {
+  border: 1px solid #FF8800;
+  border-radius: 0.5em;
+  background-color:  #121212;
+}
+
+legend {
+  font-weight: bold;
+  color: #FF8800;
+  font-size: 1.5em;
+  /* border: 1px solid #FF8800;
+  border-radius: 0.25em; */
+}
+
+label {
+ /* border:1px solid #ccc; */
+ /* padding:10px; */
+ /* margin:0 0 10px; */
+ margin: 0.5em;
+ padding: 0.5em;
+ border-radius: 0.5em;
+ display:block;
+ font-weight: bold;
+}
+
+checkbox {
+  height: 2em;
+}
+
+label:hover {
+ background-color: #FF8800;
+ color: #353535;
+ cursor:pointer;
+}

@@ -13,37 +13,7 @@
 
 <body>
 
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php';?>
 
     <main>
 
@@ -180,29 +150,21 @@
             </section>
 
             <section class="mainView">
+              <h1>Logging out...</h1>
                 <div class="centerBox">
-                    <form method="GET" action="logout.html">
-                        <h3>Username</h3>
-                        <input name="username" type="textBox">
-                        <h3>Password</h3>
-                        <input name="password" type="password">
-                        <input id="login" type="submit" value="Login">
-                    </form>
+                    <h3>Thank you $username, you have been signed-out.</h3>
                     <div id="options">
-                        <a href="createAccount.html">Create Account</a>
-                        <a href="passReset.html">Forgot Password</a>
+                        <!-- <a href="login.html">Sign-in</a> -->
+                        <a href="search.html">Continue Shopping</a>
+                        <a href="index.html">Return to Main</a>
                     </div>
-
                 </div>
             </section>
         </div>
 
-        <footer>
-
-        </footer>
+        <?php include "footer.php" ?>
 
     </main>
-
 </body>
 
 </html>
