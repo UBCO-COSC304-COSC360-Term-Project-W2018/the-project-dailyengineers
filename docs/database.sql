@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS User (
-	userID int NOT NULL,
+	userID int NOT NULL AUTO_INCREMENT,
 	username varchar(20) NOT NULL,
 	password varchar(20) NOT NULL,
 	email varchar(15) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Admin (
 );
 
 CREATE TABLE IF NOT EXISTS Vehicle (
-  vehicleID     int NOT NULL,
+  vehicleID     int NOT NULL AUTO_INCREMENT,
   year          int NOT NULL,
   make          VARCHAR(20) NOT NULL,
   model         VARCHAR(20) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
 );
 
 CREATE TABLE IF NOT EXISTS Warehouse (
-  warehouseID int NOT NULL,
+  warehouseID int NOT NULL AUTO_INCREMENT,
   location    varchar(20) NOT NULL,
   primary key (warehouseID)
 );
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Warehouse (
 CREATE TABLE IF NOT EXISTS CommentsOn (
   userID      int NOT NULL,
   vehicleID   int NOT NULL,
-  commentID   int NOT NULL,
+  commentID   int NOT NULL AUTO_INCREMENT,
   parentID    int,
   depth       tinyint not null,
   commentPath varchar(255),
