@@ -8,3 +8,4 @@ INSERT INTO Admin VALUES (?);
 
 /* CUSTOMER CREATION */
 INSERT INTO User (username, password, email) VALUES ('customer', 'customer', 'customer@somesite.com');
+INSERT INTO Customer 
