@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Customer (
 	userID int NOT NULL,
 	firstName varchar(20) NOT NULL,
 	lastName varchar(20) NOT NULL,
-	address varchar(50) NOT NULL,
+	address varchar(255) NOT NULL,
 	profilePic VARCHAR(50),
 	CCNumber int,
 	CCV int,
