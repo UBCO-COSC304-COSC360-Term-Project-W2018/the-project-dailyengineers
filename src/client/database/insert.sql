@@ -38,3 +38,6 @@ INSERT INTO Warehouse (location, continentID) VALUES ('Sydney, Australia', '5');
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 2, 35);
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (6, 1, 20);
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (8, 3, 50);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 1, 0);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (7, 2, 0);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (2, 3, 0);
