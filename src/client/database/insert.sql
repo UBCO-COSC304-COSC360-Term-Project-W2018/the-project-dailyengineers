@@ -41,3 +41,19 @@ INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (8, 3, 50);
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 1, 0);
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (7, 2, 0);
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (2, 3, 0);
+
+/* COMMENT CREATION */
+/* PARENT COMMENT (no parentID, no commentPath) */
+INSERT INTO CommentsOn (userID, vehicleID, depth, commentTime, content)
+VALUES (2, 2, 0, '2018-11-27 10:10:00', 'Wow, what a great car! Does it come in bright pearlescent fuchsia?!');
+
+/* CHILD COMMENT */
+INSERT INTO CommentsOn (userID, vehicleID, parentID, depth, commentPath, commentTime, content)
+VALUES (1, 2, 1, 1, '1', '2018-11-27 12:01:32', 'Hi there, thanks for your interest in this amazing product! The Tesla Model S is only available in white, as it is the most Earth-friendly colour for this environemtnally-concious luxury brand.');
+
+/* ADDITIONAL CHILD COMMENT */
+INSERT INTO CommentsOn (userID, vehicleID, parentID, depth, commentPath, commentTime, content)
+VALUES (2, 2, 2, 2, '1/2', '2018-11-27 13:33:57', "Ahh, gothca. That's too bad, I really like fuchsia...");
+
+/* ORDER CREATION */
+INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC) VALUES (2, '2018-11-27 14:03:21', '174700.00', 'Freight', 'Processing', '1234');
