@@ -1,50 +1,24 @@
 <!DOCTYPE HTML>
+
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Vehicle Emporium</title>
+    <title>Vehicle Emporium - Create Account</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
-    <link rel="stylesheet" type="text/css" href="css/orderProgress.css">
+    <link rel="stylesheet" href="css/createAccount.css">
 </head>
 
 <body>
-    <header>
-        <div class="headerContainer">
-            <div class="flexHeaderTop">
-                <a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-                <form action="search.html" class="searchForm">
-                    <input type="text" placeholder="Search our database..." name="search" id="searchField">
-                    <button type="submit"></button>
-                </form>
-            </div>
-            <div class="flexHeaderBottom">
-                <div class="flexBottomLeft">
-                    <nav class="navHeader">
-                        <ul class="inlineNav">
-                            <li><a href="#">Root</a></li>
-                            <li><a href="#">Category 1</a></li>
-                            <li><a href="#">Category 3</a></li>
-                            <li><a href="#">Category 4</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flexBottomRight">
-                    <ul class="headerRightLinks">
-                        <li><a href="#" id="trending">Trending</a></li>
-                        <li><a href="#" id="deals">Deals</a></li>
-                        <li><a href="login.html" id="loginSignup">Login/Sign-up</a></li>
-                        <li><a href="cart.html" id="cart">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+
+    <?php include 'header.php';?>
+
     <main>
+
         <div class="columnContainer">
+
             <section class="leftSidebar">
                 <div class="custom-select">
                     <select>
@@ -96,12 +70,15 @@
                         <option value="45">Volkswagen</option>
                         <option value="46">Volvo</option>
                     </select>
+
                     <select>
                         <option value="0">Model:</option>
                     </select>
+
                     <select>
                         <option value="0">Year:</option>
                     </select>
+
                     <select>
                         <option value="0">Type:</option>
                         <option value="1">Coupe</option>
@@ -111,6 +88,7 @@
                         <option value="5">Truck</option>
                         <option value="6">Other</option>
                     </select>
+
                     <select>
                         <option value="0">Engine:</option>
                         <option value="1">3-Cylinder</option>
@@ -123,18 +101,21 @@
                         <option value="1">Rotary</option>
                         <option value="1">Other</option>
                     </select>
+
                     <select>
                         <option value="0">Drivetrain:</option>
                         <option value="0">All-Wheel Drive</option>
                         <option value="0">Four-Wheel Drive</option>
                         <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Rear-Wheel Drive</option>
+                        <option value="0">Read-Wheel Drive</option>
                     </select>
+
                     <select>
                         <option value="0">Transmission:</option>
                         <option value="1">Automatic</option>
                         <option value="2">Manual</option>
                     </select>
+
                     <select>
                         <option value="0">Colour:</option>
                         <option value="1">Black</option>
@@ -149,6 +130,7 @@
                         <option value="10">Yellow</option>
                         <option value="11">Other</option>
                     </select>
+
                     <select>
                         <option value="0">Seats:</option>
                         <option value="1">2 seats</option>
@@ -166,33 +148,38 @@
                     </select>
                 </div>
             </section>
+
             <section class="mainView">
-                <section class="mainPageBody">
-                    <div class="adminDiv">
-                        <p class="subtitleAdmin">Order Status</p>
-                        <div class="statusBar">
-                            <div class="progressIn"></div>
-                            <p id="ordered">Ordered</p>
-                            <p id="shipped">Shipped</p>
-                            <p id="delivered">Delivered</p>
-                            <p>Porsche - Project Gold - $4.1m</p>
-                        </div>
+              <h1>Create Account</h1>
+                <form action="account.html">
+                  <fieldset>
+                    <legend>Account Information</legend>
+                    <div id="imgInput">
+                        <img src="images/220px-Darth_Vader.jpg">
+                        <input type="file" name="profile" accept="image/*">
                     </div>
-                    <div class="adminDiv">
-                        <p>Delivered</p>
-                        <p>Ford - Focus RS - $32K</p>
-                    </div>
-                    <div class="adminDiv">
-                        <p>Delivered</p>
-                        <p>Renault - Megane RS - $65K</p>
-                    </div>
-                </section>
+
+                    <p>Username:</p>
+                    <input name="user" type="text">
+                    <p>Email:</p>
+                    <input name="email" type="email">
+                    <p>Password:</p>
+                    <input name="pass" type="password">
+                    <p>Confirm Password:</p>
+                    <input type="password">
+                    <br />
+                    <input id="createButton" type="submit" value="Create Account">
+                  </fieldset>
+                </form>
             </section>
         </div>
+
         <footer>
+
         </footer>
+
     </main>
+
 </body>
-<script type="text/javascript" src="js/lad.js"></script>
 
 </html>
