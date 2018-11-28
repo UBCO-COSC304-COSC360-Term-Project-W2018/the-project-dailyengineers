@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   price         NUMERIC(10,2) NOT NULL,
   productPic    VARCHAR(50),
   bodyType      VARCHAR(10) CHECK (bodyType IN (Coupe, Hatchback, Sedan, SUV, Truck, Wagon, Other)),
-  transmission  VARCHAR(10) CHECK (transmission IN (Automatic, CVT, Manual)),
+  transmission  VARCHAR(10) CHECK (transmission IN (Automatic, CVT, Manual, Electric)),
   drivetrain    VARCHAR(5) CHECK (drivetrain IN (4X4, AWD, FWD, RWD, Other)),
   engine        VARCHAR(10) CHECK (engine IN (3CYL, 4CYL, 6CYL, 8CYL, 10CYL, 12CYL, Electric, Rotary, Other)),
   fuel          VARCHAR(10) CHECK (fuel IN (Gas, Diesel, Flex, Hybrid, Electric)),
@@ -53,6 +53,17 @@ CREATE TABLE IF NOT EXISTS Warehouse (
   continentID TINYINT NOT NULL,
   primary key (warehouseID),
   UNIQUE location (location)
+);
+
+CREATE TABLE IF NOT EXISTS Inventories(
+  warehouseID int NOT NULL,
+  vehicleID   int NOT NULL,
+  amount      int NOT NULL,
+  PRIMARY KEY (warehouseID, vehicleID),
+  FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (vehicleID) REFERENCES Vehicle(vehicleID)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS CommentsOn (
@@ -94,17 +105,6 @@ CREATE TABLE IF NOT EXISTS Ships (
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (orderID) REFERENCES Orders(orderID)
   ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS Inventories(
-  warehouseID int NOT NULL,
-  vehicleID   int NOT NULL,
-  amount      int NOT NULL,
-  PRIMARY KEY (warehouseID, vehicleID),
-  FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (vehicleID) REFERENCES Vehicle(vehicleID)
-    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS CartContents (
