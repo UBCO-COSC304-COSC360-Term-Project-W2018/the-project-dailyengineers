@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS User (
 	userID int NOT NULL AUTO_INCREMENT,
 	username varchar(20) NOT NULL,
 	password varchar(20) NOT NULL,
-	email varchar(15) NOT NULL,
+	email varchar(254) NOT NULL,
 	primary key (userID)
 );
 
