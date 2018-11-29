@@ -14,7 +14,7 @@
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
-            <?php include "sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
               <h1>Create Account</h1>
