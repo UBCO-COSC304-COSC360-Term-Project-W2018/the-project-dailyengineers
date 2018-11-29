@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 
 <html>
@@ -153,7 +154,7 @@
             <section class="mainView">
               <h1>Login/Create Account</h1>
                 <div class="centerBox">
-                    <form method="GET" action="logout.html">
+                    <form method="POST" action="loginAction.php">
                         <h3>Username</h3>
                         <input name="username" type="textBox" class="required">
                         <h3>Password</h3>
