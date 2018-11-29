@@ -190,47 +190,44 @@
                         </div>
                     </div>
                     <section class="mainContent">
-                        <h1 class="titlePara">Welcome to Vehicle Emporium!</h1>
+                        <h1 class="titlePara">Vehicle Emporium Careers</h1>
                         <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-
+                            Live your life a quarter mile at a time working for us!
                         </p>
-                        <h2>Pre-shipment Quality Inspection</h2>
+                        <h2>Listings</h2>
                         <table class="dataCrit">
                             <tr>
-                                <th>Criteria</th>
-                                <th>Inspection Level</th>
-                                <th>AOL</th>
+                                <th>Job Title</th>
+                                <th>Location</th>
+                                <th>Date Posted</th>
                             </tr>
                             <tr>
-                                <td>1000ml Water Tight Test</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
+                                <td>Automotive Photographer</td>
+                                <td>Montreal, Quebec, CA</td>
+                                <td>11/20/2018</td>
                             </tr>
                             <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
+                                <td>Account Manager - Sales</td>
+                                <td>Toronto, Ontario, CA</td>
+                                <td>11/10/2018</td>
                             </tr>
                             <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>2.5</td>
+                                <td>Development Manager</td>
+                                <td>GTA, Ontario, CA</td>
+                                <td>11/4/2018</td>
                             </tr>
                             <tr>
-                                <td>Dimension</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
+                                <td>Senior User Experience Designer</td>
+                                <td>Vancouver, BC, CA</td>
+                                <td>10/12/2018</td>
                             </tr>
                             <tr>
-                                <td>Physical Properties</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
+                                <td>Automotive Photographer</td>
+                                <td>Vancouver, BC, CA</td>
+                                <td>8/10/2018</td>
                             </tr>
                         </table>
-                        <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-                        </p>
+                        <p class="para">Can't find a job posting that matches your skills? We can help!</p>
                     </section>
                 </section>
             </section>

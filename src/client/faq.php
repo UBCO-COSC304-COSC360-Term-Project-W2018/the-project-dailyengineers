@@ -190,56 +190,23 @@
                         </div>
                     </div>
                     <section class="mainContent">
-                        <h1 class="titlePara">Welcome to Vehicle Emporium!</h1>
+                        <h1 class="titlePara">Vehicle Emporium FAQ</h1>
                         <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-
+                            We will answer your questions!
                         </p>
-                        <h2>Pre-shipment Quality Inspection</h2>
-                        <table class="dataCrit">
-                            <tr>
-                                <th>Criteria</th>
-                                <th>Inspection Level</th>
-                                <th>AOL</th>
-                            </tr>
-                            <tr>
-                                <td>1000ml Water Tight Test</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>2.5</td>
-                            </tr>
-                            <tr>
-                                <td>Dimension</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
-                            </tr>
-                            <tr>
-                                <td>Physical Properties</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
-                            </tr>
-                        </table>
-                        <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-                        </p>
+                        <p class="para">Why have I not received my car?</p>
+                        <p class="para">You have a 1/300 chance of not receiving a car.</p>
+                        <p class="para">How do I cancel my order?</p>
+                        <p class="para">All cars sales are final.</p>
+                        <p class="para">How do I delete my account?</p>
+                        <p class="para">Go into your user settings and press the delete button.</p>
+                        <p class="para"><a href="contact.php">Contact us</a> if you have any questions!</p>
                     </section>
                 </section>
             </section>
         </div>
-
         <?php include "footer.php" ?>
-
     </main>
-
 </body>
 <script type="text/javascript" src="js/lad.js"></script>
 

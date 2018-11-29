@@ -190,56 +190,16 @@
                         </div>
                     </div>
                     <section class="mainContent">
-                        <h1 class="titlePara">Welcome to Vehicle Emporium!</h1>
-                        <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-
-                        </p>
-                        <h2>Pre-shipment Quality Inspection</h2>
-                        <table class="dataCrit">
-                            <tr>
-                                <th>Criteria</th>
-                                <th>Inspection Level</th>
-                                <th>AOL</th>
-                            </tr>
-                            <tr>
-                                <td>1000ml Water Tight Test</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>1.5</td>
-                            </tr>
-                            <tr>
-                                <td>Visual Inspection</td>
-                                <td>G-1</td>
-                                <td>2.5</td>
-                            </tr>
-                            <tr>
-                                <td>Dimension</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
-                            </tr>
-                            <tr>
-                                <td>Physical Properties</td>
-                                <td>S-2</td>
-                                <td>4.0</td>
-                            </tr>
-                        </table>
-                        <p class="para">
-                            Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
-                        </p>
+                        <h1 class="titlePara">Contact Us</h1>
+                        <p class="para">Email: <a href="mailto:contact@vehicleemporium.com" class="email">contact@vehicleemporium.com</a></p>
+                        <p class="para">3333 University Way, Kelowna, BC V1V 1V7</p>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=ubc%20okanagan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
                     </section>
                 </section>
             </section>
         </div>
-
         <?php include "footer.php" ?>
-
     </main>
-
 </body>
 <script type="text/javascript" src="js/lad.js"></script>
 
