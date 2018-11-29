@@ -11,7 +11,8 @@ if (!isset($_SESSION['username'])) {
             // $error      = mysqli_connect_error();
 
             $con = sqlsrv_connect($server, $connectionInfo);
-
+            $sql = "SELECT username, password FROM user WHERE username=?;";
+            $pstmt = sqlsrv_query($con, $sql, array($_POST['username']));
             /*if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
@@ -20,26 +21,24 @@ if (!isset($_SESSION['username'])) {
                 die( print_r( sqlsrv_errors(), true));
             } else {
                 echo "here";
-                $sql = "SELECT username, password FROM user WHERE username='" . $_POST['username'] . "';";
-                $pstmt = sqlsrv_query($con, $sql, array());
 
                 // $results = mysqli_query($connection, $sql);
                 // if ($row = mysqli_fetch_assoc($results)) {
-                while ($rst = sqlsrv_fetch_array( $pstmt, SQLSRV_FETCH_ASSOC)) {
-                    if ($_POST['password'] == $rst['password']) {
+                while ($row = sqlsrv_fetch_array($pstmt, SQLSRV_FETCH_ASSOC)) {
+                    if ($_POST['password'] == $row['password']) {
                         //Update session Superglobal
                         $_SESSION['username'] = $_POST['username'];
                         //Release Values
                         // mysqli_free_result($results);
                         // mysqli_close($connection);
-                        sqlsrv_free_stmt($pstmt2);
+                        sqlsrv_free_stmt($pstmt);
                         sqlsrv_close($con);
                         //redirect
                         header("Location: index.php");
                         die();
                     }
                 }
-                sqlsrv_free_stmt($pstmt2);
+                sqlsrv_free_stmt($pstmt);
             }
             sqlsrv_close($con);
         }
