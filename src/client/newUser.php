@@ -8,11 +8,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
         && isset($_POST["email"])
         && isset($_POST["pass"])) {
         //input them
-        $host = "localhost";
-        $database = "project";
-        $user = "webuser";
-        $password = "q9dDlTN6VJSftMti";
-        
+        include 'include/db_credentials.php';
+
         $connection = mysqli_connect($host, $user, $password, $database);
         
         $error = mysqli_connect_error();
