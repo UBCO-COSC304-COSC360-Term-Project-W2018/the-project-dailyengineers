@@ -1,13 +1,5 @@
 <?php session_start(); ?>
 <!DOCTYPE HTML>
-<!--  -->
-<!--  -->
-<!--  -->
-<!-- Change Paths on redirects -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
 <html>
 
 <head>

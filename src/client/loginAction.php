@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) {
                         mysqli_free_result($results);
                         mysqli_close($connection);
                         //redirect
-                        header("Location: http://localhost/the-project-dailyengineers/src/client/index.php");
+                        header("Location: index.php");
                         die();
                     }
                 }
@@ -37,12 +37,11 @@ if (!isset($_SESSION['username'])) {
         }
     }
     //Data bad
-    header("http://localhost/the-project-dailyengineers/src/client/login.php");
+    header("Location: login.php");
     die();
 } else {
     //we logged in already silly goose
-    header("Location: http://localhost/the-project-dailyengineers/src/client/index.php");
-    console.log("Webroke");
+    header("Location: index.php");
     die();
 }
 ?>
