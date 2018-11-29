@@ -31,12 +31,12 @@ if (!isset($_SESSION['username'])) {
                 <form method="GET" action="#">
                     <div class="left">
                         <fieldset id="imgInput">
-                            <img src="images/220px-Darth_Vader.jpg">
+                            <img src="images/profilePlaceholder.png">
                             <input type="file" name="profile" accept="image/*">
                         </fieldset>
-                        <button>Payment Method</button>
-                        <button>Order History</button>
-                        <button>Comment History</button>
+                        <a href="paymentMethod.php"><button>Payment Method</button></a>
+                        <a href="orderStatus.php"><button>Orders</button></a>
+                        <a href="commentHistory.php"><button>Comment History</button></a>
                     </div>
                     <fieldset class="acRight">
                         <h3>Username:</h3>

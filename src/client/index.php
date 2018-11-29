@@ -45,8 +45,8 @@
                             <div class="numbertext">6 / 6</div>
                             <img src="images/singer.jpg" style="width:100%">
                         </div>
-                        <a class="prev" onclick="plusSlides(-1)">â®</a>
-                        <a class="next" onclick="plusSlides(1)">â¯</a>
+                        <a class="prev" onclick="plusSlides(-1)"><</a>
+                        <a class="next" onclick="plusSlides(1)">></a>
                         <div class="caption-container">
                             <p id="caption"></p>
                         </div>

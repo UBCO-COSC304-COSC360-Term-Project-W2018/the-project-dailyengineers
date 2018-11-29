@@ -30,7 +30,7 @@
                   <fieldset>
                     <legend>Account Information</legend>
                     <div id="imgInput">
-                        <img src="images/220px-Darth_Vader.jpg">
+                        <img src="images/profilePlaceholder.png">
                         <input type="file" name="profile" accept="image/*">
                     </div>
 
