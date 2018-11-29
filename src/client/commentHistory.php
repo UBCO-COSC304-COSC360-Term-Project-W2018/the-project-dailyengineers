@@ -18,7 +18,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
-    <?php include 'header.php';?>
+    <?php include 'include/header.php';?>
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
                 </section>
             </section>
         </div>
-        <?php include "footer.php" ?>
+        <?php include "include/footer.php" ?>
     </main>
 </body>
 <script type="text/javascript" src="js/lad.js"></script>
