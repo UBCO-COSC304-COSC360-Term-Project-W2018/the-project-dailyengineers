@@ -42,9 +42,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/bentleyThumb.jpg"></a>
+              <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2018 Bentley Continental G3</a>
+            <a href="product.php" class="searchLink">2018 Bentley Continental G3</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -68,9 +68,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -78,9 +78,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/singerTHumb.jpg"></a>
+              <a href="product.php"><img src="images/singerThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">1988 Porsche 911 Carrera Targa</a>
+            <a href="product.php" class="searchLink">1988 Porsche 911 Carrera Targa</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -105,9 +105,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">7 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">7 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -115,9 +115,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/rs5Thumb.jpg"></a>
+              <a href="product.php"><img src="images/rs5Thumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2017 Audi RS5</a>
+            <a href="product.php" class="searchLink">2017 Audi RS5</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -141,9 +141,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">5 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">5 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -151,9 +151,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/edoThumb.jpg"></a>
+              <a href="product.php"><img src="images/edoThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2018 Mercedes AMG GTR</a>
+            <a href="product.php" class="searchLink">2018 Mercedes AMG GTR</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -177,9 +177,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">11 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">11 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>

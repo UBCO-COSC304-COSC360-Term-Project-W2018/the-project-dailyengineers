@@ -35,22 +35,22 @@
         </div>
 
         <div class="cartCheckout">
-            <a class="checkoutButton" href="checkout.html">Proceed to Checkout</a>
+            <a class="checkoutButton" href="checkout.php">Proceed to Checkout</a>
         </div>
 
         <div class="cartRecentlyViewed">
           <h1>Recently Viewed:</h1>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/bentleyThumb.jpg"><figcaption>2018 Bentley Continental GT3</figcaption><figcaption>$1,000,000</figcaption></a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a href="product.php"><img src="images/bentleyThumb.jpg"><figcaption>2018 Bentley Continental GT3</figcaption><figcaption>$1,000,000</figcaption></a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/edoThumb.jpg"><figcaption>2018 Mercedes AMG GTR</figcaption><figcaption>$228,164</figcaption></a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a href="product.php"><img src="images/edoThumb.jpg"><figcaption>2018 Mercedes AMG GTR</figcaption><figcaption>$228,164</figcaption></a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/singerThumb.jpg"><figcaption>1988 Porsche 911 Carrera Targa</figcaption><figcaption>$167,000</figcaption></a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a href="product.php"><img src="images/singerThumb.jpg"><figcaption>1988 Porsche 911 Carrera Targa</figcaption><figcaption>$167,000</figcaption></a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
         </div>
       </section>
@@ -61,9 +61,9 @@
         <div class="cartEntry">
           <div class="cartCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/bentleyThumb.jpg"></a>
+              <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
             </div>
-          <!-- <a href="product.html" class="searchLink">2018 Bentley Continental GT3</a> -->
+          <!-- <a href="product.php" class="searchLink">2018 Bentley Continental GT3</a> -->
           </div>
           <div class="cartCol middleCol">
             <!-- <div class="midFlex"> -->
@@ -71,7 +71,7 @@
                 <p>2018 Bentley Continental GT3</p>
               </div>
               <div class="cartDeleteContainer">
-                <a class="cartDelete" href="cart.html">Remove Item</a>
+                <a class="cartDelete" href="cart.php">Remove Item</a>
               </div>
             <!-- </div> -->
           </div>
