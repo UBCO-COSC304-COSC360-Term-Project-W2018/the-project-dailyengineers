@@ -5,19 +5,16 @@ if (!isset($_SESSION['username'])) {
     if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
         //Check if we have data
         if (isset($_POST["username"]) && isset($_POST["password"])) {
-            $host = "localhost";
-            $database = "project";
-            $user = "webuser";
-            $password = "q9dDlTN6VJSftMti";
+            include 'include/db_credentials.php';
 
             $connection = mysqli_connect($host, $user, $password, $database);
-            $error = mysqli_connect_error();
+            $error      = mysqli_connect_error();
             if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
             } else {
                 echo "here";
-                $sql = "SELECT username, password FROM user WHERE username='".$_POST['username']."';";
+                $sql     = "SELECT username, password FROM user WHERE username='" . $_POST['username'] . "';";
                 $results = mysqli_query($connection, $sql);
                 if ($row = mysqli_fetch_assoc($results)) {
                     if ($_POST['password'] == $row['password']) {
@@ -27,7 +24,7 @@ if (!isset($_SESSION['username'])) {
                         mysqli_free_result($results);
                         mysqli_close($connection);
                         //redirect
-                        header("Location: http://localhost/the-project-dailyengineers/src/client/index.php");
+                        header("Location: index.php");
                         die();
                     }
                 }
@@ -37,12 +34,10 @@ if (!isset($_SESSION['username'])) {
         }
     }
     //Data bad
-    header("http://localhost/the-project-dailyengineers/src/client/login.php");
+    header("Location: login.php");
     die();
 } else {
     //we logged in already silly goose
-    header("Location: http://localhost/the-project-dailyengineers/src/client/index.php");
-    console.log("Webroke");
+    header("Location: index.php");
     die();
 }
-?>

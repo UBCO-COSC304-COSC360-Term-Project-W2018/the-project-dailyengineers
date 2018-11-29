@@ -9,8 +9,11 @@
 }
 #imgInput img {
     display: block;
-    width: 7.5em;
-    height: 7.5em;
+    width: 13em;
+    height: 13em;
+}
+#imgInput input {
+    width: 13em;
 }
 .mainView form input:not(:last-child) {
     width: 18em;

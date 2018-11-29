@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+if (!isset($_SESSION['username'])) {
+    //not logged in (Guest) GET OUT
+    header("Location: login.php");
+    die();
+}?>
 <!DOCTYPE HTML>
 
 <html>
