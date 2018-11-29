@@ -1,6 +1,6 @@
-<?php session_start(); if (isset($_SESSION['username'])) { //not logged in (Guest) GET OUT 
-    header("Location: index.php"); 
-    die(); 
+<?php session_start(); if (isset($_SESSION['username'])) { //not logged in (Guest) GET OUT
+    header("Location: index.php");
+    die();
     }?>
 <!DOCTYPE HTML>
 
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php include 'header.php';?>
+    <?php include 'include/header.php';?>
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
@@ -26,7 +26,7 @@
             <section class="mainView">
                 <h1>Login/Create Account</h1>
                 <div class="centerBox">
-                    <form method="POST" action="loginAction.php">
+                    <form method="POST" action="action/loginAction.php">
                         <h3>Username</h3>
                         <input name="username" type="textBox" class="required">
                         <h3>Password</h3>
@@ -49,7 +49,7 @@
             </section>
         </div>
 
-        <?php include "footer.php" ?>
+        <?php include "include/footer.php" ?>
 
     </main>
 
