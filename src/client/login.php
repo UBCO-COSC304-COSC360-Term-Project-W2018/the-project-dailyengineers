@@ -1,5 +1,5 @@
 <?php session_start();
-if (!isset($_SESSION['username'])) {
+if (isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
     header("http://localhost/the-project-dailyengineers/src/client/index.php");
     die();
