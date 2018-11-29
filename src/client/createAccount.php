@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/createAccount.css">
 </head>
 <body>
-    <?php include 'header.php';?>
+    <?php include 'include/header.php';?>
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
@@ -40,7 +40,7 @@
             </section>
         </div>
         <footer>
-            <?php include "footer.php"; ?>
+            <?php include "include/footer.php"; ?>
         </footer>
     </main>
 </body>
