@@ -14,10 +14,10 @@
 	</section>
 	<section class="columnFooters">
 		<div class="footerList">
-			<a href="facebook.com" id="socials"><img src="images/fb.png"></a>
-			<a href="google.com" id="socials"><img src="images/gp.png"></a>
-			<a href="twitter.com" id="socials"><img src="images/tw.png"></a>
-			<a href="youtube.com" id="socials"><img src="images/yt.png"></a>
+			<a href="https://www.facebook.com" id="socials"><img src="images/fb.png"></a>
+			<a href="https://google.com" id="socials"><img src="images/gp.png"></a>
+			<a href="https://twitter.com" id="socials"><img src="images/tw.png"></a>
+			<a href="https://youtube.com" id="socials"><img src="images/yt.png"></a>
 			<a href="index.php"><img src="images/placeholder-logo.png" class="footerLogo"></a>
 		</div>
 	</section>

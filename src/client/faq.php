@@ -200,7 +200,7 @@
                         <p class="para">All cars sales are final.</p>
                         <p class="para">How do I delete my account?</p>
                         <p class="para">Go into your user settings and press the delete button.</p>
-                        <p class="para"><a href="contact.php">Contact us</a> if you have any questions!</p>
+                        <p class="para"><a href="contact.php" class="email">Contact us</a> if you have any questions!</p>
                     </section>
                 </section>
             </section>
