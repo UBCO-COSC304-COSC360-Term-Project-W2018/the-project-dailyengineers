@@ -18,7 +18,7 @@
             <!-- Page code -->
             <section class="mainView">
               <h1>Create Account</h1>
-                <form method="POST" action="newUser.php" enctype="multipart/form-data">
+                <form method="POST" action="action/newUser.php" enctype="multipart/form-data">
                   <fieldset>
                     <legend>Account Information</legend>
                     <div id="imgInput">
