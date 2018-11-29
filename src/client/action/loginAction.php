@@ -5,7 +5,7 @@ if (!isset($_SESSION['username'])) {
     if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
         //Check if we have data
         if (isset($_POST["username"]) && isset($_POST["password"])) {
-            include 'include/db_credentials.php';
+            include '../include/db_credentials.php';
 
             // $connection = mysqli_connect($host, $user, $password, $database);
             // $error      = mysqli_connect_error();

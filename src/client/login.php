@@ -26,7 +26,7 @@
             <section class="mainView">
                 <h1>Login/Create Account</h1>
                 <div class="centerBox">
-                    <form method="POST" action="loginAction.php">
+                    <form method="POST" action="action/loginAction.php">
                         <h3>Username</h3>
                         <input name="username" type="textBox" class="required">
                         <h3>Password</h3>
