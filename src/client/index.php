@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <section class="mainContent">
-                        <h1 class="titlePara">Welcome to Insert Car Group Company Here</h1>
+                        <h1 class="titlePara">Welcome to Vehicle Emporium!</h1>
                         <p class="para">
                             Spicy jalapeno bacon ipsum dolor amet eu short ribs adipisicing in ipsum ribeye, doner pork chop pariatur porchetta laborum id cupidatat beef ribs sint. Ipsum reprehenderit beef lorem culpa, labore pork picanha pancetta anim. Bacon cow strip steak shoulder porchetta nisi. Eiusmod sint biltong sunt, dolore in salami jerky fugiat rump turducken meatloaf lorem hamburger ut. Pancetta chuck alcatra sed excepteur voluptate.
 
