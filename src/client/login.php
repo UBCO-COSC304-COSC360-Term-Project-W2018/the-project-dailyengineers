@@ -1,12 +1,8 @@
-<?php session_start();
-if (isset($_SESSION['username'])) {
-    //not logged in (Guest) GET OUT
-    header("http://localhost/the-project-dailyengineers/src/client/index.php");
-    die();
-}?>
+<?php session_start(); if (isset($_SESSION[ 'username'])) { //not logged in (Guest) GET OUT header( "http://localhost/the-project-dailyengineers/src/client/index.php"); die(); }?>
 <!DOCTYPE HTML>
 
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>COSC VE Login</title>
@@ -25,7 +21,7 @@ if (isset($_SESSION['username'])) {
             <?php include "sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
-              <h1>Login/Create Account</h1>
+                <h1>Login/Create Account</h1>
                 <div class="centerBox">
                     <form method="POST" action="loginAction.php">
                         <h3>Username</h3>
@@ -42,10 +38,10 @@ if (isset($_SESSION['username'])) {
                 </div>
 
                 <div id="createError" class="error">
-                  <div class="errorContent">
-                    <h2 id="errorMessage">Required fields are empty. Please check for and complete highlighted fields.</h2>
-                    <p>Click outside this window to close.</p>
-                  </div>
+                    <div class="errorContent">
+                        <h2 id="errorMessage">Required fields are empty. Please check for and complete highlighted fields.</h2>
+                        <p>Click outside this window to close.</p>
+                    </div>
                 </div>
             </section>
         </div>

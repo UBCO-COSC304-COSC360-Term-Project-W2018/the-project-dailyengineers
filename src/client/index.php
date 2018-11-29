@@ -19,42 +19,42 @@
 </head>
 
 <body>
-  <?php include 'header.php';?>
-  <main>
-    <div class="columnContainer">
-        <!-- Sidebar code -->
-        <?php include "sidesearch.php"; ?>
-        <!-- Page code -->
-        <section class="mainView">
-        <section class="mainPageBody">
-          <script type="text/javascript" src="js/lad.js"></script>
-          <div class="container">
-            <div class="mySlides fade">
-              <div class="numbertext">1 / 6</div>
-              <img src="images/amggt.jpg" style="width:100%">
-			</div>
-              <div class="mySlides fade">
-                <div class="numbertext">2 / 6</div>
-                <img src="images/bentley.jpg" style="width:100%">
-			</div>
-                <div class="mySlides fade">
-                  <div class="numbertext">3 / 6</div>
-                  <img src="images/edo.jpg" style="width:100%">
-			</div>
-                  <div class="mySlides fade">
-                    <div class="numbertext">4 / 6</div>
-                    <img src="images/mansory.jpg" style="width:100%">
-			</div>
-                    <div class="mySlides fade">
-                      <div class="numbertext">5 / 6</div>
-                      <img src="images/rs5.jpg" style="width:100%">
-			</div>
-                      <div class="mySlides fade">
-                        <div class="numbertext">6 / 6</div>
-                        <img src="images/singer.jpg" style="width:100%">
-			</div>
-                        <a class="prev" onclick="plusSlides(-1)">❮</a>
-                        <a class="next" onclick="plusSlides(1)">❯</a>
+    <?php include 'header.php'; ?>
+    <main>
+        <div class="columnContainer">
+            <!-- Sidebar code -->
+            <?php include "sidesearch.php"; ?>
+            <!-- Page code -->
+            <section class="mainView">
+                <section class="mainPageBody">
+                    <script type="text/javascript" src="js/lad.js"></script>
+                    <div class="container">
+                        <div class="mySlides fade">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="images/amggt.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="images/bentley.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="images/edo.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="images/mansory.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="images/rs5.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">6 / 6</div>
+                            <img src="images/singer.jpg" style="width:100%">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">â®</a>
+                        <a class="next" onclick="plusSlides(1)">â¯</a>
                         <div class="caption-container">
                             <p id="caption"></p>
                         </div>
@@ -126,7 +126,7 @@
             </section>
         </div>
 
-        <?php include "footer.php" ?>
+        <?php include "footer.php"; ?>
 
     </main>
 
