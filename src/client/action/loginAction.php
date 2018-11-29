@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1); 
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest)
     if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
@@ -11,8 +13,9 @@ if (!isset($_SESSION['username'])) {
             // $error      = mysqli_connect_error();
 
             $con = sqlsrv_connect($server, $connectionInfo);
-            $sql = "SELECT username, password FROM user WHERE username=?;";
-            $pstmt = sqlsrv_query($con, $sql, array($_POST['username']));
+            $sql = "SELECT username, password FROM User WHERE username='?';";
+            $pstmt = sqlsrv_prepare($con, $sql, array($_POST['username']));
+            echo "$pstmt";
             /*if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
