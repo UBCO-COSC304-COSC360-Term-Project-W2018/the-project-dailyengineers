@@ -1,3 +1,9 @@
+<?php session_start();
+if (!isset($_SESSION['username'])) {
+    //not logged in (Guest) GET OUT
+    header("http://localhost/the-project-dailyengineers/src/client/login.php");
+    die();
+}?>
 <!DOCTYPE HTML>
 
 <html>
@@ -36,31 +42,31 @@
         </div>
 
         <div class="cartCheckout">
-          <a class="checkoutButton" href="checkout.html">Submit Order</a>
+          <a class="checkoutButton" href="checkout.php">Submit Order</a>
         </div>
 
         <div class="cartRecentlyViewed">
           <h1>Recently Viewed:</h1>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/bentleyThumb.jpg">
+            <a href="product.php"><img src="images/bentleyThumb.jpg">
               <figcaption>2018 Bentley Continental GT3</figcaption>
               <figcaption>$1,000,000</figcaption>
             </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/edoThumb.jpg">
+            <a href="product.php"><img src="images/edoThumb.jpg">
               <figcaption>2018 Mercedes AMG GTR</figcaption>
               <figcaption>$228,164</figcaption>
             </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
           <div class="thumbContainer">
-            <a href="product.html"><img src="images/singerThumb.jpg">
+            <a href="product.php"><img src="images/singerThumb.jpg">
               <figcaption>1988 Porsche 911 Carrera Targa</figcaption>
               <figcaption>$167,000</figcaption>
             </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
+            <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
         </div>
       </section>
