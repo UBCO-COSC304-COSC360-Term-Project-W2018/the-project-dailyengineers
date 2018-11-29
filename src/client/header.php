@@ -1,8 +1,8 @@
 <header>
 	<div class="headerContainer">
 	  <div class="flexHeaderTop">
-		<a href="index.html"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-		<form action="search.html" class="searchForm">
+		<a href="index.php"><img src="images/placeholder-logo.png" id="headerLogo"></a>
+		<form action="search.php" class="searchForm">
 		  <input type="text" placeholder="Search our database..." name="search" id="searchField">
 		  <button type="submit"></button>
 		</form>
@@ -25,7 +25,8 @@
 			<?php 
 			if(isset($_SESSION['username'])) {
 				//Logged in
-				?><li><a href="logout.php" id="loginSignup">Logout</a><?php
+				?><li><a href="logout.php" id="loginSignup">Logout</a>
+				<li><a href="account.php" id="account">Account</a><?php
 			} else {
 				//guest
 				?><li><a href="login.php" id="loginSignup">Login/Signup</a></li><?php
