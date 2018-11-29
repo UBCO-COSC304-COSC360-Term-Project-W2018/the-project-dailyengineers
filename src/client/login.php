@@ -1,8 +1,12 @@
-<?php session_start(); ?>
+<?php session_start();
+if (!isset($_SESSION['username'])) {
+    //not logged in (Guest) GET OUT
+    header("http://localhost/the-project-dailyengineers/src/client/index.php");
+    die();
+}?>
 <!DOCTYPE HTML>
 
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>COSC VE Login</title>
@@ -14,13 +18,9 @@
 </head>
 
 <body>
-
     <?php include 'header.php';?>
-
     <main>
-
         <div class="columnContainer">
-
             <!-- Sidebar code -->
             <?php include "sidesearch.php"; ?>
             <!-- Page code -->
@@ -35,8 +35,8 @@
                         <input id="login" type="submit" value="Login">
                     </form>
                     <div id="options">
-                        <a href="createAccount.html">Create Account</a>
-                        <a href="passReset.html">Forgot Password</a>
+                        <a href="createAccount.php">Create Account</a>
+                        <a href="passReset.php">Forgot Password</a>
                     </div>
 
                 </div>

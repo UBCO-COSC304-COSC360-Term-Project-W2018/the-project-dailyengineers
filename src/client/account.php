@@ -1,7 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
-    header("http://localhost/the-project-dailyengineers/src/client/index.php");
+    header("http://localhost/the-project-dailyengineers/src/client/login.php");
     die();
 }?>
 <!DOCTYPE HTML>
