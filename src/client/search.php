@@ -30,7 +30,7 @@
           <div class="titleCol middleCol">
             <div class="midTopFlex">
               <h2>Price:</h2>
-              <h2>Location:</h2>
+              <h2>Colour:</h2>
             </div>
           </div>
           <!-- <div class="titleCol rightCol">
@@ -39,6 +39,11 @@
         </div>
 
         <?php
+          include './include/db_credentials.php';
+
+          $connection = mysqli_connect($host, $user, $password, $database);
+          $error      = mysqli_connect_error();
+
           // Get vehicle name to search for
           $name = "";
           $hasParameter = false;
@@ -48,74 +53,41 @@
           $sql = "";
 
           if ($name == "") {
-            echo("<h2>All Products</h2>");
-            $sql = "SELECT year, make, model, price, mileage, productPic FROM Vehicle";
+            echo("<h2>All Vehicles</h2>");
+            $sql = "SELECT year, make, model, price, description, productPic FROM Vehicle";
           } else {
             echo("<h2>Vehicles containing '" . $name . "'</h2>");
             $hasParameter = true;
-            $sql = "SELECT year, make, model FROM Product WHERE productName LIKE ?";
-            $name = '%' . $name . '%';
+            $sql = "SELECT year, make, model, price, description, productPic, SUM(commentID), drivetrain, engine FROM Vehicle NATURAL JOIN CommentsOn WHERE productName LIKE %'$name'% GROUP BY vehicleID";
           }
 
-          include './include/db_credentials.php';
-          $connection = mysqli_connect($host, $user, $password, $database);
-          $error      = mysqli_connect_error();
-          
-          /* Try/Catch connection errors */
-          if( $con === false ) {
-            die( print_r( sqlsrv_errors(), true));
+          if($connection -> connect_error) {
+            die("Connection failed: " . $connection -> connect_error);
           }
-          $pstmt = null;
-          if($hasParameter){
-            $pstmt = sqlsrv_query($con, $sql, array( $name ));
+          echo "Connected to Server."; 
+          if ($error != null) {
+            $output = "<p>Unable to connect to database!</p>";
+            exit($output);
           } else {
-            $pstmt = sqlsrv_query($con, $sql, array());
+            echo "Connected to Database.";
+            if ($results = mysqli_query($connection, $sql)) {
+              while ($row = mysqli_fetch_row($results)) {
+                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php">';
+                $vehiclePicStr = $row['0']."-".$row['1']."-".$row['2'];
+                echo "<img src='images/'$vehiclePicStr'.jpg'></a></div>";
+                $vehicleName = $row['0']." ".$row['1']." ".$row['2'];
+                echo "<a href='product.php' class='searchLink'>'$vehicleName'</a></div>";
+                echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice">';
+                echo "<p>'$row["3"]'</p></div><div class=searchMileage'>";
+                echo "<"
+              }
+            }
+              mysqli_free_result($results);
           }
-          
-          echo("<table><tr><th></th><th>Product Name</th><th>Price</th></tr>");
-          while ($rst = sqlsrv_fetch_array( $pstmt, SQLSRV_FETCH_ASSOC)) {
-            echo("<tr><td><a href=\"addcart.php?id=" . $rst['productId'] . "&name=" . $rst['productName'] . "&price=" . $rst['price'] . "\">Add to Cart</a></td>");
-            echo("<td>" . $rst['productName'] . "</td><td>" . $rst['price'] . "</td></tr>");
-          }
-          echo("</table>");
-          
-          sqlsrv_close($con);
+          mysqli_close($connection);
         ?>
-        <div class="searchEntry">
-          <div class="searchCol leftCol">
-            <div class="thumbContainer">
-              <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
-            </div>
-            <a href="product.php" class="searchLink">2018 Bentley Continental G3</a>
-          </div>
 
-          <div class="searchCol middleCol">
-            <div class="midTopFlex">
-              <div class="searchPrice">
-                <p>$1,000,000</p>
-              </div>
-              <div class="searchMileage">
-                <p>3,457km</p>
-              </div>
-              <div class="searchLocation">
-                <p>London, England</p>
-              </div>
-            </div>
-            <div class="searchDescription">
-              <!-- <h2>Description</h2> -->
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non.
-                Quisque
-                consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus.</p>
-            </div>
-          </div>
 
-          <div class="searchCol rightCol">
-            <a href="cart.php" class="addToCart">ADD TO CART</a>
-            <div class="numberComments">
-              <a href="product.php#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
-            </div>
-          </div>
-        </div>
 
         <div class="searchEntry">
           <div class="searchCol leftCol">
