@@ -36,6 +36,11 @@ FROM Vehicle, Warehouse, Inventories
 WHERE Inventories.vehicleID = Vehicle.vehicleID AND Inventories.warehouseID = Warehouse.warehouseID
 ORDER BY amount DESC;
 
+/* Find how many comments each vehicle has */
+SELECT COUNT(CommentsOn.vehicleID) AS numComments, CommentsOn.vehicleID, Vehicle.year, Vehicle.make, Vehicle.model
+FROM CommentsOn, Vehicle
+WHERE CommentsOn.vehicleID = Vehicle.vehicleID;
+
 /************************************\
 ********* PREPARED STATEMENTS ********
 \************************************/
