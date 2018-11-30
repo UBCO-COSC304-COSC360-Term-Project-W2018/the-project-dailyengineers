@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="columnContainer">
             <!-- Sidebar code -->
-            <?php include "sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
                 <form method="GET" action="#">
