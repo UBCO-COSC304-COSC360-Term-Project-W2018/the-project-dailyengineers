@@ -13,7 +13,7 @@ else{
 		if($connection -> connect_error) {
               die("Connection failed: " . $connection -> connect_error);
             }
-            // echo "Connected to Server."; 
+            // echo "Connected to Server.";
             if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);

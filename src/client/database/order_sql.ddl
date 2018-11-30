@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS Customer (
    CCNumber int,
    CCV int,
    expiryDate DATE,
+   isActive BOOLEAN NOT NULL DEFAULT '1',
    primary key (userID),
    FOREIGN KEY (userID) REFERENCES User(userID)
     ON UPDATE CASCADE
