@@ -42,7 +42,7 @@ fieldset h3 {
 .acRight {
     margin-left: 14em;
 }
-.acRight p, .acRight div {
+.acRight p, .acRight div, .acRight input {
     background-color: orange;
     float:left;
     border: black 2px solid;
