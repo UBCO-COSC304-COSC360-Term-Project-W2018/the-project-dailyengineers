@@ -46,9 +46,10 @@ else{
     <meta charset="utf-8">
     <title>COSC VE Login</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/mad.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/mad.css"> -->
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <!-- <link rel="stylesheet" href="css/account.css"> -->
 </head>
 
 <body>
@@ -59,52 +60,44 @@ else{
             <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
-                <form method="GET" action="#">
-                    <div class="left">
-                        <fieldset id="imgInput">
-                            <img src=<?php echo $img_src ?>>
-                            <input type="file" name="profile" accept="image/*">
-                        </fieldset>
-                        <a href="paymentMethod.php"><button>Payment Method</button></a>
-                        <a href="orderStatus.php"><button>Orders</button></a>
-                        <a href="commentHistory.php"><button>Comment History</button></a>
-                    </div>
-                    <fieldset class="acRight">
-                        <h3>Username:</h3>
-                        <p><?php echo $username; ?></p>
+              <h1>User Control Panel</h1>
+
+              <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+                <div class="shippingBilling">
+                  <div id="shippingForm">
+                    <fieldset>
+                      <legend>User Image</legend>
+                      <img id=profilePic src=<?php echo $img_src ?>>
+                      <input type="file" name="profilePic" accept="image/*">
                     </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Email:</h3>
-                        <p>
-							<input name="email" type="email" value="<?php echo $email; ?>" disabled="true">
-                        </p>
+                    <a class="accountButton" href="paymentMethod.php">Payment Method</a>
+                    <a class="accountButton" href="orderStatus.php">Order History</a>
+                    <a class="accountButton" href="commentHistory.php">Comment History</a>
+                  </div>
+                  <div id="billingForm">
+                    <fieldset>
+                      <legend>Profile</legend>
+                      <h2>Username:</h2>
+                      <p class=accountP><?php echo $username; ?></p>
+                      <!-- <input type="text" name="billingFullName" class="required"> -->
+                      <h2>Email:</h2>
+                      <input type="email" name="accountEmail" class="required" value="<?php echo $email; ?>" disabled="true">
+                      <h2>Password:</h2>
+                      <input type="text" name="accountPassword" class="required" value="•••••••" disabled="true">
+                      <h2>First Name:</h2>
+                      <input type="text" name="accountFirstName" class="required" value="<?php echo $first_name; ?>" disabled="true">
+                      <h2>Last Name:</h2>
+                      <input type="text" name="accountLastName" class="required" value="<?php echo $last_name; ?>" disabled="true">
+                      <h2>Address:</h2>
+                      <input type="text" id="accountAddress" name="accountAddress" class="required" value="<?php echo $address; ?>" disabled="true">
                     </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Password:</h3>
-                        <p>
-							<input name="pass" type="password" value="•••••••" disabled="true">
-						</p>
-                        <h3 class="passConfirmh3">Confirm Password:</h3>
-                        <input id="passConfirm" type="password">
-                        <div></div>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>First name:</h3>
-                        <p><?php echo $first_name; ?></p>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Last name:</h3>
-                        <p><?php echo $last_name; ?></p>
-                    </fieldset>
-                    <fieldset class="acRight">
-                        <h3>Address:</h3>
-                        <p>
-							<input name="addr" type="text" value="<?php echo $address; ?>" disabled="true">
-                        </p>
-                    </fieldset>
-					<input id="editBt" class="acRight" type="button" value="Edit Profile">
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="hidden:'true'">
-                </form>
+                    <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
+                    <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
+                    <input type="button" id="editProfile" value="Edit Profile" class="accountButton" onclick="editProfile()">
+                    <input type="button" id="saveProfile" value="Save Changes" class="accountButton" onClick="saveProfile()">
+                  </div>
+                </div>
+              </form>
             </section>
         </div>
 

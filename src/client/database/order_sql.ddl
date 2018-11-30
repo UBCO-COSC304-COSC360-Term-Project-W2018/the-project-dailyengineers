@@ -247,6 +247,10 @@ VALUES (1, 2, 1, 1, '1', '2018-11-27 12:01:32', 'Hi there, thanks for your inter
 INSERT INTO CommentsOn (userID, vehicleID, parentID, depth, commentPath, commentTime, content)
 VALUES (2, 2, 2, 2, '1/2', '2018-11-27 13:33:57', "Ahh, gothca. That's too bad, I really like fuchsia...");
 
+/* NEW COMMENT */
+INSERT INTO CommentsOn (userID, vehicleID, depth, commentTime, content)
+VALUES (2, 1, 0, '2018-12-08 10:10:00', 'Wow, what a great car! Does it come in bright pearlescent fuchsia?!');
+
 /* CARTCONTENTS CREATION */
 /*userID    int NOT NULL,
 vehicleID int NOT NULL,
