@@ -45,13 +45,13 @@ if (!isset($_SESSION['username'])) {
                         }
                     }
                     mysqli_free_result($results);
+                }
+                mysqli_close($connection);
             }
-            mysqli_close($connection);
         }
-    }
-    // Data Bad
-    header("Location: login.php");
-    die();
+        // Data Bad
+        header("Location: login.php");
+        die();
     } else {
         // Already Logged In
         header("Location: index.php");
