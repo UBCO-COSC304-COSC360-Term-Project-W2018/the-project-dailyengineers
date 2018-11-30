@@ -1,7 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
-    header("http://localhost/the-project-dailyengineers/src/client/login.php");
+    header("Location: login.php");
     die();
 }?>
 <!DOCTYPE HTML>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-  <?php include 'header.php';?>
+  <?php include 'include/header.php';?>
 
   <main>
 
@@ -163,7 +163,7 @@ if (!isset($_SESSION['username'])) {
       </section>
     </div>
 
-    <?php include "footer.php" ?>
+    <?php include "include/footer.php" ?>
 
   </main>
 

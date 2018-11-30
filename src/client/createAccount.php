@@ -1,8 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE HTML>
-
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Vehicle Emporium - Create Account</title>
@@ -11,29 +9,22 @@
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/createAccount.css">
 </head>
-
 <body>
-
-    <?php include 'header.php';?>
-
+    <?php include 'include/header.php';?>
     <main>
-
         <div class="columnContainer">
-
             <!-- Sidebar code -->
-            <?php include "sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
-
             <section class="mainView">
               <h1>Create Account</h1>
-                <form action="account.html">
+                <form method="POST" action="action/newUser.php" enctype="multipart/form-data">
                   <fieldset>
                     <legend>Account Information</legend>
                     <div id="imgInput">
-                        <img src="images/220px-Darth_Vader.jpg">
+                        <img src="images/profilePlaceholder.png">
                         <input type="file" name="profile" accept="image/*">
                     </div>
-
                     <p>Username:</p>
                     <input name="user" type="text">
                     <p>Email:</p>
@@ -48,13 +39,9 @@
                 </form>
             </section>
         </div>
-
         <footer>
-
+            <?php include "include/footer.php"; ?>
         </footer>
-
     </main>
-
 </body>
-
 </html>

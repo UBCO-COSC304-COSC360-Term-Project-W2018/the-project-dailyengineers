@@ -1,7 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
-    header("http://localhost/the-project-dailyengineers/src/client/login.php");
+    header("Location: login.php");
     die();
 }?>
 <!DOCTYPE HTML>
@@ -19,24 +19,24 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-    <?php include 'header.php';?>
+    <?php include 'include/header.php';?>
 
     <main>
 
         <div class="columnContainer">
             <!-- Sidebar code -->
-            <?php include "sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
                 <form method="GET" action="#">
                     <div class="left">
                         <fieldset id="imgInput">
-                            <img src="images/220px-Darth_Vader.jpg">
+                            <img src="images/profilePlaceholder.png">
                             <input type="file" name="profile" accept="image/*">
                         </fieldset>
-                        <button>Payment Method</button>
-                        <button>Order History</button>
-                        <button>Comment History</button>
+                        <a href="paymentMethod.php"><button>Payment Method</button></a>
+                        <a href="orderStatus.php"><button>Orders</button></a>
+                        <a href="commentHistory.php"><button>Comment History</button></a>
                     </div>
                     <fieldset class="acRight">
                         <h3>Username:</h3>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['username'])) {
             </section>
         </div>
 
-        <?php include "footer.php" ?>
+        <?php include "include/footer.php" ?>
 
     </main>
 
