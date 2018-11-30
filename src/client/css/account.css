@@ -51,6 +51,6 @@ fieldset h3 {
     height: 1em;
     min-width: 14em;
 }
-.acRight input, .passConfirmh3 {
+.passConfirmh3 {
     display: none;
 }
