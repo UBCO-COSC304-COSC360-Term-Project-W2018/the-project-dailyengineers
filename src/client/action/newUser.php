@@ -71,7 +71,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                         mysqli_close($connection);
 
                         $_SESSION['username'] = $_POST['user'];
-                        header("Location: account.php");
+                        header("Location: ../account.php");
                     }
                 }
             }
