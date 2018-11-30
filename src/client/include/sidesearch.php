@@ -1,53 +1,35 @@
+<?php 
+session_start();
+include 'include/db_credentials.php';
+$connection = mysqli_connect($host, $user, $password, $database);
+$error      = mysqli_connect_error();
+$sql = $connection("SELECT * FROM Product WHERE ?=?;");
+	if($connection -> connect_error) {
+    die("Connection failed: " . $connection -> connect_error);
+    }
+    echo "Connected to Server."; 
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        exit($output);
+        } else {
+              echo "Connected to Database.";
+        }
+
+?>
 <section class="leftSidebar">
     <div class="custom-select">
-        <select>
+        <select name="make_sel">
             <option value="0">Make:</option>
-            <option value="1">Acura:</option>
-            <option value="2">Aston Martin</option>
-            <option value="3">Audi</option>
-            <option value="4">Bentley</option>
-            <option value="5">BMW</option>
-            <option value="6">Bugatti</option>
-            <option value="7">Buick</option>
-            <option value="8">Cadillac</option>
-            <option value="9">Chevrolet</option>
-            <option value="10">Chrystler</option>
-            <option value="11">Citroen</option>
-            <option value="12">Dodge</option>
-            <option value="13">Ferarri</option>
-            <option value="14">Fiat</option>
-            <option value="15">Ford</option>
-            <option value="16">GMC</option>
-            <option value="17">Honda</option>
-            <option value="18">Hyundai</option>
-            <option value="19">Infiniti</option>
-            <option value="20">Jaguar</option>
-            <option value="21">Jeep</option>
-            <option value="22">Kia</option>
-            <option value="23">Koenigsegg</option>
-            <option value="24">Lamborghini</option>
-            <option value="25">Land Rover</option>
-            <option value="26">Lexus</option>
-            <option value="27">Maserati</option>
-            <option value="28">Mazda</option>
-            <option value="29">McLaren</option>
-            <option value="30">Mercedes-Benz</option>
-            <option value="31">Mini</option>
-            <option value="32">Mitsubishi</option>
-            <option value="33">Nissan</option>
-            <option value="34">Pagani</option>
-            <option value="35">Peugeot</option>
-            <option value="36">Porsche</option>
-            <option value="37">Ram</option>
-            <option value="38">Renault</option>
-            <option value="39">Rolls Royce</option>
-            <option value="40">Saab</option>
-            <option value="41">Subaru</option>
-            <option value="42">Suzuki</option>
-            <option value="43">Tesla</option>
-            <option value="44">Toyota</option>
-            <option value="45">Volkswagen</option>
-            <option value="46">Volvo</option>
+			<?php 
+				$sql_make = "SELECT DISTINCT make FROM VEHICLE";
+				if ($results = mysqli_query($connection, $sql_make)) {
+				while ($row = mysqli_fetch_row($results)) {
+					$counter = 0;
+					echo "<option value='counter'>$row[0]</option>";
+					}
+				} mysqli_free_result($results);
+
+			?>
         </select>
 
         <select>
