@@ -13,6 +13,7 @@ else{
 		if($connection -> connect_error) {
               die("Connection failed: " . $connection -> connect_error);
             }
+            // echo "Connected to Server."; 
             if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
@@ -28,7 +29,8 @@ else{
 							$img_src = "images/profilePlaceholder.png";
 						} else {
 							$img_src = $row[4];
-						}						
+						}
+
                         }
                     }
                     mysqli_free_result($results);
@@ -50,8 +52,7 @@ else{
 </head>
 
 <body>
-		<?php 	include 'include/header.php'; ?>
-
+    <?php include 'include/header.php'; ?>
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
