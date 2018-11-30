@@ -25,12 +25,11 @@ if (!isset($_SESSION['username'])) {
             } else {
                 echo "Connected to Database.";
                 if ($results = mysqli_query($connection, $sql)) {
-                    echo "test";
                     while ($row = mysqli_fetch_row($results)) {
                         echo "post pass : " . $_POST['password'];
                         echo "row pass: " . $row[2];
 
-                        if ($_POST['password'] == $row[2]) {
+                        if (md5($_POST['password']) == $row[2]) {
                             //Update session Superglobal
                             $_SESSION['username'] = $_POST['username'];
                             echo $_SESSION['username'];
