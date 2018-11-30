@@ -102,8 +102,8 @@ else{
 							<input name="addr" type="text" value="<?php echo $address; ?>" disabled="true">
                         </p>
                     </fieldset>
-					<input id="editBt" class="acRight" type="edit" value="Edit Profile">
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="hidden="true">
+					<input id="editBt" class="acRight" type="button" value="Edit Profile">
+                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="hidden:'true'">
                 </form>
             </section>
         </div>
