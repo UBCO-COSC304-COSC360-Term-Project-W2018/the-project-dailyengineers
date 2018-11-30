@@ -25,14 +25,13 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
             //check if user exists
             $username = $_POST["user"];
             $email = $_POST["email"];
-            $sql = "SELECT * FROM users WHERE username='".$username."' OR email='".$email."';";
+            $sql = "SELECT * FROM users WHERE username='".$username."' OR email='".$email."'";
             
-
             $results = mysqli_query($connection, $sql);
             if (mysqli_fetch_assoc($results) != null) {
                 echo "<p>User already exists with this name and/or email</p><a href='newuser.html'>Return to user entry</a>";
             } else {
-                mysqli_free_result($results);
+                // mysqli_free_result($results);
                 
                 $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
                 //if the preparation goes through and there were no errors with the upload
