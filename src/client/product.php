@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE HTML>
 
 <html>
@@ -52,7 +52,20 @@
                 </div>
                 <div>
                     <h2>Comments</h2>
-                    <ul>
+
+                    <?php if (isset($_SESSION['username'])) { ?>
+                      <div id="newCommentBox">
+                        <h3>New Comment:</h3>
+                        <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
+                        <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
+                        <button type="button" id="commentSubmit" class="prodCommentButton">Post</button>
+                      </div>
+                      <script type="text/javascript" src="js/addComment.js"></script>
+                    <?php } else { ?>
+                      <i>login to post a comment</i>
+                    <?php } ?>
+
+                    <ul id="commentList">
                         <li>
                             <div class="prodComment">
                                 <div class="inlineEle username">
