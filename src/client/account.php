@@ -58,8 +58,8 @@ else{
             <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
             <section class="mainView">
-                <form method="GET" action="#">
-                    <div class="left">
+			<form>
+					<div class="left">
                         <fieldset id="imgInput">
                             <?php echo "<img src='$img_src'>"; ?>
                             <input type="file" name="profile" accept="image/*">
@@ -68,38 +68,26 @@ else{
                         <a href="orderStatus.php"><button>Orders</button></a>
                         <a href="commentHistory.php"><button>Comment History</button></a>
                     </div>
-                    <fieldset class="acRight">
+					<fieldset>
                         <h3>Username:</h3>
                         <?php echo "<p>$username</p>"; ?>
-                    </fieldset>
-                    <fieldset class="acRight">
                         <h3>Email:</h3>
-							
-								<?php echo "<p><input name='emailF' type='text' value='$email' disabled='true'></p>";?>
-							
-                    </fieldset>
-                    <fieldset class="acRight">
+						<?php echo "<p><input name='emailF' type='text' value='$email' disabled='true' class='acRight'></p>";?>
                         <h3>Password:</h3>
-							<input name="pass" type="text" value="•••••••" disabled="true">
+						<input name="pass" type="text" value="•••••••" disabled="true" class="acRight">
                         <h3 class="passConfirmh3">Confirm Password:</h3>
-                        <input id="passConfirm" type="password" style="display:none">
-                    </fieldset>
-                    <fieldset class="acRight">
+                        <input id="passConfirm" type="password" style="display:none" class="acRight">
                         <h3>First name:</h3>
                         <p><?php echo $first_name; ?></p>
-                    </fieldset>
-                    <fieldset class="acRight">
                         <h3>Last name:</h3>
                         <p><?php echo $last_name; ?></p>
-                    </fieldset>
-                    <fieldset class="acRight">
                         <h3>Address:</h3>
 						<p>
-						<?php echo "<input name='addr' type='text' value='$address' disabled='true'>"; ?>
+						<?php echo "<input name='addr' type='text' value='$address' disabled='true' class='acRight'>"; ?>
 						</p>
-                    </fieldset>
-					<input id="editBt" class="acRight" type="button" value="Edit Profile">
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="display:none">
+						<input id="editBt" class="acRight" type="button" value="Edit Profile">
+						<input id="saveBt" class="acRight" type="submit" value="Save Changes" style="display:none">
+					</fieldset>
                 </form>
             </section>
         </div>
