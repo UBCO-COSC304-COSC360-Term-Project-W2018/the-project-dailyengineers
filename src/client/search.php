@@ -30,7 +30,6 @@
           <div class="titleCol middleCol">
             <div class="midTopFlex">
               <h2>Price:</h2>
-              <h2>Mileage</h2>
               <h2>Location:</h2>
             </div>
           </div>
@@ -39,6 +38,49 @@
           </div> -->
         </div>
 
+        <?php
+          // Get vehicle name to search for
+          $name = "";
+          $hasParameter = false;
+          if (isset($_GET['search'])){
+            $name = $_GET['search'];
+          }
+          $sql = "";
+
+          if ($name == "") {
+            echo("<h2>All Products</h2>");
+            $sql = "SELECT year, make, model, price, mileage, productPic FROM Vehicle";
+          } else {
+            echo("<h2>Vehicles containing '" . $name . "'</h2>");
+            $hasParameter = true;
+            $sql = "SELECT year, make, model FROM Product WHERE productName LIKE ?";
+            $name = '%' . $name . '%';
+          }
+
+          include './include/db_credentials.php';
+          $connection = mysqli_connect($host, $user, $password, $database);
+          $error      = mysqli_connect_error();
+          
+          /* Try/Catch connection errors */
+          if( $con === false ) {
+            die( print_r( sqlsrv_errors(), true));
+          }
+          $pstmt = null;
+          if($hasParameter){
+            $pstmt = sqlsrv_query($con, $sql, array( $name ));
+          } else {
+            $pstmt = sqlsrv_query($con, $sql, array());
+          }
+          
+          echo("<table><tr><th></th><th>Product Name</th><th>Price</th></tr>");
+          while ($rst = sqlsrv_fetch_array( $pstmt, SQLSRV_FETCH_ASSOC)) {
+            echo("<tr><td><a href=\"addcart.php?id=" . $rst['productId'] . "&name=" . $rst['productName'] . "&price=" . $rst['price'] . "\">Add to Cart</a></td>");
+            echo("<td>" . $rst['productName'] . "</td><td>" . $rst['price'] . "</td></tr>");
+          }
+          echo("</table>");
+          
+          sqlsrv_close($con);
+        ?>
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
