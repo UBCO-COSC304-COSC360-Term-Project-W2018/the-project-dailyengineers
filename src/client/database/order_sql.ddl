@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   fuel          VARCHAR(10) CHECK (fuel IN (Gas, Diesel, Flex, Hybrid, Electric)),
   exterior      VARCHAR(10),
   seats         TINYINT,
+  description   VARCHAR(1500),
   PRIMARY KEY (vehicleID),
   UNIQUE yearMakeModel (year, make, model, transmission, drivetrain, engine, fuel, exterior)
 );
