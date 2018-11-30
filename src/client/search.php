@@ -60,7 +60,7 @@
           } else {
             echo("<h2>Vehicles containing '" . $name . "'</h2>");
             $hasParameter = true;
-            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE (make LIKE '%$name%' OR year LIKE '%$name%' OR model LIKE '%$name%' OR drivetrain LIKE '%$name%' OR engine LIKE '%$name%' OR transmission LIKE '%$name%')  GROUP BY vehicleID";
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE (make LIKE '%$name%' OR year LIKE '%$name%' OR model LIKE '%$name%' OR price LIKE '%$name%' OR drivetrain LIKE '%$name%' OR engine LIKE '%$name%' OR transmission LIKE '%$name%')  GROUP BY vehicleID";
           }
           // (year, make, model, drivetrain, engine, transmission)
           // SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE make LIKE tacoma GROUP BY vehicleID;
@@ -102,7 +102,7 @@
                 echo "<p>$engine</p></div></div>"; // engine
                 echo "<div class='searchDescription'>";
                 echo "<p>$description</p></div></div><div class='searchCol rightCol'>";
-                echo "<a href='cart.php?id=$vehicleID' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
+                echo "<a href='addTocart.php?id=$vehicleID&pic=$productPic' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
                 echo "<a href='product.php#prodComment?id='$vehicleID' class='searchLink'>";
                 echo "$numComments Comments<img src='images/comment-bubble.png' class='commentBubble'></a></div></div></div>";
               }
