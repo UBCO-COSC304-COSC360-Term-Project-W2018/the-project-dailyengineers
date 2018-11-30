@@ -1,27 +1,27 @@
-<?php 
+<?php
 session_start();
 include 'include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
 $sql = $connection("SELECT * FROM Product WHERE ?=?;");
 	if($connection -> connect_error) {
-    die("Connection failed: " . $connection -> connect_error);
-    }
-    echo "Connected to Server."; 
-    if ($error != null) {
-        $output = "<p>Unable to connect to database!</p>";
-        exit($output);
-        } else {
-              echo "Connected to Database.";
-        }
+	  die("Connection failed: " . $connection -> connect_error);
+  }
+  echo "Connected to Server.";
+  if ($error != null) {
+      $output = "<p>Unable to connect to database!</p>";
+      exit($output);
+  } else {
+  		echo "Connected to Database.";
+  }
 
 ?>
 <section class="leftSidebar">
     <div class="custom-select">
         <select name="make_sel">
             <option value="0">Make:</option>
-			<?php 
-				$sql_make = "SELECT DISTINCT make FROM VEHICLE";
+			<?php
+				$sql_make = "SELECT DISTINCT make FROM vehicle";
 				if ($results = mysqli_query($connection, $sql_make)) {
 				while ($row = mysqli_fetch_row($results)) {
 					$counter = 0;
