@@ -32,7 +32,7 @@
 }
 
 #cartButton {
-    background-color: #FF8800;;
+    background-color: #FF8800;
     font-weight: bold;
     color: #353535;
     height: 2em;
@@ -58,4 +58,19 @@ h1 {
   margin-bottom: 1em;
   border-bottom: 1px solid #FF8800;
   padding-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+.prodCommentButton {
+  display: block;
+  height: 2em;
+  width: 4em;
+  background-color: #FF8800;
 }

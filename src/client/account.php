@@ -10,8 +10,8 @@ else{
         $error      = mysqli_connect_error();
 		$uid = $_SESSION['userID'];
 		$sql = "SELECT * FROM Customer WHERE userID='$uid';";
-			if($connection -> connect_error) {
-                die("Connection failed: " . $connection -> connect_error);
+		if($connection -> connect_error) {
+              die("Connection failed: " . $connection -> connect_error);
             }
             // echo "Connected to Server."; 
             if ($error != null) {
@@ -30,6 +30,7 @@ else{
 						} else {
 							$img_src = $row[4];
 						}
+
                         }
                     }
                     mysqli_free_result($results);
@@ -52,7 +53,6 @@ else{
 
 <body>
     <?php include 'include/header.php'; ?>
-
     <main>
         <div class="columnContainer">
             <!-- Sidebar code -->
@@ -71,43 +71,39 @@ else{
                     </div>
                     <fieldset class="acRight">
                         <h3>Username:</h3>
-                        <input name="user" type="text">
                         <p><?php echo $username; ?></p>
-                        <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Email:</h3>
-                        <input name="email" type="email">
-                        <p><?php echo $email; ?></p>
-                        <button>Edit</button>
+                        <p>
+							<input name="email" type="email" value="<?php echo $email; ?>" disabled="true">
+                        </p>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Password:</h3>
-                        <input name="pass" type="password">
+                        <p>
+							<input name="pass" type="password" value="•••••••" disabled="true">
+						</p>
                         <h3 class="passConfirmh3">Confirm Password:</h3>
                         <input id="passConfirm" type="password">
                         <div></div>
-                        <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>First name:</h3>
-                        <input name="firstname" type="text">
                         <p><?php echo $first_name; ?></p>
-                        <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Last name:</h3>
-                        <input name="lastname" type="text">
                         <p><?php echo $last_name; ?></p>
-                        <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Address:</h3>
-                        <input name="addr" type="text">
-                        <p><?php echo $address; ?></p>
-                        <button>Edit</button>
+                        <p>
+							<input name="addr" type="text" value="<?php echo $address; ?>" disabled="true">
+                        </p>
                     </fieldset>
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes">
+					<input id="editBt" class="acRight" type="edit" value="Edit Profile">
+                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="hidden="true">
                 </form>
             </section>
         </div>
