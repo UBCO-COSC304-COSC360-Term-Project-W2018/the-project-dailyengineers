@@ -3,6 +3,42 @@ if (!isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
     header("Location: login.php");
     die();
+}
+else{
+		include 'include/db_credentials.php';
+		$connection = mysqli_connect($host, $user, $password, $database);
+        $error      = mysqli_connect_error();
+		$uid = $_SESSION['userID']
+		$sql = "SELECT * FROM Customer WHERE userID='$uid';";
+			if($connection -> connect_error) {
+                die("Connection failed: " . $connection -> connect_error);
+            }
+            echo "Connected to Server."; 
+            if ($error != null) {
+                $output = "<p>Unable to connect to database!</p>";
+                exit($output);
+            } else {
+                if ($results = mysqli_query($connection, $sql)) {
+                    while ($row = mysqli_fetch_row($results)) {
+						$first_name = $row[1];
+						$last_name = $row[2];
+						$address = $row[3];
+						$username = $_SESSION['username'];
+						$email = $_SESSION['email'];
+						if($row[4]==NULL){
+							$img_src = "images/profilePlaceholder.png";
+						} else {
+							$img_src = $row[4];
+						}
+                        mysqli_free_result($results);
+                        mysqli_close($connection);
+						
+                        }
+                    }
+                    mysqli_free_result($results);
+            }
+            mysqli_close($connection);
+        }
 }?>
 <!DOCTYPE HTML>
 
@@ -19,10 +55,8 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-    <?php include 'include/header.php';?>
-
     <main>
-
+		<?php 	include 'include/header.php'; ?>
         <div class="columnContainer">
             <!-- Sidebar code -->
             <?php include "include/sidesearch.php"; ?>
@@ -31,7 +65,7 @@ if (!isset($_SESSION['username'])) {
                 <form method="GET" action="#">
                     <div class="left">
                         <fieldset id="imgInput">
-                            <img src="images/profilePlaceholder.png">
+                            <img src=<?php echo $img_src ?>>
                             <input type="file" name="profile" accept="image/*">
                         </fieldset>
                         <a href="paymentMethod.php"><button>Payment Method</button></a>
@@ -41,13 +75,13 @@ if (!isset($_SESSION['username'])) {
                     <fieldset class="acRight">
                         <h3>Username:</h3>
                         <input name="user" type="text">
-                        <p>Lord_Vader</p>
+                        <p><?php echo $username; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Email:</h3>
                         <input name="email" type="email">
-                        <p>darksider@hotmail.com</p>
+                        <p><?php echo $email; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
@@ -61,19 +95,19 @@ if (!isset($_SESSION['username'])) {
                     <fieldset class="acRight">
                         <h3>First name:</h3>
                         <input name="firstname" type="text">
-                        <p>Anakin</p>
+                        <p><?php echo $first_name; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Last name:</h3>
                         <input name="lastname" type="text">
-                        <p>Skywalker</p>
+                        <p><?php echo $last_name; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Address:</h3>
                         <input name="addr" type="text">
-                        <p>423 Lava Rd. Mustafar</p>
+                        <p><?php echo $address; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <input id="saveBt" class="acRight" type="submit" value="Save Changes">
