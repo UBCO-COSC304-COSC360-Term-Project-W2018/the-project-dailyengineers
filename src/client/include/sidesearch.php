@@ -13,23 +13,20 @@ $error      = mysqli_connect_error();
               // echo "Connected to Database.";
         }
 
-?>
-<section class="leftSidebar">
-    <div class="custom-select">
-        <select name="make_sel">
-            <option value="0">Make:</option>
-			<?php 
-				$sql_make = "SELECT DISTINCT make FROM Vehicle";
-				if ($results = mysqli_query($connection, $sql_make)) {
-				while ($row = mysqli_fetch_row($results)) {
-					$counter = 0;
-					echo "<option value='counter'>$row[0]</option>";
-					}
-				} mysqli_free_result($results);
-
-			?>
-        </select>
-
+  <section class="leftSidebar">
+      <div class="custom-select">
+            <select name="make_sel">
+                  <option value="0">Make:</option>
+                  <?php 
+                      $sql_make = "SELECT DISTINCT make FROM Vehicle";
+                      if ($results = mysqli_query($connection, $sql_make)) {
+                          while ($row = mysqli_fetch_row($results)) {
+                              $counter = 0;
+                              echo "<option value='counter'>$row[0]</option>";
+                          }
+                      } mysqli_free_result($results);
+                  ?>
+            </select>
         <select>
             <option value="0">Model:</option>
         </select>
