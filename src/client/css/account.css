@@ -7,7 +7,7 @@
     width: 12em;
 }
 
-button, #saveBt {
+button, #saveBt, #editBt {
     background-color: orange;
     height: 2.5em;
     font-weight: bold;
@@ -21,7 +21,7 @@ fieldset {
 }
 fieldset:not(#imgInput){
     height: 4em;
-    width: 18.5em;
+    width: 24em;
 }
 fieldset h3 {
     margin-left: 0.5em;

@@ -34,6 +34,7 @@ if (!isset($_SESSION['username'])) {
                             $_SESSION['username'] = $_POST['username'];
                             echo $_SESSION['username'];
                             $_SESSION['userID'] = $row[0];
+							$_SESSION['email'] = $row[3];
                             //Release Values
                             mysqli_free_result($results);
                             mysqli_close($connection);
@@ -43,13 +44,13 @@ if (!isset($_SESSION['username'])) {
                         }
                     }
                     mysqli_free_result($results);
+                }
+                mysqli_close($connection);
             }
-            mysqli_close($connection);
         }
-    }
-    // Data Bad
-    header("Location: login.php");
-    die();
+        // Data Bad
+        header("Location: login.php");
+        die();
     } else {
         // Already Logged In
         header("Location: index.php");
