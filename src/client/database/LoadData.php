@@ -6,13 +6,17 @@
 <?php
 	include 'include/db_credentials.php';
 	$con = sqlsrv_connect($server, $connectionInfo);
-	echo("<h1>Connecting to database.</h1><p>");
+	echo("<h1>Caaaaa.</h1><p>");
 	if( $con === false ) {
 		die( print_r( sqlsrv_errors(), true));
 	}
+		echo("</p><h2>test</h2>");
+
 	$fileName = "./database/order_sql.ddl";
 	$file = file_get_contents($fileName, true);
 	$file = mb_convert_encoding($file, 'UTF-8', mb_detect_encoding($file, 'UTF-8, ISO-8859-1', true));
+	echo 'here';	
+
 	$lines = explode(";", $file);
 	echo("<ol>");
 	foreach ($lines as $line){
