@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS Customer (
     ON UPDATE CASCADE
 );
 
+ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
+
 CREATE TABLE IF NOT EXISTS Admin (
   userID int NOT NULL,
   primary key (userID),
