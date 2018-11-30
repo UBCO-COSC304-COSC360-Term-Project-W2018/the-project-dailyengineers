@@ -18,7 +18,8 @@
             <!-- Page code -->
             <section class="mainView">
               <h1>Create Account</h1>
-                <form method="POST" action="action/newUser.php" enctype="multipart/form-data">
+                <form method="POST" action="action/newUser.php">
+                <!--  enctype="multipart/form-data" -->
                   <fieldset>
                     <legend>Account Information</legend>
                     <div id="imgInput">
@@ -29,6 +30,10 @@
                     <input name="user" type="text">
                     <p>Email:</p>
                     <input name="email" type="email">
+                    <p>First name:</p>
+                    <input name="firstName" type="text">
+                    <p>Last name:</p>
+                    <input name="lastName" type="text">
                     <p>Password:</p>
                     <input name="pass" type="password">
                     <p>Confirm Password:</p>
