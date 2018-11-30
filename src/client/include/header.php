@@ -2,7 +2,7 @@
 	<div class="headerContainer">
 	  <div class="flexHeaderTop">
 		<a href="index.php"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-		<form action="search.php" class="searchForm">
+		<form method="get" action="search.php" class="searchForm">
 		  <input type="text" placeholder="Search our database..." name="search" id="searchField">
 		  <button type="submit"></button>
 		</form>
