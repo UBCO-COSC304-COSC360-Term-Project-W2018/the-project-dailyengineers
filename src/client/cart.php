@@ -16,26 +16,48 @@
   <?php include 'include/header.php';?>
 
   <main>
+    <?php
+      // include 'include/money_format_windows.php'; //Only required on windows PCs
+      // Get the current list of products
+      $vehicleList = null;
+      if (isset($_SESSION['vehicleList'])){
+        $vehicleList = $_SESSION['vehicleList'];
+        echo '<div class="columnContainer"><section class="cartLeftSidebar"><div class="cartSubtotal"><h1>Subtotal:</h1>';
+        $total=0;
+        $quantityTotal=0;
+        foreach ($vehicleList as $id => $prod) {
+          $price = $prod['price'];
+          $total = $total + $prod['quantity']*$price;
+          $quantityTotal = $quantityTotal + $prod['quantity'];
+        }
+        echo '<p>"$total"</p';
+        echo '<div class="displaySubtotal"></div></div><div class="cartItemCount"><h1>Quantity:</h1>';
+        echo '<p>"$quantityTotal"</p>';
 
-    <div class="columnContainer">
+        $total=0;
+        foreach ($vehicleList as $id => $prod) {
+        //   echo("<tr><td>". $prod['id'] . "</td>");
+        //   echo("<td>" . $prod['name'] . "</td>");
 
-      <section class="cartLeftSidebar">
-        <div class="cartSubtotal">
-          <h1>Subtotal:</h1>
-          <p>$xxx,xxx.00</p>
-          <div class="displaySubtotal">
-          </div>
-        </div>
+        //   echo("<td align=\"center\">". $prod['quantity'] . "</td>");
+          $price = $prod['price'];
 
-        <div class="cartItemCount">
-          <h1>Quantity:</h1>
-          <p>x items</p>
-          <div class="displayItemCount">
-          </div>
-        </div>
+          // echo("<td align=\"right\">".str_replace("USD","$",money_format('%i',$price))."</td>");
+          // echo("<td align=\"right\">" . str_replace("USD","$",money_format('%i',$prod['quantity']*$price)) . "</td></tr>");
+          // echo("</tr>");
+          $total = $total + $prod['quantity']*$price;
+        }
+        echo("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td><td align=\"right\">".str_replace("USD","$",money_format('%i',$total))."</td></tr>");
+        echo("</table>");
 
-        <div class="cartCheckout">
-            <a class="checkoutButton" href="checkout.php">Proceed to Checkout</a>
+        echo("<h2><a href=\"checkout.php\">Check Out</a></h2>");
+      } else{
+        echo("<H1>Your shopping cart is empty!</H1>");
+      }
+    ?>
+          
+
+          <div class="displayItemCount"></div></div><div class="cartCheckout"><a class="checkoutButton" href="checkout.php">Proceed to Checkout</a>
         </div>
 
         <div class="cartRecentlyViewed">
@@ -79,6 +101,10 @@
             <div class="cartPrice">
               <p>Price:</p>
               <p>$1,000,000</p>
+            </div>
+            <div class="cartPrice">
+              <p>Quantity:</p>
+              <p>3</p>
             </div>
           </div>
         </div>

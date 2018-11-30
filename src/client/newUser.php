@@ -1,87 +1,77 @@
 <?php
 session_start();
-//Check method used
+echo "HERE<br />";
 if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
-    if (isset($_POST["user"])
+    if (isset($_POST["username"])
+        && isset($_POST["firstName"])
+        && isset($_POST["lastName"])
         && isset($_POST["email"])
         && isset($_POST["pass"])) {
-        //input them
-        include 'include/db_credentials.php';
-
+        //user data
+        include 'include/db_credentials.php' ;
+        //make connection
         $connection = mysqli_connect($host, $user, $password, $database);
+        $error      = mysqli_connect_error();
         
-        $error = mysqli_connect_error();
+        if($connection -> connect_error) {
+            die("Connection failed: " . $connection -> connect_error);
+        }
+        echo "Connected to Server."; 
         if ($error != null) {
-            //If there is a connection error return to createAccount
-            header("Location: createAccount.php");
-            die();
+            $output = "<p>Unable to connect to database</p>".$error;
+            exit($output);
         } else {
             //check if user exists
-            $sql = "SELECT * FROM user WHERE username='".$_POST["user"]."' OR email='".$_POST["email"]."'";
-            //get results and if anything is returned
+            $username = $_POST["username"];
+            $email = $_POST["email"];
+            $sql = "SELECT * FROM users WHERE username='".$username."' OR email='".$email."';";
+            
+
             $results = mysqli_query($connection, $sql);
             if (mysqli_fetch_assoc($results) != null) {
-                ?><!DOCTYPE html><html> <p>User already exists <a href="createAccount.php">Return to Create Account</a></p><?php
+                echo "<p>User already exists with this name and/or email</p><a href='newuser.html'>Return to user entry</a>";
             } else {
                 mysqli_free_result($results);
-                //check image
-                $target_dir = "uploads/";
-                $target_file = $target_dir . basename($_FILES["profile"]["name"]);
-                //checker Bool
-                $uploadOk = true;
-                //get filetype
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $check = getimagesize($_FILES["profile"]["tmp_name"]);
-                $output = "";
-                if ($check !== false) {
-                } else {
-                    $output .= "File is not an image.";
-                    $uploadOk = false;
-                }
-                //check if exists
-                if (file_exists($target_file)) {
-                    $output .= "<br />Sorry, file already exists.";
-                    $uploadOk = false;
-                }
-                //check size
-                if ($_FILES["profile"]["size"] >= 100000) {
-                    $output .= "<br />Sorry, your file is too large.";
-                    $uploadOk = false;
-                }
-                //check type
-                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif") {
-                    $output .= "<br />Sorry image is incorrect type";
-                    $uploadOk = false;
-                }
                 
-                //Insert User
-                $sql = "INSERT INTO users (username, email, pass, profile) VALUES (?, ?, ?, ?)";
-                if (($statement = mysqli_prepare($connection, $sql)) && $uploadOk) {
+                $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+                //if the preparation goes through and there were no errors with the upload
+                if ($statement = mysqli_prepare($connection, $sql)) {//() && $uploadOk
                     //hash password
                     $hashword = md5($_POST['pass']);
-                    //bind perameters
-                    mysqli_stmt_bind_param($statement, "ssss", $_POST['username'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $hashword, $target_file);
-                    //Execute insertion
-                    if (move_uploaded_file($_FILES["userImage"]["tmp_name"], $target_file)) {
-                    } else {
-                        ?><!DOCTYPE html><html> <p>Error in profile picture upload.<br /><a href="createAccount.php">Return to Create Account</a></p><?php
-                    }
+                    // prepared statement insertion
+                    mysqli_stmt_bind_param($statement, "sss", $_POST['user'], $_POST['email'], $hashword);
+                    // execute statement
                     $result = mysqli_execute($statement);
-
+                    //if the execution executes
                     if ($result == true) {
-                        $_SESSION['username'] = $_POST['user'];
-                        header("Location: account.php");
-                        die();
-                    } else {
-                        ?><!DOCTYPE html><html><p>Executing Insertion of user failed:<br /><a href="createAccount.php">Return to Create Account</a></p><?php
+                        echo "<p>An account for ".$username." has been created</p>";
                     }
-                } else {
-                    ?><!DOCTYPE html><html> <p>Issue with image or statement preparation: <?php echo $output ?><br /><a href="createAccount.php">Return to Create Account</a></p><?php
+
+                    $sql = "SELECT userID FROM users WHERE username='".$username."'";
+                    $results = mysqli_query($connection, $sql);
+                    $userID =  implode("", mysqli_fetch_assoc($results));
+                    // $imagedata = file_get_contents($_FILES['profile']['tmp_name']);
+                    
+                    $sql = "INSERT INTO customer (userID, firstName, lastName) VALUES(?, ?, ?);";
+                    
+                    $stmt = mysqli_stmt_init($connection); //init prepared statement object
+                    mysqli_stmt_prepare($stmt, $sql); // register the query
+                    $null = null;
+                    mysqli_stmt_bind_param($stmt, "iss", $userID, $_POST['firstName'], $_POST['lastName']);
+                    
+                    // mysqli_stmt_send_long_data($stmt, 2, $imagedata);
+                    
+                    $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
+                    
+                    mysqli_stmt_close($stmt); // and dispose of the statement.
+                    mysqli_close($connection);
+
+                    $_SESSION['username'] = $_POST['user'];
+                    header("Location: account.php");
                 }
             }
             mysqli_close($connection);
         }
     }
 }?>
-</html>

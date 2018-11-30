@@ -7,7 +7,7 @@
     width: 12em;
 }
 
-button, #saveBt {
+button, #saveBt, #editBt {
     background-color: orange;
     height: 2.5em;
     font-weight: bold;
@@ -43,7 +43,7 @@ fieldset h3 {
 .acRight {
     margin-left: 14em;
 }
-.acRight p, .acRight div {
+.acRight p, .acRight div, .acRight input {
     background-color: orange;
     float:left;
     border: black 2px solid;
@@ -52,6 +52,6 @@ fieldset h3 {
     height: 1em;
     min-width: 14em;
 }
-.acRight input, .passConfirmh3 {
+.passConfirmh3 {
     display: none;
 }

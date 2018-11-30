@@ -38,7 +38,6 @@ else{
             mysqli_close($connection);
         }
 ?>
-<!DOCTYPE HTML>
 
 <html>
 
