@@ -38,7 +38,6 @@ else{
             mysqli_close($connection);
         }
 ?>
-<!DOCTYPE HTML>
 
 <html>
 
@@ -62,7 +61,7 @@ else{
                 <form method="GET" action="#">
                     <div class="left">
                         <fieldset id="imgInput">
-                            <img src=<?php echo $img_src ?>>
+                            <?php echo "<img src='$img_src'>"; ?>
                             <input type="file" name="profile" accept="image/*">
                         </fieldset>
                         <a href="paymentMethod.php"><button>Payment Method</button></a>
@@ -71,12 +70,12 @@ else{
                     </div>
                     <fieldset class="acRight">
                         <h3>Username:</h3>
-                        <p><?php echo $username; ?></p>
+                        <?php echo "<p>$username</p>"; ?>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Email:</h3>
                         <p>
-							<input name="email" type="email" value="<?php echo $email; ?>" disabled="true">
+							<?php echo "<input name='email' type='email' value='$email' disabled='true'>"; ?>
                         </p>
                     </fieldset>
                     <fieldset class="acRight">
@@ -85,7 +84,7 @@ else{
 							<input name="pass" type="password" value="•••••••" disabled="true">
 						</p>
                         <h3 class="passConfirmh3">Confirm Password:</h3>
-                        <input id="passConfirm" type="password">
+                        <input id="passConfirm" type="password" style="display:none">
                         <div></div>
                     </fieldset>
                     <fieldset class="acRight">
@@ -103,7 +102,7 @@ else{
                         </p>
                     </fieldset>
 					<input id="editBt" class="acRight" type="button" value="Edit Profile">
-                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="hidden:'true'">
+                    <input id="saveBt" class="acRight" type="submit" value="Save Changes" style="display:none">
                 </form>
             </section>
         </div>
