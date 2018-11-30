@@ -8,12 +8,12 @@ else{
 		include 'include/db_credentials.php';
 		$connection = mysqli_connect($host, $user, $password, $database);
         $error      = mysqli_connect_error();
-		$uid = $_SESSION['userID']
+		$uid = $_SESSION['userID'];
 		$sql = "SELECT * FROM Customer WHERE userID='$uid';";
 			if($connection -> connect_error) {
                 die("Connection failed: " . $connection -> connect_error);
             }
-            echo "Connected to Server."; 
+            // echo "Connected to Server."; 
             if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
@@ -30,16 +30,13 @@ else{
 						} else {
 							$img_src = $row[4];
 						}
-                        mysqli_free_result($results);
-                        mysqli_close($connection);
-						
                         }
                     }
                     mysqli_free_result($results);
             }
             mysqli_close($connection);
         }
-}?>
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -54,9 +51,9 @@ else{
 </head>
 
 <body>
+    <?php include 'include/header.php'; ?>
 
     <main>
-		<?php 	include 'include/header.php'; ?>
         <div class="columnContainer">
             <!-- Sidebar code -->
             <?php include "include/sidesearch.php"; ?>
