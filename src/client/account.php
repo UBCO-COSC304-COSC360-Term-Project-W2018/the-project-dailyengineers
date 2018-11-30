@@ -1,3 +1,42 @@
+<?php session_start();
+if (!isset($_SESSION['username'])) {
+    //not logged in (Guest) GET OUT
+    header("Location: login.php");
+    die();
+}
+else{
+		include 'include/db_credentials.php';
+		$connection = mysqli_connect($host, $user, $password, $database);
+        $error      = mysqli_connect_error();
+		$uid = $_SESSION['userID'];
+		$sql = "SELECT * FROM Customer WHERE userID='$uid';";
+			if($connection -> connect_error) {
+                die("Connection failed: " . $connection -> connect_error);
+            }
+            // echo "Connected to Server."; 
+            if ($error != null) {
+                $output = "<p>Unable to connect to database!</p>";
+                exit($output);
+            } else {
+                if ($results = mysqli_query($connection, $sql)) {
+                    while ($row = mysqli_fetch_row($results)) {
+						$first_name = $row[1];
+						$last_name = $row[2];
+						$address = $row[3];
+						$username = $_SESSION['username'];
+						$email = $_SESSION['email'];
+						if($row[4]==NULL){
+							$img_src = "images/profilePlaceholder.png";
+						} else {
+							$img_src = $row[4];
+						}
+                        }
+                    }
+                    mysqli_free_result($results);
+            }
+            mysqli_close($connection);
+        }
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -12,164 +51,34 @@
 </head>
 
 <body>
-
-    <?php include 'header.php';?>
+    <?php include 'include/header.php'; ?>
 
     <main>
-
         <div class="columnContainer">
-
-            <section class="leftSidebar">
-                <div class="custom-select">
-                    <select>
-                        <option value="0">Make:</option>
-                        <option value="1">Acura:</option>
-                        <option value="2">Aston Martin</option>
-                        <option value="3">Audi</option>
-                        <option value="4">Bentley</option>
-                        <option value="5">BMW</option>
-                        <option value="6">Bugatti</option>
-                        <option value="7">Buick</option>
-                        <option value="8">Cadillac</option>
-                        <option value="9">Chevrolet</option>
-                        <option value="10">Chrystler</option>
-                        <option value="11">Citroen</option>
-                        <option value="12">Dodge</option>
-                        <option value="13">Ferarri</option>
-                        <option value="14">Fiat</option>
-                        <option value="15">Ford</option>
-                        <option value="16">GMC</option>
-                        <option value="17">Honda</option>
-                        <option value="18">Hyundai</option>
-                        <option value="19">Infiniti</option>
-                        <option value="20">Jaguar</option>
-                        <option value="21">Jeep</option>
-                        <option value="22">Kia</option>
-                        <option value="23">Koenigsegg</option>
-                        <option value="24">Lamborghini</option>
-                        <option value="25">Land Rover</option>
-                        <option value="26">Lexus</option>
-                        <option value="27">Maserati</option>
-                        <option value="28">Mazda</option>
-                        <option value="29">McLaren</option>
-                        <option value="30">Mercedes-Benz</option>
-                        <option value="31">Mini</option>
-                        <option value="32">Mitsubishi</option>
-                        <option value="33">Nissan</option>
-                        <option value="34">Pagani</option>
-                        <option value="35">Peugeot</option>
-                        <option value="36">Porsche</option>
-                        <option value="37">Ram</option>
-                        <option value="38">Renault</option>
-                        <option value="39">Rolls Royce</option>
-                        <option value="40">Saab</option>
-                        <option value="41">Subaru</option>
-                        <option value="42">Suzuki</option>
-                        <option value="43">Tesla</option>
-                        <option value="44">Toyota</option>
-                        <option value="45">Volkswagen</option>
-                        <option value="46">Volvo</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Model:</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Year:</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Type:</option>
-                        <option value="1">Coupe</option>
-                        <option value="2">Hatchback</option>
-                        <option value="3">Sedan</option>
-                        <option value="4">SUV</option>
-                        <option value="5">Truck</option>
-                        <option value="6">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Engine:</option>
-                        <option value="1">3-Cylinder</option>
-                        <option value="1">4-Cylinder</option>
-                        <option value="1">6-Cylinder</option>
-                        <option value="1">8-Cylinder</option>
-                        <option value="1">10-Cylinder</option>
-                        <option value="1">12-Cylinder</option>
-                        <option value="1">Electric</option>
-                        <option value="1">Rotary</option>
-                        <option value="1">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Drivetrain:</option>
-                        <option value="0">All-Wheel Drive</option>
-                        <option value="0">Four-Wheel Drive</option>
-                        <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Read-Wheel Drive</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Transmission:</option>
-                        <option value="1">Automatic</option>
-                        <option value="2">Manual</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Colour:</option>
-                        <option value="1">Black</option>
-                        <option value="2">Blue</option>
-                        <option value="3">Brown</option>
-                        <option value="4">Green</option>
-                        <option value="5">Grey</option>
-                        <option value="6">Orange</option>
-                        <option value="7">Red</option>
-                        <option value="8">Silver</option>
-                        <option value="9">White</option>
-                        <option value="10">Yellow</option>
-                        <option value="11">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Seats:</option>
-                        <option value="1">2 seats</option>
-                        <option value="2">3 seats</option>
-                        <option value="3">4 seats</option>
-                        <option value="4">5 seats</option>
-                        <option value="5">6+ seats</option>
-                    </select>
-                    <select>
-                        <option value="0">Doors:</option>
-                        <option value="1">2-Door</option>
-                        <option value="2">3-Door</option>
-                        <option value="3">4-Door</option>
-                        <option value="4">Other</option>
-                    </select>
-                </div>
-            </section>
-
+            <!-- Sidebar code -->
+            <?php include "include/sidesearch.php"; ?>
+            <!-- Page code -->
             <section class="mainView">
                 <form method="GET" action="#">
                     <div class="left">
                         <fieldset id="imgInput">
-                            <img src="images/220px-Darth_Vader.jpg">
+                            <img src=<?php echo $img_src ?>>
                             <input type="file" name="profile" accept="image/*">
                         </fieldset>
-                        <button>Payment Method</button>
-                        <button>Order History</button>
-                        <button>Comment History</button>
+                        <a href="paymentMethod.php"><button>Payment Method</button></a>
+                        <a href="orderStatus.php"><button>Orders</button></a>
+                        <a href="commentHistory.php"><button>Comment History</button></a>
                     </div>
                     <fieldset class="acRight">
                         <h3>Username:</h3>
                         <input name="user" type="text">
-                        <p>Lord_Vader</p>
+                        <p><?php echo $username; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Email:</h3>
                         <input name="email" type="email">
-                        <p>darksider@hotmail.com</p>
+                        <p><?php echo $email; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
@@ -183,19 +92,19 @@
                     <fieldset class="acRight">
                         <h3>First name:</h3>
                         <input name="firstname" type="text">
-                        <p>Anakin</p>
+                        <p><?php echo $first_name; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Last name:</h3>
                         <input name="lastname" type="text">
-                        <p>Skywalker</p>
+                        <p><?php echo $last_name; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>Address:</h3>
                         <input name="addr" type="text">
-                        <p>423 Lava Rd. Mustafar</p>
+                        <p><?php echo $address; ?></p>
                         <button>Edit</button>
                     </fieldset>
                     <input id="saveBt" class="acRight" type="submit" value="Save Changes">
@@ -203,7 +112,7 @@
             </section>
         </div>
 
-        <?php include "footer.php" ?>
+        <?php include "include/footer.php" ?>
 
     </main>
 

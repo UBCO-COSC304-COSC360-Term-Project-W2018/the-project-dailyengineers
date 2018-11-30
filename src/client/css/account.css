@@ -21,16 +21,22 @@ fieldset {
 }
 fieldset:not(#imgInput){
     height: 4em;
-    width: 18.5em;
+    width: 24em;
+}
+fieldset h3 {
+    margin-left: 0.5em;
 }
 
 #imgInput {
-    width: 10em;
+    max-width: 13em;
 }
 #imgInput img {
     display: block;
-    width: 10em;
-    height: 10em;
+    width: 11em;
+    height: 11em;
+}
+#imgInput input {
+    width: 13em;
 }
 
 .acRight {

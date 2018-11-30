@@ -21,12 +21,46 @@ header, footer {
 
 footer {
   margin-top: auto;
+  height: 5em;
 }
 
 /* .flexHeaderTop img {
   height: 100%;
 } */
+.email   {
+  text-decoration: none;
+  color: grey;
+}
+.footerList {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding-left: 2em;
+  text-align: center;
+}
 
+.columnFooters {
+  display: inline-flex;
+  float: left;
+  width: 33%;
+}
+
+#socials {
+  display: inline-block;
+}
+
+.copyright {
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  font-size: 0.7em;
+  text-align: center;
+  bottom: 0;
+}
+.footerLogo {
+  width:50%;
+  float: right;
+}
 .columnContainer {
   display: flex;
   flex-flow: row;
@@ -89,7 +123,7 @@ footer {
 .headerContainer {
   height: inherit;
   margin: auto;
-  width: 80%;
+  width: 95%;
 }
 
 .flexHeaderTop #headerLogo {
@@ -98,6 +132,7 @@ footer {
 }
 
 .searchForm {
+  min-width: 30.5em;
   height: 2.5em;
   background-color: #FF8800;
   border: 1px solid #FF8800;

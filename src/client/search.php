@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 
 <html>
@@ -12,145 +13,15 @@
 
 <body>
 
-  <?php include 'header.php';?>
+  <?php include 'include/header.php';?>
 
   <main>
 
     <div class="columnContainer">
 
-      <section class="leftSidebar">
-        <div class="custom-select">
-          <select>
-            <option value="0">Make:</option>
-            <option value="1">Acura:</option>
-            <option value="2">Aston Martin</option>
-            <option value="3">Audi</option>
-            <option value="4">Bentley</option>
-            <option value="5">BMW</option>
-            <option value="6">Bugatti</option>
-            <option value="7">Buick</option>
-            <option value="8">Cadillac</option>
-            <option value="9">Chevrolet</option>
-            <option value="10">Chrystler</option>
-            <option value="11">Citroen</option>
-            <option value="12">Dodge</option>
-            <option value="13">Ferarri</option>
-            <option value="14">Fiat</option>
-            <option value="15">Ford</option>
-            <option value="16">GMC</option>
-            <option value="17">Honda</option>
-            <option value="18">Hyundai</option>
-            <option value="19">Infiniti</option>
-            <option value="20">Jaguar</option>
-            <option value="21">Jeep</option>
-            <option value="22">Kia</option>
-            <option value="23">Koenigsegg</option>
-            <option value="24">Lamborghini</option>
-            <option value="25">Land Rover</option>
-            <option value="26">Lexus</option>
-            <option value="27">Maserati</option>
-            <option value="28">Mazda</option>
-            <option value="29">McLaren</option>
-            <option value="30">Mercedes-Benz</option>
-            <option value="31">Mini</option>
-            <option value="32">Mitsubishi</option>
-            <option value="33">Nissan</option>
-            <option value="34">Pagani</option>
-            <option value="35">Peugeot</option>
-            <option value="36">Porsche</option>
-            <option value="37">Ram</option>
-            <option value="38">Renault</option>
-            <option value="39">Rolls Royce</option>
-            <option value="40">Saab</option>
-            <option value="41">Subaru</option>
-            <option value="42">Suzuki</option>
-            <option value="43">Tesla</option>
-            <option value="44">Toyota</option>
-            <option value="45">Volkswagen</option>
-            <option value="46">Volvo</option>
-          </select>
-
-          <select>
-            <option value="0">Model:</option>
-          </select>
-
-          <select>
-            <option value="0">Year:</option>
-          </select>
-
-          <select>
-            <option value="0">Type:</option>
-            <option value="1">Coupe</option>
-            <option value="2">Hatchback</option>
-            <option value="3">Sedan</option>
-            <option value="4">SUV</option>
-            <option value="5">Truck</option>
-            <option value="6">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Engine:</option>
-            <option value="1">3-Cylinder</option>
-            <option value="1">4-Cylinder</option>
-            <option value="1">6-Cylinder</option>
-            <option value="1">8-Cylinder</option>
-            <option value="1">10-Cylinder</option>
-            <option value="1">12-Cylinder</option>
-            <option value="1">Electric</option>
-            <option value="1">Rotary</option>
-            <option value="1">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Drivetrain:</option>
-            <option value="0">All-Wheel Drive</option>
-            <option value="0">Four-Wheel Drive</option>
-            <option value="0">Front-Wheel Drive</option>
-            <option value="0">Read-Wheel Drive</option>
-          </select>
-
-          <select>
-            <option value="0">Transmission:</option>
-            <option value="1">Automatic</option>
-            <option value="2">Manual</option>
-          </select>
-
-          <select>
-            <option value="0">Colour:</option>
-            <option value="1">Black</option>
-            <option value="2">Blue</option>
-            <option value="3">Brown</option>
-            <option value="4">Green</option>
-            <option value="5">Grey</option>
-            <option value="6">Orange</option>
-            <option value="7">Red</option>
-            <option value="8">Silver</option>
-            <option value="9">White</option>
-            <option value="10">Yellow</option>
-            <option value="11">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Seats:</option>
-            <option value="1">2 seats</option>
-            <option value="2">3 seats</option>
-            <option value="3">4 seats</option>
-            <option value="4">5 seats</option>
-            <option value="5">6+  seats</option>
-          </select>
-
-          <select>
-            <option value="0">Doors:</option>
-            <option value="1">2-Door</option>
-            <option value="2">3-Door</option>
-            <option value="3">4-Door</option>
-            <option value="4">Other</option>
-          </select>
-
-        </div>
-
-      </section>
-
+      <!-- Sidebar code -->
+      <?php include "include/sidesearch.php"; ?>
+      <!-- Page code -->
       <section class="mainView">
         <div class="titleEntry">
           <div class="titleCol leftCol">
@@ -159,7 +30,6 @@
           <div class="titleCol middleCol">
             <div class="midTopFlex">
               <h2>Price:</h2>
-              <h2>Mileage</h2>
               <h2>Location:</h2>
             </div>
           </div>
@@ -168,12 +38,55 @@
           </div> -->
         </div>
 
+        <?php
+          // Get vehicle name to search for
+          $name = "";
+          $hasParameter = false;
+          if (isset($_GET['search'])){
+            $name = $_GET['search'];
+          }
+          $sql = "";
+
+          if ($name == "") {
+            echo("<h2>All Products</h2>");
+            $sql = "SELECT year, make, model, price, mileage, productPic FROM Vehicle";
+          } else {
+            echo("<h2>Vehicles containing '" . $name . "'</h2>");
+            $hasParameter = true;
+            $sql = "SELECT year, make, model FROM Product WHERE productName LIKE ?";
+            $name = '%' . $name . '%';
+          }
+
+          include './include/db_credentials.php';
+          $connection = mysqli_connect($host, $user, $password, $database);
+          $error      = mysqli_connect_error();
+          
+          /* Try/Catch connection errors */
+          if( $con === false ) {
+            die( print_r( sqlsrv_errors(), true));
+          }
+          $pstmt = null;
+          if($hasParameter){
+            $pstmt = sqlsrv_query($con, $sql, array( $name ));
+          } else {
+            $pstmt = sqlsrv_query($con, $sql, array());
+          }
+          
+          echo("<table><tr><th></th><th>Product Name</th><th>Price</th></tr>");
+          while ($rst = sqlsrv_fetch_array( $pstmt, SQLSRV_FETCH_ASSOC)) {
+            echo("<tr><td><a href=\"addcart.php?id=" . $rst['productId'] . "&name=" . $rst['productName'] . "&price=" . $rst['price'] . "\">Add to Cart</a></td>");
+            echo("<td>" . $rst['productName'] . "</td><td>" . $rst['price'] . "</td></tr>");
+          }
+          echo("</table>");
+          
+          sqlsrv_close($con);
+        ?>
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/bentleyThumb.jpg"></a>
+              <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2018 Bentley Continental G3</a>
+            <a href="product.php" class="searchLink">2018 Bentley Continental G3</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -197,9 +110,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -207,9 +120,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/singerTHumb.jpg"></a>
+              <a href="product.php"><img src="images/singerThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">1988 Porsche 911 Carrera Targa</a>
+            <a href="product.php" class="searchLink">1988 Porsche 911 Carrera Targa</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -234,9 +147,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">7 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">7 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -244,9 +157,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/rs5Thumb.jpg"></a>
+              <a href="product.php"><img src="images/rs5Thumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2017 Audi RS5</a>
+            <a href="product.php" class="searchLink">2017 Audi RS5</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -270,9 +183,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">5 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">5 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -280,9 +193,9 @@
         <div class="searchEntry">
           <div class="searchCol leftCol">
             <div class="thumbContainer">
-              <a href="product.html"><img src="images/edoThumb.jpg"></a>
+              <a href="product.php"><img src="images/edoThumb.jpg"></a>
             </div>
-            <a href="product.html" class="searchLink">2018 Mercedes AMG GTR</a>
+            <a href="product.php" class="searchLink">2018 Mercedes AMG GTR</a>
           </div>
 
           <div class="searchCol middleCol">
@@ -306,9 +219,9 @@
           </div>
 
           <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
+            <a href="cart.php" class="addToCart">ADD TO CART</a>
             <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">11 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
+              <a href="product.php#prodComment" class="searchLink">11 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
             </div>
           </div>
         </div>
@@ -316,7 +229,7 @@
       </section>
     </div>
 
-    <?php include "footer.php" ?>
+    <?php include "include/footer.php" ?>
 
   </main>
 

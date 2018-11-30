@@ -2,7 +2,7 @@
 	<div class="headerContainer">
 	  <div class="flexHeaderTop">
 		<a href="index.php"><img src="images/placeholder-logo.png" id="headerLogo"></a>
-		<form action="search.php" class="searchForm">
+		<form method="get" action="search.php" class="searchForm">
 		  <input type="text" placeholder="Search our database..." name="search" id="searchField">
 		  <button type="submit"></button>
 		</form>
@@ -22,15 +22,16 @@
 		  <ul class="headerRightLinks">
 			<li><a href="#" id="trending">Trending</a></li>
 			<li><a href="#" id="deals">Deals</a></li>
-			<?php 
+			<?php
 			if(isset($_SESSION['username'])) {
 				//Logged in
-				?><li><a href="logout.php" id="loginSignup">Logout</a>
-				<li><a href="account.php" id="account">Account</a><?php
+				echo '<li><a href="./action/logout.php" id="loginSignup">Logout</a>';
+				echo '<li><a href="account.php" id="account">'.$_SESSION['username'].'</a>';
 			} else {
 				//guest
-				?><li><a href="login.php" id="loginSignup">Login/Signup</a></li><?php
-			}?>
+				echo '<li><a href="login.php" id="loginSignup">Login/Signup</a></li>';
+			}
+			?>
 			<li><a href="cart.php" id="cart">Cart</a></li>
 		  </ul>
 		</div>
