@@ -48,6 +48,9 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   UNIQUE yearMakeModel (year, make, model, transmission, drivetrain, engine, fuel, exterior)
 );
 
+ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
+ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
+
 CREATE TABLE IF NOT EXISTS Warehouse (
   warehouseID int NOT NULL AUTO_INCREMENT,
   location    varchar(50) NOT NULL,
@@ -139,7 +142,7 @@ CREATE TABLE IF NOT EXISTS OrderContains (
 username varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
 email varchar(254) NOT NULL,*/
-INSERT INTO User (username, password, email) VALUES ('admin', 'admin', 'admin@vehicleemporium.com');
+INSERT INTO User (username, password, email) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@vehicleemporium.com');
 /*userID int NOT NULL,*/
 INSERT INTO Admin VALUES (1);
 
@@ -148,7 +151,7 @@ INSERT INTO Admin VALUES (1);
 username varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
 email varchar(254) NOT NULL,*/
-INSERT INTO User (username, password, email) VALUES ('customer', 'customer', 'customer@somesite.com');
+INSERT INTO User (username, password, email) VALUES ('customer', '91ec1f9324753048c0096d036a694f86', 'customer@somesite.com');
 /*userID int NOT NULL,
 firstName varchar(20) NOT NULL,
 lastName varchar(20) NOT NULL,
