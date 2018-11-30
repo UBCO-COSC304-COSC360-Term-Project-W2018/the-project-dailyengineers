@@ -7,43 +7,59 @@ if (!isset($_SESSION['username'])) {
     if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
         //Check if we have data
         if (isset($_POST["username"]) && isset($_POST["password"])) {
-            include '../include/db_credentials.php';
+            // include '../include/db_credentials.php';
 
-            // $connection = mysqli_connect($host, $user, $password, $database);
-            // $error      = mysqli_connect_error();
+            $host = "cosc304.ok.ubc.ca";
+            $user = "ccheung2";
+            $password = "54338165";
+            $database = "db_" . $user;
 
-            $con = sqlsrv_connect($server, $connectionInfo);
-            $sql = "SELECT username, password FROM User WHERE username='?';";
-            $pstmt = sqlsrv_prepare($con, $sql, array($_POST['username']));
-            echo "$pstmt";
-            /*if ($error != null) {
+            $connection = mysqli_connect($host, $user, $password, $database);
+            $error      = mysqli_connect_error();
+
+            // $con = sqlsrv_connect($server, $connectionInfo);
+            $username = $_POST["username"];
+            $sql = "SELECT * FROM User WHERE username='$username';";
+            // $pstmt = sqlsrv_prepare($con, $sql, array($_POST['username']));
+            if($connection -> connect_error) {
+                die("Connection failed: ".$connection -> connect_error);
+            }
+            echo "connected"; 
+            if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
-            } */
-            if ($con === false ) {
-                die( print_r( sqlsrv_errors(), true));
-            } else {
+            } 
+            /*if ($con === false ) {
+                die( print_r( sqlsrv_errors(), true));*/
+            else {
                 echo "here";
+                
+                if ($results = mysqli_query($connection, $sql)) {
+                    //$row = sqlsrv_fetch_array($pstmt, SQLSRV_FETCH_ASSOC);
+                    echo "test";
+                    while ($row = mysqli_fetch_row($results)) {
+                        echo "post pass : ".$_POST['password'];
+                        echo "row pass: ".$row[2];
 
-                // $results = mysqli_query($connection, $sql);
-                // if ($row = mysqli_fetch_assoc($results)) {
-                while ($row = sqlsrv_fetch_array($pstmt, SQLSRV_FETCH_ASSOC)) {
-                    if ($_POST['password'] == $row['password']) {
-                        //Update session Superglobal
-                        $_SESSION['username'] = $_POST['username'];
-                        //Release Values
-                        // mysqli_free_result($results);
-                        // mysqli_close($connection);
-                        sqlsrv_free_stmt($pstmt);
-                        sqlsrv_close($con);
-                        //redirect
-                        header("Location: index.php");
-                        die();
+                        if ($_POST['password'] == $row[2]) {
+                            //Update session Superglobal
+                            $_SESSION['username'] = $_POST['username'];
+                            echo $_SESSION['username'];
+                            $_SESSION['userID'] = $row[0];
+                            //Release Values
+                            mysqli_free_result($results);
+                            mysqli_close($connection);
+                            // sqlsrv_free_stmt($pstmt);
+                            // sqlsrv_close($con);
+                            //redirect
+                            header("Location: ../index.php");
+                            die();
+                        }
                     }
-                }
-                sqlsrv_free_stmt($pstmt);
+                
+                    mysqli_free_result($results);
             }
-            sqlsrv_close($con);
+            mysqli_close($connection);
         }
     }
     //Data bad
@@ -53,4 +69,6 @@ if (!isset($_SESSION['username'])) {
     //we logged in already silly goose
     header("Location: index.php");
     die();
-}
+}}
+
+?>
