@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 } else {
     //Logout
     session_unset();
-    header("Location: login.php");
+    header("Location: ../index.php");
     die();
 }
 ?>
