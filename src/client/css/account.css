@@ -21,7 +21,7 @@ fieldset {
 }
 fieldset:not(#imgInput){
     height: 4em;
-    width: 18.5em;
+    width: 24em;
 }
 fieldset h3 {
     margin-left: 0.5em;
