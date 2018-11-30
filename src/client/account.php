@@ -75,7 +75,7 @@ else{
                     <fieldset class="acRight">
                         <h3>Email:</h3>
                         <p>
-							<?php echo "<input name='email' type='email' value='$email' disabled='true'>"; ?>
+							<?php echo "<input name='emailF' type='text' value='$email' disabled='true'>"; ?>
                         </p>
                     </fieldset>
                     <fieldset class="acRight">
@@ -85,7 +85,6 @@ else{
 						</p>
                         <h3 class="passConfirmh3">Confirm Password:</h3>
                         <input id="passConfirm" type="password" style="display:none">
-                        <div></div>
                     </fieldset>
                     <fieldset class="acRight">
                         <h3>First name:</h3>
@@ -98,7 +97,7 @@ else{
                     <fieldset class="acRight">
                         <h3>Address:</h3>
                         <p>
-							<input name="addr" type="text" value="<?php echo $address; ?>" disabled="true">
+							<?php echo "<input name='addr' type='text' value='$address' disabled='true'>"; ?>
                         </p>
                     </fieldset>
 					<input id="editBt" class="acRight" type="button" value="Edit Profile">
