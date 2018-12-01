@@ -1,71 +1,165 @@
 <?php
+<<<<<<< HEAD
 include 'include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
 if($connection -> connect_error) {
 die("Connection failed: " . $connection -> connect_error);
+=======
+    include 'include/db_credentials.php';
+    $connection = mysqli_connect($host, $user, $password, $database);
+    $error      = mysqli_connect_error();
+    if ($connection -> connect_error) {
+        die("Connection failed: " . $connection -> connect_error);
+>>>>>>> 8b84bf6237e97b3fce519e308638a1107b35979c
     }
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
-		echo $error;
         exit($output);
-        } else {
-              // echo "Connected to Database.";
-        }
+    }
+    $sel_make = 0;
+    $sel_model = 0;
+    $sel_year = 0;
 ?>
+<html>
   <section class="leftSidebar">
       <div class="custom-select">
+<<<<<<< HEAD
             <select name="make_sel">
                   <option value="0">Make:</option>
+=======
+      <form>
+			<label for="make_sel">Make: </label>
+            <select id="make_sel">
+                  <option value="0" selected="selected">All</option>
+>>>>>>> 8b84bf6237e97b3fce519e308638a1107b35979c
                   <?php
                       $sql_make = "SELECT DISTINCT make FROM Vehicle";
                       if ($results = mysqli_query($connection, $sql_make)) {
+                          //$counter = 0;
                           while ($row = mysqli_fetch_row($results)) {
-                              $counter = 0;
-                              echo "<option value='counter'>$row[0]</option>";
+                              //$counter++;
+                              echo "<option value='$row[0]'>$row[0]</option>";
                           }
                       } mysqli_free_result($results);
                   ?>
             </select>
-        <select>
-            <option value="0">Model:</option>
+
+		<label for="model_sel">Model: </label>
+        <select id="model_sel">
+            <option value="0">All</option>
+				<?php
+                    if ($sel_make!=0) {
+                        $sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$sel_make';";
+                    } else {
+                        $sql_model = "SELECT DISTINCT model FROM Vehicle;";
+                    }
+                    if ($results = mysqli_query($connection, $sql_model)) {
+                        //$counter = 0;
+                        while ($row = mysqli_fetch_row($results)) {
+                            //$counter++;
+                            echo "<option value='$row[0]'>$row[0]</option>";
+                        }
+                    } mysqli_free_result($results);
+                  ?>
         </select>
 
-        <select>
-            <option value="0">Year:</option>
-        </select>
+        <label for="type_sel">Type: </label>
+            <select id="type_sel">
+                  <option value="0" selected="selected">All</option>
+                  <?php
+                    if ($sel_make!=0) {
+                        $sql_type = "SELECT DISTINCT type FROM Vehicle WHERE make='$sel_make'";
+                        if ($sel_model!=0) {
+                            $sql_type = $sql_type . " AND model='$sel_model'";
+                        }
+                    } elseif ($sel_model!=0) {
+                        $sql_type = "SELECT DISTINCT type FROM Vehicle WHERE model='$sel_model'";
+                    } else {
+                        $sql_type = "SELECT DISTINCT type FROM Vehicle;";
+                    }
+                         if ($results = mysqli_query($connection, $sql_type)) {
+                             //$counter = 0;
+                             while ($row = mysqli_fetch_row($results)) {
+                                 //$counter++;
+                                 echo "<option value='$row[0]'>$row[0]</option>";
+                             }
+                         } mysqli_free_result($results);
+                  ?>
+            </select>
 
-        <select>
-            <option value="0">Type:</option>
-            <option value="1">Coupe</option>
-            <option value="2">Hatchback</option>
-            <option value="3">Sedan</option>
-            <option value="4">SUV</option>
-            <option value="5">Truck</option>
-            <option value="6">Other</option>
-        </select>
+            <label for="year_sel">Year: </label>
+                <select id="year_sel">
+                      <option value="0" selected="selected">All</option>
+                      <?php
+                        if ($sel_make!=0) {
+                            $sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$sel_make'";
+                            if ($sel_model!=0) {
+                                $sql_year = $sql_year . " AND model='$sel_model'";
+                            }
+                        } elseif ($sel_model!=0) {
+                            $sql_year = "SELECT DISTINCT year FROM Vehicle WHERE model='$sel_model'";
+                        } else {
+                            $sql_year = "SELECT DISTINCT year FROM Vehicle;";
+                        }
+                             if ($results = mysqli_query($connection, $sql_year)) {
+                                 //$counter = 0;
+                                 while ($row = mysqli_fetch_row($results)) {
+                                     //$counter++;
+                                     echo "<option value='$row[0]'>$row[0]</option>";
+                                 }
+                             } mysqli_free_result($results);
+                      ?>
+                </select>
 
-        <select>
-            <option value="0">Engine:</option>
-            <option value="1">3-Cylinder</option>
-            <option value="1">4-Cylinder</option>
-            <option value="1">6-Cylinder</option>
-            <option value="1">8-Cylinder</option>
-            <option value="1">10-Cylinder</option>
-            <option value="1">12-Cylinder</option>
-            <option value="1">Electric</option>
-            <option value="1">Rotary</option>
-            <option value="1">Other</option>
-        </select>
+                <label for="engine_sel">Engine: </label>
+                    <select id="engine_sel">
+                          <option value="0" selected="selected">All</option>
+                          <?php
+                            if ($sel_make!=0) {
+                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle WHERE make='$sel_make'";
+                                if ($sel_model!=0) {
+                                    $sql_eng = $sql_eng . " AND model='$sel_model'";
+                                }
+                            } elseif ($sel_model!=0) {
+                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle WHERE model='$sel_model'";
+                            } else {
+                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle;";
+                            }
+                                 if ($results = mysqli_query($connection, $sql_eng)) {
+                                     //$counter = 0;
+                                     while ($row = mysqli_fetch_row($results)) {
+                                         //$counter++;
+                                         echo "<option value='$row[0]'>$row[0]</option>";
+                                     }
+                                 } mysqli_free_result($results);
+                          ?>
+                    </select>
 
-        <select>
-            <option value="0">Drivetrain:</option>
-            <option value="0">All-Wheel Drive</option>
-            <option value="0">Four-Wheel Drive</option>
-            <option value="0">Front-Wheel Drive</option>
-            <option value="0">Read-Wheel Drive</option>
-        </select>
+            <label for="drivetrain_sel">Drivetrain: </label>
+                <select id="drivetrain_sel">
+                      <option value="0" selected="selected">All</option>
+                        <?php
+                            if ($sel_make!=0) {
+                                $sql_drive = "SELECT DISTINCT drivetrain FROM Vehicle WHERE make='$sel_make'";
+                                if ($sel_model!=0) {
+                                    $sql_drive = $sql_eng . " AND model='$sel_model'";
+                                }
+                            } elseif ($sel_model!=0) {
+                                $sql_drive = "SELECT DISTINCT engine FROM Vehicle WHERE model='$sel_model'";
+                            } else {
+                                $sql_drive = "SELECT DISTINCT engine FROM Vehicle;";
+                            }
+                           if ($results = mysqli_query($connection, $sql_drive)) {
+                               //$counter = 0;
+                               while ($row = mysqli_fetch_row($results)) {
+                                   //$counter++;
+                                   echo "<option value='$row[0]'>$row[0]</option>";
+                               }
+                           } mysqli_free_result($results);
+                      ?>
+              </select>
 
         <select>
             <option value="0">Transmission:</option>
@@ -96,5 +190,9 @@ die("Connection failed: " . $connection -> connect_error);
             <option value="4">5 seats</option>
             <option value="5">6+ seats</option>
         </select>
+
+		<input type="button" class="formatButton" id="filter_b" value="Filter Products">
+    </form>
     </div>
 </section>
+</html>

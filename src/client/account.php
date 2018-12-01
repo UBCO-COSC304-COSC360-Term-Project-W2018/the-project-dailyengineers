@@ -67,11 +67,11 @@ else{
                     <fieldset>
                       <legend>User Image</legend>
                       <img id=profilePic src=<?php echo $img_src ?>>
-                      <input type="file" name="profilePic" accept="image/*">
+                      <input type="file" name="profilePic" accept="image/*" disabled="disabled">
                     </fieldset>
-                    <a class="accountButton" href="paymentMethod.php">Payment Method</a>
-                    <a class="accountButton" href="orderStatus.php">Order History</a>
-                    <a class="accountButton" href="commentHistory.php">Comment History</a>
+                    <a class="formatButton" href="paymentMethod.php">Payment Method</a>
+                    <a class="formatButton" href="orderStatus.php">Order History</a>
+                    <a class="formatButton" href="commentHistory.php">Comment History</a>
                   </div>
                   <div id="billingForm">
                     <fieldset>
@@ -92,8 +92,8 @@ else{
                     </fieldset>
                     <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
                     <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
-                    <input type="button" id="editProfile" value="Edit Profile" class="accountButton" onclick="editProfile()">
-                    <input type="button" id="saveProfile" value="Save Changes" class="accountButton" onClick="saveProfile()">
+                    <input type="button" id="editProfile" value="Edit Profile" class="formatButton" onclick="editProfile()">
+                    <input type="button" id="saveProfile" value="Save Changes" class="formatButton" onClick="saveProfile()">
                   </div>
                 </div>
               </form>
