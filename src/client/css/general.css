@@ -79,7 +79,7 @@ footer {
 
 .leftSidebar {
   order: 1;
-  width: 16em;
+  width: 10em;
   margin-right: 0;
 }
 
@@ -260,4 +260,24 @@ label:hover {
  background-color: #FF8800;
  color: #353535;
  cursor:pointer;
+}
+
+/***************** BUTTON STYLING ******************/
+.formatButton {
+  font-weight: bold;
+  text-decoration: none;
+  margin: 1em;
+  display: block;
+  border: 1px solid #FF8800;
+  border-radius: 0.75em;
+  padding: 0.5em;
+  background-color: #FF8800;
+  color: #353535;
+  text-align: center;
+  font-size: 1em;
+}
+
+.formatButton:hover  {
+  background-color: #353535;
+  color: #FF8800;
 }

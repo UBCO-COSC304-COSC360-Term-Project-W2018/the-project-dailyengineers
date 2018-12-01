@@ -18,50 +18,22 @@
   <main>
     <div class="columnContainer">
       <section class="cartLeftSidebar">
-    <?php
-      // include 'include/money_format_windows.php'; //Only required on windows PCs
-      // Get the current list of products
-      $vehicleList = null;
-      if (isset($_SESSION['vehicleList'])){
-        $vehicleList = $_SESSION['vehicleList'];
-        echo '<div class="cartSubtotal">';
-        echo '<h1>Subtotal:</h1>';
-        $total=0;
-        $quantityTotal=0;
-        foreach ($vehicleList as $id => $prod) {
-          $price = $prod['price'];
-          $total = $total + $prod['quantity']*$price;
-          $quantityTotal = $quantityTotal + $prod['quantity'];
-        }
-        echo '<p>"$total"</p>';
-        echo '<div class="displaySubtotal">';
-        echo '</div>';
-        echo '</div>';
-        echo '<div class="cartItemCount">';
-        echo '<h1>Quantity:</h1>';
-        echo '<p>"$quantityTotal" Items</p>';
 
-        $total=0;
-        foreach ($vehicleList as $id => $prod) {
-        //   echo("<tr><td>". $prod['id'] . "</td>");
-        //   echo("<td>" . $prod['name'] . "</td>");
+        <!-- START -->
+        <div class="cartSubtotal">
+          <h1>Subtotal:</h1>
+          <p>$xxx,xxx.00</p>
 
-        //   echo("<td align=\"center\">". $prod['quantity'] . "</td>");
-          $price = $prod['price'];
+          <div class="displaySubtotal">
+          </div>
+        </div>
 
-          // echo("<td align=\"right\">".str_replace("USD","$",money_format('%i',$price))."</td>");
-          // echo("<td align=\"right\">" . str_replace("USD","$",money_format('%i',$prod['quantity']*$price)) . "</td></tr>");
-          // echo("</tr>");
-          $total = $total + $prod['quantity']*$price;
-        }
-        //echo("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td><td align=\"right\">".str_replace("USD","$",money_format('%i',$total))."</td></tr>");
-        //echo("</table>");
+        <div class="cartItemCount">
+          <h1>Quantity:</h1>
+          <p>x Items</p>
 
-        echo("<h2><a href=\"checkout.php\">Check Out</a></h2>");
-      } else{
-        echo("<H1>Your shopping cart is empty!</H1>");
-      }
-    ?>
+
+        <!-- END -->
 
 
           <div class="displayItemCount">

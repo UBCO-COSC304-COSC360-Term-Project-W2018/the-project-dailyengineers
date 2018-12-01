@@ -31,11 +31,11 @@
                         <input name="username" type="textBox" class="required">
                         <h3>Password</h3>
                         <input name="password" type="password" class="required">
-                        <input id="login" type="submit" value="Login">
+                        <input id="login" class="formatButton" type="submit" value="Login">
                     </form>
                     <div id="options">
-                        <a href="createAccount.php">Create Account</a>
-                        <a href="passReset.php">Forgot Password</a>
+                        <a class="formatButton" href="createAccount.php">Create Account</a>
+                        <a class="formatButton" href="passReset.php">Forgot Password</a>
                     </div>
 
                 </div>
