@@ -141,7 +141,7 @@ $error      = mysqli_connect_error();
             <option value="5">6+ seats</option>
         </select>
 
-		<input type="button" id="filter_b" value="Filter Products">
+		<input type="button" class="formatButton" id="filter_b" value="Filter Products">
     </form>
     </div>
 </section>
