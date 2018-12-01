@@ -36,7 +36,7 @@ die("Connection failed: " . $connection -> connect_error);
             <option value="0">All</option>
 				<?php
 					if($_POST['make_sel']!=0){
-						$sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$_POST['make_sel'];";
+						$sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$_POST['make_sel']';";
 					} else {
 						$sql_model = "SELECT DISTINCT model FROM Vehicle;";
 					}
@@ -55,13 +55,13 @@ die("Connection failed: " . $connection -> connect_error);
                   <option value="0" selected="selected">All</option>
                   <?php
 					if($_POST['make_sel']!=0){
-						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST[\'make_sel\']";
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST[\'make_sel\']'";
 						if($_POST['model_sel']!=0){
 								$sql_year = $sql_year . " AND model='$_POST[\'model_sel\']'";
 							}
 					} else {
 						if($_POST['model_sel']!=0){
-						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST[\'model_sel\']";
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST['model_sel']''";
 						} else {
 						$sql_model = "SELECT DISTINCT year FROM Vehicle;";
 						}
