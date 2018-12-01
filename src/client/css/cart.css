@@ -20,7 +20,7 @@
   font-size: 1em;
 }
 
-.checkoutButton:hover {
+.checkoutButton:hover, .addCartButton:hover {
   opacity: 0.7;
 }
 

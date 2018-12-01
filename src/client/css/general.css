@@ -225,6 +225,11 @@ select {
   /* padding: 0.5em 0em 0.5em 2em; */
 }
 
+.quantityCount {
+  width: 4em;
+  height: 2em;
+}
+
 /*************************** FORM STYLING **********************/
 
 fieldset {
