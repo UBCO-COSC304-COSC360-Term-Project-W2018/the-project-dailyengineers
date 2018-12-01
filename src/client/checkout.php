@@ -25,51 +25,7 @@ if (!isset($_SESSION['username'])) {
   <main>
 
     <div class="columnContainer">
-
-      <section class="cartLeftSidebar">
-        <div class="cartSubtotal">
-          <h1>Total:</h1>
-          <p>$xxx,xxx.00</p>
-          <div class="displaySubtotal">
-          </div>
-        </div>
-
-        <div class="cartItemCount">
-          <h1>Quantity:</h1>
-          <p>x items</p>
-          <div class="displayItemCount">
-          </div>
-        </div>
-
-        <div class="cartCheckout">
-          <a class="checkoutButton" href="checkout.php">Submit Order</a>
-        </div>
-
-        <div class="cartRecentlyViewed">
-          <h1>Recently Viewed:</h1>
-          <div class="thumbContainer">
-            <a href="product.php"><img src="images/bentleyThumb.jpg">
-              <figcaption>2018 Bentley Continental GT3</figcaption>
-              <figcaption>$1,000,000</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.php">Add to Cart</a>
-          </div>
-          <div class="thumbContainer">
-            <a href="product.php"><img src="images/edoThumb.jpg">
-              <figcaption>2018 Mercedes AMG GTR</figcaption>
-              <figcaption>$228,164</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.php">Add to Cart</a>
-          </div>
-          <div class="thumbContainer">
-            <a href="product.php"><img src="images/singerThumb.jpg">
-              <figcaption>1988 Porsche 911 Carrera Targa</figcaption>
-              <figcaption>$167,000</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.php">Add to Cart</a>
-          </div>
-        </div>
-      </section>
+      <?php include 'include/checkoutSidebar.php';?>
 
       <section class="mainView">
         <h1>Checkout</h1>
