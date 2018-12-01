@@ -48,6 +48,7 @@ else{
     <!-- <link rel="stylesheet" type="text/css" href="css/mad.css"> -->
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/cart.css">
+    <script src="js/editprofile.js"></script> 
     <!-- <link rel="stylesheet" href="css/account.css"> -->
 </head>
 
