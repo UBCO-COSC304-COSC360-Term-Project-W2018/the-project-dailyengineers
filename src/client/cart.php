@@ -23,9 +23,6 @@
         <h1>Shopping Cart</h1>
         <?php 
           include 'include/db_credentials.php';
-
-          error_reporting(E_ALL);
-          ini_set('display_errors', 1); 
           $connection = mysqli_connect($host, $user, $password, $database);
           $error      = mysqli_connect_error();
           $sql = "SELECT year, make, model, price, quantity, v.vehicleID FROM Vehicle v, CartContents c WHERE v.vehicleID = c.vehicleID and userID =";
@@ -44,6 +41,9 @@
             // echo "outside of results";
             if ($results = mysqli_query($connection, $sql)) {
               // echo "in results";
+              if($results->num_rows === 0) {
+                echo "Cart is Empty. SKRRRRT on over to our vehicle fleet.";
+              }
               while ($row = mysqli_fetch_row($results)) {
                 $year = $row[0]; 
                 $make = $row[1]; 
@@ -63,12 +63,12 @@
                 echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
                 echo '<p>'.$quantity.'</p></div>';
+                echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id='.$vehicleID.'">Remove Item</a></div></div></div>';
               }
               mysqli_free_result($results);
             }
             mysqli_close($connection);
           }
-          echo '<div class="cartDeleteContainer"><a class="formatButton" href="cart.php">Remove Item</a></div></div></div>';
         ?>
       </section>
     </div>
