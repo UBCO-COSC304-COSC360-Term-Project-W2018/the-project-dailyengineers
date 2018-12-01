@@ -31,7 +31,10 @@
 /* .cartSubtotal h1 {
   display: inline-block;
 } */
-
+.searchLink {
+  text-decoration: none;
+  color: orange;
+}
 .cartSubtotal p {
   font-weight: bold;
   font-size: 1.5em;
