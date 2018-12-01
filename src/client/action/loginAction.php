@@ -49,11 +49,11 @@ if (!isset($_SESSION['username'])) {
             }
         }
         // Data Bad
-        header("Location: login.php");
+        header("Location: ../login.php");
         die();
     } else {
         // Already Logged In
-        header("Location: index.php");
+        header("Location: ../index.php");
         die();
     }
 }
