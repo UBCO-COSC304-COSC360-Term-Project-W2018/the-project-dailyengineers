@@ -278,6 +278,5 @@ label:hover {
 }
 
 .formatButton:hover  {
-  background-color: #353535;
-  color: #FF8800;
+  opacity: 0.7;
 }
