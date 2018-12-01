@@ -108,7 +108,7 @@
 .midTopFlex div {
   padding: 0.5em;
   width: 25%;
-  border: #FF8800 1px solid;
+  /* border: #FF8800 1px solid; */
 }
 
 .searchDescription {
@@ -121,4 +121,18 @@ h1 {
 
 .middleCol h2 {
   display: inline-block;
+}
+
+.attribute {
+  font-weight: bold;
+}
+
+.attribute p:first-child {
+  /* font-weight: bold; */
+  margin-bottom: 0.5em;
+}
+
+.attribute p:last-child {
+  /* font-weight: bold; */
+  color: #FF8800;
 }
