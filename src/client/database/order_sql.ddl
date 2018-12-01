@@ -17,10 +17,13 @@ CREATE TABLE IF NOT EXISTS Customer (
    CCNumber int,
    CCV int,
    expiryDate DATE,
+   isActive BOOLEAN NOT NULL DEFAULT '1',
    primary key (userID),
    FOREIGN KEY (userID) REFERENCES User(userID)
     ON UPDATE CASCADE
 );
+
+ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
 
 CREATE TABLE IF NOT EXISTS Admin (
   userID int NOT NULL,
@@ -47,6 +50,9 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   PRIMARY KEY (vehicleID),
   UNIQUE yearMakeModel (year, make, model, transmission, drivetrain, engine, fuel, exterior)
 );
+
+ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
+ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS Warehouse (
   warehouseID int NOT NULL AUTO_INCREMENT,
@@ -139,7 +145,7 @@ CREATE TABLE IF NOT EXISTS OrderContains (
 username varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
 email varchar(254) NOT NULL,*/
-INSERT INTO User (username, password, email) VALUES ('admin', 'admin', 'admin@vehicleemporium.com');
+INSERT INTO User (username, password, email) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@vehicleemporium.com');
 /*userID int NOT NULL,*/
 INSERT INTO Admin VALUES (1);
 
@@ -148,7 +154,7 @@ INSERT INTO Admin VALUES (1);
 username varchar(20) NOT NULL,
 password varchar(20) NOT NULL,
 email varchar(254) NOT NULL,*/
-INSERT INTO User (username, password, email) VALUES ('customer', 'customer', 'customer@somesite.com');
+INSERT INTO User (username, password, email) VALUES ('customer', '91ec1f9324753048c0096d036a694f86', 'customer@somesite.com');
 /*userID int NOT NULL,
 firstName varchar(20) NOT NULL,
 lastName varchar(20) NOT NULL,
@@ -245,6 +251,10 @@ VALUES (1, 2, 1, 1, '1', '2018-11-27 12:01:32', 'Hi there, thanks for your inter
 /* ADDITIONAL CHILD COMMENT */
 INSERT INTO CommentsOn (userID, vehicleID, parentID, depth, commentPath, commentTime, content)
 VALUES (2, 2, 2, 2, '1/2', '2018-11-27 13:33:57', "Ahh, gothca. That's too bad, I really like fuchsia...");
+
+/* NEW COMMENT */
+INSERT INTO CommentsOn (userID, vehicleID, depth, commentTime, content)
+VALUES (2, 1, 0, '2018-12-08 10:10:00', 'Wow, what a great car! Does it come in bright pearlescent fuchsia?!');
 
 /* CARTCONTENTS CREATION */
 /*userID    int NOT NULL,

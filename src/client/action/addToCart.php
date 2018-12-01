@@ -1,18 +1,29 @@
 <?php
+// Get the current list of products
 session_start();
-//Check we are recieving item data
-if(!isset($_SERVER['REQUEST_METHOD'])) {
-    //Send back as we have bad data
-    header("Location: ".$_SESSION['HTTP_REFERER']);
-    die();
+$vehicleList = null;
+if (isset($_SESSION['vehicleList'])){
+	$vehicleList = $_SESSION['vehicleList'];
+} else{ 	// No products currently in list.  Create a list.
+	$vehicleList = array();
 }
-//check if we have an existing cart
-if (!isset($_SESSION['cart'])) {
-    //create a cart
+
+// Add new product selected
+// Get product information
+if(isset($_GET['id']) && isset($_GET['productPic'])){
+	$id = $_GET['id'];
+	$productPic = $_GET['productPic'];
+} else {
+	header('Location: search.php');
 }
-// query sql for data to add to cart
-// append data to cart
-// send back
-header("Location: ".$_SESSION['HTTP_REFERER']);
-die();
+
+// Update quantity if add same item to order again
+if (isset($vehicleList[$id])){
+	$vehicleList[$id]['quantity'] = $vehicleList[$id]['quantity'] + 1;
+} else {
+	$vehicleList[$id] = array( "id"=>$id, "productPic"=>$productPic, "quantity"=>1 );
+}
+
+$_SESSION['vehicleList'] = $vehicleList;
+header('Location: ../cart.php');
 ?>
