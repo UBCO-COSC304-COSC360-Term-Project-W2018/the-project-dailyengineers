@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
@@ -8,11 +8,11 @@ $error      = mysqli_connect_error();
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
-        exit($output);
-        } else {
-              // echo "Connected to Database.";
-        }
-
+      	exit($output);
+    } else {
+          // echo "Connected to Database.";
+    }
+?>
   <section class="leftSidebar">
       <div class="custom-select">
             <select name="make_sel">
