@@ -26,30 +26,82 @@
 
             <section class="mainView">
               <h1>Product Listing</h1>
-                <span class="half prodLeft">
-                    <div>
-                        <p>20XX-Zeppelin-Carousel</p>
-                    </div>
-                    <img class="containedImg" src="images/bentley.jpg">
-                    <div>
-                        <div id="qty" class="inlineEle">
-                            <p>3 remaining</p>
-                        </div>
-                        <button id="cartButton" class="inlineEle prodRight">Add to cart</button>
-                    </div>
-                </span>
-                <span class="half prodRight">
-                    <div class="inlineEle">
-                        <p>$1,000,000.00</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum varius sit amet mattis vulputate enim nulla. Mauris nunc congue nisi vitae suscipit tellus. Duis ultricies lacus sed turpis tincidunt id aliquet. Tellus at urna condimentum mattis pellentesque.</p>
-                    </div>
-                </span>
 
-                <div id="flavourText">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum varius sit amet mattis vulputate enim nulla. Mauris nunc congue nisi vitae suscipit tellus. Duis ultricies lacus sed turpis tincidunt id aliquet. Tellus at urna condimentum mattis pellentesque.</p>
+              <div class="cartEntry">
+                <div class="cartCol leftCol">
+                  <div class="thumbContainer">
+                    <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
+                  </div>
+                <!-- <a href="product.php" class="searchLink">2018 Bentley Continental GT3</a> -->
                 </div>
+                <div class="cartCol middleCol">
+                  <!-- <div class="midFlex"> -->
+                    <div class="productName">
+                      <p>Year</p>
+                      <p>Make</p>
+                      <p>Model</p>
+                    </div>
+                    <table>
+                      <tr>
+                        <td class="attributeType">Body Type:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Transmission:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Drivetrain:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Engine:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Fuel:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Colour:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Seats:</td>
+                        <td class="attributeValue">VALUE</td>
+                      </tr>
+                    </table>
+                  <!-- </div> -->
+                </div>
+                <div class="cartCol rightCol">
+                  <div class="productPrice">
+                    <p>Price:</p>
+                    <p>$1,000,000</p>
+                  </div>
+                  <div class="productPrice">
+                    <p>Quantity:</p>
+                    <select class="quantityCount">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <div class="productPrice">
+                    <input type="button" class="formatButton" value="Add to Cart">
+                  </div>
+                </div>
+              </div>
+              <div class="descriptionContainer">
+                <p>Item description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
+              </div>
+
                 <div>
                     <h2>Comments</h2>
 
@@ -87,6 +139,18 @@
                                 <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
+
+                        <?php if (isset($_SESSION['username'])) { ?>
+                          <div id="newCommentBox">
+                            <h3>New Comment:</h3>
+                            <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
+                            <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
+                            <button type="button" id="commentSubmit" class="formatButton">Post</button>
+                          </div>
+                          <script type="text/javascript" src="js/addComment.js"></script>
+                        <?php } else { ?>
+                          <i>Please login to post a comment.</i>
+                        <?php } ?>
                     </ul>
 
                 </div>

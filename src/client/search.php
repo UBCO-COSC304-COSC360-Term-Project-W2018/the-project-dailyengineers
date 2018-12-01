@@ -94,11 +94,11 @@
                 $vehicleName = $year." ".$make." ".$model;
                 $one = 1;
 
-                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php">';
+                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php?id='.$vehicleID.'">';
                 echo "<img src='./images/$vehiclePicStr.jpg'></a></div>";
-                echo "<a href='product.php?id='$vehicleID' class='searchLink'>$vehicleName</a></div>";
+                echo "<a href='product.php?id=".$vehicleID."' class='searchLink'>$vehicleName</a></div>";
                 echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice">';
-                echo "<p>$price</p></div><div class='searchMileage'>"; // price
+                echo "<p>$$price</p></div><div class='searchMileage'>"; // price
                 echo "<p>$drivetrain</p></div><div class='searchLocation'>"; // drivetrain
                 echo "<p>$engine</p></div></div>"; // engine
                 echo "<div class='searchDescription'>";
