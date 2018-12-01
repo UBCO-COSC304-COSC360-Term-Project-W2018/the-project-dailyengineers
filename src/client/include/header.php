@@ -10,12 +10,14 @@
 	  <div class="flexHeaderBottom">
 		<div class="flexBottomLeft">
 		  <nav class="navHeader">
-			<ul class="inlineNav">
+			<!-- <ul class="inlineNav">
 			  <li><a href="#">Root</a></li>
 			  <li><a href="#">Category 1</a></li>
 			  <li><a href="#">Category 3</a></li>
 			  <li><a href="#">Category 4</a></li>
-			</ul>
+			</ul> -->
+		<!-- Says which page we're on -->
+			<!-- <span class="inlineNav"><?php //echo basename($_SERVER['PHP_SELF']); ?></span> -->
 		  </nav>
 		</div>
 		<div class="flexBottomRight">
