@@ -43,7 +43,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                     //hash password
                     $hashword = md5($_POST['pass']);
                     // prepared statement insertion
-                    mysqli_stmt_bind_param($statement, "sss", $_POST['user'], $_POST['email'], $hashword);
+                    mysqli_stmt_bind_param($statement, "sss", $_POST['user'], $hashword, $_POST['email']);
                     // execute statement
                     $result = mysqli_execute($statement);
                     //if the execution executes
