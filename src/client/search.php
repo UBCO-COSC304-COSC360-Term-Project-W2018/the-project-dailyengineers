@@ -28,11 +28,11 @@
             <h1>Search Results</h1>
           </div>
           <div class="titleCol middleCol">
-            <div class="midTopFlex">
+            <!-- <div class="midTopFlex">
               <h2>Price:</h2>
               <h2>Drivetrain:</h2>
               <h2>Engine:</h2>
-            </div>
+            </div> -->
           </div>
           <!-- <div class="titleCol rightCol">
             <h2>Purchase:</h2>
@@ -97,10 +97,10 @@
                 echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php?id='.$vehicleID.'">';
                 echo "<img src='./images/$vehiclePicStr.jpg'></a></div>";
                 echo "<a href='product.php?id=".$vehicleID."' class='searchLink'>$vehicleName</a></div>";
-                echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice">';
-                echo "<p>$$price</p></div><div class='searchMileage'>"; // price
-                echo "<p>$drivetrain</p></div><div class='searchLocation'>"; // drivetrain
-                echo "<p>$engine</p></div></div>"; // engine
+                echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice attribute">';
+                echo "<p>Price:</p><p>$$price</p></div><div class='searchMileage attribute'>"; // price
+                echo "<p>Drivetrain:</p><p>$drivetrain</p></div><div class='searchLocation attribute'>"; // drivetrain
+                echo "<p>Engine:</p><p>$engine</p></div></div>"; // engine
                 echo "<div class='searchDescription'>";
                 echo "<p>$description</p></div></div><div class='searchCol rightCol'>";
                 echo "<a href='action/addToCart.php?id=".$vehicleID."&quantity=".$one."' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
