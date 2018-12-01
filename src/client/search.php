@@ -92,6 +92,7 @@
                 $vehicleID = $row[9];
                 $vehiclePicStr = $year."-".$make."-".$model;
                 $vehicleName = $year." ".$make." ".$model;
+                $one = 1;
 
                 echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php">';
                 echo "<img src='./images/$vehiclePicStr.jpg'></a></div>";
@@ -102,7 +103,7 @@
                 echo "<p>$engine</p></div></div>"; // engine
                 echo "<div class='searchDescription'>";
                 echo "<p>$description</p></div></div><div class='searchCol rightCol'>";
-                echo "<a href='action/addToCart.php?id=$vehicleID&pic=$productPic' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
+                echo "<a href='action/addToCart.php?id=".$vehicleID."&quantity=".$one."' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
                 echo "<a href='product.php#prodComment?id='$vehicleID' class='searchLink'>";
                 echo "$numComments Comments<img src='images/comment-bubble.png' class='commentBubble'></a></div></div></div>";
               }
