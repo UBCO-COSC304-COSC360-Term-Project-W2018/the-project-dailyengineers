@@ -22,10 +22,10 @@
                 <!--  enctype="multipart/form-data" -->
                   <fieldset>
                     <legend>Account Information</legend>
-                    <div id="imgInput">
+                    <!-- <div id="imgInput">
                         <img src="images/profilePlaceholder.png">
                         <input type="file" name="profile" accept="image/*">
-                    </div>
+                    </div> -->
                     <p>Username:</p>
                     <input name="user" type="text">
                     <p>Email:</p>

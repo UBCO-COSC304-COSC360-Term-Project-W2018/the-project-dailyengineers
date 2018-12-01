@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+// session_start();
 if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
     if (isset($_POST["user"])
@@ -43,7 +42,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                     //hash password
                     $hashword = md5($_POST['pass']);
                     // prepared statement insertion
-                    mysqli_stmt_bind_param($statement, "sss", $_POST['user'], $_POST['email'], $hashword);
+                    mysqli_stmt_bind_param($statement, "sss", $_POST['user'], $hashword, $_POST['email']);
                     // execute statement
                     $result = mysqli_execute($statement);
                     //if the execution executes
@@ -70,8 +69,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                         mysqli_stmt_close($stmt); // and dispose of the statement.
                         mysqli_close($connection);
 
-                        $_SESSION['username'] = $_POST['user'];
-                        header("Location: ../account.php");
+                        // $_SESSION['username'] = $_POST['user'];
+                        header("Location: ../login.php");
                     }
                 }
             }
