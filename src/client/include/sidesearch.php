@@ -2,17 +2,20 @@
 include 'include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
-if($connection -> connect_error) {
-die("Connection failed: " . $connection -> connect_error);
+    if($connection -> connect_error) {
+    die("Connection failed: " . $connection -> connect_error);
     }
     // echo "Connected to Server.";
     if ($error != null) {
-        $output = "<p>Unable to connect to database!</p>";
-        exit($output);
-        } else {
-              // echo "Connected to Database.";
-        }
+      $output = "<p>Unable to connect to database!</p>";
+      exit($output);
+    }
+    $sel_make = 0;
+    $sel_model = 0;
+    $sel_year = 0;
+
 ?>
+
   <section class="leftSidebar">
       <div class="custom-select">
       <form>
@@ -35,8 +38,8 @@ die("Connection failed: " . $connection -> connect_error);
         <select id="model_sel">
             <option value="0">All</option>
 				<?php
-					if($_POST['make_sel']!=0){
-						$sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$_POST['make_sel']';";
+					if($sel_make!=0){
+						$sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$sel_make';";
 					} else {
 						$sql_model = "SELECT DISTINCT model FROM Vehicle;";
 					}
@@ -54,14 +57,14 @@ die("Connection failed: " . $connection -> connect_error);
             <select id="year_sel">
                   <option value="0" selected="selected">All</option>
                   <?php
-					if($_POST['make_sel']!=0){
-						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST[\'make_sel\']'";
-						if($_POST['model_sel']!=0){
-								$sql_year = $sql_year . " AND model='$_POST[\'model_sel\']'";
+					if($sel_make!=0){
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$sel_make'";
+						if($sel_model!=0){
+								$sql_year = $sql_year . " AND model='$sel_model'";
 							}
 					} else {
-						if($_POST['model_sel']!=0){
-						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$_POST['model_sel']''";
+						if($sel_model!=0){
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE model='$sel_model'";
 						} else {
 						$sql_model = "SELECT DISTINCT year FROM Vehicle;";
 						}
