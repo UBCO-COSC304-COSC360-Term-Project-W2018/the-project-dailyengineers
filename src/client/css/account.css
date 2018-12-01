@@ -55,3 +55,6 @@ fieldset h3 {
 .passConfirmh3 {
     display: none;
 }
+.hide {
+    display: none;
+}
