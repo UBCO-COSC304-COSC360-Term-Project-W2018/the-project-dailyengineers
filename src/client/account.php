@@ -67,7 +67,7 @@ else{
                     <fieldset>
                       <legend>User Image</legend>
                       <img id=profilePic src=<?php echo $img_src ?>>
-                      <input type="file" name="profilePic" accept="image/*">
+                      <input type="file" name="profilePic" accept="image/*" disabled="disabled">
                     </fieldset>
                     <a class="formatButton" href="paymentMethod.php">Payment Method</a>
                     <a class="formatButton" href="orderStatus.php">Order History</a>

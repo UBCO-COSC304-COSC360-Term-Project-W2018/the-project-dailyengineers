@@ -1,44 +1,84 @@
 <?php
-//session_start();
-//include 'include/db_credentials.php';
-//$connection = mysqli_connect($host, $user, $password, $database);
-//$error      = mysqli_connect_error();
-//$sql = $connection("SELECT * FROM Product WHERE ?=?;");
-//	if($connection -> connect_error) {
-//    die("Connection failed: " . $connection -> connect_error);
-//    }
-//    echo "Connected to Server.";
-//    if ($error != null) {
-//        $output = "<p>Unable to connect to database!</p>";
-//        exit($output);
-//        } else {
-//              echo "Connected to Database.";
-//        }
+include 'include/db_credentials.php';
+$connection = mysqli_connect($host, $user, $password, $database);
+$error      = mysqli_connect_error();
+    if($connection -> connect_error) {
+    die("Connection failed: " . $connection -> connect_error);
+    }
+    // echo "Connected to Server.";
+    if ($error != null) {
+      $output = "<p>Unable to connect to database!</p>";
+      exit($output);
+    }
+    $sel_make = 0;
+    $sel_model = 0;
+    $sel_year = 0;
 
 ?>
-<section class="leftSidebar">
-    <div class="custom-select">
-        <select name="make_sel">
-            <option value="0">Make:</option>
-			<?php
-				//$sql_make = "SELECT DISTINCT make FROM Vehicle";
-				//if ($results = mysqli_query($connection, $sql_make)) {
-				//while ($row = mysqli_fetch_row($results)) {
-				//	$counter = 0;
-				//	echo "<option value='counter'>$row[0]</option>";
-				//	}
-				//} mysqli_free_result($results);
 
-			?>
+  <section class="leftSidebar">
+      <div class="custom-select">
+      <form>
+			<label for="make_sel">Make: </label>
+            <select id="make_sel">
+                  <option value="0" selected="selected">All</option>
+                  <?php
+                      $sql_make = "SELECT DISTINCT make FROM Vehicle";
+                      if ($results = mysqli_query($connection, $sql_make)) {
+						  //$counter = 0;
+                          while ($row = mysqli_fetch_row($results)) {
+                              //$counter++;
+                              echo "<option value='$row[0]'>$row[0]</option>";
+                          }
+                      } mysqli_free_result($results);
+                  ?>
+            </select>
+
+		<label for="model_sel">Model: </label>
+        <select id="model_sel">
+            <option value="0">All</option>
+				<?php
+					if($sel_make!=0){
+						$sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$sel_make';";
+					} else {
+						$sql_model = "SELECT DISTINCT model FROM Vehicle;";
+					}
+                    if ($results = mysqli_query($connection, $sql_make)) {
+						//$counter = 0;
+						while ($row = mysqli_fetch_row($results)) {
+							//$counter++;
+                            echo "<option value='$row[0]'>$row[0]</option>";
+                          }
+                      } mysqli_free_result($results);
+                  ?>
         </select>
 
-        <select>
-            <option value="0">Model:</option>
-        </select>
-
-        <select>
-            <option value="0">Year:</option>
-        </select>
+        <label for="year_sel">Year: </label>
+            <select id="year_sel">
+                  <option value="0" selected="selected">All</option>
+                  <?php
+					if($sel_make!=0){
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$sel_make'";
+						if($sel_model!=0){
+								$sql_year = $sql_year . " AND model='$sel_model'";
+							}
+					} else {
+						if($sel_model!=0){
+						$sql_year = "SELECT DISTINCT year FROM Vehicle WHERE model='$sel_model'";
+						} else {
+						$sql_model = "SELECT DISTINCT year FROM Vehicle;";
+						}
+					}
+                      $sql_make = "SELECT DISTINCT year FROM Vehicle";
+                      if ($results = mysqli_query($connection, $sql_make)) {
+						  //$counter = 0;
+                          while ($row = mysqli_fetch_row($results)) {
+                              //$counter++;
+                              echo "<option value='$row[0]'>$row[0]</option>";
+                          }
+                      } mysqli_free_result($results);
+                  ?>
+            </select>
 
         <select>
             <option value="0">Type:</option>
@@ -100,5 +140,8 @@
             <option value="4">5 seats</option>
             <option value="5">6+ seats</option>
         </select>
+
+		<input type="button" id="filter_b" value="Filter Products">
+    </form>
     </div>
 </section>
