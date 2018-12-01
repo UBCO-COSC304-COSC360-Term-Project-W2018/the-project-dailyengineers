@@ -2,8 +2,7 @@
 session_start();
 $userID = $_SESSION['userID'];
 $vehicleID = $_GET['id'];
-$quantity = $_GET['quantity'];
-$sql = 'INSERT INTO CartContents (userID, vehicleID, quantity) VALUES('.$userID.', '.$vehicleID.', '.$quantity.') ON DUPLICATE KEY UPDATE quantity = quantity + '.$quantity;
+$sql = 'DELETE FROM CartContents WHERE vehicleID='.$vehicleID.' and userID='.$userID;
 include '../include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
@@ -16,10 +15,10 @@ if ($error != null) {
 	exit($output);
 }
 if (mysqli_query($connection, $sql)) {
-	echo "New record created successfully";
+	echo "Record deleted successfully";
 } else {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
 }
 mysqli_close($connection);
-header('Location: ../cart.php');
+header('Location: ../cart.php?sql='.$sql);
 ?>

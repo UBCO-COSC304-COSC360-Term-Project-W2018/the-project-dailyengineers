@@ -2,11 +2,10 @@
 // session_start();
 if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
-    if (isset($_POST["user"])
-        && isset($_POST["firstName"])
-        && isset($_POST["lastName"])
-        && isset($_POST["email"])
-        && isset($_POST["pass"])) {
+    if (isset($_POST["user"]) && isset($_POST["firstName"]) && isset($_POST["lastName"])
+        && isset($_POST["email"]) && isset($_POST["pass"])
+        && !empty($_POST["user"]) && !empty($_POST["firstName"]) && !empty($_POST["lastName"])
+        && !empty($_POST["email"]) && !empty($_POST["pass"])) {
         //user data
         include '../include/db_credentials.php' ;
         //make connection
@@ -70,11 +69,12 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                         mysqli_close($connection);
 
                         // $_SESSION['username'] = $_POST['user'];
-                        header("Location: ../login.php");
+                        // header("Location: ../login.php");
                     }
                 }
             }
-            mysqli_close($connection);
         }
+        mysqli_close($connection);
     }
-}?>
+}
+header("Location: ../createAccount.php");?>
