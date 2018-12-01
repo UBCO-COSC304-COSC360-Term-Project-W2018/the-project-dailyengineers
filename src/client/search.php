@@ -70,35 +70,35 @@
           if ($connection -> connect_error) {
             die("Connection failed: " . $connection -> connect_error);
           }
-          // echo "Connected to Server."; 
+          // echo "Connected to Server.";
           if ($error != null) {
             $output = "<p>Unable to connect to database!</p>";
             exit($output);
           } else {
-          
+
             if ($results = mysqli_query($connection, $sql)) {
               // echo "in results";
               while ($row = mysqli_fetch_row($results)) {
 
-                $year = $row[0]; 
-                $make = $row[1]; 
-                $model = $row[2]; 
-                $price = $row[3]; 
-                $description = $row[4]; 
+                $year = $row[0];
+                $make = $row[1];
+                $model = $row[2];
+                $price = $row[3];
+                $description = $row[4];
                 $productPic = $row[5];
-                $numComments= $row[6]; 
-                $drivetrain = $row[7]; 
-                $engine = $row[8]; 
+                $numComments= $row[6];
+                $drivetrain = $row[7];
+                $engine = $row[8];
                 $vehicleID = $row[9];
                 $vehiclePicStr = $year."-".$make."-".$model;
                 $vehicleName = $year." ".$make." ".$model;
                 $one = 1;
 
-                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php">';
+                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php?id='.$vehicleID.'">';
                 echo "<img src='./images/$vehiclePicStr.jpg'></a></div>";
-                echo "<a href='product.php?id='$vehicleID' class='searchLink'>$vehicleName</a></div>";
+                echo "<a href='product.php?id=".$vehicleID."' class='searchLink'>$vehicleName</a></div>";
                 echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice">';
-                echo "<p>$price</p></div><div class='searchMileage'>"; // price
+                echo "<p>$$price</p></div><div class='searchMileage'>"; // price
                 echo "<p>$drivetrain</p></div><div class='searchLocation'>"; // drivetrain
                 echo "<p>$engine</p></div></div>"; // engine
                 echo "<div class='searchDescription'>";

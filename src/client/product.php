@@ -21,7 +21,7 @@
         <div class="columnContainer">
 
             <!-- Sidebar code -->
-            <?php include "include/sidesearch.php"; ?>
+            <?php//include "include/sidesearch.php"; ?>
             <!-- Page code -->
 
             <section class="mainView">
@@ -103,7 +103,20 @@
               </div>
 
                 <div>
-                    <h1 class="commentHeader">Comments</h1>
+                    <h2>Comments</h2>
+
+                    <?php if (isset($_SESSION['username'])) { ?>
+                      <div id="newCommentBox">
+                        <h3>New Comment:</h3>
+                        <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80">title</textarea>
+                        <br>
+                        <textarea id="newComment" name="newComment" rows="8" cols="80">your comment...</textarea>
+                        <button type="button" id="commentSubmit" class="prodCommentButton">Post</button>
+                      </div>
+                      <script type="text/javascript" src="js/addComment.js"></script>
+                    <?php } else { ?>
+                      <i>login to post a comment</i>
+                    <?php } ?>
 
                     <ul id="commentList">
                         <li>
@@ -113,6 +126,7 @@
                                 </div>
                                 <h3 class="inlineEle">We need Comments</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
+                                <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
                         <li>
@@ -122,6 +136,7 @@
                                 </div>
                                 <h3 class="inlineEle">There aren't enough comments</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
 
