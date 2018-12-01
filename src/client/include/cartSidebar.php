@@ -1,32 +1,36 @@
-<?php     
-  $sql = "SELECT v.vehicleID, price, quantity, userID FROM Vehicle v, CartContents c WHERE v.vehicleID = c.vehicleID and userID =";
-  $quantityTotal = 0;
-  $subtotal = 0;
-  include './include/db_credentials.php';
-  $connection = mysqli_connect($host, $user, $password, $database);
-  $error      = mysqli_connect_error();
-  if ($connection -> connect_error) {
-    die("Connection failed: " . $connection -> connect_error);
-  }
-  // echo "Connected to Server."; 
-  if ($error != null) {
-    $output = "<p>Unable to connect to database!</p>";
-    exit($output);
+<?php   
+  if (!isset($_SESSION['username'])) {
+
   } else {
-    $userID = $_SESSION['userID'];
-    $sql = $sql.$userID;
-      if ($results = mysqli_query($connection, $sql)) {
-      // echo "in results";
-      while ($row = mysqli_fetch_row($results)) {
-        $vehicleID = $row[0]; 
-        $price = $row[1]; 
-        $quantity = $row[2];
-        $subtotal += $price*$quantity;
-        $quantityTotal += $quantity;
-      }
-      mysqli_free_result($results);
+    $sql = "SELECT v.vehicleID, price, quantity, userID FROM Vehicle v, CartContents c WHERE v.vehicleID = c.vehicleID and userID =";
+    $quantityTotal = 0;
+    $subtotal = 0;
+    include './include/db_credentials.php';
+    $connection = mysqli_connect($host, $user, $password, $database);
+    $error      = mysqli_connect_error();
+    if ($connection -> connect_error) {
+      die("Connection failed: " . $connection -> connect_error);
     }
-    mysqli_close($connection);
+    // echo "Connected to Server."; 
+    if ($error != null) {
+      $output = "<p>Unable to connect to database!</p>";
+      exit($output);
+    } else {
+      $userID = $_SESSION['userID'];
+      $sql = $sql.$userID;
+        if ($results = mysqli_query($connection, $sql)) {
+        // echo "in results";
+        while ($row = mysqli_fetch_row($results)) {
+          $vehicleID = $row[0]; 
+          $price = $row[1]; 
+          $quantity = $row[2];
+          $subtotal += $price*$quantity;
+          $quantityTotal += $quantity;
+        }
+        mysqli_free_result($results);
+      }
+      mysqli_close($connection);
+    }
   }
 ?>
 
