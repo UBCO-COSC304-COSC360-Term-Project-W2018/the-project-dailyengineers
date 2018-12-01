@@ -25,5 +25,5 @@ if (isset($vehicleList[$id])){
 }
 
 $_SESSION['vehicleList'] = $vehicleList;
-header('Location: search.php');
+header('Location: ../cart.php');
 ?>
