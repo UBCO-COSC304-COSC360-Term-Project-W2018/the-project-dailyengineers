@@ -8,18 +8,11 @@ die("Connection failed: " . $connection -> connect_error);
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
-<<<<<<< HEAD
-      	exit($output);
-    } else {
-          // echo "Connected to Database.";
-    }
-=======
 		echo $error;
         exit($output);
         } else {
               // echo "Connected to Database.";
         }
->>>>>>> e1ed73b724f0cf11859696df669a61407955d957
 ?>
   <section class="leftSidebar">
       <div class="custom-select">
