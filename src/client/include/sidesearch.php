@@ -1,17 +1,9 @@
 <?php
-<<<<<<< HEAD
-include 'include/db_credentials.php';
-$connection = mysqli_connect($host, $user, $password, $database);
-$error      = mysqli_connect_error();
-if($connection -> connect_error) {
-die("Connection failed: " . $connection -> connect_error);
-=======
     include 'include/db_credentials.php';
     $connection = mysqli_connect($host, $user, $password, $database);
     $error      = mysqli_connect_error();
     if ($connection -> connect_error) {
         die("Connection failed: " . $connection -> connect_error);
->>>>>>> 8b84bf6237e97b3fce519e308638a1107b35979c
     }
     // echo "Connected to Server.";
     if ($error != null) {
@@ -25,15 +17,10 @@ die("Connection failed: " . $connection -> connect_error);
 <html>
   <section class="leftSidebar">
       <div class="custom-select">
-<<<<<<< HEAD
-            <select name="make_sel">
-                  <option value="0">Make:</option>
-=======
       <form>
 			<label for="make_sel">Make: </label>
             <select id="make_sel">
                   <option value="0" selected="selected">All</option>
->>>>>>> 8b84bf6237e97b3fce519e308638a1107b35979c
                   <?php
                       $sql_make = "SELECT DISTINCT make FROM Vehicle";
                       if ($results = mysqli_query($connection, $sql_make)) {

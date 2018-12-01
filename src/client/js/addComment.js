@@ -48,8 +48,9 @@ function addComment(titleField, contentField) {
   var replyText = document.createTextNode('Reply');
   reply.appendChild(replyText);
 
-  // ***** wire up the reply button *****
-  reply.onclick = function () {
+  reply.onclick = function() {  }
+}
 
-  }
+function addReply(titleField, contentField, parent) {
+
 }

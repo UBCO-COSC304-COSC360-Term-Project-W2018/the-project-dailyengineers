@@ -21,7 +21,7 @@
         <div class="columnContainer">
 
             <!-- Sidebar code -->
-            <?php //include "include/sidesearch.php"; ?>
+            <?php//include "include/sidesearch.php"; ?>
             <!-- Page code -->
 
             <section class="mainView">
@@ -53,7 +53,7 @@
                 <div>
                     <h2>Comments</h2>
 
-                    <?php //if (isset($_SESSION['username'])) { ?>
+                    <?php if (isset($_SESSION['username'])) { ?>
                       <div id="newCommentBox">
                         <h3>New Comment:</h3>
                         <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80">title</textarea>
@@ -62,9 +62,9 @@
                         <button type="button" id="commentSubmit" class="prodCommentButton">Post</button>
                       </div>
                       <script type="text/javascript" src="js/addComment.js"></script>
-                    <?php //} else { ?>
-                      <!-- <i>login to post a comment</i> -->
-                    <?php //} ?>
+                    <?php } else { ?>
+                      <i>login to post a comment</i>
+                    <?php } ?>
 
                     <ul id="commentList">
                         <li>
