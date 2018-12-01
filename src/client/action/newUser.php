@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+// session_start();
 if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
     if (isset($_POST["user"])
@@ -70,8 +69,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                         mysqli_stmt_close($stmt); // and dispose of the statement.
                         mysqli_close($connection);
 
-                        $_SESSION['username'] = $_POST['user'];
-                        header("Location: ../account.php");
+                        // $_SESSION['username'] = $_POST['user'];
+                        header("Location: ../login.php");
                     }
                 }
             }
