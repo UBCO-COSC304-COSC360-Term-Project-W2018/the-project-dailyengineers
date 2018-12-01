@@ -21,7 +21,7 @@
         <div class="columnContainer">
 
             <!-- Sidebar code -->
-            <?php include "include/sidesearch.php"; ?>
+            <?php//include "include/sidesearch.php"; ?>
             <!-- Page code -->
 
             <section class="mainView">
@@ -105,6 +105,7 @@
                 <div>
                     <h1 class="commentHeader">Comments</h1>
 
+
                     <ul id="commentList">
                         <li>
                             <div class="prodComment">
@@ -113,6 +114,7 @@
                                 </div>
                                 <h3 class="inlineEle">We need Comments</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
+                                <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
                         <li>
@@ -122,6 +124,7 @@
                                 </div>
                                 <h3 class="inlineEle">There aren't enough comments</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
 

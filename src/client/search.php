@@ -70,25 +70,25 @@
           if ($connection -> connect_error) {
             die("Connection failed: " . $connection -> connect_error);
           }
-          // echo "Connected to Server."; 
+          // echo "Connected to Server.";
           if ($error != null) {
             $output = "<p>Unable to connect to database!</p>";
             exit($output);
           } else {
-          
+
             if ($results = mysqli_query($connection, $sql)) {
               // echo "in results";
               while ($row = mysqli_fetch_row($results)) {
 
-                $year = $row[0]; 
-                $make = $row[1]; 
-                $model = $row[2]; 
-                $price = $row[3]; 
-                $description = $row[4]; 
+                $year = $row[0];
+                $make = $row[1];
+                $model = $row[2];
+                $price = $row[3];
+                $description = $row[4];
                 $productPic = $row[5];
-                $numComments= $row[6]; 
-                $drivetrain = $row[7]; 
-                $engine = $row[8]; 
+                $numComments= $row[6];
+                $drivetrain = $row[7];
+                $engine = $row[8];
                 $vehicleID = $row[9];
                 $vehiclePicStr = $year."-".$make."-".$model;
                 $vehicleName = $year." ".$make." ".$model;
