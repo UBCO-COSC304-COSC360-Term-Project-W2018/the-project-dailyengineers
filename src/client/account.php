@@ -61,7 +61,7 @@ else{
             <section class="mainView">
               <h1>User Control Panel</h1>
 
-              <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+              <form method="POST" action="action/modAccount.php">
                 <div class="shippingBilling">
                   <div id="shippingForm">
                     <fieldset>
