@@ -1,4 +1,4 @@
-.left {
+/* .left {
     float: left;
     width: 10em;
 }
@@ -51,10 +51,10 @@ fieldset h3 {
     padding: 0.5em;
     height: 1em;
     min-width: 14em;
-}
-.passConfirmh3 {
+} */
+/* .passConfirmh3 {
     display: none;
-}
+} */
 .hide {
     display: none;
 }
