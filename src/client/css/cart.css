@@ -233,12 +233,12 @@ form input[type=text], form input[type=email], form input[type=password] {
   /* overflow-wrap; break-word; */
   /* border: black 2px inset; */
 }
-form input[type=text].cardCVV {
+form input[type=text]#cardCVV {
   width: 5em;
   height: 1.5em;
   /* border: black 2px inset; */
 }
-form input[type=text].cardExpiry {
+form input[type=text]#cardExpiry {
   width: 10em;
   height: 1.5em;
   /* border: black 2px inset; */
@@ -285,20 +285,6 @@ form input[type=text].cardExpiry {
     height: 12em;
 }
 
-.accountButton {
-  font-weight: bold;
-  text-decoration: none;
-  margin: 1em;
-  display: block;
-  border: 1px solid #FF8800;
-  border-radius: 0.75em;
-  padding: 0.5em;
-  background-color: #FF8800;
-  color: #353535;
-  text-align: center;
-  font-size: 1em;
-}
-
 form input[type=file] {
   width: 14.4em;
   height: 1.5em;
@@ -321,9 +307,4 @@ form input[type=file] {
   /* margin-left: auto;
   margin-right: auto; */
   visibility: hidden;
-}
-
-.accountButton:hover  {
-  background-color: #353535;
-  color: #FF8800;
 }

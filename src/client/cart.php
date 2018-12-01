@@ -16,6 +16,8 @@
   <?php include 'include/header.php';?>
 
   <main>
+    <div class="columnContainer">
+      <section class="cartLeftSidebar">
     <?php
 // include 'include/money_format_windows.php'; //Only required on windows PCs
 // Get the current list of products

@@ -120,11 +120,11 @@ if (!isset($_SESSION['username'])) {
               <fieldset>
                 <legend id="radioLegend"><label><input type="radio" name="cardRadio" value="newCard"> New Card</label></legend>
                 <h2>Card Number:</h2>
-                <input type="text" name="cardNumber" class="cardNumber" class="required">
+                <input type="text" name="cardNumber" id="cardNumber" class="required">
                 <h2>Expiry Date:</h2>
-                <input type="text" name="cardExpiry" class="cardExpiry" class="required">
+                <input type="text" name="cardExpiry" id="cardExpiry" class="required">
                 <h2>CVV:</h2>
-                <input type="text" name="cardCVV" class="cardCVV" class="required">
+                <input type="text" name="cardCVV" id="cardCVV" class="required">
                 <label><input type="checkbox" name="savePaymentMethod" value="checked" class="savePaymentCheckbox"> Save Payment Method</label>
               </fieldset>
             </fieldset>
@@ -147,7 +147,7 @@ if (!isset($_SESSION['username'])) {
                 <hr>
                 <h2>Total</h2>
                 <p>$xxx,xxx.00</p>
-                <input type="submit" value="Submit Order" class="checkoutButton">
+                <input type="submit" value="Submit Order" class="checkoutButton submitOrder">
             </fieldset>
           </div>
         </form>
