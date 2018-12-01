@@ -49,7 +49,7 @@ else{
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/cart.css">
     <script src="js/editprofile.js"></script> 
-    <!-- <link rel="stylesheet" href="css/account.css"> -->
+    <link rel="stylesheet" href="css/account.css">
 </head>
 
 <body>
@@ -84,6 +84,7 @@ else{
                       <input type="email" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" disabled="true">
                       <h2>Password:</h2>
                       <input type="password" name="accountPassword" class="required accMod" value="" disabled="true">
+                      <h2 class="hide">Confirm Password:</h2>
                       <input type="password" class="required accMod hide" value="" disabled="true">
                       <h2>First Name:</h2>
                       <input type="text" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" disabled="true">
