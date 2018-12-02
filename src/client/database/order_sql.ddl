@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Customer (
    firstName varchar(20) NOT NULL,
    lastName varchar(20) NOT NULL,
    address varchar(255) NOT NULL,
-   profilePic VARCHAR(50),
+   profilePic LONGBLOB,
    CCNumber int,
    CCV int,
    expiryDate DATE,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS Customer (
     ON UPDATE CASCADE
 );
 
-ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
+-- ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
 
 CREATE TABLE IF NOT EXISTS Admin (
   userID int NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   vehicleID     int NOT NULL AUTO_INCREMENT,
   year          int NOT NULL,
   make          VARCHAR(20) NOT NULL,
-  model         VARCHAR(20) NOT NULL,
+  model         VARCHAR(32) NOT NULL,
   price         NUMERIC(10,2) NOT NULL,
   productPic    VARCHAR(50),
   bodyType      VARCHAR(10) CHECK (bodyType IN (Coupe, Hatchback, Sedan, SUV, Truck, Wagon, Other)),
@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   UNIQUE yearMakeModel (year, make, model, transmission, drivetrain, engine, fuel, exterior)
 );
 
-ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
-ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
+-- ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
+-- ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS Warehouse (
   warehouseID int NOT NULL AUTO_INCREMENT,
