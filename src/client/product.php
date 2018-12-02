@@ -21,7 +21,7 @@
         <div class="columnContainer">
 
             <!-- Sidebar code -->
-            <?php//include "include/sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
 
             <section class="mainView">
