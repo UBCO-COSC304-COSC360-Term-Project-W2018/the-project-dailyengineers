@@ -114,7 +114,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <form method="get" name="selector" action="action/addToCart.php">
+                    <form method="get" name="selector">
                       <input value="<?php $vehicleID; ?>" name="id" type="hidden">
                     <select class="quantityCount" name="quantity">
                       <?php
