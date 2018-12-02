@@ -150,7 +150,7 @@
                 <div class="cartCol rightCol">
                   <div class="productPrice">
                     <p>Price:</p>
-                    <?php echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p>'; ?>
+                    <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p>'; ?>
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
