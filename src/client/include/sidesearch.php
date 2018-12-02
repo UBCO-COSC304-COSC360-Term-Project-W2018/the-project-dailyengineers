@@ -14,6 +14,7 @@
     $sel_model = 0;
     $sel_year = 0;
 ?>
+<html>
 <section class="leftSidebar">
   <div class="custom-select">
 
@@ -151,7 +152,7 @@
                       <option value="0" selected="selected">All</option>
                       <?php
                                           $sql_seats = "SELECT DISTINCT seats FROM Vehicle";
-                                          if ($results = mysqli_query($connection, $sql_fuel)) {
+                                          if ($results = mysqli_query($connection, $sql_seats)) {
                                               //$counter = 0;
                                               while ($row = mysqli_fetch_row($results)) {
                                                   //$counter++;
@@ -178,41 +179,40 @@
 
                   <input type="button" class="formatButton" id="filter_b" value="Find Products">
     </form>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-      var make_selected = "0";
-
-      $(document).ready(function() {
-        var make_val = ("#make_sel").val();
-        var model_val = ("#model_sel").val();
-        var selects = [("#make_sel"), ("#make_sel"), ("#model_sel"), ("#type_sel"),
-          ("#year_sel"), ("#engine_sel"), ("#drivetrain_sel"), ("#trans_sel"),
-          ("#color_sel"), ("#seats_sel"), ("#fuel_sel")
-        ];
-
-        $("#make_sel").change(function() {
-          var val = $(this).val();
-          for (i = 1; i < selects.length; i++) {
-            $.post("../action/loadSideOptions.php", {
-              field: selects[i].attr("name")
-            }, function(data) {
-              selects[i].html("<option value='0' selected='selected'>All</option>" + data);
-            });
-          }
-        });
-        $("#model_sel").change(function() {
-          var val = $(this).val();
-          for (i = 2; i < selects.length; i++) {
-            $.post("../action/loadSideOptions.php", {
-                field: selects[i].attr("name")
-              },
-              function(data) {
-                selects[i].html("<option value='0' selected='selected'>All</option>" + data);
-              });
-          }
-        });
-
-      });
-    </script>
   </div>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      var make_val = ("#make_sel").val();
+      var model_val = ("#model_sel").val();
+      var selects = ["#make_sel", "#make_sel", "#model_sel", "#type_sel",
+        "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+        "#color_sel", "#seats_sel", "#fuel_sel"
+      ];
+
+      $("#make_sel").change(function() {
+        var val = $(this).val();
+        for (i = 1; i < selects.length; i++) {
+          $.post( "../action/loadSideOptions.php", { field : $(selects[i]).attr("name") }, function(data) {
+            $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+          });
+        }
+      });
+      $("#model_sel").change(function() {
+        var val = $(this).val();
+        for (i = 2; i < selects.length; i++) {
+          $.post("../action/loadSideOptions.php", {
+              field: $(selects[i]).attr("name")
+            },
+            function(data) {
+              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+            });
+        }
+      });
+
+    });
+  </script>
 </section>
+</html>
