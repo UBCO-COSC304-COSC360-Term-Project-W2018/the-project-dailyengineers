@@ -19,6 +19,7 @@ if ($make_selected!="0"&&$model_selected!="0") {
 if ($results = mysqli_query($connection, $sql_query)) {
     while ($row = mysql_fetch_array($result)) {
         echo "<option value=" . $row[0] . ">" . $row[0] . "</option>";
-    }
-}
+    }mysqli_free_result($results);
+}mysqli_close($connection);
+
 ?>
