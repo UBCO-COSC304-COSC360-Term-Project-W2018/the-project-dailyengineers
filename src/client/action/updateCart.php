@@ -21,5 +21,5 @@ if (mysqli_query($connection, $sql)) {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
 }
 mysqli_close($connection);
-header('Location: ../cart.php);
+header('Location: ../cart.php');
 ?>
