@@ -67,6 +67,7 @@
                 echo '<div class="cartCol rightCol"><div class="cartPrice"><p>Unit Price:</p>';
                 echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
+                ?>
                 <form method="get" name="selector" action="action/updateCart.php" class="selectorForm">
                 <select class="quantityCount" name="quantity">
                   <?php
