@@ -114,9 +114,9 @@
                     <p>Quantity:</p>
                     <select class="quantityCount">
                       <?php
-                      $counter = 0;
-                      while($counter <= $amount) {
-                        echo '<option>'.($counter + 1).'</option>';
+                      $counter = 1;
+                      while($counter < ($amount + 1)) {
+                        echo '<option>'.$counter.'</option>';
                         $counter++;
                       }?>
                       <!-- <option>1</option>
