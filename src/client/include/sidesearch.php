@@ -197,7 +197,7 @@
           document.getElementById("make_sel").onchange = function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
+              "#colour_sel", "#seats_sel", "#fuel_sel"
             ];
             var val = this.value;
             $("#testOut").text(val);
