@@ -65,14 +65,14 @@
                   $sql = " AND " . $sql;
                 }
                 $used_filter++;
-                $sql = $sql."'".$name."'='".$val."'";
-                echo $sql;
+                $sql = $sql."".$name."='".$val."'";
               }
             }
             if($used_filter==0){
               $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID";
             }
             $sql = $sql . " GROUP BY vehicleID";
+            echo $sql;
           }
           else if ($name == "") {
             echo("<h2>All Vehicles</h2>");
