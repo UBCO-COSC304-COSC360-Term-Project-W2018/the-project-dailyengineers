@@ -198,6 +198,7 @@
             var val = this.value;
             $("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
+              $("#testOut").append(selects[i]);
               $.post("./action/loadSideOptions.php", {
                 field: $(selects[i]).attr("name"),
                 make: $("#make_sel").val(),
@@ -216,6 +217,7 @@
             var val = this.value;
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
+              $("#testOut").append(selects[i]);
               $.post("./action/loadSideOptions.php", {
                 field: $(selects[i]).attr("name"),
                 make: $("#make_sel").val()
@@ -224,61 +226,6 @@
               });
             }
           };
-
-          $("#make_sel").on('change', function() {
-            var selects = ["#make_sel", "#model_sel", "#type_sel",
-              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
-            ];
-            var val = this.value;
-            $("#testOut").text(val);
-            for (i = 1; i < selects.length; i++) {
-              $.post("./action/loadSideOptions.php", {
-                field: $(selects[i]).attr("name"),
-                make: $("#make_sel").val(),
-                model: $("#model_sel").val()
-              }, function(data) {
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-              });
-            }
-          });
-
-          $("#make_sel").change(function() {
-            var selects = ["#make_sel", "#model_sel", "#type_sel",
-              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
-            ];
-            var val = this.value;
-            $("#testOut").text(val);
-            for (i = 1; i < selects.length; i++) {
-              $.post("./action/loadSideOptions.php", {
-                field: $(selects[i]).attr("name"),
-                make: $("#make_sel").val(),
-                model: $("#model_sel").val()
-              }, function(data) {
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-              });
-            }
-          });
-
-          $("#model_sel").change(function() {
-            var selects = ["#make_sel", "#model_sel", "#type_sel",
-              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
-            ];
-            var val = this.value;
-            $("#testOut").text(val);
-            for (i = 2; i < selects.length; i++) {
-              $.post("./action/loadSideOptions.php", {
-                  field: $(selects[i]).attr("name"),
-                  make: $("#make_sel").val(),
-                  model: $("#model_sel").val()
-                },
-                function(data) {
-                  $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-                });
-            }
-          });
 
         });
       </script>
