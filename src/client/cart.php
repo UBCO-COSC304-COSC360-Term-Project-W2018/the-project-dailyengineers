@@ -60,9 +60,11 @@
                 echo '<div class="cartCol middleCol"><div class="cartProductName">';
                 echo '<a href="'.$productLink.'" class="searchLink">'.$vehicleName.'</a></div></div>';
                 echo '<div class="cartCol rightCol"><div class="cartPrice"><p>Unit Price:</p>';
-                echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
+                echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
                 echo '<p>'.$quantity.'</p></div>';
+                // needs code for update
+                echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id=11">Update Quantity</a></div>';
                 echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id='.$vehicleID.'">Remove Item</a></div></div></div>';
               }
               mysqli_free_result($results);

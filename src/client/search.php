@@ -56,7 +56,7 @@
 
           if ($name == "") {
             echo("<h2>All Vehicles</h2>");
-            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY vehicleID DESC LIMIT 10";
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY make ASC LIMIT 20";
           } else {
             echo("<h2>Vehicles containing '" . $name . "'</h2>");
             $hasParameter = true;
