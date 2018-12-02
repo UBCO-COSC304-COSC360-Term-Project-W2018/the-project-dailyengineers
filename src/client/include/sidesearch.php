@@ -209,10 +209,10 @@
                 type: 'POST',
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
                 success: function(results){
-                  alert("successfully got results");
+                  //alert("successfully got results");
                   var retHTML = results;
                   $("#testOut").append(retHTML);
-                  $(selected[results.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
+                  $(selected[forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
               });
               //$("#testOut").append(returnedhtml);
@@ -229,7 +229,7 @@
           document.getElementById("model_sel").onchange = function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
+              "#colour_sel", "#seats_sel", "#fuel_sel"
             ];
             var val = this.value;
             $("#testOut").text(val);
@@ -240,10 +240,10 @@
                 type: 'POST',
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
                 success: function(returned){
-                  alert("successfully got results");
+                  //alert("successfully got results");
                   var returnedhtml = returned;
                   $("#testOut").append(returnedhtml);
-                  $(selected[returned.forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+                  $(selected[forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
                 }
               });
