@@ -18,12 +18,12 @@
 <section class="leftSidebar">
   <div class="custom-select">
 
-    <form action="#" method="POST">
+    <form>
       <p id="testOut">
       </p>
       <div>
         <label for="make_sel">Make: </label>
-        <select id="make_sel" name="make">
+        <select id="make_sel" name="make" onchange="onChangeMake(this)">
           <option value="0" selected="selected">All</option>
           <?php
                       $sql_make = "SELECT DISTINCT make FROM Vehicle ORDER BY make";
@@ -39,7 +39,7 @@
       </div>
 
       <div><label for="model_sel">Model: </label>
-        <select id="model_sel" name="model">
+        <select id="model_sel" name="model" onchange="onChangeModel(this)">
           <option value="0">All</option>
           <?php
                         $sql_model = "SELECT DISTINCT model FROM Vehicle ORDER BY model";
@@ -183,16 +183,47 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
+        function onChangeMake(elem){
+          var selects = ["#make_sel", "#model_sel", "#type_sel",
+            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+            "#color_sel", "#seats_sel", "#fuel_sel"];
+            var val = elem.value;
+            $("#testOut").text(val);
+            for (i = 1; i < selects.length; i++) {
+              $.post("./action/loadSideOptions.php", {
+                field : document.getElementsByTagName(selects[i]).getAttribute("name");,
+                make : elem.value,
+                model : $("#model_sel").val()
+              }, function(data) {
+                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+              });
+            }
+        }
+        function onChangeModel(elem){
+          var selects = ["#make_sel", "#model_sel", "#type_sel",
+            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+            "#color_sel", "#seats_sel", "#fuel_sel"];
+            var val = elem.value;
+            $("#testOut").text(val);
+            for (i = 2; i < selects.length; i++) {
+              $.post("./action/loadSideOptions.php", {
+                field : document.getElementsByTagName(selects[i]).getAttribute("name");,
+                make : $("#make_sel").val(),
+                model : elem.value
+              }, function(data) {
+                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+              });
+            }
+        }
         $(document).ready(function() {
           $('select').on('change', function() {
             alert(this.value);
-            this.change();
           });
           $("#make_sel").on('change', function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
               "#color_sel", "#seats_sel", "#fuel_sel"];
-            var val = $(this).val();
+            var val = this.value;
             $("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
               $.post("./action/loadSideOptions.php", {
@@ -208,7 +239,7 @@
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
               "#color_sel", "#seats_sel", "#fuel_sel"
             ];
-            var val = $(this).val();
+            var val = this.value;
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
               $.post("./action/loadSideOptions.php", {
@@ -222,6 +253,7 @@
             }
           });
         });
+
       </script>
     </form>
   </div>
