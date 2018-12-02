@@ -190,8 +190,8 @@ INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrai
 VALUES ('2015', 'Audi', 'R8', '129900.00', 'Coupe', 'Manual', 'AWD', '10CYL', 'Gas', 'Silver', '2');
 /* https://www.quattrodaily.com/wp-content/uploads/2015/10/12094927_997946123596568_2264656566690080600_o-1050x700.jpg */
 
-INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
-VALUES ('2018', 'Tesla', 'Model S', '174700.00', 'Sedan', 'Electric', 'AWD', 'Electric', 'Electric', 'White', '7');
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description)
+VALUES ('2018', 'Tesla', 'Model S', '174700.00', 'Sedan', 'Electric', 'AWD', 'Electric', 'Electric', 'White', '7', "Model S sets an industry standard for performance and safety. Tesla's all-electric powertrain delivers unparalleled performance in all weather conditions - with Dual Motor All-Wheel Drive and ludicrous acceleration.");
 /* https://www.tesla.com/content/dam/tesla-site/sx-redesign/img/models/footer/models@2.jpg */
 
 INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
@@ -218,14 +218,18 @@ INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrai
 VALUES ('2017', 'Dodge', 'Challenger SRT HELLCAT', '40999.00', 'Sedan', 'Manual', 'RWD', '8CYL', 'Gas', 'Black', '5');
 /* https://tdrpmimages.azureedge.net/photos/import/201811/0210/0235/7c9d394d-b063-4ded-a6b3-ca356ef76307.jpg-1024x786 */
 
-INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
-VALUES ('2018', 'Mercedes', 'GLC AMG 63', '121277.23', 'SUV', 'Automatic', 'AWD', '8CYL', 'Gas', 'White', '5');
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description)
+VALUES ('2018', 'Mercedes', 'GLC AMG 63', '121277.23', 'SUV', 'Automatic', 'AWD', '8CYL', 'Gas', 'White', '5', "Within the muscular body of an SUV lives the agility of a sport sedan bred to win countless German Touring Car Championships and drivers' hearts around the world. The Mercedes-AMG GLC SUVs wrap thundering power in lightning-quick reflexes.");
 
 INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
 VALUES ('2018', 'Honda', 'Civic Type R', '41090.00', 'Hatchback', 'Automatic', 'FWD', '4CYL', 'Gas', 'White', '4');
 
 INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
-VALUES ('2017', 'Ferrari', 'F12tdf', '1300000.00', 'Coupe', 'Automatic', 'RWD', '12CYL', 'Gas', 'White', '2');
+VALUES ('2017', 'Ferrari', 'F12tdf', '1300000.00', 'Coupe', 'Automatic', 'RWD', '12CYL', 'Gas', 'Blue', '2');
+
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
+VALUES ('2018', 'Lamborghini', 'Aventador Roadster S', '674995.00', 'Coupe', 'Automatic', 'AWD', '12CYL', 'Gas', 'Black', '2');
+
 
 /* WAREHOUSE CREATION */
 /*warehouseID int NOT NULL AUTO_INCREMENT,
