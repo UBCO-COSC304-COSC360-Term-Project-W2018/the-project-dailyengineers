@@ -3,7 +3,7 @@ session_start();
 $userID = $_SESSION['userID'];
 $vehicleID = $_GET['id'];
 $quantity = $_GET['quantity'];
-$sql = "UPDATE CartContents SET quantity='.$quantity.' WHERE vehicleID='.$vehicleID.' and userID='.$userID";
+$sql = "UPDATE CartContents SET quantity='$quantity' WHERE vehicleID='$vehicleID' and userID='$userID";
 include '../include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
