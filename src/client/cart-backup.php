@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/cart.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -52,7 +54,7 @@ if (isset($_SESSION['vehicleList'])) {
           }
           mysqli_close($connection);
         }
-        
+
         $total         = $total + $prod['quantity'] * $price;
         $quantityTotal = $quantityTotal + $prod['quantity'];
     }
@@ -85,7 +87,7 @@ if (isset($_SESSION['vehicleList'])) {
 ?>
 
 
-          
+
             <a href="product.php"><img src="images/bentleyThumb.jpg"><figcaption>2018 Bentley Continental GT3</figcaption><figcaption>$1,000,000</figcaption></a>
             <a class="addCartButton" href="cart.php">Add to Cart</a>
           </div>
