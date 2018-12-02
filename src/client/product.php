@@ -113,7 +113,7 @@
                   <div class="productPrice">
                     <p>Quantity:</p>
                     <form method="get" name="selector">
-                      <input value="<?php $vehicleID; ?>" name="id" type="hidden">
+                      <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                     <select class="quantityCount" name="quantity">
                       <?php
                       $counter = 1;
