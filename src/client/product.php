@@ -114,8 +114,9 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <form method="post" name="selector">
-                    <select class="quantityCount" name="selectorQuantity">
+                    <form method="get" name="selector" action="action/addToCart.php">
+                      <input value="<?php $vehicleID; ?>" name="id">
+                    <select class="quantityCount" name="quantity">
                       <?php
                       $counter = 1;
                       while($counter < ($amount + 1)) {
