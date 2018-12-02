@@ -33,7 +33,18 @@
                 include 'include/db_credentials.php';
                 $connection = mysqli_connect($host, $user, $password, $database);
                 $error      = mysqli_connect_error();
-                $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                $vehicleID = $_GET['id'];
+                // $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID = 2) AS amount FROM Vehicle WHERE Vehicle.vehicleID =";
+                // $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                // $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                // $sql = $sql.$vehicleID;
+                $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                $sql = $sql.") AS amount FROM Vehicle WHERE Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                // $statement = mysqli_prepare($connection, $sql);
+                // mysqli_stmt_bindm($statement, 'i', $vehicleID);
+                // mysqli_stmt_bindm($statement, 'i', $vehicleID);
 
 
                 if ($connection -> connect_error) {
@@ -44,8 +55,8 @@
                   $output = "<p>Unable to connect to database!</p>";
                   exit($output);
                 } else {
-                  $vehicleID = $_GET['id'];
-                  $sql = $sql.$vehicleID;
+                  // $vehicleID = $_GET['id'];
+                  // $sql = $sql.$vehicleID;
                   // echo "outside of results";
                   if ($results = mysqli_query($connection, $sql)) {
                     // echo "in results";
@@ -71,7 +82,7 @@
                       // $vehicleName = $year." ".$make." ".$model;
                       // $productLink = "product.php?id='".$vehicleID."'";
 
-                      echo $year;
+                      // echo $year;
 
                       // echo '<div class="cartEntry"><div class="cartCol leftCol"><div class="thumbContainer">';
                       // echo '<a href="'.$productLink.'"><img src="images/'.$vehiclePicStr.'.jpg"></a></div></div>';
