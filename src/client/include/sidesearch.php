@@ -18,7 +18,7 @@
 <section class="leftSidebar">
   <div class="custom-select">
 
-    <form method="post" action="./product.php">
+    <form method="post" action="./search.php">
 
       <div>
         <label for="make_sel">Make: </label>

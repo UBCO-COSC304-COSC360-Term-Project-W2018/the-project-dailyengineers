@@ -55,8 +55,26 @@
             $name = $_GET['search'];
           }
           $sql = "";
-
-          if ($name == "") {
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['make'])){
+            echo ("<h2>Vehicles matching filter</h2>");
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE ";
+            $used_filter = 0;
+            foreach ($_POST as $name => $val) {
+              if($val!="0"){
+                if($used_filter!=0){
+                  $sql = " AND " . $sql;
+                }
+                $used_filter++;
+                $sql = $sql."'".$name."'='".$val."'";
+                echo $sql;
+              }
+            }
+            if($used_filter==0){
+              $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID";
+            }
+            $sql = $sql . " GROUP BY vehicleID";
+          }
+          else if ($name == "") {
             echo("<h2>All Vehicles</h2>");
             $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY make ASC LIMIT 20";
           } else {
@@ -65,20 +83,7 @@
             $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE (make LIKE '%$name%' OR year LIKE '%$name%' OR model LIKE '%$name%' OR price LIKE '%$name%' OR drivetrain LIKE '%$name%' OR engine LIKE '%$name%' OR transmission LIKE '%$name%')  GROUP BY vehicleID";
           }
 
-          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['make'])){
-            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE ";
-            $used_filter = 0;
-            foreach ($_POST as $name => $val) {
-              if($val!="0"){
-                $used_filter++;
-                $sql = $sql . "$name=$val";
-              }
-            }
-            if($used_filter==0){
-              $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID";
-            }
-            $sql = $sql . " GROUP BY vehicleID";
-          }
+
           // (year, make, model, drivetrain, engine, transmission)
           // SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE make LIKE tacoma GROUP BY vehicleID;
           // SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID;
