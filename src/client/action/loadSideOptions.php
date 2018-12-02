@@ -26,11 +26,11 @@
     } else {
         $sql_query = "SELECT DISTINCT ".$sql_field." FROM Vehicle";
     }
-    if ($results = mysqli_query($connection, $sql_query)) {
+    if ($result = mysqli_query($connection, $sql_query)) {
         while ($row = mysqli_fetch_row($result)) {
             echo "<option value='".$row[0]."'>".$row[0]."</option>";
         }
-        mysqli_free_result($results);
+        mysqli_free_result($result);
     }
     mysqli_close($connection);
 ?>
