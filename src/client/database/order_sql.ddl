@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Customer (
    firstName varchar(20) NOT NULL,
    lastName varchar(20) NOT NULL,
    address varchar(255) NOT NULL,
-   profilePic VARCHAR(50),
+   profilePic LONGBLOB,
    CCNumber int,
    CCV int,
    expiryDate DATE,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS Customer (
     ON UPDATE CASCADE
 );
 
-ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
+-- ALTER TABLE Customer MODIFY COLUMN profilePic longblob;
 
 CREATE TABLE IF NOT EXISTS Admin (
   userID int NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   vehicleID     int NOT NULL AUTO_INCREMENT,
   year          int NOT NULL,
   make          VARCHAR(20) NOT NULL,
-  model         VARCHAR(20) NOT NULL,
+  model         VARCHAR(32) NOT NULL,
   price         NUMERIC(10,2) NOT NULL,
   productPic    VARCHAR(50),
   bodyType      VARCHAR(10) CHECK (bodyType IN (Coupe, Hatchback, Sedan, SUV, Truck, Wagon, Other)),
@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   UNIQUE yearMakeModel (year, make, model, transmission, drivetrain, engine, fuel, exterior)
 );
 
-ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
-ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
+-- ALTER TABLE Vehicle ADD COLUMN description varchar(1500);
+-- ALTER TABLE Vehicle MODIFY COLUMN   model VARCHAR(32) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS Warehouse (
   warehouseID int NOT NULL AUTO_INCREMENT,
@@ -218,7 +218,14 @@ INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrai
 VALUES ('2017', 'Dodge', 'Challenger SRT HELLCAT', '40999.00', 'Sedan', 'Manual', 'RWD', '8CYL', 'Gas', 'Black', '5');
 /* https://tdrpmimages.azureedge.net/photos/import/201811/0210/0235/7c9d394d-b063-4ded-a6b3-ca356ef76307.jpg-1024x786 */
 
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
+VALUES ('2018', 'Mercedes', 'GLC AMG 63', '121277.23', 'SUV', 'Automatic', 'AWD', '8CYL', 'Gas', 'White', '5');
 
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
+VALUES ('2018', 'Honda', 'Civic Type R', '41090.00', 'Hatchback', 'Automatic', 'FWD', '4CYL', 'Gas', 'White', '4');
+
+INSERT INTO Vehicle (year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats)
+VALUES ('2017', 'Ferrari', 'F12tdf', '1300000.00', 'Coupe', 'Automatic', 'RWD', '12CYL', 'Gas', 'White', '2');
 
 /* WAREHOUSE CREATION */
 /*warehouseID int NOT NULL AUTO_INCREMENT,
