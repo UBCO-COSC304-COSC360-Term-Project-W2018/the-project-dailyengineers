@@ -311,3 +311,7 @@ form input[type=file] {
   margin-right: auto; */
   visibility: hidden;
 }
+
+.selectorForm {
+  display: inline-block;
+}
