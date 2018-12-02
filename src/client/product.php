@@ -114,8 +114,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <?php $selectValue = $_POST['selectorQuantity'] ?>
-                    <form method="post" action="action/addToCart.php?id='<?php echo $vehicleID;?>'&quantity='<?php echo $selectValue;?>'" name="selector">
+                    <form method="post" name="selector">
                     <select class="quantityCount" name="selectorQuantity">
                       <?php
                       $counter = 1;
