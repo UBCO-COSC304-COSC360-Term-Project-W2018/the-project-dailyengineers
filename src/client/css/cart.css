@@ -99,11 +99,15 @@
 
 .thumbContainer figcaption:first-of-type {
   transform: translateY(-180px);
+  overflow: hidden;
+  height: 1em;
 }
 
 .thumbContainer figcaption:last-of-type {
   transform: translateY(-80px);
   font-weight: bold;
+  overflow: hidden;
+  height: 1em;
 }
 
 .cartRecentlyViewed h1 {
