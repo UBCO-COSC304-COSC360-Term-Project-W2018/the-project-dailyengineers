@@ -56,23 +56,25 @@
           }
           $sql = "";
           if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['make'])){
-            echo ("<h2>Vehicles matching filter</h2>");
+            echo ("<h2>Vehicles matching filter ");
             $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE ";
             $used_filter = 0;
             foreach ($_POST as $name => $val) {
               if($val!="0"){
                 if($used_filter!=0){
-                  $sql = " AND " . $sql;
+                  $sql =  $sql . " AND ";
+                  echo ", ";
                 }
                 $used_filter++;
                 $sql = $sql."".$name."='".$val."'";
+                echo $name."=".$val;
               }
             }
             if($used_filter==0){
               $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID";
             }
             $sql = $sql . " GROUP BY vehicleID";
-            echo $sql;
+            echo "</h2>";
           }
           else if ($name == "") {
             echo("<h2>All Vehicles</h2>");
