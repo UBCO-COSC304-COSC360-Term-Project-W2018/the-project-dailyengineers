@@ -205,6 +205,7 @@
                 model: $("#model_sel").val()
               }, function(data) {
                 var returnedhtml = data.responseText;
+                $("#testOut") = append(returnedhtml);
                 $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
               });
             }
@@ -218,12 +219,13 @@
             var val = this.value;
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
-              //$("#testOut").append(selects[i]);
+              $("#testOut").append(selects[i]);
               $.post("./action/loadSideOptions.php", {
                 field: $(selects[i]).attr("name"),
                 make: $("#make_sel").val()
               }, function(data) {
                 var returnedhtml = data.responseText;
+                $("#testOut") = append(returnedhtml);
                 $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
               });
             }
