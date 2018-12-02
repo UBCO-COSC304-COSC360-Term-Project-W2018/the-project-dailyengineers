@@ -113,7 +113,6 @@
                   <div class="productPrice">
                     <p>Quantity:</p>
                     <form method="get" name="selector" action="action/addToCart.php">
-                      <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                     <select class="quantityCount" name="quantity">
                       <?php
                       $counter = 1;
@@ -122,17 +121,8 @@
                         $counter++;
                       }
                       ?>
-                      <!-- <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option> -->
                     </select>
+                    <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                   </div>
                   <div class="productPrice">
                     <input type="submit" class="formatButton" value="Add to Cart">
