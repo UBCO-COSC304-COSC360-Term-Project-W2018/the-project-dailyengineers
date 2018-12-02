@@ -121,7 +121,7 @@
                         echo '<option value='.$counter.'>'.$counter.'</option>';
                         $counter++;
                       }
-                      $selectValue = $_POST['selectorQuantity']?>
+                      ?>
                       <!-- <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -133,6 +133,7 @@
                       <option>9</option>
                       <option>10</option> -->
                     </select>
+                    <?php $selectValue = $_POST['selectorQuantity'] ?>
                   </div>
                   <div class="productPrice">
                     <?php echo '<input type="button" action="action/addToCart.php?id='.$vehicleID.'&quantity='.$selectValue.' class="formatButton" value="Add to Cart">' ?>
