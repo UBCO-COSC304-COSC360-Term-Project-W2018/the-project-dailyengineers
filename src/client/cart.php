@@ -79,6 +79,7 @@
                   }
                   ?>
                 </select>
+              </div>
                 <div class="cartDeleteContainer">
                   <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                 </div>
