@@ -112,7 +112,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <form method="get" name="selector" action="action/addToCart.php">
+                    <form method="get" name="selector" action="action/addToCart.php" class="selectorForm">
                     <select class="quantityCount" name="quantity">
                       <?php
                       $counter = 1;
