@@ -20,7 +20,7 @@
   font-size: 1em;
 }
 
-.checkoutButton:hover {
+.checkoutButton:hover, .addCartButton:hover {
   opacity: 0.7;
 }
 
@@ -31,7 +31,10 @@
 /* .cartSubtotal h1 {
   display: inline-block;
 } */
-
+.searchLink {
+  text-decoration: none;
+  color: orange;
+}
 .cartSubtotal p {
   font-weight: bold;
   font-size: 1.5em;

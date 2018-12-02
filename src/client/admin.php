@@ -28,7 +28,6 @@ if (!isset($_SESSION['username'])) {
                     <a class="adminButton" href="#managedatabase">Manage Database</a>
                     <a class="adminButton" href="#salesreport">Sales Report</a>
                     <a class="adminButton" href="#featuretracking">Feature Tracking</a>
-                    <a class="adminButton" href="#salestracking">Sales Tracking</a>
                 </div>
             </section>
             <section class="mainView">
@@ -106,10 +105,6 @@ if (!isset($_SESSION['username'])) {
                                 <td><ul><li>Added Comments</li><li>Added Pictures</li></ul></td>
                             </tr>
                         </table>
-                    </div>
-                    <div class="adminDiv" id="salestracking">
-                        <p class="subtitleAdmin">Sales Tracking</p>
-                        <p>PLACEHOLDER</p>
                     </div>
                 </section>
             </section>

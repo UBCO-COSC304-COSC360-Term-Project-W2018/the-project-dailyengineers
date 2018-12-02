@@ -48,9 +48,9 @@ else{
     <!-- <link rel="stylesheet" type="text/css" href="css/mad.css"> -->
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/cart.css">
-    <!-- <link rel="stylesheet" href="css/account.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="js/editprofile.js"></script> 
+    <link rel="stylesheet" href="css/account.css">
 </head>
 
 <body>
@@ -63,13 +63,13 @@ else{
             <section class="mainView">
               <h1>User Control Panel</h1>
 
-              <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+              <form method="POST" action="action/modAccount.php">
                 <div class="shippingBilling">
                   <div id="shippingForm">
                     <fieldset>
                       <legend>User Image</legend>
                       <img id=profilePic src=<?php echo $img_src ?>>
-                      <input type="file" name="profilePic" accept="image/*" disabled="disabled">
+                      <input class="accMod" type="file" name="profilePic" accept="image/*" disabled="disabled">
                     </fieldset>
                     <a class="formatButton" href="paymentMethod.php">Payment Method</a>
                     <a class="formatButton" href="orderStatus.php">Order History</a>
@@ -82,20 +82,20 @@ else{
                       <p class=accountP><?php echo $username; ?></p>
                       <!-- <input type="text" name="billingFullName" class="required"> -->
                       <h2>Email:</h2>
-                      <input type="email" name="accountEmail" class="required" value="<?php echo $email; ?>" disabled="true">
+                      <input type="email" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" disabled="true">
                       <h2>Password:</h2>
-                      <input type="text" name="accountPassword" class="required" value="•••••••" disabled="true">
+                      <input type="password" name="accountPassword" class="required accMod" value="" disabled="true">
+                      <h2 class="hide">Confirm Password:</h2>
+                      <input type="password" class="required accMod hide" value="" disabled="true">
                       <h2>First Name:</h2>
-                      <input type="text" name="accountFirstName" class="required" value="<?php echo $first_name; ?>" disabled="true">
+                      <input type="text" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" disabled="true">
                       <h2>Last Name:</h2>
-                      <input type="text" name="accountLastName" class="required" value="<?php echo $last_name; ?>" disabled="true">
-                      <h2>Address:</h2>
-                      <input type="text" id="accountAddress" name="accountAddress" class="required" value="<?php echo $address; ?>" disabled="true">
+                      <input type="text" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" disabled="true">
                     </fieldset>
                     <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
                     <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
                     <input type="button" id="editProfile" value="Edit Profile" class="formatButton" onclick="editProfile()">
-                    <input type="button" id="saveProfile" value="Save Changes" class="formatButton" onClick="saveProfile()">
+                    <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
                   </div>
                 </div>
               </form>
