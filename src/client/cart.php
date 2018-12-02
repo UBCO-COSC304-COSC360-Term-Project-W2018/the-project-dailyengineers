@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/cart.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
