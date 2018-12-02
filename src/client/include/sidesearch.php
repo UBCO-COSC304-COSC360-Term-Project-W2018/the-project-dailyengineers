@@ -190,6 +190,10 @@
             this.change();
           });
 
+          $( document ).ajaxError(function( event, request, settings ) {
+            $( "#testOut" ).append( "Error " + settings.url );
+          });
+
           document.getElementById("make_sel").onchange = function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
@@ -199,15 +203,23 @@
             $("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
-              $.post("./action/loadSideOptions.php", {
-                field: $(selects[i]).attr("name"),
-                make: $("#make_sel").val(),
-                model: $("#model_sel").val()
-              }, function(data) {
-                var returnedhtml = data.responseText;
-                $("#testOut") = append(returnedhtml);
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
-              });
+
+              var returnedhtml = $.ajax({
+                url: './action/loadSideOptions.php',
+                type: 'POST',
+                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val() },
+                success: function(data){
+                  alert("successfully got results")
+                }
+              }).responseText;
+              $("#testOut").append(returnedhtml);
+              $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+
+            //  $.post("./action/loadSideOptions.php", , function(data) {
+            //    var returnedhtml = data.responseText;
+            //    $("#testOut").append(returnedhtml);
+            //    $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+            //  });
             }
           };
 
@@ -220,14 +232,25 @@
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
-              $.post("./action/loadSideOptions.php", {
-                field: $(selects[i]).attr("name"),
-                make: $("#make_sel").val()
-              }, function(data) {
-                var returnedhtml = data.responseText;
-                $("#testOut") = append(returnedhtml);
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
-              });
+              var returnedhtml = $.ajax({
+                url: './action/loadSideOptions.php',
+                type: 'POST',
+                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val() },
+                success: function(data){
+                  alert("successfully got results")
+                }
+              }).responseText;
+              $("#testOut").append(returnedhtml);
+              $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+
+              //$.post("./action/loadSideOptions.php", {
+              //  field: $(selects[i]).attr("name"),
+              //  make: $("#make_sel").val()
+              //}, function(data) {
+              //  var returnedhtml = data.responseText;
+              //  $("#testOut").append(returnedhtml);
+              //  $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+              //});
             }
           };
 
