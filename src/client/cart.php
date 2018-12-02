@@ -46,7 +46,7 @@
               if($results->num_rows === 0) {
                 echo "Cart is Empty. SKRRRRT on over to our vehicle fleet.";
               }
-              $cartCountCounter = 0;
+              $cartIndexCounter = 0;
               while ($row = mysqli_fetch_row($results)) {
                 $cartIndexCounter++;
                 $carIndex = $cartIndexCounter;
