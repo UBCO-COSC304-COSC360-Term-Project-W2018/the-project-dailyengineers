@@ -203,16 +203,19 @@
             $("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
-
+              var temp = selects[i];
               $.ajax({
                 url: './action/loadSideOptions.php',
                 type: 'POST',
+                async: false,
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
                 success: function(results){
                   //alert("successfully got results");
                   var retHTML = results;
                   $("#testOut").append(retHTML);
-                  $(selected[results.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
+                  $("#testOut").append(temp);
+
+                  $(temp).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
               });
               //$("#testOut").append(returnedhtml);
@@ -235,15 +238,18 @@
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
+              var temp = selects[i];
               $.ajax({
                 url: './action/loadSideOptions.php',
                 type: 'POST',
+                async: false,
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
                 success: function(returned){
                   //alert("successfully got results");
                   var returnedhtml = returned;
                   $("#testOut").append(returnedhtml);
-                  $(selected[returned.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+                  $("#testOut").append(temp);
+                  $(temp).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
                 }
               });
