@@ -112,7 +112,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <form method="get" name="selector">
+                    <form method="post" name="selector">
                     <select class="quantityCount" name="selectorQuantity">
                       <?php
                       $counter = 1;
@@ -138,6 +138,7 @@
                     <?php $selectValue = $_REQUEST['selectorQuantity'] ?>
                     <?php echo 'TESTING********'.$selectValue;?>
                     <?php $selectValue = $_GET['selectorQuantity'] ?>
+                    <?php $selectValue = $_POST['selectorQuantity'] ?>
                   </div>
                   <div class="productPrice">
                     <input type="submit" class="formatButton" value="Add to Cart" action="action/addToCart.php?id='<?php echo $vehicleID;?>'&quantity='<?php echo $selectValue;?>'">
