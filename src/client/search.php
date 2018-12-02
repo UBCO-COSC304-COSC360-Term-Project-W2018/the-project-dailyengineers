@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/search.css">
   <link rel="stylesheet" href="css/general.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -56,7 +58,7 @@
 
           if ($name == "") {
             echo("<h2>All Vehicles</h2>");
-            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY vehicleID DESC LIMIT 10";
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY make ASC LIMIT 20";
           } else {
             echo("<h2>Vehicles containing '" . $name . "'</h2>");
             $hasParameter = true;

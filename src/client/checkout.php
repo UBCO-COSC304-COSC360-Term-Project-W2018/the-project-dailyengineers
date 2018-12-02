@@ -16,6 +16,8 @@ if (!isset($_SESSION['username'])) {
   <link rel="stylesheet" href="css/cart.css">
   <link rel="stylesheet" href="css/validation.css">
   <script type="text/javascript" src="js/validation.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>

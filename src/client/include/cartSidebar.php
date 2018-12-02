@@ -1,6 +1,7 @@
 <?php   
   if (!isset($_SESSION['username'])) {
-
+    $recentlyViewed = new SplFixedArray(3);
+    
   } else {
     $sql = "SELECT v.vehicleID, price, quantity, userID FROM Vehicle v, CartContents c WHERE v.vehicleID = c.vehicleID and userID =";
     $quantityTotal = 0;
