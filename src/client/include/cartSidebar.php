@@ -54,15 +54,14 @@
   <div class="cartCheckout">
     <a class="checkoutButton" href="checkout.php">Proceed to Checkout</a>
   </div>
-  <div class="cartRecentlyViewed">
-    <h1>Recently Viewed:</h1>
-    <div class="thumbContainer">
+  
       <?php 
         include './include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
         $error      = mysqli_connect_error();
 
         $sql = "SELECT year, make, model, price FROM Vehicle WHERE vehicleID=".$recentlyViewed['0'];
+
         if ($connection -> connect_error) {
           die("Connection failed: " . $connection -> connect_error);
         }
@@ -80,17 +79,15 @@
               $price = $row[3];
               $vehiclePicStr = $year."-".$make."-".$model;
               $vehicleName = $year." ".$make." ".$model;
-              echo '<a href="product.php?id='.$recentlyViewed['0'].'">';
+              echo '<div class="cartRecentlyViewed"><h1>Recently Viewed:</h1><div class="thumbContainer"><a href="product.php?id='.$recentlyViewed['0'].'">';
               echo '<img src="./images/'.$vehiclePicStr.'.jpg"><figcaption>';
               echo $vehicleName;
               echo '</figcaption><figcaption>$'.$price.'</figcaption></a>';
-              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['0'].'&quantity=1">Add to Cart</a>';
+              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['0'].'&quantity=1">Add to Cart</a></div>';
             }
           }
         }
-      ?>
-    </div>
-    <div class="thumbContainer">
+   ?>
       <?php 
         include './include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
@@ -114,17 +111,15 @@
               $price = $row[3];
               $vehiclePicStr = $year."-".$make."-".$model;
               $vehicleName = $year." ".$make." ".$model;
-              echo '<a href="product.php?id='.$recentlyViewed['1'].'">';
+              echo '<div class="thumbContainer"><a href="product.php?id='.$recentlyViewed['1'].'">';
               echo '<img src="./images/'.$vehiclePicStr.'.jpg"><figcaption>';
               echo $vehicleName;
               echo '</figcaption><figcaption>$'.$price.'</figcaption></a>';
-              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['1'].'&quantity=1">Add to Cart</a>';
+              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['1'].'&quantity=1">Add to Cart</a></div>';
             }
           }
         }
       ?>
-    </div>
-    <div class="thumbContainer">
       <?php 
         include './include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
@@ -148,15 +143,13 @@
               $price = $row[3];
               $vehiclePicStr = $year."-".$make."-".$model;
               $vehicleName = $year." ".$make." ".$model;
-              echo '<a href="product.php?id='.$recentlyViewed['2'].'">';
+              echo '<div class="thumbContainer"><a href="product.php?id='.$recentlyViewed['2'].'">';
               echo '<img src="./images/'.$vehiclePicStr.'.jpg"><figcaption>';
               echo $vehicleName;
               echo '</figcaption><figcaption>$'.$price.'</figcaption></a>';
-              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['2'].'&quantity=1">Add to Cart</a>';
+              echo '<a class="addCartButton" href="cart.php?id='.$recentlyViewed['2'].'&quantity=1">Add to Cart</a></div></div>';
             }
           }
         }
       ?>
-    </div>
-  </div>
 </section>
