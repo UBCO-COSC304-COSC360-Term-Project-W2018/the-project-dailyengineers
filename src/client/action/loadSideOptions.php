@@ -1,8 +1,7 @@
 <?php
 //https://css-tricks.com/dynamic-dropdowns/
 //try something like this
-if (($_SERVER["REQUEST_METHOD"] == "POST") {
-    include '../include/db_credentials.php';
+    include "../include/db_credentials.php";
     $connection = mysqli_connect($host, $user, $password, $database);
     $error      = mysqli_connect_error();
     if ($connection -> connect_error) {
@@ -12,7 +11,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
         echo $output;
-     }
+    }
 
     $make_selected = $_POST['make'];
     $model_selected = $_POST['model'];
@@ -34,5 +33,4 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_free_result($results);
     }
     mysqli_close($connection);
-}
 ?>
