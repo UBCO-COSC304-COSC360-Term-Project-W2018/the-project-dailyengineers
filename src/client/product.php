@@ -114,6 +114,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
+                    <form method="post">
                     <select class="quantityCount" name="selectorQuantity">
                       <?php
                       $counter = 1;
@@ -137,6 +138,7 @@
                   </div>
                   <div class="productPrice">
                     <?php echo '<input type="button" action="action/addToCart.php?id='.$vehicleID.'&quantity='.$selectValue.' class="formatButton" value="Add to Cart">' ?>
+                  </form>
                   </div>
                 </div>
               </div>
