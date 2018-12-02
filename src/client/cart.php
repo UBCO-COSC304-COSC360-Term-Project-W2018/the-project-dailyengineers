@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/cart.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -21,17 +23,17 @@
 
       <section class="mainView">
         <h1>Shopping Cart</h1>
-        <?php 
+        <?php
           include 'include/db_credentials.php';
           $connection = mysqli_connect($host, $user, $password, $database);
           $error      = mysqli_connect_error();
           $sql = "SELECT year, make, model, price, quantity, v.vehicleID FROM Vehicle v, CartContents c WHERE v.vehicleID = c.vehicleID and userID =";
-          
-          
+
+
           if ($connection -> connect_error) {
             die("Connection failed: " . $connection -> connect_error);
           }
-          // echo "Connected to Server."; 
+          // echo "Connected to Server.";
           if ($error != null) {
             $output = "<p>Unable to connect to database!</p>";
             exit($output);
@@ -44,12 +46,15 @@
               if($results->num_rows === 0) {
                 echo "Cart is Empty. SKRRRRT on over to our vehicle fleet.";
               }
+              // $cartIndexCounter = 0;
               while ($row = mysqli_fetch_row($results)) {
-                $year = $row[0]; 
-                $make = $row[1]; 
-                $model = $row[2]; 
-                $price = $row[3]; 
-                $quantity = $row[4]; 
+                // $cartIndexCounter++;
+                // $cartIndex = $cartIndexCounter;
+                $year = $row[0];
+                $make = $row[1];
+                $model = $row[2];
+                $price = $row[3];
+                $quantity = $row[4];
                 $vehicleID = $row[5];
                 $vehiclePicStr = $year."-".$make."-".$model;
                 $vehicleName = $year." ".$make." ".$model;
@@ -60,9 +65,27 @@
                 echo '<div class="cartCol middleCol"><div class="cartProductName">';
                 echo '<a href="'.$productLink.'" class="searchLink">'.$vehicleName.'</a></div></div>';
                 echo '<div class="cartCol rightCol"><div class="cartPrice"><p>Unit Price:</p>';
-                echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
+                echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
-                echo '<p>'.$quantity.'</p></div>';
+                ?>
+                <form method="get" name="selector" action="action/updateCart.php" class="selectorForm">
+                <select class="quantityCount" name="quantity">
+                  <?php
+                  $counter = 1;
+                  echo '<option value='.$quantity.'>'.$quantity.'</option>';
+                  while($counter < ($quantity)) {
+                    echo '<option value='.$counter.'>'.$counter.'</option>';
+                    $counter++;
+                  }
+                  ?>
+                </select>
+              </div>
+                <div class="cartDeleteContainer">
+                  <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
+                </div>
+                <input type="submit" class="formatButton" value="Update Quantity">
+              </form>
+                <?php
                 echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id='.$vehicleID.'">Remove Item</a></div></div></div>';
               }
               mysqli_free_result($results);

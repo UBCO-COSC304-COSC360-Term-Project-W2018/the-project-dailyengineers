@@ -1,6 +1,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 <?php
@@ -15,7 +17,7 @@
 	$fileName = "./database/order_sql.ddl";
 	$file = file_get_contents($fileName, true);
 	$file = mb_convert_encoding($file, 'UTF-8', mb_detect_encoding($file, 'UTF-8, ISO-8859-1', true));
-	echo 'here';	
+	echo 'here';
 
 	$lines = explode(";", $file);
 	echo("<ol>");

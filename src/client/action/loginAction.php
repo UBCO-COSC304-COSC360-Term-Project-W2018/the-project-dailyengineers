@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 1); 
+ini_set('display_errors', 1);
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest)
     if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
@@ -18,7 +18,7 @@ if (!isset($_SESSION['username'])) {
             if($connection -> connect_error) {
                 die("Connection failed: " . $connection -> connect_error);
             }
-            echo "Connected to Server."; 
+            echo "Connected to Server.";
             if ($error != null) {
                 $output = "<p>Unable to connect to database!</p>";
                 exit($output);
@@ -26,7 +26,7 @@ if (!isset($_SESSION['username'])) {
                 echo "Connected to Database.";
                 if ($results = mysqli_query($connection, $sql)) {
                     while ($row = mysqli_fetch_row($results)) {
-                        echo "post pass : " . $_POST['password'];
+                        echo "post pass: " . $_POST['password'];
                         echo "row pass: " . $row[2];
 
                         if (md5($_POST['password']) == $row[2]) {
@@ -35,6 +35,7 @@ if (!isset($_SESSION['username'])) {
                             echo $_SESSION['username'];
                             $_SESSION['userID'] = $row[0];
 							$_SESSION['email'] = $row[3];
+                            $_SESSION['recentlyViewedArr'] = array(0, 0, 0);
                             //Release Values
                             mysqli_free_result($results);
                             mysqli_close($connection);

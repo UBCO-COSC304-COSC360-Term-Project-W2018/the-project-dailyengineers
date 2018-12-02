@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="cartCheckout">
-    <a class="checkoutButton" href="orderConfirmed.php">Submit Order</a>
+    <!-- <a class="checkoutButton" href="orderConfirmed.php">Submit Order</a> -->
   </div>
   <div class="cartRecentlyViewed">
     <h1>Recently Viewed:</h1>

@@ -10,19 +10,22 @@
         $output = "<p>Unable to connect to database!</p>";
         exit($output);
     }
-    $sel_make = 0;
-    $sel_model = 0;
-    $sel_year = 0;
 ?>
-<html>
-  <section class="leftSidebar">
-      <div class="custom-select">
-      <form>
-			<label for="make_sel">Make: </label>
-            <select id="make_sel">
-                  <option value="0" selected="selected">All</option>
-                  <?php
-                      $sql_make = "SELECT DISTINCT make FROM Vehicle";
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<section class="leftSidebar">
+  <div class="custom-select">
+
+    <form method="post" action="./search.php">
+
+      <div>
+        <label for="make_sel">Make: </label>
+        <select id="make_sel" name="make">
+          <option value="0" selected="selected">All</option>
+          <?php
+                      $sql_make = "SELECT DISTINCT make FROM Vehicle ORDER BY make";
                       if ($results = mysqli_query($connection, $sql_make)) {
                           //$counter = 0;
                           while ($row = mysqli_fetch_row($results)) {
@@ -31,17 +34,14 @@
                           }
                       } mysqli_free_result($results);
                   ?>
-            </select>
+        </select>
+      </div>
 
-		<label for="model_sel">Model: </label>
-        <select id="model_sel">
-            <option value="0">All</option>
-				<?php
-                    if ($sel_make!=0) {
-                        $sql_model = "SELECT DISTINCT model FROM Vehicle WHERE make='$sel_make';";
-                    } else {
-                        $sql_model = "SELECT DISTINCT model FROM Vehicle;";
-                    }
+      <div><label for="model_sel">Model: </label>
+        <select id="model_sel" name="model">
+          <option value="0">All</option>
+          <?php
+                        $sql_model = "SELECT DISTINCT model FROM Vehicle ORDER BY model";
                     if ($results = mysqli_query($connection, $sql_model)) {
                         //$counter = 0;
                         while ($row = mysqli_fetch_row($results)) {
@@ -50,22 +50,14 @@
                         }
                     } mysqli_free_result($results);
                   ?>
-        </select>
+        </select></div>
 
-        <label for="type_sel">Type: </label>
-            <select id="type_sel">
-                  <option value="0" selected="selected">All</option>
-                  <?php
-                    if ($sel_make!=0) {
-                        $sql_type = "SELECT DISTINCT type FROM Vehicle WHERE make='$sel_make'";
-                        if ($sel_model!=0) {
-                            $sql_type = $sql_type . " AND model='$sel_model'";
-                        }
-                    } elseif ($sel_model!=0) {
-                        $sql_type = "SELECT DISTINCT type FROM Vehicle WHERE model='$sel_model'";
-                    } else {
-                        $sql_type = "SELECT DISTINCT type FROM Vehicle;";
-                    }
+      <div><label for="type_sel">Body Type: </label>
+        <select id="type_sel" name="bodyType">
+          <option value="0" selected="selected">All</option>
+          <?php
+                              $sql_type = "SELECT DISTINCT bodyType FROM Vehicle ORDER BY bodyType";
+
                          if ($results = mysqli_query($connection, $sql_type)) {
                              //$counter = 0;
                              while ($row = mysqli_fetch_row($results)) {
@@ -74,22 +66,15 @@
                              }
                          } mysqli_free_result($results);
                   ?>
-            </select>
+        </select>
+      </div>
 
-            <label for="year_sel">Year: </label>
-                <select id="year_sel">
-                      <option value="0" selected="selected">All</option>
-                      <?php
-                        if ($sel_make!=0) {
-                            $sql_year = "SELECT DISTINCT year FROM Vehicle WHERE make='$sel_make'";
-                            if ($sel_model!=0) {
-                                $sql_year = $sql_year . " AND model='$sel_model'";
-                            }
-                        } elseif ($sel_model!=0) {
-                            $sql_year = "SELECT DISTINCT year FROM Vehicle WHERE model='$sel_model'";
-                        } else {
-                            $sql_year = "SELECT DISTINCT year FROM Vehicle;";
-                        }
+      <div> <label for="year_sel">Year: </label>
+        <select id="year_sel" name="year">
+          <option value="0" selected="selected">All</option>
+          <?php
+                                $sql_year = "SELECT DISTINCT year FROM Vehicle ORDER BY year";
+
                              if ($results = mysqli_query($connection, $sql_year)) {
                                  //$counter = 0;
                                  while ($row = mysqli_fetch_row($results)) {
@@ -98,22 +83,14 @@
                                  }
                              } mysqli_free_result($results);
                       ?>
-                </select>
+        </select>
+      </div>
 
-                <label for="engine_sel">Engine: </label>
-                    <select id="engine_sel">
-                          <option value="0" selected="selected">All</option>
-                          <?php
-                            if ($sel_make!=0) {
-                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle WHERE make='$sel_make'";
-                                if ($sel_model!=0) {
-                                    $sql_eng = $sql_eng . " AND model='$sel_model'";
-                                }
-                            } elseif ($sel_model!=0) {
-                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle WHERE model='$sel_model'";
-                            } else {
-                                $sql_eng = "SELECT DISTINCT engine FROM Vehicle;";
-                            }
+      <div><label for="engine_sel">Engine: </label>
+        <select id="engine_sel" name="engine">
+          <option value="0" selected="selected">All</option>
+          <?php
+                              $sql_eng = "SELECT DISTINCT engine FROM Vehicle ORDER BY engine";
                                  if ($results = mysqli_query($connection, $sql_eng)) {
                                      //$counter = 0;
                                      while ($row = mysqli_fetch_row($results)) {
@@ -122,22 +99,15 @@
                                      }
                                  } mysqli_free_result($results);
                           ?>
-                    </select>
+        </select>
+      </div>
 
-            <label for="drivetrain_sel">Drivetrain: </label>
-                <select id="drivetrain_sel">
-                      <option value="0" selected="selected">All</option>
-                        <?php
-                            if ($sel_make!=0) {
-                                $sql_drive = "SELECT DISTINCT drivetrain FROM Vehicle WHERE make='$sel_make'";
-                                if ($sel_model!=0) {
-                                    $sql_drive = $sql_eng . " AND model='$sel_model'";
-                                }
-                            } elseif ($sel_model!=0) {
-                                $sql_drive = "SELECT DISTINCT engine FROM Vehicle WHERE model='$sel_model'";
-                            } else {
-                                $sql_drive = "SELECT DISTINCT engine FROM Vehicle;";
-                            }
+      <div><label for="drivetrain_sel">Drivetrain: </label>
+        <select id="drivetrain_sel" name="drivetrain">
+          <option value="0" selected="selected">All</option>
+          <?php
+                                  $sql_drive = "SELECT DISTINCT drivetrain FROM Vehicle ORDER BY drivetrain";
+
                            if ($results = mysqli_query($connection, $sql_drive)) {
                                //$counter = 0;
                                while ($row = mysqli_fetch_row($results)) {
@@ -146,40 +116,138 @@
                                }
                            } mysqli_free_result($results);
                       ?>
-              </select>
+        </select></div>
 
-        <select>
-            <option value="0">Transmission:</option>
-            <option value="1">Automatic</option>
-            <option value="2">Manual</option>
-        </select>
+      <div><label for="trans_sel">Transmission: </label>
+        <select id="trans_sel" name="transmission">
+          <option value="0" selected="selected">All</option>
+          <?php
+                              $sql_trans = "SELECT DISTINCT transmission FROM Vehicle ORDER BY transmission";
+                              if ($results = mysqli_query($connection, $sql_trans)) {
+                                  //$counter = 0;
+                                  while ($row = mysqli_fetch_row($results)) {
+                                      //$counter++;
+                                      echo "<option value='$row[0]'>$row[0]</option>";
+                                  }
+                              } mysqli_free_result($results);
+                          ?>
+        </select></div>
 
-        <select>
-            <option value="0">Colour:</option>
-            <option value="1">Black</option>
-            <option value="2">Blue</option>
-            <option value="3">Brown</option>
-            <option value="4">Green</option>
-            <option value="5">Grey</option>
-            <option value="6">Orange</option>
-            <option value="7">Red</option>
-            <option value="8">Silver</option>
-            <option value="9">White</option>
-            <option value="10">Yellow</option>
-            <option value="11">Other</option>
-        </select>
+      <div><label for="colour_sel">Colour: </label>
+        <select id="colour_sel" name="exterior">
+          <option value="0" selected="selected">All</option>
+          <?php
+                                    $sql_colour = "SELECT DISTINCT exterior FROM Vehicle ORDER BY exterior";
+                                    if ($results = mysqli_query($connection, $sql_colour)) {
+                                        //$counter = 0;
+                                        while ($row = mysqli_fetch_row($results)) {
+                                            //$counter++;
+                                            echo "<option value='$row[0]'>$row[0]</option>";
+                                        }
+                                    } mysqli_free_result($results);
+                                ?>
+        </select></div>
 
-        <select>
-            <option value="0">Seats:</option>
-            <option value="1">2 seats</option>
-            <option value="2">3 seats</option>
-            <option value="3">4 seats</option>
-            <option value="4">5 seats</option>
-            <option value="5">6+ seats</option>
-        </select>
+      <div><label for="seats_sel">Seats: </label>
+        <select id="seats_sel" name="seats">
+          <option value="0" selected="selected">All</option>
+          <?php
+                                          $sql_seats = "SELECT DISTINCT seats FROM Vehicle order by seats";
+                                          if ($results = mysqli_query($connection, $sql_seats)) {
+                                              //$counter = 0;
+                                              while ($row = mysqli_fetch_row($results)) {
+                                                  //$counter++;
+                                                  echo "<option value='$row[0]'>$row[0]</option>";
+                                              }
+                                          } mysqli_free_result($results);
+                                      ?>
+        </select></div>
 
-		<input type="button" class="formatButton" id="filter_b" value="Filter Products">
+      <div><label for="fuel_sel">Fuel: </label>
+        <select id="fuel_sel" name="fuel">
+          <option value="0" selected="selected">All</option>
+          <?php
+                                                $sql_fuel = "SELECT DISTINCT fuel FROM Vehicle order by fuel";
+                                                if ($results = mysqli_query($connection, $sql_fuel)) {
+                                                    //$counter = 0;
+                                                    while ($row = mysqli_fetch_row($results)) {
+                                                        //$counter++;
+                                                        echo "<option value='$row[0]'>$row[0]</option>";
+                                                    }
+                                                } mysqli_free_result($results);
+                                            ?>
+        </select></div>
+
+      <input type="submit" class="formatButton" id="filter_b" value="Find Products">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+
+          $('select').on('change', function() {
+            //alert(this.value);
+            this.change();
+          });
+
+          $( document ).ajaxError(function( event, request, settings ) {
+            //$( "#testOut" ).append( "Error " + settings.url );
+          });
+
+          document.getElementById("make_sel").onchange = function() {
+            var selects = ["#make_sel", "#model_sel", "#type_sel",
+              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+              "#colour_sel", "#seats_sel", "#fuel_sel"
+            ];
+            var val = this.value;
+            //$("#testOut").text(val);
+            for (i = 1; i < selects.length; i++) {
+              //$("#testOut").append(selects[i]);
+              var temp = selects[i];
+              $.ajax({
+                url: './action/loadSideOptions.php',
+                type: 'POST',
+                async: false,
+                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
+                success: function(results){
+                  //alert("successfully got results");
+                  var retHTML = results;
+                  //$("#testOut").append(retHTML);
+                  //$("#testOut").append(temp);
+                  $(temp).html("<option value='0' selected='selected'>All</option>" + retHTML);
+                }
+              });
+            }
+          };
+
+          document.getElementById("model_sel").onchange = function() {
+            var selects = ["#make_sel", "#model_sel", "#type_sel",
+              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+              "#colour_sel", "#seats_sel", "#fuel_sel"
+            ];
+            var val = this.value;
+            //$("#testOut").text(val);
+            for (i = 2; i < selects.length; i++) {
+              //$("#testOut").append(selects[i]);
+              var temp = selects[i];
+              $.ajax({
+                url: './action/loadSideOptions.php',
+                type: 'POST',
+                async: false,
+                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
+                success: function(returned){
+                  //alert("successfully got results");
+                  var returnedhtml = returned;
+                  //$("#testOut").append(returnedhtml);
+                  //$("#testOut").append(temp);
+                  $(temp).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+
+                }
+              });
+            }
+          };
+
+        });
+      </script>
     </form>
-    </div>
+  </div>
 </section>
-</html>

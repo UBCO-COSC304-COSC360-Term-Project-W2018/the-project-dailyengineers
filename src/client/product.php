@@ -1,4 +1,12 @@
-<?php session_start();?>
+<?php 
+  session_start();
+  $recView = $_SESSION['recentlyViewedArr'];
+  if ($_GET['id'] == $recView[0] || $_GET['id'] == $recView[1] || $_GET['id'] == $recView[2]) {
+
+  } else {
+    array_unshift($_SESSION['recentlyViewedArr'], $_GET['id']);
+  }
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -10,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/product.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -21,86 +31,124 @@
         <div class="columnContainer">
 
             <!-- Sidebar code -->
-            <?php//include "include/sidesearch.php"; ?>
+            <?php include "include/sidesearch.php"; ?>
             <!-- Page code -->
 
             <section class="mainView">
               <h1>Product Listing</h1>
 
+              <?php
+                include 'include/db_credentials.php';
+                $connection = mysqli_connect($host, $user, $password, $database);
+                $error      = mysqli_connect_error();
+                $vehicleID = $_GET['id'];
+                $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                $sql = $sql.") AS amount FROM Vehicle WHERE Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                if ($connection -> connect_error) {
+                  die("Connection failed: " . $connection -> connect_error);
+                }
+                if ($error != null) {
+                  $output = "<p>Unable to connect to database!</p>";
+                  exit($output);
+                } else {
+                  if ($results = mysqli_query($connection, $sql)) {
+                    $row = mysqli_fetch_row($results);
+                    $year = $row[0];
+                    $make = $row[1];
+                    $model = $row[2];
+                    $price = $row[3];
+                    $bodyType = $row[4];
+                    $transmission = $row[5];
+                    $drivetrain = $row[6];
+                    $engine = $row[7];
+                    $fuel = $row[8];
+                    $exterior = $row[9];
+                    $seats = $row[10];
+                    $description = $row[11];
+                    $amount = $row[12];
+                    $vehiclePicStr = $year."-".$make."-".$model;
+                // Closing bracket for IF STATEMENT on LINE 139.
+                ?>
+
               <div class="cartEntry">
                 <div class="cartCol leftCol">
-                  <div class="thumbContainer">
-                    <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
+                  <div class="thumbContainer noHover">
+                    <?php echo '<img src="images/'.$vehiclePicStr.'.jpg">'; ?>
                   </div>
-                <!-- <a href="product.php" class="searchLink">2018 Bentley Continental GT3</a> -->
                 </div>
                 <div class="cartCol middleCol">
-                  <!-- <div class="midFlex"> -->
                     <div class="productName">
-                      <p>Year</p>
-                      <p>Make</p>
-                      <p>Model</p>
+                      <p><?php echo $year; ?></p>
+                      <p><?php echo $make; ?></p>
+                      <p><?php echo $model; ?></p>
                     </div>
                     <table>
                       <tr>
                         <td class="attributeType">Body Type:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $bodyType; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Transmission:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $transmission; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Drivetrain:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $drivetrain; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Engine:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $engine; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Fuel:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $fuel; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Colour:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $exterior; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Seats:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $seats; ?></td>
                       </tr>
                     </table>
-                  <!-- </div> -->
                 </div>
                 <div class="cartCol rightCol">
                   <div class="productPrice">
                     <p>Price:</p>
-                    <p>$1,000,000</p>
+                    <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p>'; ?>
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <select class="quantityCount">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
+                    <form method="get" name="selector" action="action/addToCart.php" class="selectorForm">
+                    <select class="quantityCount" name="quantity">
+                      <?php
+                      $counter = 1;
+                      while($counter < ($amount + 1)) {
+                        echo '<option value='.$counter.'>'.$counter.'</option>';
+                        $counter++;
+                      }
+                      ?>
                     </select>
+                    <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                   </div>
                   <div class="productPrice">
-                    <input type="button" class="formatButton" value="Add to Cart">
+                    <input type="submit" class="formatButton" value="Add to Cart">
+                  </form>
                   </div>
                 </div>
               </div>
               <div class="descriptionContainer">
-                <p>Item description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
+                <p><?php echo $description ?></p>
               </div>
+
+              <?php       // End of IF STATEMENT from LINE 46.
+                          mysqli_free_result($results);
+                        }
+                        mysqli_close($connection);
+                      } ?>
 
                 <div>
                     <h1 class="commentHeader">Comments</h1>

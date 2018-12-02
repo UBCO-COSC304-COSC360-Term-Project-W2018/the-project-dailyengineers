@@ -99,10 +99,12 @@
 
 .thumbContainer figcaption:first-of-type {
   transform: translateY(-180px);
+  overflow: hidden;
+  height: 1em;
 }
 
 .thumbContainer figcaption:last-of-type {
-  transform: translateY(-80px);
+  transform: translateY(-73px);
   font-weight: bold;
 }
 
@@ -134,7 +136,7 @@
   padding: 0.5em 0.25em 0.5em 0.25em;
   background-color: #FF8800;
   color: #353535;
-  transform: translateY(-106px) translateX(183px);
+  transform: translateY(-103px) translateX(183px);
 }
 
 h1 {
@@ -310,4 +312,8 @@ form input[type=file] {
   /* margin-left: auto;
   margin-right: auto; */
   visibility: hidden;
+}
+
+.selectorForm {
+  display: inline-block;
 }

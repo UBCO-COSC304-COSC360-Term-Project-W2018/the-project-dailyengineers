@@ -2,14 +2,15 @@
 session_start();
 $userID = $_SESSION['userID'];
 $vehicleID = $_GET['id'];
-$sql = 'DELETE FROM CartContents WHERE vehicleID='.$vehicleID.' and userID='.$userID;
+$quantity = $_GET['quantity'];
+$sql = "UPDATE CartContents SET quantity=$quantity WHERE vehicleID=$vehicleID and userID=$userID";
 include '../include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
 $error      = mysqli_connect_error();
 if ($connection -> connect_error) {
 	die("Connection failed: " . $connection -> connect_error);
 }
-// echo "Connected to Server."; 
+// echo "Connected to Server.";
 if ($error != null) {
 	$output = "<p>Unable to connect to database!</p>";
 	exit($output);

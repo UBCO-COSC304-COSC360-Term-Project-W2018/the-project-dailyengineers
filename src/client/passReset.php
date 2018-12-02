@@ -15,6 +15,8 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/passReset.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>

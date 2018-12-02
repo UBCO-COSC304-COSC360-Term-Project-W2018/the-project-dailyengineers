@@ -19,6 +19,10 @@
   opacity: 0.70;
 }
 
+.noHover:hover {
+  opacity: 1;
+}
+
 .thumbContainer img:last-child {
   margin-bottom: 0;
 }
@@ -213,4 +217,8 @@ form input[type=text]#cardExpiry {
 .username {
   font-weight: bold;
   color: #FF8800;
+}
+
+.selectorForm {
+  display: inline-block;
 }
