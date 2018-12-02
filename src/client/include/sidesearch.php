@@ -11,14 +11,13 @@
         exit($output);
     }
 ?>
-<html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <section class="leftSidebar">
   <div class="custom-select">
 
-    <form>
+    <form action="#" method="POST">
       <div>
         <label for="make_sel">Make: </label>
         <select id="make_sel" name="make">
@@ -178,45 +177,46 @@
                     </select></div>
 
                   <input type="button" class="formatButton" id="filter_b" value="Find Products">
+
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                  <script type="text/javascript">
+
+                    //$(document).ready(function() {
+                      //var selects = ["#make_sel", "#make_sel", "#model_sel", "#type_sel",
+                      //  "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+                      //  "#color_sel", "#seats_sel", "#fuel_sel"
+                      //];
+
+                      $("#make_sel").change(function() {
+                        var selects = ["#make_sel", "#model_sel", "#type_sel",
+                          "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+                          "#color_sel", "#seats_sel", "#fuel_sel"];
+                        var val = $(this).val();
+                        for (i = 1; i < selects.length; i++) {
+                          $.post( "./action/loadSideOptions.php", { field: $(selects[i]).attr("name"), make : $("#make_sel").val() }, function(data) {
+                            $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+                          });
+                        }
+                      });
+                      $("#model_sel").change(function() {
+                        var selects = ["#make_sel", "#model_sel", "#type_sel",
+                          "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+                          "#color_sel", "#seats_sel", "#fuel_sel"];
+                        var val = $(this).val();
+                        for (i = 2; i < selects.length; i++) {
+                          $.post("./action/loadSideOptions.php", {
+                              field : $(selects[i]).attr("name"),
+                              make : $("#make_sel").val(),
+                              model : $("#model_sel").val()
+                            },
+                            function(data) {
+                              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+                            });
+                        }
+                      });
+
+                    //});
+                  </script>
     </form>
   </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript">
-
-    //$(document).ready(function() {
-      //var selects = ["#make_sel", "#make_sel", "#model_sel", "#type_sel",
-      //  "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-      //  "#color_sel", "#seats_sel", "#fuel_sel"
-      //];
-
-      $("#make_sel").change(function() {
-        var selects = ["#make_sel", "#model_sel", "#type_sel",
-          "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-          "#color_sel", "#seats_sel", "#fuel_sel"];
-        var val = $(this).val();
-        for (i = 1; i < selects.length; i++) {
-          $.post( "../action/loadSideOptions.php", { field : $(selects[i]).attr("name") }, function(data) {
-            $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-          });
-        }
-      });
-      $("#model_sel").change(function() {
-        var selects = ["#make_sel", "#model_sel", "#type_sel",
-          "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-          "#color_sel", "#seats_sel", "#fuel_sel"];
-        var val = $(this).val();
-        for (i = 2; i < selects.length; i++) {
-          $.post("../action/loadSideOptions.php", {
-              field: $(selects[i]).attr("name")
-            },
-            function(data) {
-              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-            });
-        }
-      });
-
-    //});
-  </script>
 </section>
-</html>

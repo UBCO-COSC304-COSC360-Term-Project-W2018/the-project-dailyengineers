@@ -19,17 +19,17 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
     $sql_field = $_POST['field'];
 
     if ($make_selected!="0" && $model_selected!="0") {
-        $sql_query = "SELECT DISTINCT $sql_field FROM Vehicle WHERE make='$make_selected' AND model='$model_selected'";
+        $sql_query = "SELECT DISTINCT ".$sql_field." FROM Vehicle WHERE make='".$make_selected."' AND model='".$model_selected."' ORDER BY ".$sql_field;
     } elseif ($make_selected!="0") {
-        $sql_query = "SELECT DISTINCT $sql_field FROM Vehicle WHERE make='$make_selected'";
+        $sql_query = "SELECT DISTINCT ".$sql_field." FROM Vehicle WHERE make='".$make_selected."' ORDER BY ".$sql_field;
     } elseif ($model_selected!="0") {
-        $sql_query = "SELECT DISTINCT $sql_field FROM Vehicle WHERE model='$model_selected'";
+        $sql_query = "SELECT DISTINCT ".$sql_field." FROM Vehicle WHERE model='".$model_selected."' ORDER BY ".$sql_field;
     } else {
-        $sql_query = "SELECT DISTINCT $sql_field FROM Vehicle";
+        $sql_query = "SELECT DISTINCT ".$sql_field." FROM Vehicle";
     }
     if ($results = mysqli_query($connection, $sql_query)) {
         while ($row = mysqli_fetch_row($result)) {
-            echo "<option value=" . $row[0] . ">" . $row[0] . "</option>";
+            echo "<option value='$row[0]'>$row[0]</option>";
         }
         mysqli_free_result($results);
     }
