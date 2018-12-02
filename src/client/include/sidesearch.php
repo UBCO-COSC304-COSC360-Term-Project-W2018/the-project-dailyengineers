@@ -18,9 +18,8 @@
 <section class="leftSidebar">
   <div class="custom-select">
 
-    <form>
-      <p id="testOut">
-      </p>
+    <form method="post" action="./product.php">
+
       <div>
         <label for="make_sel">Make: </label>
         <select id="make_sel" name="make">
@@ -179,19 +178,19 @@
                                             ?>
         </select></div>
 
-      <input type="button" class="formatButton" id="filter_b" value="Find Products">
+      <input type="submit" class="formatButton" id="filter_b" value="Find Products">
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
 
           $('select').on('change', function() {
-            alert(this.value);
+            //alert(this.value);
             this.change();
           });
 
           $( document ).ajaxError(function( event, request, settings ) {
-            $( "#testOut" ).append( "Error " + settings.url );
+            //$( "#testOut" ).append( "Error " + settings.url );
           });
 
           document.getElementById("make_sel").onchange = function() {
@@ -200,9 +199,9 @@
               "#colour_sel", "#seats_sel", "#fuel_sel"
             ];
             var val = this.value;
-            $("#testOut").text(val);
+            //$("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
-              $("#testOut").append(selects[i]);
+              //$("#testOut").append(selects[i]);
               var temp = selects[i];
               $.ajax({
                 url: './action/loadSideOptions.php',
@@ -212,20 +211,11 @@
                 success: function(results){
                   //alert("successfully got results");
                   var retHTML = results;
-                  $("#testOut").append(retHTML);
-                  $("#testOut").append(temp);
-
+                  //$("#testOut").append(retHTML);
+                  //$("#testOut").append(temp);
                   $(temp).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
               });
-              //$("#testOut").append(returnedhtml);
-              //$(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
-
-            //  $.post("./action/loadSideOptions.php", , function(data) {
-            //    var returnedhtml = data.responseText;
-            //    $("#testOut").append(returnedhtml);
-            //    $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
-            //  });
             }
           };
 
@@ -235,9 +225,9 @@
               "#colour_sel", "#seats_sel", "#fuel_sel"
             ];
             var val = this.value;
-            $("#testOut").text(val);
+            //$("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
-              $("#testOut").append(selects[i]);
+              //$("#testOut").append(selects[i]);
               var temp = selects[i];
               $.ajax({
                 url: './action/loadSideOptions.php',
@@ -247,21 +237,12 @@
                 success: function(returned){
                   //alert("successfully got results");
                   var returnedhtml = returned;
-                  $("#testOut").append(returnedhtml);
-                  $("#testOut").append(temp);
+                  //$("#testOut").append(returnedhtml);
+                  //$("#testOut").append(temp);
                   $(temp).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
                 }
               });
-
-              //$.post("./action/loadSideOptions.php", {
-              //  field: $(selects[i]).attr("name"),
-              //  make: $("#make_sel").val()
-              //}, function(data) {
-              //  var returnedhtml = data.responseText;
-              //  $("#testOut").append(returnedhtml);
-              //  $(selects[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
-              //});
             }
           };
 
