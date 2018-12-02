@@ -112,7 +112,7 @@
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
-                    <form method="get" name="selector">
+                    <form method="get" name="selector" action="action/addToCart.php">
                       <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                     <select class="quantityCount" name="quantity">
                       <?php
@@ -133,13 +133,6 @@
                       <option>9</option>
                       <option>10</option> -->
                     </select>
-                    <?php $selectValue = $_GET['selectorQuantity'] ?>
-                    <?php $selectValue = $_POST['selectorQuantity'] ?>
-                    <?php echo 'TESTING********'.$selectValue;?>
-                    <?php $selectValue = $_REQUEST['selectorQuantity'] ?>
-                    <?php echo 'TESTING********'.$selectValue;?>
-                    <?php $selectValue = $_GET['selectorQuantity'] ?>
-                    <?php $selectValue = $_POST['selectorQuantity'] ?>
                   </div>
                   <div class="productPrice">
                     <input type="submit" class="formatButton" value="Add to Cart">
