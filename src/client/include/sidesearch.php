@@ -188,12 +188,12 @@
             alert(this.value);
             this.change();
           });
-          $("#make_sel").change(function() {
+          $("#make_sel").on('change', function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
               "#color_sel", "#seats_sel", "#fuel_sel"];
             var val = $(this).val();
-            $("#testOut").html(val);
+            $("#testOut").text(val);
             for (i = 1; i < selects.length; i++) {
               $.post("./action/loadSideOptions.php", {
                 field: $(selects[i]).attr("name"),
@@ -203,13 +203,13 @@
               });
             }
           });
-          $("#model_sel").change(function() {
+          $("#model_sel").on('change', function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
               "#color_sel", "#seats_sel", "#fuel_sel"
             ];
             var val = $(this).val();
-            $("#testOut").html(val);
+            $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
               $.post("./action/loadSideOptions.php", {
                   field: $(selects[i]).attr("name"),
