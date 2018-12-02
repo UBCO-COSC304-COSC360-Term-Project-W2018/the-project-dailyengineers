@@ -207,12 +207,12 @@
               $.ajax({
                 url: './action/loadSideOptions.php',
                 type: 'POST',
-                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val() },
+                data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val(), forIndex : i },
                 success: function(results){
                   alert("successfully got results");
                   var retHTML = results;
                   $("#testOut").append(retHTML);
-                  $(selected[i]).html("<option value='0' selected='selected'>All</option>" + retHTML);
+                  $(selected[results.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
               });
               //$("#testOut").append(returnedhtml);
@@ -243,7 +243,7 @@
                   alert("successfully got results");
                   var returnedhtml = returned;
                   $("#testOut").append(returnedhtml);
-                  $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+                  $(selected[returned.forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
                 }
               });
