@@ -218,3 +218,7 @@ form input[type=text]#cardExpiry {
   font-weight: bold;
   color: #FF8800;
 }
+
+.selectorForm {
+  display: inline-block;
+}
