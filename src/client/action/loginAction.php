@@ -35,6 +35,7 @@ if (!isset($_SESSION['username'])) {
                             echo $_SESSION['username'];
                             $_SESSION['userID'] = $row[0];
 							$_SESSION['email'] = $row[3];
+                            $_SESSION['recentlyViewedArr'] = array();
                             //Release Values
                             mysqli_free_result($results);
                             mysqli_close($connection);
