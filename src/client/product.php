@@ -119,6 +119,7 @@
                       $counter = 0;
                       while($counter <= $amount) {
                         echo '<option>'.($counter + 1).'</option>';
+                        $counter++;
                       }?>
                       <!-- <option>1</option>
                       <option>2</option>
