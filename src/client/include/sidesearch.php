@@ -212,7 +212,7 @@
                   //alert("successfully got results");
                   var retHTML = results;
                   $("#testOut").append(retHTML);
-                  $(selected[forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
+                  $(selected[results.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
               });
               //$("#testOut").append(returnedhtml);
@@ -243,7 +243,7 @@
                   //alert("successfully got results");
                   var returnedhtml = returned;
                   $("#testOut").append(returnedhtml);
-                  $(selected[forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+                  $(selected[returned.d.forIndex]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
                 }
               });
