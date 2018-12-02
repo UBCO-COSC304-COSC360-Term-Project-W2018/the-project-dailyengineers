@@ -48,7 +48,8 @@
               }
               $cartCountCounter = 0;
               while ($row = mysqli_fetch_row($results)) {
-                $cartCountCounter++;
+                $cartIndexCounter++;
+                $carIndex = $cartIndexCounter;
                 $year = $row[0];
                 $make = $row[1];
                 $model = $row[2];
@@ -67,8 +68,8 @@
                 echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
                 echo '<p>'.$quantity.'</p></div>'; ?>
-                <form method="get" name="selector<?php echo $cartCountCounter;?>" action="action/updateCart.php" class="selectorForm">
-                <select class="quantityCount" name="quantity">
+                <form method="get" name="selector<?php echo $cartIndex;?>" action="action/updateCart.php" class="selectorForm">
+                <select class="quantityCount" name="quantity<?php echo $cartIndex;?>">
                   <?php
                   $counter = 1;
                   echo '<option value='.$quantity.'>'.$quantity.'</option>';
@@ -82,6 +83,7 @@
                   <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
                 </div>
                 <input type="submit" class="formatButton" value="Update Quantity">
+              </form>
                 <?php
                 echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id='.$vehicleID.'">Remove Item</a></div></div></div>';
               }
