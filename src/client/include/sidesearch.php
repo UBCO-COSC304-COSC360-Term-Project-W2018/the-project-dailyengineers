@@ -183,49 +183,48 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
-        //$(document).ready(function() {
-        //var selects = ["#make_sel", "#make_sel", "#model_sel", "#type_sel",
-        //  "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-        //  "#color_sel", "#seats_sel", "#fuel_sel"
-        //];
+        $(document).ready(function(){
+          //var selects = ["#make_sel", "#make_sel", "#model_sel", "#type_sel",
+          //  "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+          //  "#color_sel", "#seats_sel", "#fuel_sel"
+          //];
 
-        $("#make_sel").change(function() {
-          var selects = ["#make_sel", "#model_sel", "#type_sel",
-            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-            "#color_sel", "#seats_sel", "#fuel_sel"
-          ];
-          var val = $(this).val();
-          $("testOut").html(val);
-          for (i = 1; i < selects.length; i++) {
-            $.post("./action/loadSideOptions.php", {
-              field: $(selects[i]).attr("name"),
-              make: $("#make_sel").val()
-            }, function(data) {
-              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-            });
-          }
-        });
-        $("#model_sel").change(function() {
-          $()
-          var selects = ["#make_sel", "#model_sel", "#type_sel",
-            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-            "#color_sel", "#seats_sel", "#fuel_sel"
-          ];
-          var val = $(this).val();
-          $("testOut").html(val);
-          for (i = 2; i < selects.length; i++) {
-            $.post("./action/loadSideOptions.php", {
+          $("#make_sel").change(function() {
+            var selects = ["#make_sel", "#model_sel", "#type_sel",
+              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+              "#color_sel", "#seats_sel", "#fuel_sel"
+            ];
+            var val = $(this).val();
+            $("testOut").html(val);
+            for (i = 1; i < selects.length; i++) {
+              $.post("./action/loadSideOptions.php", {
                 field: $(selects[i]).attr("name"),
-                make: $("#make_sel").val(),
-                model: $("#model_sel").val()
-              },
-              function(data) {
+                make: $("#make_sel").val()
+              }, function(data) {
                 $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
               });
-          }
-        });
+            }
+          });
+          $("#model_sel").change(function() {
+            var selects = ["#make_sel", "#model_sel", "#type_sel",
+              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+              "#color_sel", "#seats_sel", "#fuel_sel"
+            ];
+            var val = $(this).val();
+            $("testOut").html(val);
+            for (i = 2; i < selects.length; i++) {
+              $.post("./action/loadSideOptions.php", {
+                  field: $(selects[i]).attr("name"),
+                  make: $("#make_sel").val(),
+                  model: $("#model_sel").val()
+                },
+                function(data) {
+                  $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+                });
+            }
+          });
 
-        //});
+        });
       </script>
     </form>
   </div>
