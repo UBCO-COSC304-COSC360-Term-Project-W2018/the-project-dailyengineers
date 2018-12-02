@@ -113,7 +113,12 @@
                   <div class="productPrice">
                     <p>Quantity:</p>
                     <select class="quantityCount">
-                      <option>1</option>
+                      <?php
+                      $counter = 0;
+                      while($counter <= $amount) {
+                        echo '<option>'.($counter + 1).'</option>';
+                      }?>
+                      <!-- <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -122,7 +127,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10</option> -->
                     </select>
                   </div>
                   <div class="productPrice">
