@@ -19,6 +19,10 @@
   opacity: 0.70;
 }
 
+.noHover:hover {
+  opacity: 1;
+}
+
 .thumbContainer img:last-child {
   margin-bottom: 0;
 }

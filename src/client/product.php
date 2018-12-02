@@ -29,48 +29,109 @@
             <section class="mainView">
               <h1>Product Listing</h1>
 
+              <?php
+                include 'include/db_credentials.php';
+                $connection = mysqli_connect($host, $user, $password, $database);
+                $error      = mysqli_connect_error();
+                $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+
+
+                if ($connection -> connect_error) {
+                  die("Connection failed: " . $connection -> connect_error);
+                }
+                // echo "Connected to Server.";
+                if ($error != null) {
+                  $output = "<p>Unable to connect to database!</p>";
+                  exit($output);
+                } else {
+                  $vehicleID = $_GET['id'];
+                  $sql = $sql.$vehicleID;
+                  // echo "outside of results";
+                  if ($results = mysqli_query($connection, $sql)) {
+                    // echo "in results";
+                    // if($results->num_rows === 0) {
+                    //   echo "Cart is Empty. SKRRRRT on over to our vehicle fleet.";
+                    // }
+                    // while ($row = mysqli_fetch_row($results)) {
+                    $row = mysqli_fetch_row($results);
+                      $year = $row[0];
+                      $make = $row[1];
+                      $model = $row[2];
+                      $price = $row[3];
+                      $bodyType = $row[4];
+                      $transmission = $row[5];
+                      $drivetrain = $row[6];
+                      $engine = $row[7];
+                      $fuel = $row[8];
+                      $exterior = $row[9];
+                      $seats = $row[10];
+                      $description = $row[11];
+                      $amount = $row[12];
+                      $vehiclePicStr = $year."-".$make."-".$model;
+                      // $vehicleName = $year." ".$make." ".$model;
+                      // $productLink = "product.php?id='".$vehicleID."'";
+
+                      echo $year;
+
+                      // echo '<div class="cartEntry"><div class="cartCol leftCol"><div class="thumbContainer">';
+                      // echo '<a href="'.$productLink.'"><img src="images/'.$vehiclePicStr.'.jpg"></a></div></div>';
+                      // echo '<div class="cartCol middleCol"><div class="cartProductName">';
+                      // echo '<a href="'.$productLink.'" class="searchLink">'.$vehicleName.'</a></div></div>';
+                      // echo '<div class="cartCol rightCol"><div class="cartPrice"><p>Unit Price:</p>';
+                      // echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
+                      // echo '<div class="cartPrice"><p>Quantity:</p>';
+                      // echo '<p>'.$quantity.'</p></div>';
+                      // echo '<div class="cartDeleteContainer"><a class="formatButton" href="action/removeFromCart.php?id='.$vehicleID.'">Remove Item</a></div></div></div>';
+                    // }
+
+                //     mysqli_free_result($results);
+                //   }
+                //   mysqli_close($connection);
+                // }
+              ?>
+
               <div class="cartEntry">
                 <div class="cartCol leftCol">
-                  <div class="thumbContainer">
-                    <a href="product.php"><img src="images/bentleyThumb.jpg"></a>
+                  <div class="thumbContainer noHover">
+                    <?php echo '<img src="images/'.$vehiclePicStr.'.jpg">'; ?>
                   </div>
                 <!-- <a href="product.php" class="searchLink">2018 Bentley Continental GT3</a> -->
                 </div>
                 <div class="cartCol middleCol">
                   <!-- <div class="midFlex"> -->
                     <div class="productName">
-                      <p>Year</p>
-                      <p>Make</p>
-                      <p>Model</p>
+                      <p><?php echo $year; ?></p>
+                      <p><?php echo $make; ?></p>
+                      <p><?php echo $model; ?></p>
                     </div>
                     <table>
                       <tr>
                         <td class="attributeType">Body Type:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $bodyType; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Transmission:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $transmission; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Drivetrain:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $drivetrain; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Engine:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $engine; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Fuel:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $fuel; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Colour:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $exterior; ?></td>
                       </tr>
                       <tr>
                         <td class="attributeType">Seats:</td>
-                        <td class="attributeValue">VALUE</td>
+                        <td class="attributeValue"><?php echo $seats; ?></td>
                       </tr>
                     </table>
                   <!-- </div> -->
@@ -78,7 +139,7 @@
                 <div class="cartCol rightCol">
                   <div class="productPrice">
                     <p>Price:</p>
-                    <p>$1,000,000</p>
+                    <?php echo '<p>'.str_replace("USD","$",money_format('%i',$price)).'</p>'; ?>
                   </div>
                   <div class="productPrice">
                     <p>Quantity:</p>
@@ -100,6 +161,11 @@
                   </div>
                 </div>
               </div>
+              <?php                     mysqli_free_result($results);
+                                }
+                                mysqli_close($connection);
+                              }
+                              ?>
               <div class="descriptionContainer">
                 <p>Item description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
               </div>
