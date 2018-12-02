@@ -204,16 +204,19 @@
             for (i = 1; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
 
-              var returnedhtml = $.ajax({
+              $.ajax({
                 url: './action/loadSideOptions.php',
                 type: 'POST',
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val() },
-                success: function(data){
-                  alert("successfully got results")
+                success: function(results){
+                  alert("successfully got results");
+                  var retHTML = results;
+                  $("#testOut").append(retHTML);
+                  $(selected[i]).html("<option value='0' selected='selected'>All</option>" + retHTML);
                 }
-              }).responseText;
-              $("#testOut").append(returnedhtml);
-              $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+              });
+              //$("#testOut").append(returnedhtml);
+              //$(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
 
             //  $.post("./action/loadSideOptions.php", , function(data) {
             //    var returnedhtml = data.responseText;
@@ -232,16 +235,18 @@
             $("#testOut").text(val);
             for (i = 2; i < selects.length; i++) {
               $("#testOut").append(selects[i]);
-              var returnedhtml = $.ajax({
+              $.ajax({
                 url: './action/loadSideOptions.php',
                 type: 'POST',
                 data: { field: $(selects[i]).attr("name"), make: $("#make_sel").val(), model: $("#model_sel").val() },
-                success: function(data){
-                  alert("successfully got results")
+                success: function(returned){
+                  alert("successfully got results");
+                  var returnedhtml = returned;
+                  $("#testOut").append(returnedhtml);
+                  $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+
                 }
-              }).responseText;
-              $("#testOut").append(returnedhtml);
-              $(selected[i]).html("<option value='0' selected='selected'>All</option>" + returnedhtml);
+              });
 
               //$.post("./action/loadSideOptions.php", {
               //  field: $(selects[i]).attr("name"),
