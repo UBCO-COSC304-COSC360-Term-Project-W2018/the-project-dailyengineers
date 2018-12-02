@@ -46,7 +46,9 @@
               if($results->num_rows === 0) {
                 echo "Cart is Empty. SKRRRRT on over to our vehicle fleet.";
               }
+              $cartCountCounter = 0;
               while ($row = mysqli_fetch_row($results)) {
+                $cartCountCounter++;
                 $year = $row[0];
                 $make = $row[1];
                 $model = $row[2];
@@ -65,7 +67,7 @@
                 echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p></div>';
                 echo '<div class="cartPrice"><p>Quantity:</p>';
                 echo '<p>'.$quantity.'</p></div>'; ?>
-                <form method="get" name="selector" action="action/updateCart.php" class="selectorForm">
+                <form method="get" name="selector<?php echo $cartCountCounter;?>" action="action/updateCart.php" class="selectorForm">
                 <select class="quantityCount" name="quantity">
                   <?php
                   $counter = 1;
