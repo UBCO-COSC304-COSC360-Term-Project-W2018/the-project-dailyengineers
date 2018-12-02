@@ -183,43 +183,11 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
-        document.getElementById("make_sel").onchange = function() {
-          var selects = ["#make_sel", "#model_sel", "#type_sel",
-            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-            "#color_sel", "#seats_sel", "#fuel_sel"
-          ];
-          var val = this.value;
-          $("#testOut").text(val);
-          for (i = 1; i < selects.length; i++) {
-            $.post("./action/loadSideOptions.php", {
-              field: $(selects[i]).attr("name"),
-              make: $("#make_sel").val(),
-              model: $("#model_sel").val()
-            }, function(data) {
-              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-            });
-          }
-        };
-        document.getElementById("model_sel").onchange = function() {
-          var selects = ["#make_sel", "#model_sel", "#type_sel",
-            "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-            "#color_sel", "#seats_sel", "#fuel_sel"
-          ];
-          var val = this.value;
-          $("#testOut").text(val);
-          for (i = 2; i < selects.length; i++) {
-            $.post("./action/loadSideOptions.php", {
-              field: $(selects[i]).attr("name"),
-              make: $("#make_sel").val()
-            }, function(data) {
-              $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-            });
-          }
-        };
-
         $(document).ready(function() {
+
           $('select').on('change', function() {
             alert(this.value);
+            this.change();
           });
 
           document.getElementById("make_sel").onchange = function() {
@@ -239,6 +207,7 @@
               });
             }
           };
+
           document.getElementById("model_sel").onchange = function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
@@ -255,42 +224,7 @@
               });
             }
           };
-          
-          function onChangeMake(elem) {
-            var selects = ["#make_sel", "#model_sel", "#type_sel",
-              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
-            ];
-            var val = elem.value;
-            $("#testOut").text(val);
-            for (i = 1; i < selects.length; i++) {
-              $.post("./action/loadSideOptions.php", {
-                field: document.getElementsByTagName(selects[i]).getAttribute("name");,
-                make: elem.value,
-                model: $("#model_sel").val()
-              }, function(data) {
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-              });
-            }
-          }
 
-          function onChangeModel(elem) {
-            var selects = ["#make_sel", "#model_sel", "#type_sel",
-              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
-              "#color_sel", "#seats_sel", "#fuel_sel"
-            ];
-            var val = elem.value;
-            $("#testOut").text(val);
-            for (i = 2; i < selects.length; i++) {
-              $.post("./action/loadSideOptions.php", {
-                field: document.getElementsByTagName(selects[i]).getAttribute("name");,
-                make: $("#make_sel").val(),
-                model: elem.value
-              }, function(data) {
-                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
-              });
-            }
-          }
           $("#make_sel").on('change', function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
@@ -308,7 +242,26 @@
               });
             }
           });
-          $("#model_sel").on('change', function() {
+
+          $("#make_sel").change(function() {
+            var selects = ["#make_sel", "#model_sel", "#type_sel",
+              "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
+              "#color_sel", "#seats_sel", "#fuel_sel"
+            ];
+            var val = this.value;
+            $("#testOut").text(val);
+            for (i = 1; i < selects.length; i++) {
+              $.post("./action/loadSideOptions.php", {
+                field: $(selects[i]).attr("name"),
+                make: $("#make_sel").val(),
+                model: $("#model_sel").val()
+              }, function(data) {
+                $(selects[i]).html("<option value='0' selected='selected'>All</option>" + data);
+              });
+            }
+          });
+
+          $("#model_sel").change(function() {
             var selects = ["#make_sel", "#model_sel", "#type_sel",
               "#year_sel", "#engine_sel", "#drivetrain_sel", "#trans_sel",
               "#color_sel", "#seats_sel", "#fuel_sel"
@@ -326,6 +279,7 @@
                 });
             }
           });
+
         });
       </script>
     </form>
