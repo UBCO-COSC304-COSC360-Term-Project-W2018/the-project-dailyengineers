@@ -56,7 +56,7 @@
           }
           $sql = "";
           if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['make'])){
-            echo ("<h2>Vehicles matching filter ");
+            echo ("<h2>Vehicles matching filter: ");
             $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE ";
             $used_filter = 0;
             foreach ($_POST as $name => $val) {
