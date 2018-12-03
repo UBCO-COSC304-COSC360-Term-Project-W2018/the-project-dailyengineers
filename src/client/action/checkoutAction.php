@@ -1,10 +1,11 @@
 <?php
 session_start();
 $userID = $_SESSION['userID'];
-$vehicleID = $_GET['id'];
-$quantity = $_GET['quantity'];
+$vehicleID = $_POST['vehicleID'];
+$totalPrice = $_POST['totalPrice'];
+// $quantity = $_GET['quantity'];
 
-$userID = $_SESSION['id'];
+// $userID = $_SESSION['id'];
 $shippingFullName = $_POST['shippingFullName'];
 $shippingAddress = $_POST['shippingAddress'];
 $shippingCity = $_POST['shippingCity'];
