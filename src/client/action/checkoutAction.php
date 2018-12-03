@@ -58,24 +58,38 @@ if (mysqli_query($connection, $sql)) {
         $vehicleID = $row[0];
         // $price = $row[1];
         $quantity = $row[1];
-        $sql4 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
-        if (mysqli_query($connection, $sq4)) {
-          echo "New record created successfully in OrderContains.";
-          // header('Location: ../orderConfirmation.php');
+        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = $vehicleID";
+        if(mysqli_query($connection, $sql4)) {
+          $unitPrice = mysqli_fetch_row($results);
+          echo "successfully retrieved unitPrice.";
+          $sql5 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $quantity, $unitPrice)";
+          if (mysqli_query($connection, $sql5)) {
+            echo "New record created successfully in OrderContains.";
+            // header('Location: ../orderConfirmation.php');
+          } else {
+            echo "Error: " . $sql5 . "" . mysqli_error($connection);
+          }
         } else {
-          echo "Error: " . $sql . "" . mysqli_error($connection);
+          echo "Error: " . $sql4 . "" . mysqli_error($connection);
         }
+        // $sql5 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
+        // if (mysqli_query($connection, $sq5)) {
+        //   echo "New record created successfully in OrderContains.";
+        //   // header('Location: ../orderConfirmation.php');
+        // } else {
+        //   echo "Error: " . $sql . "" . mysqli_error($connection);
+        // }
         // $subtotal += $price*$quantity;
         // $quantityTotal += $quantity;
       }
     	echo "All records created successfully in OrderContains.";
-      header('Location: ../orderConfirmation.php');
+      // header('Location: ../orderConfirmation.php');
     } else {
-      echo "Error: " . $sql . "" . mysqli_error($connection);
+      echo "Error: " . $sql3 . "" . mysqli_error($connection);
     }
     // header('Location: ../orderConfirmation.php');
   } else {
-  	echo "Error: " . $sql . "" . mysqli_error($connection);
+  	echo "Error: " . $sql2 . "" . mysqli_error($connection);
     // header('Location: ../checkout.php');
   }
 } else {
