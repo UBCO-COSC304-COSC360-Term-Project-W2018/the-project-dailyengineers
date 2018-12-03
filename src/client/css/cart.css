@@ -285,35 +285,35 @@ form input[type=text]#cardExpiry {
 
 /********************************** ACCOUNT ***********************/
 #profilePic {
-    display: block;
-    width: 12em;
-    height: 12em;
+  display: block;
+  width: 12em;
+  height: 12em;
 }
 
 form input[type=file] {
-  width: 14.4em;
-  height: 1.5em;
-  /* border: black 2px inset; */
+width: 14.4em;
+height: 1.5em;
+/* border: black 2px inset; */
 }
 
 .accountP {
-  margin-left: 1em;
-  font-weight: bold;
-  color: #FF8800;
+margin-left: 1em;
+font-weight: bold;
+color: #FF8800;
 }
 
-#editProfile {
-  margin-left: auto;
-  margin-right: auto;
-  visibility: visible;
+#editProfile {/*
+margin-left: auto;
+margin-right: auto;
+visibility: visible;*/
 }
 
 #saveProfile {
-  /* margin-left: auto;
-  margin-right: auto; */
-  visibility: hidden;
+/* margin-left: auto;
+margin-right: auto;
+visibility: hidden;*/
 }
 
 .selectorForm {
-  display: inline-block;
+display: inline-block;
 }
