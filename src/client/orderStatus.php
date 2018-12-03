@@ -96,14 +96,14 @@ if (!isset($_SESSION['username'])) {
                       foreach ($data as $key => $val) {
                           if ($val['orderStatus']=="delivered") {
                               echo "<div class='adminDiv'>";
-                              echo "<h3>Order number ".$val['orderID'].".</h3>";
+                              echo "<h3>  Order number ".$val['orderID'].":</h3>";
                               echo "<p>Placed on ".$val['orderDate'].".</p>";
-                              echo "<p>Delivered to ".$val['shipAddress']."</p>";
+                              echo "<p>Delivered to ".$val['shipAddress'].".</p>";
                               echo "<p>Charged ".$val['totalPrice']." to credit card ending in ".substr($val['paymentCC'], -4).".</p>";
-                              echo "<h4>Order Contents:</h4>";
+                              echo "<h4>  Order Contents:</h4>";
                               foreach ($contains as $row) {
                                   if ($val['orderID']==$row['orderID']) {
-                                      echo "<p>".$row['year']." ".$row['make']." ".$row['model']." ".$row['unit']."</p>";
+                                      echo "<p>".$row['year']." ".$row['make']." ".$row['model']."</p>";
                                       echo "<p>Quantity: ".$row['quantity']." at ".$row['unitPrice']." each.</p>";
                                   }
                               }
