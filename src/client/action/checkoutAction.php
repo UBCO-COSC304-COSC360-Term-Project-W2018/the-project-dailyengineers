@@ -46,6 +46,7 @@ if (mysqli_query($connection, $sql)) {
   header('Location: ../orderConfirmation.php');
 } else {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
+  header('Location: ../checkout.php');
 }
 mysqli_close($connection);
 // header('Location: ../orderConfirmation.php');
