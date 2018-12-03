@@ -82,7 +82,7 @@ if (!isset($_SESSION['username'])) {
         <h1>User Control Panel</h1>
 
 
-        <form id="updateInfo" name="updateInfo" method="post" action="/action/modAccount.php">
+        <form id="updateInfo" name="updateInfo" method="post" action="./action/modAccount.php">
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
@@ -166,6 +166,9 @@ if (!isset($_SESSION['username'])) {
                   };
 
                   function validateAccountForm(){
+                    
+                    var nameRe = /^[a-zA-Z]+$/;
+                    var emailRe = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
                     var passes = true;
                     $(".required").each(function(){
                       if($(this).val()==""){
@@ -174,28 +177,22 @@ if (!isset($_SESSION['username'])) {
                         return false;
                       }
                     });
-                    var re = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
-                    if(!(re.test($("#accountEmail").val().toLowerCase()))){
+                    if(!(emailRe.test($("#accountEmail").val().toLowerCase()))){
                       $("#errorP").text("You have entered and invalid email.");
                       passes=false;
                       return false;
-                    }
-                    re = /^[a-zA-Z]+$/;
-                    if(!(re.test($("#accountFirstName").val()&&re.test($("#accountLastName").val())))){
+                    } else if(!(nameRe.test($("#accountFirstName").val()&&re.test($("#accountLastName").val())))){
                       $("#errorP").text("Your first and last name must contain only letters.");
                       passes=false;
                       return false;
-                    }
-                    if($("#accountPassword").val()!=$("#confirmPassword").val()){
+                    } else if($("#accountPassword").val()!=$("#confirmPassword").val()){
                       $("#errorP").text("The entered passwords do not match.");
                       passes=false;
                       return false;
-                    }
-
-                    //else submit form
-                    if(passes){
+                    } else if(passes==true){ //else submit form
                       document.getElementById("updateInfo").submit();
                     }
+
                   };
 
                 });
