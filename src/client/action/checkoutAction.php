@@ -59,12 +59,12 @@ if (mysqli_query($connection, $sql)) {
   	echo "successfully retrieved orderID.";
     echo '<h1>ORDERID: '.$orderID.'</h1>';
     if ($results = mysqli_query($connection, $sql3)) {
-      $counter = 1;
+      $counter = 0;
       while ($row = mysqli_fetch_assoc($results)) {
-        foreach ($row as $key => $value) {
-          echo '<h1>VALUE: '.$value.'</h1>';
-          echo '<h1>VALUE: '.$row[$key].'</h1>';
-        }
+        // foreach ($row as $key => $value) {
+        //   echo '<h1>VALUE: '.$value.'</h1>';
+        //   echo '<h1>VALUE: '.$row[$key].'</h1>';
+        // }
         $vehicleID = $row['vehicleID'];
         echo '<h1>VEHICLEID: '.$vehicleID.'</h1>';
         // $price = $row[1];
