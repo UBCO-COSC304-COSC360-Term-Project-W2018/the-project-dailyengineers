@@ -85,7 +85,7 @@ if (!isset($_SESSION['username'])) {
                     <p class="subtitleAdmin">Completed Orders</p>
                     <?php
                       foreach($data as $key => $val){
-                        if($val['orderStatus']=="Delivered"){
+                        if($val['orderStatus']=="delivered"){
                           echo "<div class='adminDiv'>";
                           echo "<p>Order number ".$val['orderID'].". Delivered to ".$val['shipAddress']."</p>";
                           echo "<p>Placed on ".$val['orderDate'].". Charged ".$val['totalPrice']." to credit card ending in ".substr($val['paymentCC'], -4).".";
@@ -107,6 +107,6 @@ if (!isset($_SESSION['username'])) {
         <?php include "include/footer.php" ?>
     </main>
 </body>
-<script type="text/javascript" src="js/lad.js"></script>
+<script type="text/javascript"></script>
 
 </html>
