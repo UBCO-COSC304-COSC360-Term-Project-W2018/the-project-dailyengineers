@@ -113,19 +113,15 @@ if (!isset($_SESSION['username'])) {
                 <h2>Last Name:</h2>
                 <input type="text" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" disabled="true">
               </fieldset>
-              <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
-                  <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
               <script type="text/javascript">
 
                 $(document).ready(function() {
-
                   document.getElementById("editProfile").addEventListener("click", function() {
                     $("#testP").text("edit clicked ");
                     editProfile();
                   });
-
                   function editProfile() {
                     var fields = document.getElementsByClassName("accMod");
                     for each(fld in fields) {
@@ -139,28 +135,20 @@ if (!isset($_SESSION['username'])) {
                     document.getElementById("saveProfile").style.display = "block";
                     document.getElementById("editProfile").style.display = "none";
                     document.getElementById("editProfile").style.disabled = "true";
-
                   }
-
                 });
 
                 function editProfile() {
-                  var fields = document.getElementsByClassName("accMod");
-                  for each(fld in fields) {
-                    $("#testP").innerHTML += fld.name;
-                    fld.attr("disabled", "false");
-                  });
-                  var hidden = document.getElementsByClassName("hide");
-                  for each(hide in hidden) {
-                    hide.css("display", "block");
-                  });
-                  document.getElementById("saveProfile").style.display = "block";
-                  document.getElementById("editProfile").style.display = "none";
-                  document.getElementById("editProfile").disabled = "true";
-
-                }
-
-              </script>
+                    $(".accMod").each(function( value ) {
+                      value.prop('disabled', false);
+                    });
+                    $(".hide").each(function( value ) {
+                      value.css("display","block");
+                    });
+                    $("#saveProfile").css("display", "block");
+                    $("#editProfile").css("display", "none");
+                    $("#editProfile").prop("disabled", "true");
+                  }
 
               </script>
             </div>
