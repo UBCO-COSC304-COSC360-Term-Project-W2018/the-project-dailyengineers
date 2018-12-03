@@ -1,4 +1,5 @@
 <header>
+	<link rel="icon" href="images/favicon.png">
 	<div class="headerContainer">
 	  <div class="flexHeaderTop">
 		<a href="index.php"><img src="images/placeholder-logo.png" id="headerLogo"></a>

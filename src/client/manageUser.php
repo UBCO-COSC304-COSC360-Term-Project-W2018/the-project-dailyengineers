@@ -29,20 +29,50 @@
             header('Location: index.php');
         }
     }
-
-    $searchUsernames = null;
-    $sql = 'select * from Customer c, User u where u.userID = c.userID and (username LIKE "%'.$searchUsernames.'%")';
-    if ($connection -> connect_error) {
-        die("Connection failed: " . $connection -> connect_error);
+    if (isset($_GET['toggle'])) {
+        toggleIsActive($_GET['toggle']);
     }
-    // echo "Connected to Server.";
-    if ($error != null) {
-        $output = "<p>Unable to connect to database!</p>";
-        exit($output);
+    function toggleIsActive($uid) {
+        include 'include/db_credentials.php';
+        $connection = mysqli_connect($host, $user, $password, $database);
+        $error = mysqli_connect_error();
+        $sql = "UPDATE Customer SET isActive = IF(isActive=1, 0, 1) WHERE userID=".$uid;
+        if ($connection -> connect_error) {
+            die("Connection failed: " . $connection -> connect_error);
+        }
+        // echo "Connected to Server."; 
+        if ($error != null) {
+            $output = "<p>Unable to connect to database!</p>";
+            exit($output);
+        }
+        if (mysqli_query($connection, $sql)) {
+            // echo "Enable/Disable Toggled!";
+        } else {
+            echo "Error: " . $sql . "" . mysqli_error($connection);
+        }
+        mysqli_close($connection);
     }
-    if (mysqli_num_rows(mysqli_query($connection, $sql)) > 0) {
 
-    } else {
+    if (isset($_GET['changeName'])) {
+        include 'include/db_credentials.php';
+        $connection = mysqli_connect($host, $user, $password, $database);
+        $error = mysqli_connect_error();
+        $sql = "UPDATE User SET username = '".$_GET['nameBar']."' WHERE userID=".$_GET['searchID'];
+        echo $sql;
+        if ($connection -> connect_error) {
+            die("Connection failed: " . $connection -> connect_error);
+        }
+        // echo "Connected to Server."; 
+        if ($error != null) {
+            $output = "<p>Unable to connect to database!</p>";
+            exit($output);
+        }
+        if (mysqli_query($connection, $sql)) {
+            // echo "Changed Username";
+        } else {
+            echo "Error: " . $sql . "" . mysqli_error($connection);
+        }
+        mysqli_close($connection);
     }
 ?>
 
@@ -77,29 +107,59 @@
                     <h1 class="titleAdmin">Admin Hub - Manage Users</h1>
                     <div class="adminDiv" id="manageusers">
                         <p class="subtitleAdmin">Manage Users</p>
-                        <form method="POST" class="searcheree" action="manageUser.php">
+                        <form method="GET" class="searcheree" action="manageUser.php">
                             <input id="bar" type="text" name="searchUsername" placeholder="Search by Username">
                             <button class="barButton" type="submit">Go</button>
                         </form>
+                        <?php 
+                            // echo '<br><h3>'.$_GET['searchUsername'].'</h3>';
+                            if (!isset($_GET['searchUsername'])) {
+                            } else {
+                                include 'include/db_credentials.php';
+                                $connection = mysqli_connect($host, $user, $password, $database);
+                                $error = mysqli_connect_error();
+                                $sql = 'select * from Customer c, User u where u.userID = c.userID and (username LIKE "%'.$_GET['searchUsername'].'%") LIMIT 1';
+                                if ($connection -> connect_error) {
+                                    die("Connection failed: " . $connection -> connect_error);
+                                }
+                                // echo "Connected to Server.";
+                                if ($error != null) {
+                                    $output = "<p>Unable to connect to database!</p>";
+                                    exit($output);
+                                } else {
+                                    if ($results = mysqli_query($connection, $sql)) {
+                                        // echo "in results";
+                                        while ($row = mysqli_fetch_row($results)) {
+                                            $searchID = $row[0];
+                                            $firstName = $row[1];
+                                            $lastName = $row[2];
+                                            $profilepic = $row[4];
+                                            $searchUsername = $row[10];
+                                            $email = $row[12];
+                                            echo '<a href="#" class="manageusersButton">Reset Password</a>';
+                                            echo '<a href="?toggle='.$searchID.'&searchUsername='.$searchUsername.'" class="manageusersButton">Enable/Disable</a>';
+                                            echo '<table class="manageusersTable"><tr><th>Username</th><th>Profile Picture</th><th>Email</th><th>First Name</th><th>Last Name</th><th>ID</th></tr>';
+                                            echo '<tr><td><div><form method="GET" class="searcheree" action="manageUser.php?changeName=1&searchUsername='.$searchUsername.'"&searchID='.$searchID.'"><input id="bar" type="text" name="nameBar" placeholder="'.$searchUsername.'"><button class="barnameButton" type="submit">Submit</button></form></div></td><td>';
+                                            echo '<img src="images/profilePlaceholder.png" class="profilePicture"><a href="#" class="manageusersButton">Reset Default</a></td>';
+                                            echo '<td><a href="mailto:'.$email.'" class="emailUser">'.$email.'</a></td><td>'.$firstName.'</td><td>'.$lastName.'</td><td>'.$searchID.'</td></tr></table>';
+                                        }
+                                        mysqli_free_result($results);
+                                    }
+                                    mysqli_close($connection);
+                                }
+
+                                // echo '<div><form method="GET" class="searcheree" action="manageUser.php?changeName=1&searchUsername='.$searchUsername.'&searchID='.$searchID.'"><input id="bar" type="text" name="nameBar" placeholder="'.$searchUsername.'"><button class="barnameButton" type="submit">Submit</button></form></div>';
+                                echo '<div><p class="undersubtitleAdmin">Change Password</p><form class="searcheree" action="searcher.php"><input id="bar" type="text" name="searchBar" placeholder="Change Password"><button class="barnameButton" type="submit">Submit</button></form></div>';
+                            }
+                        ?>
+                        <!--                    
                         <a href="#" class="manageusersButton">Reset Password</a>
                         <a href="#" class="manageusersButton">Enable/Disable</a>
-                        <table class="manageusersTable">
-                            <tr>
-                                <th>Username</th>
-                                <th>Profile Picture</th>
-                                <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                            </tr>
-                            <tr>
-                                <td>user_1</td>
-                                <td>
-                                    <img src="images/patrick.png" class="profilePicture">
-                                    <a href="#" class="manageusersButton">Reset Default</a>
+                        <table class="manageusersTable"><tr><th>Username</th><th>Profile Picture</th><th>Email</th><th>First Name</th><th>Last Name</th><th>ID</th></tr>
+                            <tr><td>username</td><td>
+                                    <img src="images/patrick.png" class="profilePicture"><a href="#" class="manageusersButton">Reset Default</a>
                                 </td>
-                                <td><a href="mailto:fakeuser1@email.com" class="emailUser">fakeuser1@email.com</a></td>
-                            </tr>
-                        </table>
+                                <td><a href="mailto:fakeuser1@email.com" class="emailUser">fakeuser1@email.com</a></td><td>firstname</td><td>lastname</td><td>id</td></tr></table> 
                         <div>
                             <p class="undersubtitleAdmin">Posts</p>
                             <table class="manageusersTable">
@@ -117,20 +177,12 @@
                                 </tr>
                             </table>
                         </div>
-                        <div>
-                            <p class="undersubtitleAdmin">Change Username</p>
-                            <form class="searcheree" action="searcher.php">
-                                <input id="bar" type="text" name="searchBar" placeholder="Change Username">
-                                <button class="barnameButton" type="submit">Submit</button>
-                            </form>
-                        </div>
-                        <div>
-                            <p class="undersubtitleAdmin">Change Password</p>
-                            <form class="searcheree" action="searcher.php">
-                                <input id="bar" type="text" name="searchBar" placeholder="Change Password">
-                                <button class="barnameButton" type="submit">Submit</button>
-                            </form>
-                        </div>
+                        -->
+
+                        <!-- 
+                        <div><p class="undersubtitleAdmin">Change Username</p><form class="searcheree" action="searcher.php"><input id="bar" type="text" name="searchBar" placeholder="Change Username"><button class="barnameButton" type="submit">Submit</button></form></div>
+                        <div><p class="undersubtitleAdmin">Change Password</p><form class="searcheree" action="searcher.php"><input id="bar" type="text" name="searchBar" placeholder="Change Password"><button class="barnameButton" type="submit">Submit</button></form></div> 
+                        -->
                     </div>
                     <!-- 
                     <div class="adminDiv" id="managedatabase">
