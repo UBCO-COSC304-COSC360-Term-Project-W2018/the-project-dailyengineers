@@ -119,9 +119,9 @@ if (!isset($_SESSION['username'])) {
 
                 $(document).ready(function() {
 
-                  document.getElementById("editProfile").onclick = function() {
+                  document.getElementById("editProfile").addEventListener("click", function() {
                     editProfile();
-                  };
+                  });
 
                   function editProfile() {
                     var fields = document.getElementsByClassName("accMod");
@@ -139,7 +139,21 @@ if (!isset($_SESSION['username'])) {
                   }
 
                 });
+                
+                function editProfile() {
+                  var fields = document.getElementsByClassName("accMod");
+                  fields.forEach(fld => {
+                    fld.disabled = false;
+                  });
+                  var hidden = document.getElementsByClassName("hide");
+                  hidden.forEach(hide => {
+                    hide.style.display = "block";
+                  });
+                  document.getElementById("saveProfile").style.display = "block";
+                  document.getElementById("editProfile").style.display = "none";
+                  document.getElementById("editProfile").style.disabled = "true";
 
+                }
               </script>
 
               </script>
