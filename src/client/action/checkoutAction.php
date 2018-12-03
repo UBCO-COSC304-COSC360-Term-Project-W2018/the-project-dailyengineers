@@ -27,9 +27,9 @@ $cardCVV = $_POST['cardCVV'];
 $shippingMethod = $_POST['shippingMethod'];
 
 $totalPrice = $_POST['totalPrice'];
-$currentDatetime = date("Y-m-d H:i:s");
+$currentDateTime = date("Y-m-d H:i:s");
 
-$sql = "INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress) VALUES ($userID, '$currentDatetime', '$totalPrice', '$shippingMethod', 'processing', $cardNumber, '$shippingAddressFull', '$billingAddressFull')";
+$sql = "INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress) VALUES ($userID, '$currentDateTime', '$totalPrice', '$shippingMethod', 'processing', $cardNumber, '$shippingAddressFull', '$billingAddressFull')";
 $sql2 = "SELECT orderID FROM Orders WHERE orderDate = '$currentDateTime' AND userID = $userID";
 $sql3 = "SELECT vehicleID, quantity FROM CartContents WHERE userID = $userID";
 // $sql4 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
@@ -51,17 +51,24 @@ if (mysqli_query($connection, $sql)) {
   // header('Location: ../orderConfirmation.php');
   // Retrieve orderID to use for insertion into OrderContains.
   if ($results = mysqli_query($connection, $sql2)) {
-    $orderID = mysqli_fetch_row($results);
+    $orderID = 0;
+    while ($row = mysqli_fetch_row($results)) {
+      $orderID = $row['0'];
+    }
   	echo "successfully retrieved orderID.";
     if ($results = mysqli_query($connection, $sql3)) {
       while ($row = mysqli_fetch_row($results)) {
         $vehicleID = $row[0];
         // $price = $row[1];
         $quantity = $row[1];
-        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = $vehicleID";
-        if(mysqli_query($connection, $sql4)) {
-          $unitPrice = mysqli_fetch_row($results);
+        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = ".$vehicleID;
+        $unitPrice = 0;
+        if($results = mysqli_query($connection, $sql4)) {
+          while ($row = mysqli_fetch_row($results)) {
+            $unitPrice = $row['0'];
+          }
           echo "successfully retrieved unitPrice.";
+          echo '<h1>'.$unitPrice.'</h1>';
           $sql5 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $quantity, $unitPrice)";
           if (mysqli_query($connection, $sql5)) {
             echo "New record created successfully in OrderContains.";
