@@ -34,8 +34,8 @@ if (!isset($_SESSION['username'])) {
       <section class="mainView">
         <h1>Checkout</h1>
 
-        <!-- <form method="POST" action="action/checkoutAction.php"> -->
-          <form method="POST" action="http://www.randyconnolly.com/tests/process.php">
+        <form method="POST" action="action/checkoutAction.php">
+          <!-- <form method="POST" action="http://www.randyconnolly.com/tests/process.php"> -->
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
