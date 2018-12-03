@@ -184,7 +184,7 @@
 
           $('select').on('change', function() {
             //alert(this.value);
-            $(this).change();
+            /this.change();
           });
 
           $( document ).ajaxError(function( event, request, settings ) {
