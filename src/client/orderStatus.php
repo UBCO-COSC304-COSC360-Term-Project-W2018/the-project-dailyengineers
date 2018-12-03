@@ -105,6 +105,7 @@ if (!isset($_SESSION['username'])) {
                                   if ($val['orderID']==$row['orderID']) {
                                       echo "<p>".$row['year']." ".$row['make']." ".$row['model']."</p>";
                                       echo "<p>Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
+                                      echo "<p></p>";
                                   }
                               }
                               echo "</div>";
