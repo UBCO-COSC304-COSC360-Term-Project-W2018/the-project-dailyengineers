@@ -123,9 +123,10 @@ if (!isset($_SESSION['username'])) {
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
-                    //$("#testP").text("edit clicked ");
-                    document.getElementById("cancelEdit").addEventListener("click", cancelClick());
                     editProfile();
+                  });
+                  document.getElementById("cancelEdit").addEventListener("click", function(){
+                    cancelClick()
                   });
 
                   function editProfile() {
