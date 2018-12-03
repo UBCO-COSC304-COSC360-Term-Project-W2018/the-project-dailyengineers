@@ -27,12 +27,15 @@ if (!isset($_SESSION['username'])) {
   <main>
 
     <div class="columnContainer">
-      <?php include 'include/checkoutSidebar.php';?>
+      <?php include 'include/checkoutSidebar.php';
+
+      ?>
 
       <section class="mainView">
         <h1>Checkout</h1>
 
-        <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+        <form method="POST" action="action/checkoutAction.php">
+          <!-- <form method="POST" action="http://www.randyconnolly.com/tests/process.php"> -->
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
@@ -105,6 +108,8 @@ if (!isset($_SESSION['username'])) {
                 <hr>
                 <h2>Total</h2>
                 <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
+                <input value="<?php echo $subtotal ?>" name="totalPrice" type="hidden">
+                <input value="<?php echo $vehicleID ?>" name="vehicleID" type="hidden">
                 <input type="submit" value="Submit Order" class="checkoutButton submitOrder">
             </fieldset>
           </div>
