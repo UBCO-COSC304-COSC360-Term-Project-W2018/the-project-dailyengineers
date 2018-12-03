@@ -53,7 +53,6 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   make          VARCHAR(20) NOT NULL,
   model         VARCHAR(32) NOT NULL,
   price         NUMERIC(10,2) NOT NULL,
-  productPic    VARCHAR(50),
   bodyType      VARCHAR(10) CHECK (bodyType IN (Coupe, Hatchback, Sedan, SUV, Truck, Wagon, Other)),
   transmission  VARCHAR(10) CHECK (transmission IN (Automatic, CVT, Manual, Electric)),
   drivetrain    VARCHAR(5) CHECK (drivetrain IN (4X4, AWD, FWD, RWD, Other)),
