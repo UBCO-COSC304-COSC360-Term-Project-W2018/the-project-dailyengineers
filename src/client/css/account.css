@@ -31,6 +31,7 @@ form input[type=file] {
 #cancelEdit {
   margin-left: auto;
   margin-right: auto;
+  visibility: hidden;
 }
 
 .selectorForm {
