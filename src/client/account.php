@@ -181,7 +181,7 @@ if (!isset($_SESSION['username'])) {
                       $("#errorP").text("You have entered and invalid email.");
                       passes=false;
                       return false;
-                    } else if(!(nameRe.test($("#accountFirstName").val()&&nameRe.test($("#accountLastName").val())))){
+                    } else if(!(nameRe.test($("#accountFirstName").val())&&nameRe.test($("#accountLastName").val()))){
                       $("#errorP").text("Your first and last name must contain only letters.");
                       passes=false;
                       return false;
