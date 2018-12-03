@@ -42,6 +42,7 @@
                     <input id="confirmPassword" class="required" type="password">
                     <br />
                     <input id="createButton" type="button" value="Create Account">
+                    <p id="errorP"></p>
                   </fieldset>
                   <script>
 
