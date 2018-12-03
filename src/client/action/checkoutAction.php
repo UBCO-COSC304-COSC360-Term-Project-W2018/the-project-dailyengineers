@@ -28,7 +28,7 @@ $shippingMethod = $_POST['shippingMethod'];
 $totalPrice = $_POST['totalPrice'];
 $currentDatetime = date("Y-m-d H:i:s");
 
-$sql = "INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress) VALUES ('.$userID.', '.$currentDatetime.', '.$totalPrice.', '.$shippingMethod.', 'processing', '.$cardNumber.', '.$shippingAddressFull.', '.$billingAddressFull.')";
+$sql = "INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress) VALUES ($userID, $currentDatetime, $totalPrice, $shippingMethod, 'processing', $cardNumber, $shippingAddressFull, $billingAddressFull)";
 // $sql2 = "SELECT orderID FROM Orders WHERE orderDate = '.$currentDateTime.'";
 
 include '../include/db_credentials.php';
