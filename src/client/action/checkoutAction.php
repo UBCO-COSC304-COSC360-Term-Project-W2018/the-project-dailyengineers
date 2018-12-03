@@ -69,7 +69,7 @@ if (mysqli_query($connection, $sql)) {
         // $price = $row[1];
         $quantity = $row['quantity'];
         echo '<h1>QUANTITY: '.$quantity.'</h1>';
-        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = $vehicleID";
+        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = '$vehicleID'";
         $unitPrice = 0;
         if($results = mysqli_query($connection, $sql4)) {
           while ($row = mysqli_fetch_row($results)) {
