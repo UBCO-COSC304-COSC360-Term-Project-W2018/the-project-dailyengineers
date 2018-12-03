@@ -82,7 +82,7 @@ if (!isset($_SESSION['username'])) {
         <h1>User Control Panel</h1>
 
 
-        <form id="updateInfo" name="updateInfo" method="post" action="/action/modAccount.php" onsubmit="return validateAccountForm()">
+        <form id="updateInfo" name="updateInfo" method="post" action="/action/modAccount.php">
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
@@ -116,7 +116,7 @@ if (!isset($_SESSION['username'])) {
               <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
                   <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
-              <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod hide">
+              <input type="button" id="saveProfile" value="Save Changes" class="formatButton accMod hide">
               <input type="button" id="cancelEdit" value="Cancel" class="formatButton accMod" disabled="disabled">
 
               <p id="errorP"></p>
@@ -131,6 +131,10 @@ if (!isset($_SESSION['username'])) {
 
                   document.getElementById("cancelEdit").addEventListener("click", function(){
                     cancelClick()
+                  });
+
+                  document.getElementById("saveProfile").addEventListener("click", function(){
+                    validateAccountForm();
                   });
 
                   function editProfile() {
@@ -184,6 +188,8 @@ if (!isset($_SESSION['username'])) {
                       return false;
                     }
 
+                    //else submit form
+                    document.getElementById("updateInfo").submit();
                   };
 
                 });
