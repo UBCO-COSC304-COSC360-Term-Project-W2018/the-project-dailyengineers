@@ -103,42 +103,55 @@ if (!isset($_SESSION['username'])) {
                 </p>
                 <!-- <input type="text" name="billingFullName" class="required"> -->
                 <h2>Email:</h2>
-                <input type="email" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" disabled="true">
+                <input type="email" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" placeholder="<?php echo $email; ?>" disabled="true">
                 <h2>Password:</h2>
-                <input type="password" name="accountPassword" class="required accMod" value="" disabled="true">
+                <input type="password" name="accountPassword" class="required accMod" value="" placeholder="" disabled="true">
                 <h2 class="hide">Confirm Password:</h2>
-                <input type="password" class="required accMod hide" value="*******" disabled="true">
+                <input type="password" class="required accMod hide" value="" placeholder="" disabled="true">
                 <h2>First Name:</h2>
-                <input type="text" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" disabled="true">
+                <input type="text" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" placeholder="<?php echo $first_name; ?>" disabled="true">
                 <h2>Last Name:</h2>
-                <input type="text" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" disabled="true">
+                <input type="text" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" placeholder="<?php echo $last_name; ?>" disabled="true">
               </fieldset>
               <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
                   <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
-              <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
+              <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod hide">
+              <input type="cancel" id="cancelEdit" value="Cancel" class="formatButton accMod hide">
+
               <script type="text/javascript">
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
-                    $("#testP").text("edit clicked ");
+                    //$("#testP").text("edit clicked ");
+                    document.getElementById("cancelEdit").addEventListener("click", cancelClick());
                     editProfile();
                   });
 
                   function editProfile() {
                     $(".accMod").each(function(i, el) {
-                      $("#testP").append(" " + $(this).attr("name"));
                       $(this).removeAttr("disabled");
                     });
                     $('.hide').each(function(i, el) {
-                      $("#testP").append(" " + $(this).attr("name"));
                       $(this).css("display", "block");
                     });
-                    document.getElementById("saveProfile").style.display = "block";
                     document.getElementById("editProfile").style.display = "none";
-                    document.getElementById("editProfile").disabled = "disabled";
-
+                    ("#editProfile").attr("disabled", "disabled");
                   };
+                  function cancelClick(){
+                    $(".accMod").each(function(i, el){
+                      $(this).attr("disabled", "disabled");
+                    });
+                    $('.hide').each(function(i, el) {
+                      $(this).css("display", "none");
+                    });
+                    $('input.accMod').each(function(i,e){
+                      $(this).attr("value", $(this).attr("placeholder"));
+                    });
+                    document.getElementById("editProfile").style.display = "block";
+                    ("#editProfile").removeAttr("disabled");
+                    document.getElementById("cancelEdit").removeEventListener("click", cancelClick());
+                  }
 
                 });
               </script>
