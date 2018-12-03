@@ -32,6 +32,7 @@ if (!isset($_SESSION['username'])) {
     } */
     $data = array();
     $sql = "SELECT orderID,orderDate,totalPrice,method,orderStatus,paymentCC,shipAddress,billAddress FROM Customer RIGHT OUTER JOIN Orders ON Customer.userID=Orders.userID WHERE Customer.userID='$uid';";
+    $sql_contains = "SELECT * FROM OrderContains";
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
@@ -72,7 +73,7 @@ if (!isset($_SESSION['username'])) {
             <section class="mainView">
                 <section class="mainPageBody">
                     <div class="adminDiv">
-                        <p class="subtitleAdmin">Order Status</p>
+                        <p class="subtitleAdmin">Current Orders</p>
                         <div class="statusBar">
                             <div class="progressIn"></div>
                             <p id="ordered">Ordered</p>
@@ -82,6 +83,16 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                     <p class="subtitleAdmin">Completed Orders</p>
+                    <?php
+                      foreach($data as $key => $val){
+                        if($val['orderStatus']=="Delivered"){
+                          echo "<div class='adminDiv'>";
+                          echo "<p>Order number ".$val['orderID'].". Delivered to ".$val['shipAddress']."</p>";
+                          echo "<p>Placed on ".$val['orderDate'].". Charged ".$val['totalPrice']." to credit card ending in ".substr($val['paymentCC'], -4).".";
+                          echo "</div>";
+                        }
+                      }
+                    ?>
                     <div class="adminDiv">
                         <p>Delivered</p>
                         <p>Ford - Focus RS - $32K</p>
