@@ -44,9 +44,10 @@ if (!isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];
                 $email = $_SESSION['email'];
                 if ($row[4]==null) {
-                    $img_src = "images/profilePlaceholder.png";
+                    $img_src = "<img id='profilePic' src='images/profilePlaceholder.png'/>";
                 } else {
-                    $img_src = $row[4];
+                    $img_src = "<img id='profilePic' src='data:image/jpg;base64,".base64_encode($row[4])."'/>";
+                    
                 }
             }
         }
@@ -87,7 +88,7 @@ if (!isset($_SESSION['username'])) {
             <div id="shippingForm">
               <fieldset>
                 <legend>User Image</legend>
-                <img id=profilePic src=<?php echo $img_src ?>>
+                <?php echo $img_src ?>
                 <input class="accMod" type="file" name="profilePic" accept="image/x-png" disabled="disabled">
               </fieldset>
               <a class="formatButton" href="paymentMethod.php">Payment Method</a>
@@ -196,8 +197,6 @@ if (!isset($_SESSION['username'])) {
                   };
 
                 });
-              </script>
-
               </script>
             </div>
           </div>
