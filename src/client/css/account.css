@@ -24,9 +24,9 @@ form input[type=file] {
 }
 
 #saveProfile {
-  /* margin-left: auto;
-  margin-right: auto; */
-  visibility: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
 }
 
 .selectorForm {
