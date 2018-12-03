@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
                             $_SESSION['username'] = $_POST['username'];
                             echo $_SESSION['username'];
                             $_SESSION['userID'] = $row[0];
-							$_SESSION['email'] = $row[3];
+							              $_SESSION['email'] = $row[3];
                             $_SESSION['recentlyViewedArr'] = array(0, 0, 0);
                             //Release Values
                             mysqli_free_result($results);

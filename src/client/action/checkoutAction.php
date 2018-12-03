@@ -106,12 +106,12 @@ if (mysqli_query($connection, $sql)) {
        header('Location: ../orderConfirmation.php');
     } else {
       echo "Error: " . $sql3 . "" . mysqli_error($connection);
-    }
+    }mysqli_free_result($results);
     // header('Location: ../orderConfirmation.php');
   } else {
   	echo "Error: " . $sql2 . "" . mysqli_error($connection);
     // header('Location: ../checkout.php');
-  }
+  }		mysqli_free_result($results2);
 } else {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
   // header('Location: ../checkout.php');
