@@ -136,7 +136,7 @@ if (!isset($_SESSION['username'])) {
                       $(this).css("display", "block");
                     });
                     document.getElementById("editProfile").style.display = "none";
-                    ("#editProfile").attr("disabled", "disabled");
+                    $("#editProfile").attr("disabled", "disabled");
 
                   };
                   function cancelClick(){
@@ -150,7 +150,7 @@ if (!isset($_SESSION['username'])) {
                       $(this).attr("value", $(this).attr("placeholder"));
                     });
                     document.getElementById("editProfile").style.display = "block";
-                    ("#editProfile").removeAttr("disabled");
+                    $("#editProfile").removeAttr("disabled");
                     document.getElementById("cancelEdit").removeEventListener("click", cancelClick());
                   }
 
