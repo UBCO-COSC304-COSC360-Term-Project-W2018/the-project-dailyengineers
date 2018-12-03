@@ -30,9 +30,9 @@ if (!isset($_SESSION['username'])) {
 
         //echo "Error: " . $sql . " " . mysqli_error($connection);
     } */
-    $data = array();
+    $data = array(); $contains = array();
     $sql = "SELECT orderID,orderDate,totalPrice,method,orderStatus,paymentCC,shipAddress,billAddress FROM Customer RIGHT OUTER JOIN Orders ON Customer.userID=Orders.userID WHERE Customer.userID='$uid';";
-    $sql_contains = "SELECT * FROM OrderContains";
+    $sql_contains = "SELECT * FROM OrderContains NATURAL JOIN Vehicle";
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
@@ -41,6 +41,13 @@ if (!isset($_SESSION['username'])) {
         if ($results = mysqli_query($connection, $sql)) {
             while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
                 $data[] = $row;
+                }
+            }
+        }
+        mysqli_free_result($results);
+        if ($results = mysqli_query($connection, $sql_contains)) {
+            while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
+                $contains[] = $row;
                 }
             }
         }
@@ -87,8 +94,17 @@ if (!isset($_SESSION['username'])) {
                       foreach($data as $key => $val){
                         if($val['orderStatus']=="delivered"){
                           echo "<div class='adminDiv'>";
-                          echo "<p>Order number ".$val['orderID'].". Delivered to ".$val['shipAddress']."</p>";
-                          echo "<p>Placed on ".$val['orderDate'].". Charged ".$val['totalPrice']." to credit card ending in ".substr($val['paymentCC'], -4).".";
+                          echo "<h3>Order number ".$val['orderID'].".</h3>";
+                          echo "<p>Placed on ".$val['orderDate'].".</p>";
+                          echo "<p>Delivered to ".$val['shipAddress']."</p>";
+                          echo "<p>Charged ".$val['totalPrice']." to credit card ending in ".substr($val['paymentCC'], -4).".</p>";
+                          echo "<h4>Order Contents:</h4>";
+                          foreach ($contains as $row) {
+                            if($val['orderID']==$row['orderID']){
+                              echo "<p>".$row['year']." ".$row['make']." ".$row['model']." ".$row['unit']."</p>";
+                              echo "<p>Quantity: ".$row['quantity']." at ".$row['unitPrice']." each.</p>";
+                            }
+                          }
                           echo "</div>";
                         }
                       }
