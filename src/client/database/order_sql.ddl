@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE IF NOT EXISTS User (
    userID int NOT NULL AUTO_INCREMENT,
    username varchar(20) NOT NULL,
-   password varchar(20) NOT NULL,
+   password varchar(32) NOT NULL,
    email varchar(254) NOT NULL,
    primary key (userID),
   UNIQUE username (username),
