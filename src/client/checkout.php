@@ -107,7 +107,8 @@ if (!isset($_SESSION['username'])) {
                 <hr>
                 <h2>Total</h2>
                 <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
-                <input value="<?php echo $subTotal ?>" name="totalPrice" type="hidden">
+                <input value="<?php echo $subtotal ?>" name="totalPrice" type="hidden">
+                <input value="<?php echo $vehicleID ?>" name="vehicleID" type="hidden">
                 <input type="submit" value="Submit Order" class="checkoutButton submitOrder">
             </fieldset>
           </div>
