@@ -52,7 +52,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
                             $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
 
                             //get filetype
-                            $imageFileType = strtolower(pathinfo($_FILES["userImage"]["name"], PATHINFO_EXTENSION));
+                            $imageFileType = strtolower(pathinfo($_FILES["profilePic"]["name"], PATHINFO_EXTENSION));
                             // check to make sure it's an image, then if it's correct size, then if it's the right format (Only jpgs)  || $imageFileType == "png" || $imageFileType == "gif"
                             if (isset($_FILES["profilePic"]) && (getimagesize($_FILES["profilePic"]["tmp_name"])) !== false) {
                                 if ($_FILES["profilePic"]["size"] < 100000) {
