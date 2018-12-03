@@ -30,24 +30,16 @@ if (!isset($_SESSION['username'])) {
 
         //echo "Error: " . $sql . " " . mysqli_error($connection);
     } */
-
-    $sql = "SELECT orderID,orderDate,totalPrice,method,orderStatus,paymentCC FROM Customer RIGHT OUTER JOIN Orders ON Customer.userID=Orders.userID WHERE Customer.userID='$uid';";
+    $data = array();
+    $sql = "SELECT orderID,orderDate,totalPrice,method,orderStatus,paymentCC,shipAddress,billAddress FROM Customer RIGHT OUTER JOIN Orders ON Customer.userID=Orders.userID WHERE Customer.userID='$uid';";
     // echo "Connected to Server.";
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
         exit($output);
     } else {
         if ($results = mysqli_query($connection, $sql)) {
-            while ($row = mysqli_fetch_row($results)) {
-                $first_name = $row[1];
-                $last_name = $row[2];
-                $address = $row[3];
-                $username = $_SESSION['username'];
-                $email = $_SESSION['email'];
-                if ($row[4]==null) {
-                    $img_src = "images/profilePlaceholder.png";
-                } else {
-                    $img_src = $row[4];
+            while ($row = mysqli_fetch_array($results, MYSQL_ASSOC)) {
+                $data[] = $row;
                 }
             }
         }
