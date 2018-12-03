@@ -1,6 +1,7 @@
 <?php
 //confirm we are a user that is wanting to change his/her account
 session_start();
+echo "checking Session data and post data";
 if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
     echo "checked we're post username and userID";
