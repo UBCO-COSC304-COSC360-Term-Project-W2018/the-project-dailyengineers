@@ -334,3 +334,5 @@ INSERT INTO OrderContains VALUES (2, 7, 1, 40999.00);
 INSERT INTO OrderContains VALUES (2, 9, 1, 121277.23);
 INSERT INTO OrderContains VALUES (3, 1, 1, 129900.00);
 INSERT INTO OrderContains VALUES (4, 12, 1, 674995.00);
+
+update Vehicle set description ="Noted as a cousin of Italian ancestry, sharing certain structural and mechanical elements with the Iconic lamborghini Gallardo, those genes are immediately on display once wheels hit the open road. This muscular 2015 Audi R8 Quattro is equipped with LED DRL, brakelights and front and rear fog driving lights. Keyless remote to operate your powered locked doors. Navigation system with bluetooth and entertainment features on the amazing Bang & Olufsen, premium sound package. Beautiful baselines and edges; the relatively short-hood sharply joins up with the steeply-raked windshield over a smooth graceful arc to the vehicles tail." where vehicleID=1;
