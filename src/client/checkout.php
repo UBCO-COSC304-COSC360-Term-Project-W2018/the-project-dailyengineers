@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
                 <input type="text" name="billingCountry" class="required">
                 <h2>Postal Code/ZIP:</h2>
                 <input type="text" name="billingPostalCodeZIP" class="required">
-                <label><input type="checkbox" name="sameAsShipping" value="checked"> Same as Shipping</label>
+                <label class="hoverLabel"><input type="checkbox" name="sameAsShipping" value="checked"> Same as Shipping</label>
               </fieldset>
             </div>
           </div>
@@ -74,16 +74,16 @@ if (!isset($_SESSION['username'])) {
           <div id="paymentMethod">
             <fieldset>
               <legend>Payment Method</legend>
-              <label id="savedCardLegend"><input type="radio" name="cardRadio" value="savedCard"> Saved Card (Ending in ####)</label>
+              <label id="savedCardLegend" class="hoverLabel"><input type="radio" name="cardRadio" value="savedCard"> Saved Card (Ending in ####)</label>
               <fieldset>
-                <legend id="radioLegend"><label><input type="radio" name="cardRadio" value="newCard"> New Card</label></legend>
+                <legend id="radioLegend"><label class="hoverLabel"><input type="radio" name="cardRadio" value="newCard"> New Card</label></legend>
                 <h2>Card Number:</h2>
                 <input type="text" name="cardNumber" id="cardNumber" class="required">
                 <h2>Expiry Date:</h2>
                 <input type="text" name="cardExpiry" id="cardExpiry" class="required">
                 <h2>CVV:</h2>
                 <input type="text" name="cardCVV" id="cardCVV" class="required">
-                <label><input type="checkbox" name="savePaymentMethod" value="checked" class="savePaymentCheckbox"> Save Payment Method</label>
+                <label class="hoverLabel"><input type="checkbox" name="savePaymentMethod" value="checked" class="savePaymentCheckbox"> Save Payment Method</label>
               </fieldset>
             </fieldset>
           </div>
@@ -91,8 +91,8 @@ if (!isset($_SESSION['username'])) {
           <div id="shippingMethod">
             <fieldset>
               <legend>Shipping Method</legend>
-              <label><input type="radio" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
-              <label><input type="radio" name="shippingMethod" value="airExpress"> Air Express (7 - 24 Days)</label>
+              <label class="hoverLabel"><input type="radio" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
+              <label class="hoverLabel"><input type="radio" name="shippingMethod" value="airExpress"> Air Express (7 - 24 Days)</label>
             </fieldset>
           </div>
           <div id="checkoutTotals">

@@ -197,6 +197,14 @@ form.searchForm button {
   background-color: #D17000;
 }
 
+.sidebarForm div {
+  margin-top: 0.75em;
+}
+
+.sidebarForm div:first-child {
+  margin-top: 0em;
+}
+
 .inlineNav li:first-child {
   border: none;
 }
@@ -257,11 +265,19 @@ label {
  font-weight: bold;
 }
 
+.sidebarLabel {
+  display: inline;
+}
+
+.sidebarDiv {
+  margin-top: 1em;
+}
+
 checkbox {
   height: 2em;
 }
 
-label:hover {
+.hoverLabel:hover {
  background-color: #FF8800;
  color: #353535;
  cursor:pointer;

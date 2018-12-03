@@ -18,7 +18,7 @@
 <section class="leftSidebar">
   <div class="custom-select">
 
-    <form>
+    <form class="sidebarForm">
       <p id="testOut">
       </p>
       <div>
