@@ -47,7 +47,7 @@ if (!isset($_SESSION['username'])) {
         mysqli_free_result($results);
     }
     mysqli_close($connection);
-}?>
+?>
 
 <html>
 
