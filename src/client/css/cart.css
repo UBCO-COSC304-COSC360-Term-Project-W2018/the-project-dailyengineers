@@ -302,16 +302,16 @@ font-weight: bold;
 color: #FF8800;
 }
 
-#editProfile {
+#editProfile {/*
 margin-left: auto;
 margin-right: auto;
-visibility: visible;
+visibility: visible;*/
 }
 
 #saveProfile {
 /* margin-left: auto;
-margin-right: auto; */
-visibility: hidden;
+margin-right: auto;
+visibility: hidden;*/
 }
 
 .selectorForm {

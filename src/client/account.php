@@ -117,7 +117,7 @@ if (!isset($_SESSION['username'])) {
                   <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod hide">
-              <input type="cancel" id="cancelEdit" value="Cancel" class="formatButton accMod hide">
+              <input type="button" id="cancelEdit" value="Cancel" class="formatButton accMod hide">
 
               <script type="text/javascript">
                 $(document).ready(function() {
@@ -152,7 +152,6 @@ if (!isset($_SESSION['username'])) {
                     });
                     document.getElementById("editProfile").style.display = "block";
                     $("#editProfile").removeAttr("disabled");
-                    //document.getElementById("cancelEdit").removeEventListener("click", cancelClick());
                   }
 
                 });
