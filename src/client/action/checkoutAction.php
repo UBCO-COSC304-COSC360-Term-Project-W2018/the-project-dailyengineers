@@ -103,7 +103,7 @@ if (mysqli_query($connection, $sql)) {
 
     }
     	echo "All records created successfully in OrderContains.";
-      // header('Location: ../orderConfirmation.php');
+       header('Location: ../orderConfirmation.php');
     } else {
       echo "Error: " . $sql3 . "" . mysqli_error($connection);
     }

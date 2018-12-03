@@ -79,10 +79,11 @@ if (!isset($_SESSION['username'])) {
       <!-- Page code -->
       <section class="mainView">
         <section class="mainPageBody">
-          <div class="adminDiv">
-            <p class="subtitleAdmin">Current Orders</p>
             <?php foreach ($data as $key => $val){
                 if($val['orderStatus']!="delivered"){
+                    echo "<div class='adminDiv'>";
+                    echo "<p class='subtitleAdmin'>Current Orders</p>";
+
                     echo "<div class='statusBar'>";
                     echo "<div class='progressIn' ".(($val['orderStatus']=="shipped")?"":"style='width:36%;'")."></div>";
                     echo "<p id='ordered'>Ordered</p><p id='shipped'>Shipped</p><p id='delivered'>Delivered</p>";
@@ -95,10 +96,9 @@ if (!isset($_SESSION['username'])) {
                         }
                     };
                     echo "</div>";
-                    echo "<p></p>";
-                    echo "<p></p>";
-                    echo "<p></p>";
 
+                    echo "</p>";
+                    echo "</div>";
                 }
             }?>
           </div>
