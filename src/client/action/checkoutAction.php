@@ -64,6 +64,7 @@ if (mysqli_query($connection, $sql)) {
         foreach ($row as $key => $value) {
           echo '<h1>VALUE: '.$value.'</h1>';
           echo '<h1>VALUE: '.$row[$key].'</h1>';
+        }
         $vehicleID = $row['vehicleID'];
         echo '<h1>VEHICLEID: '.$vehicleID.'</h1>';
         // $price = $row[1];
@@ -99,7 +100,7 @@ if (mysqli_query($connection, $sql)) {
         // }
         // $subtotal += $price*$quantity;
         // $quantityTotal += $quantity;
-      }
+
     }
     	echo "All records created successfully in OrderContains.";
       // header('Location: ../orderConfirmation.php');
