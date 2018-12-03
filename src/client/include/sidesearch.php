@@ -22,7 +22,7 @@
       <p id="testOut">
       </p>
       <div>
-        <label for="make_sel">Make: </label>
+        <label class="sidebarLabel" for="make_sel">Make: </label>
         <select id="make_sel" name="make">
           <option value="0" selected="selected">All</option>
           <?php
@@ -38,7 +38,7 @@
         </select>
       </div>
 
-      <div><label for="model_sel">Model: </label>
+      <div><label class="sidebarLabel" for="model_sel">Model: </label>
         <select id="model_sel" name="model">
           <option value="0">All</option>
           <?php
@@ -53,7 +53,7 @@
                   ?>
         </select></div>
 
-      <div><label for="type_sel">Body Type: </label>
+      <div><label class="sidebarLabel" for="type_sel">Body Type: </label>
         <select id="type_sel" name="bodyType">
           <option value="0" selected="selected">All</option>
           <?php
@@ -70,7 +70,7 @@
         </select>
       </div>
 
-      <div> <label for="year_sel">Year: </label>
+      <div> <label class="sidebarLabel" for="year_sel">Year: </label>
         <select id="year_sel" name="year">
           <option value="0" selected="selected">All</option>
           <?php
@@ -87,7 +87,7 @@
         </select>
       </div>
 
-      <div><label for="engine_sel">Engine: </label>
+      <div><label class="sidebarLabel" for="engine_sel">Engine: </label>
         <select id="engine_sel" name="engine">
           <option value="0" selected="selected">All</option>
           <?php
@@ -103,7 +103,7 @@
         </select>
       </div>
 
-      <div><label for="drivetrain_sel">Drivetrain: </label>
+      <div><label class="sidebarLabel" for="drivetrain_sel">Drivetrain: </label>
         <select id="drivetrain_sel" name="drivetrain">
           <option value="0" selected="selected">All</option>
           <?php
@@ -119,7 +119,7 @@
                       ?>
         </select></div>
 
-      <div><label for="trans_sel">Transmission: </label>
+      <div><label class="sidebarLabel" for="trans_sel">Transmission: </label>
         <select id="trans_sel" name="transmission">
           <option value="0" selected="selected">All</option>
           <?php
@@ -134,7 +134,7 @@
                           ?>
         </select></div>
 
-      <div><label for="colour_sel">Colour: </label>
+      <div><label class="sidebarLabel" for="colour_sel">Colour: </label>
         <select id="colour_sel" name="exterior">
           <option value="0" selected="selected">All</option>
           <?php
@@ -149,7 +149,7 @@
                                 ?>
         </select></div>
 
-      <div><label for="seats_sel">Seats: </label>
+      <div><label class="sidebarLabel" for="seats_sel">Seats: </label>
         <select id="seats_sel" name="seats">
           <option value="0" selected="selected">All</option>
           <?php
@@ -164,7 +164,7 @@
                                       ?>
         </select></div>
 
-      <div><label for="fuel_sel">Fuel: </label>
+      <div><label class="sidebarLabel" for="fuel_sel">Fuel: </label>
         <select id="fuel_sel" name="fuel">
           <option value="0" selected="selected">All</option>
           <?php
