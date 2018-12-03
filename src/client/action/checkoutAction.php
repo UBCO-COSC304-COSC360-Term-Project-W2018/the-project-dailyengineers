@@ -30,7 +30,8 @@ $totalPrice = $_POST['totalPrice'];
 $currentDatetime = date("Y-m-d H:i:s");
 
 $sql = "INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress) VALUES ($userID, '$currentDatetime', '$totalPrice', '$shippingMethod', 'processing', $cardNumber, '$shippingAddressFull', '$billingAddressFull')";
-// $sql2 = "SELECT orderID FROM Orders WHERE orderDate = '.$currentDateTime.'";
+$sql2 = "SELECT orderID FROM Orders WHERE orderDate = '$currentDateTime'";
+// $sql3 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
 
 include '../include/db_credentials.php';
 $connection = mysqli_connect($host, $user, $password, $database);
@@ -43,9 +44,26 @@ if ($error != null) {
 	$output = "<p>Unable to connect to database!</p>";
 	exit($output);
 }
+// Insert order into Orders table.
 if (mysqli_query($connection, $sql)) {
 	echo "New record created successfully in Orders.";
-  header('Location: ../orderConfirmation.php');
+  // header('Location: ../orderConfirmation.php');
+  // Retrieve orderID to use for insertion into OrderContains.
+  if ($results = mysqli_query($connection, $sql2)) {
+    $orderID = mysqli_fetch_row($results)
+    $sql3 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
+  	echo "successfully retrieved orderID.";
+    if (mysqli_query($connection, $sql3)) {
+    	echo "New record created successfully in OrderContains.";
+      header('Location: ../orderConfirmation.php');
+    } else {
+      echo "Error: " . $sql . "" . mysqli_error($connection);
+    }
+    // header('Location: ../orderConfirmation.php');
+  } else {
+  	echo "Error: " . $sql . "" . mysqli_error($connection);
+    // header('Location: ../checkout.php');
+  }
 } else {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
   // header('Location: ../checkout.php');
