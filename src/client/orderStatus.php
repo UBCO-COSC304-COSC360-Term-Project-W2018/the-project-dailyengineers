@@ -79,8 +79,9 @@ if (!isset($_SESSION['username'])) {
       <!-- Page code -->
       <section class="mainView">
         <section class="mainPageBody">
+          <p class="subtitleAdmin">Current Orders</p>
             <?php
-              echo "<p class='subtitleAdmin'>Current Orders</p>";
+
 
              foreach ($data as $key => $val){
                 if($val['orderStatus']!="delivered"){
@@ -91,8 +92,8 @@ if (!isset($_SESSION['username'])) {
                     echo "<h3>Order Contents:</h3>";
                     foreach ($contains as $row) {
                         if ($val['orderID']==$row['orderID']) {
-                            echo "<p>".$row['year']." ".$row['make']." ".$row['model']."</p>";
-                            echo "<p>Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
+                            echo "<p>".$row['year']." ".$row['make']." ".$row['model'].". ";
+                            echo "Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
                         }
                     };
                     echo "</div>";
