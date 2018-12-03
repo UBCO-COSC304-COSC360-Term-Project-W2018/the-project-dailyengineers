@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'])) {
         exit($output);
     } else {
         if ($results = mysqli_query($connection, $sql)) {
-            while ($row = mysqli_fetch_array($results, MYSQL_ASSOC)) {
+            while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
                 $data[] = $row;
                 }
             }
