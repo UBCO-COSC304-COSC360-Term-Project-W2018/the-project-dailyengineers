@@ -24,12 +24,12 @@ if (!isset($_SESSION['username'])) {
                 echo $returned;
                 header('Location: admin.php');
             }
-            mysqli_free_result($results);
-        } else {
-            echo "Error: " . $sql . " " . mysqli_error($connection);
-        }
-        mysqli_close($connection);
+        } mysqli_free_result($results);
+
+
+        //echo "Error: " . $sql . " " . mysqli_error($connection);
     }
+
     $sql = "SELECT * FROM Customer WHERE userID='$uid';";
     // echo "Connected to Server.";
     if ($error != null) {
@@ -116,7 +116,7 @@ if (!isset($_SESSION['username'])) {
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
               <script type="text/javascript">
-              
+
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").onclick = function() {
