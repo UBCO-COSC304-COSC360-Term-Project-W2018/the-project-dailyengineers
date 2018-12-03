@@ -58,9 +58,9 @@ if (mysqli_query($connection, $sql)) {
     }
   	echo "successfully retrieved orderID.";
     echo '<h1>ORDERID: '.$orderID.'</h1>';
-    if ($results = mysqli_query($connection, $sql3)) {
+    if ($results2 = mysqli_query($connection, $sql3)) {
       $counter = 0;
-      while ($row = mysqli_fetch_assoc($results)) {
+      while ($row = mysqli_fetch_assoc($results2)) {
         // foreach ($row as $key => $value) {
         //   echo '<h1>VALUE: '.$value.'</h1>';
         //   echo '<h1>VALUE: '.$row[$key].'</h1>';
@@ -70,7 +70,7 @@ if (mysqli_query($connection, $sql)) {
         // $price = $row[1];
         $quantity = $row['quantity'];
         echo '<h1>QUANTITY: '.$quantity.'</h1>';
-        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = '$vehicleID'";
+        $sql4 = "SELECT price FROM Vehicle WHERE vehicleID ='$vehicleID'";
         $unitPrice = 0;
         if($results = mysqli_query($connection, $sql4)) {
           while ($row = mysqli_fetch_row($results)) {
@@ -103,15 +103,15 @@ if (mysqli_query($connection, $sql)) {
 
     }
     	echo "All records created successfully in OrderContains.";
-      // header('Location: ../orderConfirmation.php');
+       header('Location: ../orderConfirmation.php');
     } else {
       echo "Error: " . $sql3 . "" . mysqli_error($connection);
-    }
+    }mysqli_free_result($results);
     // header('Location: ../orderConfirmation.php');
   } else {
   	echo "Error: " . $sql2 . "" . mysqli_error($connection);
     // header('Location: ../checkout.php');
-  }
+  }		mysqli_free_result($results2);
 } else {
 	echo "Error: " . $sql . "" . mysqli_error($connection);
   // header('Location: ../checkout.php');

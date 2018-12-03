@@ -5,7 +5,7 @@
         header("Location: login.php");
         die();
     } else {
-        include '/include/db_credentials.php';
+        include 'include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
         $error = mysqli_connect_error();
         $uid = $_SESSION['userID'];
@@ -69,7 +69,7 @@
                     </div>
                     <div class="adminDiv" id="managedatabase">
                         <p class="subtitleAdmin">Manage Database</p>
-                        <p>PLACEHOLDER</p>
+                        <a href="resetDatabase.php" class="formatButton">Reset Database</a>
                     </div>
                     <div class="adminDiv" id="salesreport">
                         <p class="subtitleAdmin">Sales Report</p>
