@@ -80,6 +80,8 @@ if (!isset($_SESSION['username'])) {
       <section class="mainView">
         <h1>User Control Panel</h1>
 
+        <p id="testP"></p>
+
         <form method="POST" action="action/modAccount.php">
           <div class="shippingBilling">
             <div id="shippingForm">
@@ -120,13 +122,16 @@ if (!isset($_SESSION['username'])) {
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
+                    $("testP").append("edit clicked ")
                     editProfile();
                   });
 
                   function editProfile() {
                     var fields = document.getElementsByClassName("accMod");
                     fields.forEach(fld => {
-                      fld.disabled = false;
+                      $("testP").append(fld.name + " ");
+
+                      fld.disabled = "false";
                     });
                     var hidden = document.getElementsByClassName("hide");
                     hidden.forEach(hide => {
@@ -139,7 +144,7 @@ if (!isset($_SESSION['username'])) {
                   }
 
                 });
-                
+
                 function editProfile() {
                   var fields = document.getElementsByClassName("accMod");
                   fields.forEach(fld => {
@@ -152,8 +157,8 @@ if (!isset($_SESSION['username'])) {
                   document.getElementById("saveProfile").style.display = "block";
                   document.getElementById("editProfile").style.display = "none";
                   document.getElementById("editProfile").style.disabled = "true";
-
                 }
+
               </script>
 
               </script>
