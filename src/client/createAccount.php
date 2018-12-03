@@ -29,20 +29,61 @@
                         <input type="file" name="profile" accept="image/*">
                     </div> -->
                     <p>Username:</p>
-                    <input name="user" type="text">
+                    <input id="username" name="user" type="text">
                     <p>Email:</p>
-                    <input name="email" type="email">
+                    <input id="accountEmail" name="email" type="email">
                     <p>First name:</p>
-                    <input name="firstName" type="text">
+                    <input id="accountFirstName" name="firstName" type="text">
                     <p>Last name:</p>
-                    <input name="lastName" type="text">
+                    <input id="accountLastName" name="lastName" type="text">
                     <p>Password:</p>
-                    <input name="pass" type="password">
+                    <input id="accountPassword" name="pass" type="password">
                     <p>Confirm Password:</p>
-                    <input type="password">
+                    <input id="confirmPassword" type="password">
                     <br />
-                    <input id="createButton" type="submit" value="Create Account">
+                    <input id="createButton" type="button" value="Create Account">
                   </fieldset>
+                  <script>
+
+                  $(document).ready(function() {
+
+
+                  document.getElementById("createButton").addEventListener("click", function(){
+                    validateAccountForm();
+                  });
+
+
+                  function validateAccountForm(){
+
+                    var nameRe = /^[a-zA-Z]+$/;
+                    var emailRe = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+                    var passes = true;
+                    $(".required").each(function(){
+                      if($(this).val()==""){
+                        $("#errorP").text("You must fill out all required fields.");
+                        passes = false;
+                        return false;
+                      }
+                    });
+                    if(!(emailRe.test($("#accountEmail").val().toLowerCase()))){
+                      $("#errorP").text("You have entered and invalid email.");
+                      passes=false;
+                      return false;
+                    } else if(!(nameRe.test($("#accountFirstName").val())&&nameRe.test($("#accountLastName").val()))){
+                      $("#errorP").text("Your first and last name must contain only letters.");
+                      passes=false;
+                      return false;
+                    } else if($("#accountPassword").val()!=$("#confirmPassword").val()){
+                      $("#errorP").text("The entered passwords do not match.");
+                      passes=false;
+                      return false;
+                    } else if(passes==true){ //else submit form
+                      document.getElementById("updateInfo").submit();
+                    }
+
+                  };
+                });
+                  </script>
                 </form>
             </section>
         </div>
