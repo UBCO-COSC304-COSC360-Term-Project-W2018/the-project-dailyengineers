@@ -54,26 +54,27 @@ if (mysqli_query($connection, $sql)) {
     $orderID = 0;
     while ($row = mysqli_fetch_row($results)) {
       $orderID = $row['0'];
-      echo '<h1>'.$orderID.'</h1>';
+      echo '<h1>Scanning rows for orderID: '.$orderID.'</h1>';
     }
   	echo "successfully retrieved orderID.";
-    echo '<h1>'.$orderID.'</h1>';
+    echo '<h1>ORDERID: '.$orderID.'</h1>';
     if ($results = mysqli_query($connection, $sql3)) {
+      $counter = 1;
       while ($row = mysqli_fetch_row($results)) {
         $vehicleID = $row[0];
-        echo '<h1>'.$vehicleID.'</h1>';
+        echo '<h1>VEHICLEID: '.$vehicleID.'</h1>';
         // $price = $row[1];
         $quantity = $row[1];
-        echo '<h1>'.$quantity.'</h1>';
+        echo '<h1>QUANTITY: '.$quantity.'</h1>';
         $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = ".$vehicleID;
         $unitPrice = 0;
         if($results = mysqli_query($connection, $sql4)) {
           while ($row = mysqli_fetch_row($results)) {
             $unitPrice = $row['0'];
-            echo '<h1>'.$unitPrice.'</h1>';
+            echo '<h1>Scanning rows for unitPrice: '.$unitPrice.'</h1>';
           }
           echo "successfully retrieved unitPrice.";
-          echo '<h1>'.$unitPrice.'</h1>';
+          echo '<h1>UNIT PRICE: '.$unitPrice.'</h1>';
           $sql5 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $quantity, $unitPrice)";
           if (mysqli_query($connection, $sql5)) {
             echo "New record created successfully in OrderContains.";
@@ -84,6 +85,8 @@ if (mysqli_query($connection, $sql)) {
         } else {
           echo "Error: " . $sql4 . "" . mysqli_error($connection);
         }
+        $counter++;
+        echo '<h1>WHILE COUNTER: '.$counter.'</h1>';
         // $sql5 = "INSERT INTO OrderContains VALUES ($orderID, $vehicleID, $amount, (SELECT price FROM Vehicle WHERE vehicleID = $vehicleID))";
         // if (mysqli_query($connection, $sq5)) {
         //   echo "New record created successfully in OrderContains.";
