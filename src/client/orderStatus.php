@@ -97,6 +97,10 @@ if (!isset($_SESSION['username'])) {
                         }
                     };
                     echo "</div>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+                    echo "<p></p>";
+
                 }
             }?>
           </div>
