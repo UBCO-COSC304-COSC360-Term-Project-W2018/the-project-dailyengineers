@@ -24,14 +24,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
         } else {
             //check if user exists
             $username = $_SESSION["username"];
-            $sql = "SELECT email FROM User WHERE username='".$_SESSION['username']."'";
+            $sql = "SELECT email FROM User WHERE username='".$username."'";
             $results = mysqli_query($connection, $sql);
             if (mysqli_fetch_assoc($results) == null) {    
                 echo "<p>User doesn't exist?</p><a href='account.php'>Return to account page</a>";
             } else {
                 mysqli_free_result($results);
                 
-                $sql = "UPDATE User SET password='?', email='?' WHERE username='?' AND userID='?';";
+                $sql = "UPDATE User SET password = ?, email = ? WHERE username = ? AND userID = ?;";
                 //if the preparation goes through
                 if ($statement = mysqli_prepare($connection, $sql)) {
                     //hash password
@@ -46,13 +46,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
                         echo "<p>The account for ".$username." has been updated in User</p>";
 
                         //prepare next query
-                        $sql = "UPDATE Customer SET firstName='?', lastName='?' WHERE userID='?';";
+                        $sql = "UPDATE Customer SET firstName = ?, lastName = ? WHERE userID = ?;";
                         if($stmt = mysqli_prepare($connection, $sql)) {
                              // and dispose of the statement.
                              mysqli_stmt_bind_param($stmt, "ssi", $_POST['accountFirstName'], $_POST['accountLastName'], $_SESSION['userID']);
                              $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
                              mysqli_close($connection);
-                             header("Location: ../account.php");
+                            //  header("Location: ../account.php");
                         }
                     }
                 }

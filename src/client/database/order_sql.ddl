@@ -109,17 +109,23 @@ CREATE TABLE IF NOT EXISTS CommentsOn (
 /* ALTER TABLE Orders MODIFY COLUMN orderID INT NOT NULL AUTO_INCREMENT; */
 
 CREATE TABLE IF NOT EXISTS Orders (
-  orderID       int NOT NULL AUTO_INCREMENT,
+  orderID     int NOT NULL AUTO_INCREMENT,
   userID      int NOT NULL,
   orderDate   datetime,
   totalPrice  numeric(10,2),
   method      varchar(8) NOT NULL CHECK (method IN (Freight, Cargo, Air)),
   orderStatus varchar(10) NOT NULL CHECK (orderStatus IN (Processing, Shipped, Delivered)),
-  paymentCC   int NOT NULL,
+  paymentCC   TINYINT(4) NOT NULL,
+  shipAddress VARCHAR(255) NOT NULL,
+  billAddress VARCHAR(255) NOT NULL,
   primary key (orderID),
   foreign key (userID) REFERENCES User(userID)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+/* ALTER TABLE Orders ADD COLUMN shipAddress VARCHAR(255) NOT NULL;
+ALTER TABLE Orders ADD COLUMN billAddress VARCHAR(255) NOT NULL;
+ALTER TABLE Orders MODIFY paymentCC TINYINT(4) NOT NULL; */
 
 CREATE TABLE IF NOT EXISTS Ships (
   warehouseID int NOT NULL,
