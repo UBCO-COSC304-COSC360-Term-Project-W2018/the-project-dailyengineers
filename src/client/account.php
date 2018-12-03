@@ -152,7 +152,7 @@ if (!isset($_SESSION['username'])) {
                     });
                     document.getElementById("editProfile").style.display = "block";
                     $("#editProfile").removeAttr("disabled");
-                    document.getElementById("cancelEdit").removeEventListener("click", cancelClick());
+                    //document.getElementById("cancelEdit").removeEventListener("click", cancelClick());
                   }
 
                 });
