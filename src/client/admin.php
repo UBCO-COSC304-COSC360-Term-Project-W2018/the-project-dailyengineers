@@ -5,7 +5,7 @@
         header("Location: login.php");
         die();
     } else {
-        include '/include/db_credentials.php';
+        include 'include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
         $error = mysqli_connect_error();
         $uid = $_SESSION['userID'];
