@@ -65,6 +65,7 @@ if (!isset($_SESSION['username'])) {
   <!-- <link rel="stylesheet" type="text/css" href="css/mad.css"> -->
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/cart.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- <script src="js/editprofile.js"></script> -->
   <link rel="stylesheet" href="css/account.css">
@@ -80,9 +81,8 @@ if (!isset($_SESSION['username'])) {
       <section class="mainView">
         <h1>User Control Panel</h1>
 
-        <p id="testP"></p>
 
-        <form method="POST" action="action/modAccount.php">
+        <form id="updateInfo" name="updateInfo" method="post" action="/action/modAccount.php" onsubmit="return validateAccountForm()">
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
@@ -103,21 +103,24 @@ if (!isset($_SESSION['username'])) {
                 </p>
                 <!-- <input type="text" name="billingFullName" class="required"> -->
                 <h2>Email:</h2>
-                <input type="email" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" placeholder="<?php echo $email; ?>" disabled="true">
+                <input type="email" id="accountEmail" name="accountEmail" class="required accMod" value="<?php echo $email; ?>" placeholder="<?php echo $email; ?>" disabled="true">
                 <h2>Password:</h2>
-                <input type="password" name="accountPassword" class="required accMod" value="" placeholder="" disabled="true">
+                <input type="password" id="accountPassword" name="accountPassword" class="required accMod" value="" placeholder="" disabled="true">
                 <h2 class="hide">Confirm Password:</h2>
-                <input type="password" class="required accMod hide" value="" placeholder="" disabled="true">
+                <input type="password" id="confirmPassword" class="required accMod hide" value="" placeholder="" disabled="true">
                 <h2>First Name:</h2>
-                <input type="text" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" placeholder="<?php echo $first_name; ?>" disabled="true">
+                <input type="text" id="accountFirstName" name="accountFirstName" class="required accMod" value="<?php echo $first_name; ?>" placeholder="<?php echo $first_name; ?>" disabled="true">
                 <h2>Last Name:</h2>
-                <input type="text" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" placeholder="<?php echo $last_name; ?>" disabled="true">
+                <input type="text" id="accountLastName" name="accountLastName" class="required accMod" value="<?php echo $last_name; ?>" placeholder="<?php echo $last_name; ?>" disabled="true">
               </fieldset>
               <!-- <a class="accountButton" id="editProfile" href="cart.php">Edit Profile</a>
                   <a class="accountButton" id="saveProfile" href="cart.php">Save Changes</a> -->
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod hide">
-              <input type="button" id="cancelEdit" value="Cancel" class="formatButton accMod">
+              <input type="button" id="cancelEdit" value="Cancel" class="formatButton accMod" disabled="disabled">
+
+              <p id="errorP"></p>
+
 
               <script type="text/javascript">
                 $(document).ready(function() {
@@ -125,6 +128,7 @@ if (!isset($_SESSION['username'])) {
                   document.getElementById("editProfile").addEventListener("click", function() {
                     editProfile();
                   });
+
                   document.getElementById("cancelEdit").addEventListener("click", function(){
                     cancelClick()
                   });
@@ -138,9 +142,10 @@ if (!isset($_SESSION['username'])) {
                     });
                     document.getElementById("editProfile").style.display = "none";
                     $("#editProfile").attr("disabled", "disabled");
-                    $("#cancelEdit").attr("visibility", "visible");
+                    $("#cancelEdit").css("visibility", "visible");
 
                   };
+
                   function cancelClick(){
                     $(".accMod").each(function(i, el){
                       $(this).attr("disabled", "disabled");
@@ -153,8 +158,33 @@ if (!isset($_SESSION['username'])) {
                     });
                     document.getElementById("editProfile").style.display = "block";
                     $("#editProfile").removeAttr("disabled");
-                    $("#cancelEdit").attr("visibility", "hidden");
-                  }
+                    $("#cancelEdit").css("visibility", "hidden");
+                  };
+
+                  function validateAccountForm(){
+                    
+                    $(".required").each(function(){
+                      if($(this).val()==""){
+                        $("#errorP").text("You must fill out all required fields.");
+                        return false;
+                      }
+                    });
+                    var re = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+                    if(!(re.test($("#accountEmail").val().toLowerCase())))){
+                      $("#errorP").text("You have entered and invalid email.");
+                      return false;
+                    }
+                    re = /^[a-zA-Z]+$/;
+                    if(!(re.test($("#accountFirstName").val()&&re.test($("#accountLastName").val())))){
+                      $("#errorP").text("Your first and last name must contain only letters.");
+                      return false;
+                    }
+                    if($("#accountPassword").val()!=$("#confirmPassword").val()){
+                      $("#errorP").text("The entered passwords do not match.");
+                      return false;
+                    }
+
+                  };
 
                 });
               </script>
