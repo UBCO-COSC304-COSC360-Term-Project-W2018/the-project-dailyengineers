@@ -134,14 +134,13 @@ if (!isset($_SESSION['username'])) {
                       $("#testP").append(" " + $(this).attr("name"));
                       $(this).css("display", "block");
                     });
-                    document.getElementById("saveProfile").style.visibility = "visible";
+                    document.getElementById("saveProfile").style.display = "block";
+                    document.getElementById("editProfile").style.display = "none";
                     document.getElementById("editProfile").disabled = "disabled";
 
                   };
 
                 });
-              </script>
-
               </script>
             </div>
           </div>

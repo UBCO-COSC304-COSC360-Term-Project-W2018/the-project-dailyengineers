@@ -20,7 +20,7 @@ form input[type=file] {
 #editProfile {
   margin-left: auto;
   margin-right: auto;
-  visibility: visible;
+  display: block;
 }
 
 #saveProfile {
