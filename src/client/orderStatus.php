@@ -1,10 +1,61 @@
 <?php session_start();
+
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest) GET OUT
     header("Location: login.php");
     die();
+} else {
+    include 'include/db_credentials.php';
+    $connection = mysqli_connect($host, $user, $password, $database);
+    $error = mysqli_connect_error();
+    $uid = $_SESSION['userID'];
+
+  /*  $sql = "SELECT * FROM Admin WHERE userID='$uid'";
+    if ($connection -> connect_error) {
+        die("Connection failed: " . $connection -> connect_error);
+    }
+    // echo "Connected to Server.";
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        exit($output);
+    } else {
+        if ($results = mysqli_query($connection, $sql)) {
+            while ($returned = mysqli_fetch_row($results)) {
+                echo "I'm an Admin!";
+                echo $returned;
+                header('Location: admin.php');
+            }
+        } mysqli_free_result($results);
+
+
+        //echo "Error: " . $sql . " " . mysqli_error($connection);
+    } */
+
+    $sql = "SELECT orderID,orderDate,totalPrice,method,orderStatus,paymentCC FROM Customer RIGHT OUTER JOIN Orders ON Customer.userID=Orders.userID WHERE Customer.userID='$uid';";
+    // echo "Connected to Server.";
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        exit($output);
+    } else {
+        if ($results = mysqli_query($connection, $sql)) {
+            while ($row = mysqli_fetch_row($results)) {
+                $first_name = $row[1];
+                $last_name = $row[2];
+                $address = $row[3];
+                $username = $_SESSION['username'];
+                $email = $_SESSION['email'];
+                if ($row[4]==null) {
+                    $img_src = "images/profilePlaceholder.png";
+                } else {
+                    $img_src = $row[4];
+                }
+            }
+        }
+        mysqli_free_result($results);
+    }
+    mysqli_close($connection);
 }?>
-<!DOCTYPE HTML>
+
 <html>
 
 <head>
@@ -38,6 +89,7 @@ if (!isset($_SESSION['username'])) {
                             <p>Porsche - Project Gold - $4.1m</p>
                         </div>
                     </div>
+                    <p class="subtitleAdmin">Completed Orders</p>
                     <div class="adminDiv">
                         <p>Delivered</p>
                         <p>Ford - Focus RS - $32K</p>
