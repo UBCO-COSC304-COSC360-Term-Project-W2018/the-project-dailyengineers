@@ -118,7 +118,6 @@ if (!isset($_SESSION['username'])) {
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
               <script type="text/javascript">
-
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
@@ -126,15 +125,15 @@ if (!isset($_SESSION['username'])) {
                     editProfile();
                   });
                   function editProfile() {
-                    $(".accMod").each(function( value ) {
-                      value.prop('disabled', false);
+                    $(".accMod").each(function( i, el ) {
+                      $(this).attr('disabled', "false");
                     });
-                    $(".hide").each(function( value ) {
-                      value.css("display","block");
+                    $(".hide").each(function( i , el ) {
+                      $(this).css("display","block");
                     });
                     $("#saveProfile").css("display", "block");
                     $("#editProfile").css("display", "none");
-                    $("#editProfile").prop("disabled", "true");
+                    $("#editProfile").attr("disabled", "true");
                   }
                 });
               </script>
