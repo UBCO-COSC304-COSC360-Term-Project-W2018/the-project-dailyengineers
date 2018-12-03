@@ -1,16 +1,16 @@
-<?php 
+<?php
     session_start();
     if (!isset($_SESSION['username'])) {
         //not logged in (Guest) GET OUT
         header("Location: login.php");
         die();
     } else {
-        include 'include/db_credentials.php';
+        include '/include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
         $error = mysqli_connect_error();
         $uid = $_SESSION['userID'];
-        echo "e";
-        $sql = "SELECT * FROM Admin WHERE userID=".$uid;
+        //echo "e";
+        $sql = "SELECT * FROM Admin WHERE userID='".$uid."';";
         if ($connection -> connect_error) {
             die("Connection failed: " . $connection -> connect_error);
         }
@@ -26,7 +26,7 @@
             // header('Location: admin.php');
         } else {
             // echo "Error: " . $sql . "" . mysqli_error($connection);
-            // if you aren't 
+            // if you aren't
             header('Location: index.php');
         }
     }
