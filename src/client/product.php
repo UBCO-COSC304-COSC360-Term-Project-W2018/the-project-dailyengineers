@@ -1,10 +1,12 @@
 <?php 
   session_start();
-  $recView = $_SESSION['recentlyViewedArr'];
-  if ($_GET['id'] == $recView[0] || $_GET['id'] == $recView[1] || $_GET['id'] == $recView[2]) {
+  if (isset($_SESSION['userID'])) {
+    $recView = $_SESSION['recentlyViewedArr'];
+    if ($_GET['id'] == $recView[0] || $_GET['id'] == $recView[1] || $_GET['id'] == $recView[2]) {
 
-  } else {
-    array_unshift($_SESSION['recentlyViewedArr'], $_GET['id']);
+    } else {
+      array_unshift($_SESSION['recentlyViewedArr'], $_GET['id']);
+    } 
   }
 ?>
 <!DOCTYPE HTML>
