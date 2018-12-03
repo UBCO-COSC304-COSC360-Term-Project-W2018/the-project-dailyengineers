@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   if (isset($_SESSION['userID'])) {
     $recView = $_SESSION['recentlyViewedArr'];
@@ -6,7 +6,7 @@
 
     } else {
       array_unshift($_SESSION['recentlyViewedArr'], $_GET['id']);
-    } 
+    }
   }
 ?>
 <!DOCTYPE HTML>
@@ -153,8 +153,45 @@
                       } ?>
 
                 <div>
+                  <!-- template for reply fields -->
+                    <script id="replyFieldTemplate" type="text/HTML">
+                      <div id="tempReplyBox">
+                        <h3>New Reply:</h3>
+                        <textarea id="replyTitleField" rows="1" cols="80"></textarea>
+                        <textarea id="replyField" name="newComment" rows="8" cols="80"></textarea>
+                        <button type="button" id="replySubmit" class="formatButton">Reply</button>
+                      </div>
+                    </script>
+
+                    <!-- template for comments -->
+                    <script id="commentTemplate" type="text/HTML">
+                      <div class="prodComment">
+                          <div class="inlineEle username">
+                              <p>User</p>
+                          </div>
+                          <h3 class="inlineEle">Title</h3>
+                          <p>content</p>
+                          <button type="button" name="reply">Reply</button>
+
+                          <!-- a list to contain child comments -->
+                          <ul class="replyList">
+                          </ul>
+                      </div>
+                    </script>
+
                     <h1 class="commentHeader">Comments</h1>
 
+                    <?php if (isset($_SESSION['username'])) { ?>
+                      <div id="newCommentBox">
+                        <h3>New Comment:</h3>
+                        <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
+                        <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
+                        <button type="button" id="commentSubmit" class="formatButton">Post</button>
+                      </div>
+                      <script type="text/javascript" src="js/addComment.js"></script>
+                    <?php } else { ?>
+                      <i>Please login to post a comment.</i>
+                    <?php } ?>
 
                     <ul id="commentList">
                         <li>
@@ -177,26 +214,10 @@
                                 <button type="button" name="reply">Reply</button>
                             </div>
                         </li>
-
-                        <?php if (isset($_SESSION['username'])) { ?>
-                          <div id="newCommentBox">
-                            <h3>New Comment:</h3>
-                            <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
-                            <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
-                            <button type="button" id="commentSubmit" class="formatButton">Post</button>
-                          </div>
-                          <script type="text/javascript" src="js/addComment.js"></script>
-                        <?php } else { ?>
-                          <i>Please login to post a comment.</i>
-                        <?php } ?>
                     </ul>
-
                 </div>
             </section>
         </div>
-
-        <?php include "include/footer.php" ?>
-
     </main>
 
 </body>

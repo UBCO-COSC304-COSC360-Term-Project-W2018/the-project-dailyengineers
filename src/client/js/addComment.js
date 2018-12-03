@@ -1,56 +1,32 @@
-var commentSubmit = document.getElementById('commentSubmit');
+var commentSubmit = $('#commentSubmit');
 
-commentSubmit.onclick = function() {addComment(document.getElementById('newCommentTitle'), document.getElementById('newComment'));};
+commentSubmit.onclick = function() { postComment(null); };
 
-function addComment(titleField, contentField) {
+function addFields(parent) {
+  // if there's another reply box open, get rid of it
+  var previousReplyBox = $('#newReplyBox');
+  if (previousReplyBox != null) {
+    previousReplyBox.remove();
+  }
 
-  // ***** generate comment *****
-  var commentBox = document.getElementById('newCommentBox');
-  var commentList = document.getElementById('commentList');
+  // create new reply fields
+  var replyBox = document.createElement('div');
+  replyBox.innerHTML = $('#replyFieldTemplate').innerHTML;
+  replyBox.id = 'newReplyBox';
+  parent.append(replyBox);
 
-  var listItem = document.createElement('li');
-  commentList.insertBefore(listItem, commentList.firstChild);
-
-  var commentDiv = document.createElement('div');
-  commentDiv.classList.add('prodComment');
-  listItem.appendChild(commentDiv);
-
-  var inlineDiv = document.createElement('div');
-  inlineDiv.classList.add('inlineEle');
-  inlineDiv.classList.add('username');
-  commentDiv.appendChild(inlineDiv);
-
-  var p = document.createElement('p');
-  inlineDiv.appendChild(p);
-
-  var username = document.createTextNode('Joe Schmoe')
-  p.appendChild(username);
-
-  var title = document.createElement('h3');
-  title.classList.add('inlineEle');
-  commentDiv.appendChild(title);
-
-  var titleText = document.createTextNode(document.getElementById('newCommentTitle').value);
-  title.appendChild(titleText);
-
-  var content = document.createElement('p');
-  commentDiv.appendChild(content);
-
-  var contentText = document.createTextNode(document.getElementById('newComment').value)
-  content.appendChild(contentText);
-
-  var reply = document.createElement('button');
-  reply.type = 'button';
-  reply.name = 'reply';
-  reply.classList.add('prodCommentButton');
-  commentDiv.appendChild(reply);
-
-  var replyText = document.createTextNode('Reply');
-  reply.appendChild(replyText);
-
-  reply.onclick = function() {  }
+  $('#replySubmit').onclick = function() { postComment(parent); };
 }
 
-function addReply(titleField, contentField, parent) {
+function postComment(parent) {
+  // if the parent is null, assume this isn't a reply to anything
+  if (parent == null) {
+    parent = $('#commentList');
+  }
 
+  // create the comment
+  var comment = document.createElement('li');
+  comment.innerHTML = $('#commentTemplate').innerHTML;
+
+  // make the ajax call
 }
