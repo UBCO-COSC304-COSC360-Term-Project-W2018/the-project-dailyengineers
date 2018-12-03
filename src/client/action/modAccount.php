@@ -31,7 +31,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
             } else {
                 mysqli_free_result($results);
                 
-                $sql = "UPDATE User SET password=?, email=? WHERE username='?' AND userID = ?;";
+                $sql = "UPDATE User SET password=?, email=? WHERE username=? AND userID = ?;";
                 //if the preparation goes through
                 if ($statement = mysqli_prepare($connection, $sql)) {
                     //hash password
