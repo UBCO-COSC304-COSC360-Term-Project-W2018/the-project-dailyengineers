@@ -83,13 +83,21 @@ if (!isset($_SESSION['username'])) {
         <section class="mainPageBody">
           <div class="adminDiv">
             <p class="subtitleAdmin">Current Orders</p>
-            <div class="statusBar">
-              <div class="progressIn"></div>
-              <p id="ordered">Ordered</p>
-              <p id="shipped">Shipped</p>
-              <p id="delivered">Delivered</p>
-              <p>Porsche - Project Gold - $4.1m</p>
-            </div>
+            <?php foreach ($data as $key => $val){
+                if($val['orderStatus']!="delivered"){
+                    echo "<div class='statusBar'>";
+                    echo "<div class='progressIn'> ".(($val['orderStatus']=="shipped")?"":"style='width:36%;'")."></div>";
+                    echo "<p id='ordered'>Ordered</p><p id='shipped'>Shipped</p><p id='delivered'>Delivered</p>";
+                    echo "<h3>Order Contents:</h3>";
+                    foreach ($contains as $row) {
+                        if ($val['orderID']==$row['orderID']) {
+                            echo "<p>".$row['year']." ".$row['make']." ".$row['model']."</p>";
+                            echo "<p>Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
+                            echo "<p></p>";
+                        }
+                    };
+                }
+            }?>
           </div>
           <p class="subtitleAdmin">Completed Orders</p>
           <?php
@@ -105,20 +113,13 @@ if (!isset($_SESSION['username'])) {
                                   if ($val['orderID']==$row['orderID']) {
                                       echo "<p>".$row['year']." ".$row['make']." ".$row['model']."</p>";
                                       echo "<p>Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
+                                      echo "<p></p>";
                                   }
                               }
                               echo "</div>";
                           }
                       }
                     ?>
-          <div class="adminDiv">
-            <p>Delivered</p>
-            <p>Ford - Focus RS - $32K</p>
-          </div>
-          <div class="adminDiv">
-            <p>Delivered</p>
-            <p>Renault - Megane RS - $65K</p>
-          </div>
         </section>
       </section>
     </div>
