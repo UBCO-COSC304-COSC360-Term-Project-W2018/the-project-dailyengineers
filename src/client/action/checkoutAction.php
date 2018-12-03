@@ -60,7 +60,7 @@ if (mysqli_query($connection, $sql)) {
     echo '<h1>ORDERID: '.$orderID.'</h1>';
     if ($results = mysqli_query($connection, $sql3)) {
       $counter = 1;
-      while ($row = mysqli_fetch_row($results)) {
+      while ($row = mysqli_fetch_assoc($results)) {
         $vehicleID = $row[0];
         echo '<h1>VEHICLEID: '.$vehicleID.'</h1>';
         // $price = $row[1];
