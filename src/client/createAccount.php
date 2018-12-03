@@ -20,7 +20,7 @@
             <!-- Page code -->
             <section class="mainView">
               <h1>Create Account</h1>
-                <form method="POST" action="action/newUser.php">
+                <form id="createAccount" method="POST" action="action/newUser.php">
                 <!--  enctype="multipart/form-data" -->
                   <fieldset>
                     <legend>Account Information</legend>
@@ -29,17 +29,17 @@
                         <input type="file" name="profile" accept="image/*">
                     </div> -->
                     <p>Username:</p>
-                    <input id="username" name="user" type="text">
+                    <input id="username" class="required" name="user" type="text">
                     <p>Email:</p>
-                    <input id="accountEmail" name="email" type="email">
+                    <input id="accountEmail" class="required" name="email" type="email">
                     <p>First name:</p>
-                    <input id="accountFirstName" name="firstName" type="text">
+                    <input id="accountFirstName" class="required" name="firstName" type="text">
                     <p>Last name:</p>
-                    <input id="accountLastName" name="lastName" type="text">
+                    <input id="accountLastName"class="required" name="lastName" type="text">
                     <p>Password:</p>
-                    <input id="accountPassword" name="pass" type="password">
+                    <input id="accountPassword" class="required" name="pass" type="password">
                     <p>Confirm Password:</p>
-                    <input id="confirmPassword" type="password">
+                    <input id="confirmPassword" class="required" type="password">
                     <br />
                     <input id="createButton" type="button" value="Create Account">
                   </fieldset>
@@ -78,7 +78,7 @@
                       passes=false;
                       return false;
                     } else if(passes==true){ //else submit form
-                      document.getElementById("updateInfo").submit();
+                      document.getElementById("createAccount").submit();
                     }
 
                   };
