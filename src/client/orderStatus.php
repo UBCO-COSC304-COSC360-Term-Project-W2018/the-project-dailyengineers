@@ -86,7 +86,7 @@ if (!isset($_SESSION['username'])) {
             <?php foreach ($data as $key => $val){
                 if($val['orderStatus']!="delivered"){
                     echo "<div class='statusBar'>";
-                    echo "<div class='progressIn'> ".(($val['orderStatus']=="shipped")?"":"style='width:36%;'")."></div>";
+                    echo "<div class='progressIn' ".(($val['orderStatus']=="shipped")?"":"style='width:36%;'")."></div>";
                     echo "<p id='ordered'>Ordered</p><p id='shipped'>Shipped</p><p id='delivered'>Delivered</p>";
                     echo "<h3>Order Contents:</h3>";
                     foreach ($contains as $row) {
@@ -96,6 +96,7 @@ if (!isset($_SESSION['username'])) {
                             echo "<p></p>";
                         }
                     };
+                    echo "</div>";
                 }
             }?>
           </div>
