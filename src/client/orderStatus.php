@@ -45,8 +45,6 @@ if (!isset($_SESSION['username'])) {
             }
         }
         mysqli_free_result($results);
-
-
         if ($results = mysqli_query($connection, $sql_contains)) {
             while ($row = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
                 $contains[] = $row;
