@@ -88,7 +88,7 @@ if (!isset($_SESSION['username'])) {
                     echo "<div class='adminDiv'>";
                     echo "<div class='statusBar'>";
                     echo "<div class='progressIn' ".(($val['orderStatus']=="shipped")?"":"style='width:36%;'")."></div>";
-                    echo "<p id='ordered'>Ordered</p><p id='shipped'>Shipped</p><p id='delivered'>Delivered</p>";
+                    echo "<p id='ordered'>Ordered</p><p id='shipped'>Shipped</p><p id='delivered'>Delivered</p></div>";
                     echo "<h3>Order Contents:</h3>";
                     foreach ($contains as $row) {
                         if ($val['orderID']==$row['orderID']) {
@@ -96,7 +96,6 @@ if (!isset($_SESSION['username'])) {
                             echo "Quantity: ".$row['quantity']." at $".$row['unitPrice']." each.</p>";
                         }
                     };
-                    echo "</div>";
                     echo "</div>";
                 }
             }
