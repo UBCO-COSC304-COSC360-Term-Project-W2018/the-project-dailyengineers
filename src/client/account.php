@@ -122,20 +122,19 @@ if (!isset($_SESSION['username'])) {
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
-                    $("#testP").innerHTML+= "edit clicked ";
+                    $("#testP").text("edit clicked ");
                     editProfile();
                   });
 
                   function editProfile() {
                     var fields = document.getElementsByClassName("accMod");
-                    fields.forEach(fld => {
-                      $("#testP").innerHTML += fld.name;
-
-                      fld.disabled = "false";
+                    for each(fld in fields) {
+                      $("#testP").text(fld.name);
+                      fld.attr("disabled", "false");
                     });
                     var hidden = document.getElementsByClassName("hide");
-                    hidden.forEach(hide => {
-                      hide.style.display = "block";
+                    for each(hide in hidden) {
+                      hide.css("display", "block");
                     });
                     document.getElementById("saveProfile").style.display = "block";
                     document.getElementById("editProfile").style.display = "none";
@@ -147,16 +146,18 @@ if (!isset($_SESSION['username'])) {
 
                 function editProfile() {
                   var fields = document.getElementsByClassName("accMod");
-                  fields.forEach(fld => {
-                    fld.disabled = false;
+                  for each(fld in fields) {
+                    $("#testP").innerHTML += fld.name;
+                    fld.attr("disabled", "false");
                   });
                   var hidden = document.getElementsByClassName("hide");
-                  hidden.forEach(hide => {
-                    hide.style.display = "block";
+                  for each(hide in hidden) {
+                    hide.css("display", "block");
                   });
                   document.getElementById("saveProfile").style.display = "block";
                   document.getElementById("editProfile").style.display = "none";
-                  document.getElementById("editProfile").style.disabled = "true";
+                  document.getElementById("editProfile").disabled = "true";
+
                 }
 
               </script>
