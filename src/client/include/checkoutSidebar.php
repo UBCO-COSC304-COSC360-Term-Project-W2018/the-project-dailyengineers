@@ -52,7 +52,7 @@
     </div>
   </div>
   <div class="cartCheckout">
-    <a class="checkoutButton" href="checkout.php">Proceed to Checkout</a>
+    <a class="checkoutButton" href="cart.php">Return to Cart</a>
   </div>
   
       <?php 
