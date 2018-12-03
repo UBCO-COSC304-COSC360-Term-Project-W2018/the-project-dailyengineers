@@ -91,20 +91,20 @@ if (!isset($_SESSION['username'])) {
           <div id="shippingMethod">
             <fieldset>
               <legend>Shipping Method</legend>
-              <label class="hoverLabel"><input type="radio" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
-              <label class="hoverLabel"><input type="radio" name="shippingMethod" value="airExpress"> Air Express (7 - 24 Days)</label>
+              <label class="hoverLabel"><input type="radio" onclick="myFunction('<?php echo $shipPrice; ?>')" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
+              <label class="hoverLabel"><input type="radio" onclick="myFunction('<?php echo $shipPrice; ?>')" name="shippingMethod" value="air"> Air Express (7 - 24 Days)</label>
             </fieldset>
           </div>
           <div id="checkoutTotals">
             <fieldset>
               <legend>Price Breakdown</legend>
               <h2>Subtotal:</h2>
-              <p>$xxx,xxx.00
+                <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
                 <h2>Shipping</h2>
-                <p>$x,xxx.00</p>
+                <p>FREE!</p>
                 <hr>
                 <h2>Total</h2>
-                <p>$xxx,xxx.00</p>
+                <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
                 <input type="submit" value="Submit Order" class="checkoutButton submitOrder">
             </fieldset>
           </div>

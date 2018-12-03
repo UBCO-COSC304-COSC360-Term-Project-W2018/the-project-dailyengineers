@@ -4,7 +4,7 @@ session_start();
 echo "checking Session data and post data";
 if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST")) {
     //Check if we have data
-    echo "checked we're post username and userID";
+    echo "checked we're post and have username and userID<br />";
     if (isset($_POST["accountEmail"]) && isset($_POST["accountPassword"]) && isset($_POST["accountFirstName"]) && isset($_POST["accountLastName"])
         && !empty($_POST["accountEmail"]) && !empty($_POST["accountPassword"]) && !empty($_POST["accountFirstName"]) && !empty($_POST["accountLastName"])) {
         //user data
