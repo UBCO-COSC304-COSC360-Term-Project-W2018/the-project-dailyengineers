@@ -118,7 +118,6 @@ if (!isset($_SESSION['username'])) {
               <input type="button" id="editProfile" value="Edit Profile" class="formatButton">
               <input type="submit" id="saveProfile" value="Save Changes" class="formatButton accMod">
               <script type="text/javascript">
-
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
@@ -127,22 +126,21 @@ if (!isset($_SESSION['username'])) {
                   });
 
                   function editProfile() {
-                      document.querySelectorAll('.accMod').forEach(function(el) {
-                      $("#testP").append(el.name);
-                      el.attr("disabled", "false");
+                    $(".accMod").each(function(i, el) {
+                      $("#testP").append($(this).attr("name"));
+                      $(this).attr("disabled", "false");
                     });
-                    document.querySelectorAll('.hide').forEach(function(el) {
-                      $("#testP").append(el.name);
-                      el.css("display", "block");
+                    $('.hide').each(function(i, el) {
+                      $("#testP").append($(this).attr("name"));
+                      $(this).css("display", "block");
                     });
                     document.getElementById("saveProfile").style.display = "block";
                     document.getElementById("editProfile").style.display = "none";
                     document.getElementById("editProfile").style.disabled = "true";
 
-                  }
+                  };
 
                 });
-
               </script>
 
               </script>
