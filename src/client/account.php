@@ -137,7 +137,6 @@ if (!isset($_SESSION['username'])) {
                     });
                     document.getElementById("editProfile").style.display = "none";
                     ("#editProfile").attr("disabled", "disabled");
-
                   };
                   function cancelClick(){
                     $(".accMod").each(function(i, el){
@@ -155,8 +154,6 @@ if (!isset($_SESSION['username'])) {
                   }
 
                 });
-              </script>
-
               </script>
             </div>
           </div>
