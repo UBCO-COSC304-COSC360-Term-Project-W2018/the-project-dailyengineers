@@ -52,7 +52,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
                              mysqli_stmt_bind_param($stmt, "ssi", $_POST['accountFirstName'], $_POST['accountLastName'], $_SESSION['userID']);
                              $result = mysqli_stmt_execute($stmt) or die(mysqli_stmt_error($stmt));
                              mysqli_close($connection);
-                             header("Location: ../account.php");
+                            //  header("Location: ../account.php");
                         }
                     }
                 }
