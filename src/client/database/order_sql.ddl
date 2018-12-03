@@ -254,12 +254,18 @@ INSERT INTO Warehouse (location, continentID) VALUES ('Sydney, Australia', '5');
 /*warehouseID int NOT NULL,
 vehicleID   int NOT NULL,
 amount      int NOT NULL,*/
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 2, 35);
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (6, 1, 20);
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (8, 3, 50);
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 1, 0);
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (7, 2, 0);
-INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (2, 3, 0);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (1, 1, 35);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (2, 2, 20);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (3, 3, 50);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (4, 4, 45);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (5, 5, 60);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (6, 6, 25);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (7, 7, 75);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (8, 8, 15);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (9, 9, 25);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (9, 10, 35);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (9, 11, 45);
+INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (9, 12, 35);
 
 /* COMMENT CREATION */
 /*userID      int NOT NULL,
