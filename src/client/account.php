@@ -83,7 +83,7 @@ if (!isset($_SESSION['username'])) {
         <h1>User Control Panel</h1>
 
 
-        <form id="updateInfo" name="updateInfo" method="post" action="./action/modAccount.php">
+        <form id="updateInfo" name="updateInfo" method="POST" action="./action/modAccount.php"  enctype="multipart/form-data">
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
