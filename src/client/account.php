@@ -125,26 +125,18 @@ if (!isset($_SESSION['username'])) {
                     $("#testP").text("edit clicked ");
                     editProfile();
                   });
-
                   function editProfile() {
-                      document.querySelectorAll('.accMod').forEach(function(el) {
-                      $("#testP").append(el.name);
-                      el.attr("disabled", "false");
+                    $(".accMod").each(function( value ) {
+                      value.prop('disabled', false);
                     });
-                    document.querySelectorAll('.hide').forEach(function(el) {
-                      $("#testP").append(el.name);
-                      el.css("display", "block");
+                    $(".hide").each(function( value ) {
+                      value.css("display","block");
                     });
-                    document.getElementById("saveProfile").style.display = "block";
-                    document.getElementById("editProfile").style.display = "none";
-                    document.getElementById("editProfile").style.disabled = "true";
-
+                    $("#saveProfile").css("display", "block");
+                    $("#editProfile").css("display", "none");
+                    $("#editProfile").prop("disabled", "true");
                   }
-
                 });
-
-              </script>
-
               </script>
             </div>
           </div>
