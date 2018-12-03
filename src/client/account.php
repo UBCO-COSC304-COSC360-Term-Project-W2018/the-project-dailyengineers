@@ -122,14 +122,14 @@ if (!isset($_SESSION['username'])) {
                 $(document).ready(function() {
 
                   document.getElementById("editProfile").addEventListener("click", function() {
-                    $("testP").append("edit clicked ")
+                    $("#testP").innerHTML+= "edit clicked ";
                     editProfile();
                   });
 
                   function editProfile() {
                     var fields = document.getElementsByClassName("accMod");
                     fields.forEach(fld => {
-                      $("testP").append(fld.name + " ");
+                      $("#testP").innerHTML += fld.name;
 
                       fld.disabled = "false";
                     });
