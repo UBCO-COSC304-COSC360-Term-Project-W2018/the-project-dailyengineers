@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
                 }
             }
             ?>
-          </div>
+          <!-- </div> -->
           <p class="subtitleAdmin">Completed Orders</p>
           <?php
                       foreach ($data as $key => $val) {
@@ -122,6 +122,7 @@ if (!isset($_SESSION['username'])) {
                           }
                       }
                     ?>
+                    </div>
         </section>
       </section>
     </div>
