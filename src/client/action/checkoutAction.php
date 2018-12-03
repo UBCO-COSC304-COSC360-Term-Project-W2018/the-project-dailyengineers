@@ -54,18 +54,23 @@ if (mysqli_query($connection, $sql)) {
     $orderID = 0;
     while ($row = mysqli_fetch_row($results)) {
       $orderID = $row['0'];
+      echo '<h1>'.$orderID.'</h1>';
     }
   	echo "successfully retrieved orderID.";
+    echo '<h1>'.$orderID.'</h1>';
     if ($results = mysqli_query($connection, $sql3)) {
       while ($row = mysqli_fetch_row($results)) {
         $vehicleID = $row[0];
+        echo '<h1>'.$vehicleID.'</h1>';
         // $price = $row[1];
         $quantity = $row[1];
+        echo '<h1>'.$quantity.'</h1>';
         $sql4 = "SELECT price FROM Vehicle WHERE vehicleID = ".$vehicleID;
         $unitPrice = 0;
         if($results = mysqli_query($connection, $sql4)) {
           while ($row = mysqli_fetch_row($results)) {
             $unitPrice = $row['0'];
+            echo '<h1>'.$unitPrice.'</h1>';
           }
           echo "successfully retrieved unitPrice.";
           echo '<h1>'.$unitPrice.'</h1>';
