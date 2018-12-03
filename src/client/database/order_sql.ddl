@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE IF NOT EXISTS User (
    userID int NOT NULL AUTO_INCREMENT,
    username varchar(20) NOT NULL,
-   password varchar(20) NOT NULL,
+   password varchar(32) NOT NULL,
    email varchar(254) NOT NULL,
    primary key (userID),
   UNIQUE username (username),
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Customer (
    lastName varchar(20) NOT NULL,
    address varchar(255) NOT NULL,
    profilePic LONGBLOB,
-   CCNumber int,
+   CCNumber BIGINT(16),
    CCV int,
    expiryDate DATE,
    isActive BOOLEAN NOT NULL DEFAULT '1',
@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   make          VARCHAR(20) NOT NULL,
   model         VARCHAR(32) NOT NULL,
   price         NUMERIC(10,2) NOT NULL,
+  productPic    VARCHAR(50),
   bodyType      VARCHAR(10) CHECK (bodyType IN (Coupe, Hatchback, Sedan, SUV, Truck, Wagon, Other)),
   transmission  VARCHAR(10) CHECK (transmission IN (Automatic, CVT, Manual, Electric)),
   drivetrain    VARCHAR(5) CHECK (drivetrain IN (4X4, AWD, FWD, RWD, Other)),
@@ -114,7 +115,7 @@ CREATE TABLE IF NOT EXISTS Orders (
   totalPrice  numeric(10,2),
   method      varchar(8) NOT NULL CHECK (method IN (Freight, Cargo, Air)),
   orderStatus varchar(10) NOT NULL CHECK (orderStatus IN (Processing, Shipped, Delivered)),
-  paymentCC   TINYINT(4) NOT NULL,
+  paymentCC   BIGINT(16) NOT NULL,
   shipAddress VARCHAR(255) NOT NULL,
   billAddress VARCHAR(255) NOT NULL,
   primary key (orderID),
@@ -308,9 +309,20 @@ orderDate	  datetime,
 totalPrice  numeric(10,2),
 method      varchar(8) NOT NULL CHECK (method IN (Freight, Cargo, Air)),
 orderStatus varchar(10) NOT NULL CHECK (orderStatus IN (Processing, Shipped, Delivered)),
-paymentCC   int NOT NULL,*/
-INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC)
-VALUES (2, '2018-11-27 14:03:21', '174700.00', 'Freight', 'Processing', '1234');
+paymentCC   int NOT NULL,
+shipAddress VARCHAR(255) NOT NULL,
+billAddress VARCHAR(255) NOT NULL,*/
+INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress)
+VALUES (2, '2018-10-27 14:03:21', '174700.00', 'Freight', 'delivered', '1234', '123 Customer Street, Kelowna, BC, Canada', '123 Customer Street, Kelowna, BC, Canada');
+
+INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress)
+VALUES (2, '2018-11-11 16:07:45', '162276.23', 'Freight', 'shipped', '1234', '123 Customer Street, Kelowna, BC, Canada', '123 Customer Street, Kelowna, BC, Canada');
+
+INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress)
+VALUES (2, '2018-11-17 06:01:34', '129900.00', 'Freight', 'shipped', '1234', '123 Customer Street, Kelowna, BC, Canada', '123 Customer Street, Kelowna, BC, Canada');
+
+INSERT INTO Orders (userID, orderDate, totalPrice, method, orderStatus, paymentCC, shipAddress, billAddress)
+VALUES (2, '2018-12-01 21:57:19', '674995.00', 'Freight', 'processing', '1234', '123 Customer Street, Kelowna, BC, Canada', '123 Customer Street, Kelowna, BC, Canada');
 
 /* ORDERCONTAINS CREATION */
 /*orderID   int NOT NULL,
@@ -318,3 +330,9 @@ vehicleID int NOT NULL,
 quantity  tinyint NOT NULL,
 unitPrice numeric(10,2) NOT NULL,*/
 INSERT INTO OrderContains VALUES (1, 2, 1, 174700.00);
+INSERT INTO OrderContains VALUES (2, 7, 1, 40999.00);
+INSERT INTO OrderContains VALUES (2, 9, 1, 121277.23);
+INSERT INTO OrderContains VALUES (3, 1, 1, 129900.00);
+INSERT INTO OrderContains VALUES (4, 12, 1, 674995.00);
+
+update Vehicle set description ="Noted as a cousin of Italian ancestry, sharing certain structural and mechanical elements with the Iconic lamborghini Gallardo, those genes are immediately on display once wheels hit the open road. This muscular 2015 Audi R8 Quattro is equipped with LED DRL, brakelights and front and rear fog driving lights. Keyless remote to operate your powered locked doors. Navigation system with bluetooth and entertainment features on the amazing Bang & Olufsen, premium sound package. Beautiful baselines and edges; the relatively short-hood sharply joins up with the steeply-raked windshield over a smooth graceful arc to the vehicles tail." where vehicleID=1;
