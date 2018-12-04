@@ -11,7 +11,7 @@ function addFields(parent) {
 
   // create new reply fields
   var replyBox = document.createElement('div');
-  replyBox.innerHTML = $('#replyFieldTemplate').innerHTML;
+  replyBox.html($('#replyFieldTemplate').html());
   replyBox.id = 'newReplyBox';
   parent.append(replyBox);
 
@@ -26,7 +26,24 @@ function postComment(parent) {
 
   // create the comment
   var comment = document.createElement('li');
-  comment.innerHTML = $('#commentTemplate').innerHTML;
+  comment.html($('#commentTemplate').html());
+  parent.append(comment);
 
   // make the ajax call
+  var parentid;
+  var depth;
+
+  if (parent == $('#commentList')) {
+    parentid = null;
+    depth = 0;
+  } else {
+    parentid = Number(parent.commentID());
+    depth = Number(parent.depth()) + 1;
+  }
+  $.post("../action/addComment.php", {
+    title:    comment.children("h3"),
+    content:  comment.children("p"),
+    parentID: parentid,
+    depth:    depth
+  });
 }

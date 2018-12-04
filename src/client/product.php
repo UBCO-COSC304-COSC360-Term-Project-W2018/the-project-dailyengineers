@@ -165,7 +165,7 @@
 
                     <!-- template for comments -->
                     <script id="commentTemplate" type="text/HTML">
-                      <div class="prodComment">
+                      <div class="prodComment" commentID="" depth="0">
                           <div class="inlineEle username">
                               <p>User</p>
                           </div>
@@ -185,6 +185,7 @@
                       <div id="newCommentBox">
                         <h3>New Comment:</h3>
                         <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
+                        <br>
                         <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
                         <button type="button" id="commentSubmit" class="formatButton">Post</button>
                       </div>
