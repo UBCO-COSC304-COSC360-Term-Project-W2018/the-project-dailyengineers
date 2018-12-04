@@ -1,6 +1,16 @@
+// first, hook up the comment submit button
 var commentSubmit = $('#commentSubmit');
+if (commentSubmit != null) {
+  commentSubmit.onclick = function() { postComment(null); };
+}
 
-commentSubmit.onclick = function() { postComment(null); };
+// then, hook up the reply buttons
+var replySubmits = $("button[name='reply']")
+if (replySubmits =! null && replySubmits.length > 0) {
+  for (var counter = 0; counter < replySubmits.length; counter++) {
+    replySubmits[counter].onclick = function() { addFields(replySubmits[counter].parent()) }
+  }
+}
 
 function addFields(parent) {
   // if there's another reply box open, get rid of it
@@ -29,7 +39,7 @@ function postComment(parent) {
   comment.html($('#commentTemplate').html());
   parent.append(comment);
 
-  // make the ajax call
+  // set some variables for display and the db
   var parentid;
   var depth;
 
@@ -39,7 +49,10 @@ function postComment(parent) {
   } else {
     parentid = Number(parent.commentID());
     depth = Number(parent.depth()) + 1;
+    // indent the comment here
   }
+
+  // make ajax call
   $.post("../action/addComment.php", {
     title:    comment.children("h3"),
     content:  comment.children("p"),

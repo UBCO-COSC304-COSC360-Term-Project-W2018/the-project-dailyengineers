@@ -189,33 +189,26 @@
                         <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
                         <button type="button" id="commentSubmit" class="formatButton">Post</button>
                       </div>
-                      <script type="text/javascript" src="js/addComment.js"></script>
                     <?php } else { ?>
                       <i>Please login to post a comment.</i>
                     <?php } ?>
 
                     <ul id="commentList">
-                        <li>
-                            <div class="prodComment">
-                                <div class="inlineEle username">
-                                    <p>Bob Marsh</p>
-                                </div>
-                                <h3 class="inlineEle">We need Comments</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
-                                <button type="button" name="reply">Reply</button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="prodComment">
-                                <div class="inlineEle username">
-                                    <p>Some other Fella</p>
-                                </div>
-                                <h3 class="inlineEle">There aren't enough comments</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <button type="button" name="reply">Reply</button>
-                            </div>
-                        </li>
+
+                    <?php // populate the list with comments from the database
+                      include 'include/db_credentials.php';
+                      $connection = mysqli_connect($host, $user, $password, $database);
+                      $error      = mysqli_connect_error();
+
+                      if ($connection -> connect_error) {
+                          echo "Connection failed: " . $connection -> connect_error;
+                      }
+
+                      $sql_query = "";
+                    ?>
+
                     </ul>
+                    <script type="text/javascript" src="js/addComment.js"></script>
                 </div>
             </section>
         </div>
