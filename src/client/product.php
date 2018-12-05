@@ -27,6 +27,7 @@
 <body>
 
     <?php include 'include/header.php';?>
+    <?php include "include/money_format_windows.php" ?>
 
     <main>
 
