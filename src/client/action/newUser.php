@@ -68,8 +68,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && ($_SERVER["REQUEST_METHOD"] == "POST"))
                         mysqli_stmt_close($stmt); // and dispose of the statement.
                         mysqli_close($connection);
 
-                        // $_SESSION['username'] = $_POST['user'];
-                        // header("Location: ../login.php");
+                        $_SESSION['username'] = $_POST['user'];
+                        header("Location: ../index.php");
                     }
                 }
             }

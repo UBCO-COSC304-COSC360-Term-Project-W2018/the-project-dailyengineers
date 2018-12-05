@@ -60,16 +60,18 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
                                         //get the data
                                         $imagedata = file_get_contents($_FILES['profilePic']['tmp_name']);
                                         //prepare a statement
-                                        $sql = "INSERT INTO Customer (userID, image) VALUES(?,?)";
+                                        $sql = "UPDATE Customer SET profilePic = ? WHERE userID = ?";
                                         $statemt = mysqli_stmt_init($connection);
                                         mysqli_stmt_prepare($statemt, $sql);
                                         //make a temp
                                         $null = null;
-                                        mysqli_stmt_bind_param($statemt, "ib", $userID, $null);
+                                        mysqli_stmt_bind_param($statemt, "bi", $null, $_SESSION['userID']);
                                         //bind the data into the statement
                                         mysqli_stmt_send_long_data($statemt, 2, $imagedata);
                                         //Execute
+                                        echo "before<br />";
                                         $result = mysqli_stmt_execute($statemt) or die(mysqli_stmt_error($statemt));
+                                        echo "<br />After";
                                         //Verify
                                         if($result == true) {
                                             echo "We've done it lads image's up";
@@ -91,4 +93,4 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID']) && isset($_SERVER
         mysqli_close($connection);
     }
 }
-// header("Location: ../account.php");?>
+header("Location: ../account.php");?>
