@@ -25,7 +25,7 @@ function addFields(parent) {
   replyBox.id = 'newReplyBox';
   parent.append(replyBox);
 
-  $('#replySubmit').onclick = function() { postComment(parent); };
+  $('#replySubmit').onclick = function() { postComment(parent.children('ul')); };
 }
 
 function postComment(parent) {
@@ -49,7 +49,7 @@ function postComment(parent) {
   } else {
     parentid = Number(parent.commentID());
     depth = Number(parent.depth()) + 1;
-    // indent the comment here
+    comment.css('margin-right', (depth * 5).toString() + ' em');
   }
 
   // make ajax call

@@ -181,6 +181,7 @@
 
                     <h1 class="commentHeader">Comments</h1>
 
+                    <!-- retrieve and display relevant comments -->
                     <?php if (isset($_SESSION['username'])) { ?>
                       <div id="newCommentBox">
                         <h3>New Comment:</h3>
@@ -204,7 +205,7 @@
                           echo "Connection failed: " . $connection -> connect_error;
                       }
 
-                      $sql_query = "";
+                      $sql_query = ""; // TODO add query
                     ?>
 
                     </ul>
