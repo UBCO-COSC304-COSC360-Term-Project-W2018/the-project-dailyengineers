@@ -71,7 +71,7 @@
                         <p class="subtitleAdmin">Manage Database</p>
                         <a href="resetDatabase.php" class="formatButton">Reset Database</a>
                         <?php 
-                            if ($_GET['reset'] = 1) {
+                            if ($_GET['reset'] == 1) {
                                 echo "<p>Database Reset!</p>";
                             }
                         ?>
