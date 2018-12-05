@@ -113,12 +113,11 @@
                         </form>
                         <?php 
                             // echo '<br><h3>'.$_GET['searchUsername'].'</h3>';
-                            if (!isset($_GET['searchUsername'])) {
-                            } else {
+                            if (isset($_GET['searchUsername']))  {
                                 include 'include/db_credentials.php';
                                 $connection = mysqli_connect($host, $user, $password, $database);
                                 $error = mysqli_connect_error();
-                                $sql = 'select * from Customer c, User u where u.userID = c.userID and (username LIKE "%'.$_GET['searchUsername'].'%") LIMIT 1';
+                                $sql = 'SELECT * FROM Customer c, User u WHERE u.userID = c.userID and (username LIKE "%'.$_GET['searchUsername'].'%") LIMIT 1';
                                 if ($connection -> connect_error) {
                                     die("Connection failed: " . $connection -> connect_error);
                                 }

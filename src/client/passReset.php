@@ -1,9 +1,25 @@
 <?php session_start();
-if (!isset($_SESSION['username'])) {
-    //not logged in (Guest) GET OUT
-    header("Location: login.php");
+if (isset($_SESSION['username'])) {
+    //logged in already?
+    header("Location: account.php");
     die();
-}?>
+}
+if(isset($_GET['email'])) {
+    // "Confirm email is legit in system"
+    // generate token in passReset table with hashed token as the primary field and timestamp and email as colum fields 
+    $token = "<PLACEHOLDER>";
+    //send off email
+    $mail = "Your password authentication token is: ".$token;
+    $mail = wordwrap($msg,70);
+    if(mail($_GET['email'],"password Reset",$mail)) {
+        //mail successfully sent!
+    } else {
+        //Mail failed to send
+    }
+}
+//Reset the users Password if the reset token timestamp hasn't expired and the mail matches the token
+
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -33,7 +49,7 @@ if (!isset($_SESSION['username'])) {
             <section class="mainView">
               <h1>Reset Password</h1>
                 <div class="centerBox">
-                    <form id="default" method="GET" action="#">
+                    <form id="default" method="GET" action="passReset.php">
                         <h3>Account Email</h3>
                         <input name="email" type="email">
                         <input id="send code" type="submit" value="Send Reset Code">
@@ -42,6 +58,8 @@ if (!isset($_SESSION['username'])) {
                     <form id="sent" method="POST" action="#">
                         <h3>Reset Code</h3>
                         <input name="code" type="text">
+                        <h3>Account Email</h3>
+                        <input name="email" type="email">
                         <h3>New Password</h3>
                         <input id="newPass" name="pass" type="password">
                         <h3>Confirm Password</h3>
