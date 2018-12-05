@@ -62,8 +62,8 @@
                     <h1 class="titleAdmin">Admin Hub</h1>
                     <div class="adminDiv" id="manageusers">
                         <p class="subtitleAdmin">Manage Users</p>
-                        <form method="POST" class="searcheree" action="manageUser.php">
-                            <input id="bar" type="text" name="searchBar" placeholder="Search by Username">
+                        <form method="GET" class="searcheree" action="manageUser.php">
+                            <input id="bar" type="text" name="searchUsername" placeholder="Search by Username">
                             <button class="barButton" type="submit">Go</button>
                         </form>
                     </div>
@@ -71,7 +71,7 @@
                         <p class="subtitleAdmin">Manage Database</p>
                         <a href="resetDatabase.php" class="formatButton">Reset Database</a>
                         <?php 
-                            if ($_GET['reset'] == 1) {
+                            if (isset($_GET['reset']) && ($_GET['reset'] == 1)) {
                                 echo "<p>Database Reset!</p>";
                             }
                         ?>
