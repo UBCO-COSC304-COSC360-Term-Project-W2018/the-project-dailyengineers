@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['username'])) {
     //not logged in (Guest)
-    header("Location: index.php");
+    header("Location: ../index.php");
     die();
 } else {
     //Logout
