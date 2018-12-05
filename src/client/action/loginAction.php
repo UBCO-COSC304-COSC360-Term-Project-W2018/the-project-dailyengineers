@@ -26,10 +26,11 @@ if (!isset($_SESSION['username'])) {
                 echo "Connected to Database.";
                 if ($results = mysqli_query($connection, $sql)) {
                     while ($row = mysqli_fetch_row($results)) {
-                        echo "post pass: " . $_POST['password'];
-                        echo "row pass: " . $row[2];
+                        $hashword = md5($_POST['password']);
+                        echo "post pass: " . $_POST['password'] . "  " . $hashword;
+                        echo "<br />row pass: " . $row[2];
 
-                        if (md5($_POST['password']) == $row[2]) {
+                        if ($hashword == $row[2]) {
                             //Update session Superglobal
                             $_SESSION['username'] = $_POST['username'];
                             echo $_SESSION['username'];
