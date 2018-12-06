@@ -16,7 +16,6 @@
     <?php include 'include/header.php';?>
     <main>
         <div class="columnContainer">
-            <?php include 'include/header.php'; ?>
             <section class="mainView">
                 <section class="mainPageBody">
                     <script type="text/javascript" src="js/lad.js"></script>
