@@ -69,7 +69,7 @@
                     </div>
                     <div class="adminDiv" id="managedatabase">
                         <p class="subtitleAdmin">Manage Database</p>
-                        <a href="resetDatabase.php" class="formatButton">Reset Database</a>
+                        <a href="action/resetDatabase.php" class="formatButton">Reset Database</a>
                         <?php 
                             if (isset($_GET['reset']) && ($_GET['reset'] == 1)) {
                                 echo "<p>Database Reset!</p>";
