@@ -27,7 +27,6 @@
 <body>
 
     <?php include 'include/header.php';?>
-    <?php include "include/money_format_windows.php" ?>
 
     <main>
 
@@ -166,7 +165,7 @@
 
                     <!-- template for comments -->
                     <script id="commentTemplate" type="text/HTML">
-                      <div class="prodComment" commentID="" depth="0">
+                      <div class="prodComment">
                           <div class="inlineEle username">
                               <p>User</p>
                           </div>
@@ -182,71 +181,40 @@
 
                     <h1 class="commentHeader">Comments</h1>
 
-                    <!-- retrieve and display relevant comments -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                    <script type="text/javascript">
-                      function postComment(parent) {
-                        // if the parent is null, assume this isn't a reply to anything
-                        if (parent == null) {
-                          parent = $('#commentList');
-                        }
-
-                        // create the comment
-                        var comment = document.createElement('li');
-                        comment.innerHTML = $('#commentTemplate').innerHTML;
-                        parent.append(comment);
-
-                        // set some variables for display and the db
-                        var parentid;
-                        var depth;
-
-                        if (parent == $('#commentList')) {
-                          parentid = null;
-                          depth = 0;
-                        } else {
-                          parentid = Number(parent.commentID);
-                          depth = Number(parent.depth + 1);
-                          comment.style.marginRight = (depth * 5).toString() + " em";
-                        }
-
-                        // make ajax call
-                        $.post("../action/addComment.php", {
-                          title:    comment.children("h3"),
-                          content:  comment.children("p"),
-                          parentID: parentid,
-                          depth:    depth
-                        });
-                      }
-                    </script>
-
                     <?php if (isset($_SESSION['username'])) { ?>
                       <div id="newCommentBox">
                         <h3>New Comment:</h3>
                         <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
-                        <br>
                         <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
-                        <button type="button" id="commentSubmit" class="formatButton" onclick="postComment(null)">Post</button>
+                        <button type="button" id="commentSubmit" class="formatButton">Post</button>
                       </div>
+                      <script type="text/javascript" src="js/addComment.js"></script>
                     <?php } else { ?>
                       <i>Please login to post a comment.</i>
                     <?php } ?>
 
                     <ul id="commentList">
-
-                    <?php // populate the list with comments from the database
-                      include 'include/db_credentials.php';
-                      $connection = mysqli_connect($host, $user, $password, $database);
-                      $error      = mysqli_connect_error();
-
-                      if ($connection -> connect_error) {
-                          echo "Connection failed: " . $connection -> connect_error;
-                      }
-
-                      $sql_query = ""; // TODO add query
-                    ?>
-
+                        <li>
+                            <div class="prodComment">
+                                <div class="inlineEle username">
+                                    <p>Bob Marsh</p>
+                                </div>
+                                <h3 class="inlineEle">We need Comments</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
+                                <button type="button" name="reply">Reply</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="prodComment">
+                                <div class="inlineEle username">
+                                    <p>Some other Fella</p>
+                                </div>
+                                <h3 class="inlineEle">There aren't enough comments</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <button type="button" name="reply">Reply</button>
+                            </div>
+                        </li>
                     </ul>
-
                 </div>
             </section>
         </div>
