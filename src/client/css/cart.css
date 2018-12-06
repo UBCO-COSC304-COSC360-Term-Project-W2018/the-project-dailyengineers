@@ -20,7 +20,7 @@
   font-size: 1em;
 }
 
-.checkoutButton:hover {
+.checkoutButton:hover, .addCartButton:hover {
   opacity: 0.7;
 }
 
@@ -31,7 +31,10 @@
 /* .cartSubtotal h1 {
   display: inline-block;
 } */
-
+.searchLink {
+  text-decoration: none;
+  color: orange;
+}
 .cartSubtotal p {
   font-weight: bold;
   font-size: 1.5em;
@@ -96,10 +99,12 @@
 
 .thumbContainer figcaption:first-of-type {
   transform: translateY(-180px);
+  overflow: hidden;
+  height: 1em;
 }
 
 .thumbContainer figcaption:last-of-type {
-  transform: translateY(-80px);
+  transform: translateY(-73px);
   font-weight: bold;
 }
 
@@ -107,6 +112,10 @@
   margin-bottom: 1em;
 }
 
+.cartDelete {
+  text-decoration: none;
+  color: orange;
+}
 .thumbContainerPrice {
   height: 1em;
   background-color: black;
@@ -127,7 +136,7 @@
   padding: 0.5em 0.25em 0.5em 0.25em;
   background-color: #FF8800;
   color: #353535;
-  transform: translateY(-106px) translateX(183px);
+  transform: translateY(-103px) translateX(183px);
 }
 
 h1 {
@@ -221,17 +230,20 @@ h2 {
   margin:auto;
 }
 
-form input[type=text] {
+form input[type=text], form input[type=email], form input[type=password] {
   width: 18em;
   height: 1.5em;
+  font-weight: bold;
+  word-wrap: break-word;
+  /* overflow-wrap; break-word; */
   /* border: black 2px inset; */
 }
-form input[type=text].cardCVV {
+form input[type=text]#cardCVV {
   width: 5em;
   height: 1.5em;
   /* border: black 2px inset; */
 }
-form input[type=text].cardExpiry {
+form input[type=text]#cardExpiry {
   width: 10em;
   height: 1.5em;
   /* border: black 2px inset; */
@@ -269,4 +281,39 @@ form input[type=text].cardExpiry {
 .savePaymentCheckbox {
   display: inline-block;
   color: red;
+}
+
+/********************************** ACCOUNT ***********************/
+#profilePic {
+  display: block;
+  width: 12em;
+  height: 12em;
+}
+
+form input[type=file] {
+width: 14.4em;
+height: 1.5em;
+/* border: black 2px inset; */
+}
+
+.accountP {
+margin-left: 1em;
+font-weight: bold;
+color: #FF8800;
+}
+
+#editProfile {/*
+margin-left: auto;
+margin-right: auto;
+visibility: visible;*/
+}
+
+#saveProfile {
+/* margin-left: auto;
+margin-right: auto;
+visibility: hidden;*/
+}
+
+.selectorForm {
+display: inline-block;
 }

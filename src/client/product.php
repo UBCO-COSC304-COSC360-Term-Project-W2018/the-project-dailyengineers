@@ -1,3 +1,14 @@
+<?php
+  session_start();
+  if (isset($_SESSION['userID'])) {
+    $recView = $_SESSION['recentlyViewedArr'];
+    if ($_GET['id'] == $recView[0] || $_GET['id'] == $recView[1] || $_GET['id'] == $recView[2]) {
+
+    } else {
+      array_unshift($_SESSION['recentlyViewedArr'], $_GET['id']);
+    }
+  }
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -9,204 +20,236 @@
     <link rel="stylesheet" type="text/css" href="css/mad.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/product.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-    <?php include 'header.php';?>
+    <?php include 'include/header.php';?>
+    <?php include "include/money_format_windows.php" ?>
 
     <main>
 
         <div class="columnContainer">
 
-            <section class="leftSidebar">
-                <div class="custom-select">
-                    <select>
-                        <option value="0">Make:</option>
-                        <option value="1">Acura:</option>
-                        <option value="2">Aston Martin</option>
-                        <option value="3">Audi</option>
-                        <option value="4">Bentley</option>
-                        <option value="5">BMW</option>
-                        <option value="6">Bugatti</option>
-                        <option value="7">Buick</option>
-                        <option value="8">Cadillac</option>
-                        <option value="9">Chevrolet</option>
-                        <option value="10">Chrystler</option>
-                        <option value="11">Citroen</option>
-                        <option value="12">Dodge</option>
-                        <option value="13">Ferarri</option>
-                        <option value="14">Fiat</option>
-                        <option value="15">Ford</option>
-                        <option value="16">GMC</option>
-                        <option value="17">Honda</option>
-                        <option value="18">Hyundai</option>
-                        <option value="19">Infiniti</option>
-                        <option value="20">Jaguar</option>
-                        <option value="21">Jeep</option>
-                        <option value="22">Kia</option>
-                        <option value="23">Koenigsegg</option>
-                        <option value="24">Lamborghini</option>
-                        <option value="25">Land Rover</option>
-                        <option value="26">Lexus</option>
-                        <option value="27">Maserati</option>
-                        <option value="28">Mazda</option>
-                        <option value="29">McLaren</option>
-                        <option value="30">Mercedes-Benz</option>
-                        <option value="31">Mini</option>
-                        <option value="32">Mitsubishi</option>
-                        <option value="33">Nissan</option>
-                        <option value="34">Pagani</option>
-                        <option value="35">Peugeot</option>
-                        <option value="36">Porsche</option>
-                        <option value="37">Ram</option>
-                        <option value="38">Renault</option>
-                        <option value="39">Rolls Royce</option>
-                        <option value="40">Saab</option>
-                        <option value="41">Subaru</option>
-                        <option value="42">Suzuki</option>
-                        <option value="43">Tesla</option>
-                        <option value="44">Toyota</option>
-                        <option value="45">Volkswagen</option>
-                        <option value="46">Volvo</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Model:</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Year:</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Type:</option>
-                        <option value="1">Coupe</option>
-                        <option value="2">Hatchback</option>
-                        <option value="3">Sedan</option>
-                        <option value="4">SUV</option>
-                        <option value="5">Truck</option>
-                        <option value="6">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Engine:</option>
-                        <option value="1">3-Cylinder</option>
-                        <option value="1">4-Cylinder</option>
-                        <option value="1">6-Cylinder</option>
-                        <option value="1">8-Cylinder</option>
-                        <option value="1">10-Cylinder</option>
-                        <option value="1">12-Cylinder</option>
-                        <option value="1">Electric</option>
-                        <option value="1">Rotary</option>
-                        <option value="1">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Drivetrain:</option>
-                        <option value="0">All-Wheel Drive</option>
-                        <option value="0">Four-Wheel Drive</option>
-                        <option value="0">Front-Wheel Drive</option>
-                        <option value="0">Read-Wheel Drive</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Transmission:</option>
-                        <option value="1">Automatic</option>
-                        <option value="2">Manual</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Colour:</option>
-                        <option value="1">Black</option>
-                        <option value="2">Blue</option>
-                        <option value="3">Brown</option>
-                        <option value="4">Green</option>
-                        <option value="5">Grey</option>
-                        <option value="6">Orange</option>
-                        <option value="7">Red</option>
-                        <option value="8">Silver</option>
-                        <option value="9">White</option>
-                        <option value="10">Yellow</option>
-                        <option value="11">Other</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Seats:</option>
-                        <option value="1">2 seats</option>
-                        <option value="2">3 seats</option>
-                        <option value="3">4 seats</option>
-                        <option value="4">5 seats</option>
-                        <option value="5">6+ seats</option>
-                    </select>
-
-                    <select>
-                        <option value="0">Doors:</option>
-                        <option value="1">2-Door</option>
-                        <option value="2">3-Door</option>
-                        <option value="3">4-Door</option>
-                        <option value="4">Other</option>
-                    </select>
-
-                </div>
-
-            </section>
+            <!-- Sidebar code -->
+            <?php include "include/sidesearch.php"; ?>
+            <!-- Page code -->
 
             <section class="mainView">
               <h1>Product Listing</h1>
-                <span class="half prodLeft">
-                    <div>
-                        <p>20XX-Zeppelin-Carousel</p>
-                    </div>
-                    <img class="containedImg" src="images/bentley.jpg">
-                    <div>
-                        <div id="qty" class="inlineEle">
-                            <p>3 remaining</p>
-                        </div>
-                        <button id="cartButton" class="inlineEle prodRight">Add to cart</button>
-                    </div>
-                </span>
-                <span class="half prodRight">
-                    <div class="inlineEle">
-                        <p>$1,000,000.00</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum varius sit amet mattis vulputate enim nulla. Mauris nunc congue nisi vitae suscipit tellus. Duis ultricies lacus sed turpis tincidunt id aliquet. Tellus at urna condimentum mattis pellentesque.</p>
-                    </div>
-                </span>
 
-                <div id="flavourText">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum varius sit amet mattis vulputate enim nulla. Mauris nunc congue nisi vitae suscipit tellus. Duis ultricies lacus sed turpis tincidunt id aliquet. Tellus at urna condimentum mattis pellentesque.</p>
+              <?php
+                include 'include/db_credentials.php';
+                $connection = mysqli_connect($host, $user, $password, $database);
+                $error      = mysqli_connect_error();
+                $vehicleID = $_GET['id'];
+                $sql = "SELECT year, make, model, price, bodyType, transmission, drivetrain, engine, fuel, exterior, seats, description, (SELECT SUM(amount) as amount FROM Vehicle, Inventories WHERE Vehicle.vehicleID = Inventories.vehicleID AND Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                $sql = $sql.") AS amount FROM Vehicle WHERE Vehicle.vehicleID =";
+                $sql = $sql.$vehicleID;
+                if ($connection -> connect_error) {
+                  die("Connection failed: " . $connection -> connect_error);
+                }
+                if ($error != null) {
+                  $output = "<p>Unable to connect to database!</p>";
+                  exit($output);
+                } else {
+                  if ($results = mysqli_query($connection, $sql)) {
+                    $row = mysqli_fetch_row($results);
+                    $year = $row[0];
+                    $make = $row[1];
+                    $model = $row[2];
+                    $price = $row[3];
+                    $bodyType = $row[4];
+                    $transmission = $row[5];
+                    $drivetrain = $row[6];
+                    $engine = $row[7];
+                    $fuel = $row[8];
+                    $exterior = $row[9];
+                    $seats = $row[10];
+                    $description = $row[11];
+                    $amount = $row[12];
+                    $vehiclePicStr = $year."-".$make."-".$model;
+                // Closing bracket for IF STATEMENT on LINE 139.
+                ?>
+
+              <div class="cartEntry">
+                <div class="cartCol leftCol">
+                  <div class="thumbContainer noHover">
+                    <?php echo '<img src="images/'.$vehiclePicStr.'.jpg">'; ?>
+                  </div>
                 </div>
+                <div class="cartCol middleCol">
+                    <div class="productName">
+                      <p><?php echo $year; ?></p>
+                      <p><?php echo $make; ?></p>
+                      <p><?php echo $model; ?></p>
+                    </div>
+                    <table>
+                      <tr>
+                        <td class="attributeType">Body Type:</td>
+                        <td class="attributeValue"><?php echo $bodyType; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Transmission:</td>
+                        <td class="attributeValue"><?php echo $transmission; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Drivetrain:</td>
+                        <td class="attributeValue"><?php echo $drivetrain; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Engine:</td>
+                        <td class="attributeValue"><?php echo $engine; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Fuel:</td>
+                        <td class="attributeValue"><?php echo $fuel; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Colour:</td>
+                        <td class="attributeValue"><?php echo $exterior; ?></td>
+                      </tr>
+                      <tr>
+                        <td class="attributeType">Seats:</td>
+                        <td class="attributeValue"><?php echo $seats; ?></td>
+                      </tr>
+                    </table>
+                </div>
+                <div class="cartCol rightCol">
+                  <div class="productPrice">
+                    <p>Price:</p>
+                    <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$price)).'</p>'; ?>
+                  </div>
+                  <div class="productPrice">
+                    <p>Quantity:</p>
+                    <form method="get" name="selector" action="action/addToCart.php" class="selectorForm">
+                    <select class="quantityCount" name="quantity">
+                      <?php
+                      $counter = 1;
+                      while($counter < ($amount + 1)) {
+                        echo '<option value='.$counter.'>'.$counter.'</option>';
+                        $counter++;
+                      }
+                      ?>
+                    </select>
+                    <input value="<?php echo $vehicleID ?>" name="id" type="hidden">
+                  </div>
+                  <div class="productPrice">
+                    <input type="submit" class="formatButton" value="Add to Cart">
+                  </form>
+                  </div>
+                </div>
+              </div>
+              <div class="descriptionContainer">
+                <p><?php echo $description ?></p>
+              </div>
+
+              <?php       // End of IF STATEMENT from LINE 46.
+                          mysqli_free_result($results);
+                        }
+                        mysqli_close($connection);
+                      } ?>
+
                 <div>
-                    <h2>Comments</h2>
-                    <ul>
-                        <li>
-                            <div class="prodComment">
-                                <div class="inlineEle username">
-                                    <p>Bob Marsh</p>
-                                </div>
-                                <h3 class="inlineEle">We need Comments</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Pellentesque habitant morbi tristique senectus. Habitant morbi tristique senectus et netus et malesuada. Ullamcorper malesuada proin libero nunc consequat.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="prodComment">
-                                <div class="inlineEle username">
-                                    <p>Some other Fella</p>
-                                </div>
-                                <h3 class="inlineEle">There aren't enough comments</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </li>
+                  <!-- template for reply fields -->
+                    <script id="replyFieldTemplate" type="text/HTML">
+                      <div id="tempReplyBox">
+                        <h3>New Reply:</h3>
+                        <textarea id="replyTitleField" rows="1" cols="80"></textarea>
+                        <textarea id="replyField" name="newComment" rows="8" cols="80"></textarea>
+                        <button type="button" id="replySubmit" class="formatButton">Reply</button>
+                      </div>
+                    </script>
+
+                    <!-- template for comments -->
+                    <script id="commentTemplate" type="text/HTML">
+                      <div class="prodComment" commentID="" depth="0">
+                          <div class="inlineEle username">
+                              <p>User</p>
+                          </div>
+                          <h3 class="inlineEle">Title</h3>
+                          <p>content</p>
+                          <button type="button" name="reply">Reply</button>
+
+                          <!-- a list to contain child comments -->
+                          <ul class="replyList">
+                          </ul>
+                      </div>
+                    </script>
+
+                    <h1 class="commentHeader">Comments</h1>
+
+                    <!-- retrieve and display relevant comments -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                      function postComment(parent) {
+                        // if the parent is null, assume this isn't a reply to anything
+                        if (parent == null) {
+                          parent = $('#commentList');
+                        }
+
+                        // create the comment
+                        var comment = document.createElement('li');
+                        comment.innerHTML = $('#commentTemplate').innerHTML;
+                        parent.append(comment);
+
+                        // set some variables for display and the db
+                        var parentid;
+                        var depth;
+
+                        if (parent == $('#commentList')) {
+                          parentid = null;
+                          depth = 0;
+                        } else {
+                          parentid = Number(parent.commentID);
+                          depth = Number(parent.depth + 1);
+                          comment.style.marginRight = (depth * 5).toString() + " em";
+                        }
+
+                        // make ajax call
+                        $.post("../action/addComment.php", {
+                          title:    comment.children("h3"),
+                          content:  comment.children("p"),
+                          parentID: parentid,
+                          depth:    depth
+                        });
+                      }
+                    </script>
+
+                    <?php if (isset($_SESSION['username'])) { ?>
+                      <div id="newCommentBox">
+                        <h3>New Comment:</h3>
+                        <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
+                        <br>
+                        <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
+                        <button type="button" id="commentSubmit" class="formatButton" onclick="postComment(null)">Post</button>
+                      </div>
+                    <?php } else { ?>
+                      <i>Please login to post a comment.</i>
+                    <?php } ?>
+
+                    <ul id="commentList">
+
+                    <?php // populate the list with comments from the database
+                      include 'include/db_credentials.php';
+                      $connection = mysqli_connect($host, $user, $password, $database);
+                      $error      = mysqli_connect_error();
+
+                      if ($connection -> connect_error) {
+                          echo "Connection failed: " . $connection -> connect_error;
+                      }
+
+                      $sql_query = ""; // TODO add query
+                    ?>
+
                     </ul>
 
                 </div>
             </section>
         </div>
-
-        <?php include "footer.php" ?>
-
     </main>
 
 </body>

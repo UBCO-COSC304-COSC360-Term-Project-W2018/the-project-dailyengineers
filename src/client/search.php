@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 
 <html>
@@ -8,315 +9,136 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/search.css">
   <link rel="stylesheet" href="css/general.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-  <?php include 'header.php';?>
+  <?php include 'include/header.php';?>
 
   <main>
 
     <div class="columnContainer">
 
-      <section class="leftSidebar">
-        <div class="custom-select">
-          <select>
-            <option value="0">Make:</option>
-            <option value="1">Acura:</option>
-            <option value="2">Aston Martin</option>
-            <option value="3">Audi</option>
-            <option value="4">Bentley</option>
-            <option value="5">BMW</option>
-            <option value="6">Bugatti</option>
-            <option value="7">Buick</option>
-            <option value="8">Cadillac</option>
-            <option value="9">Chevrolet</option>
-            <option value="10">Chrystler</option>
-            <option value="11">Citroen</option>
-            <option value="12">Dodge</option>
-            <option value="13">Ferarri</option>
-            <option value="14">Fiat</option>
-            <option value="15">Ford</option>
-            <option value="16">GMC</option>
-            <option value="17">Honda</option>
-            <option value="18">Hyundai</option>
-            <option value="19">Infiniti</option>
-            <option value="20">Jaguar</option>
-            <option value="21">Jeep</option>
-            <option value="22">Kia</option>
-            <option value="23">Koenigsegg</option>
-            <option value="24">Lamborghini</option>
-            <option value="25">Land Rover</option>
-            <option value="26">Lexus</option>
-            <option value="27">Maserati</option>
-            <option value="28">Mazda</option>
-            <option value="29">McLaren</option>
-            <option value="30">Mercedes-Benz</option>
-            <option value="31">Mini</option>
-            <option value="32">Mitsubishi</option>
-            <option value="33">Nissan</option>
-            <option value="34">Pagani</option>
-            <option value="35">Peugeot</option>
-            <option value="36">Porsche</option>
-            <option value="37">Ram</option>
-            <option value="38">Renault</option>
-            <option value="39">Rolls Royce</option>
-            <option value="40">Saab</option>
-            <option value="41">Subaru</option>
-            <option value="42">Suzuki</option>
-            <option value="43">Tesla</option>
-            <option value="44">Toyota</option>
-            <option value="45">Volkswagen</option>
-            <option value="46">Volvo</option>
-          </select>
-
-          <select>
-            <option value="0">Model:</option>
-          </select>
-
-          <select>
-            <option value="0">Year:</option>
-          </select>
-
-          <select>
-            <option value="0">Type:</option>
-            <option value="1">Coupe</option>
-            <option value="2">Hatchback</option>
-            <option value="3">Sedan</option>
-            <option value="4">SUV</option>
-            <option value="5">Truck</option>
-            <option value="6">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Engine:</option>
-            <option value="1">3-Cylinder</option>
-            <option value="1">4-Cylinder</option>
-            <option value="1">6-Cylinder</option>
-            <option value="1">8-Cylinder</option>
-            <option value="1">10-Cylinder</option>
-            <option value="1">12-Cylinder</option>
-            <option value="1">Electric</option>
-            <option value="1">Rotary</option>
-            <option value="1">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Drivetrain:</option>
-            <option value="0">All-Wheel Drive</option>
-            <option value="0">Four-Wheel Drive</option>
-            <option value="0">Front-Wheel Drive</option>
-            <option value="0">Read-Wheel Drive</option>
-          </select>
-
-          <select>
-            <option value="0">Transmission:</option>
-            <option value="1">Automatic</option>
-            <option value="2">Manual</option>
-          </select>
-
-          <select>
-            <option value="0">Colour:</option>
-            <option value="1">Black</option>
-            <option value="2">Blue</option>
-            <option value="3">Brown</option>
-            <option value="4">Green</option>
-            <option value="5">Grey</option>
-            <option value="6">Orange</option>
-            <option value="7">Red</option>
-            <option value="8">Silver</option>
-            <option value="9">White</option>
-            <option value="10">Yellow</option>
-            <option value="11">Other</option>
-          </select>
-
-          <select>
-            <option value="0">Seats:</option>
-            <option value="1">2 seats</option>
-            <option value="2">3 seats</option>
-            <option value="3">4 seats</option>
-            <option value="4">5 seats</option>
-            <option value="5">6+  seats</option>
-          </select>
-
-          <select>
-            <option value="0">Doors:</option>
-            <option value="1">2-Door</option>
-            <option value="2">3-Door</option>
-            <option value="3">4-Door</option>
-            <option value="4">Other</option>
-          </select>
-
-        </div>
-
-      </section>
-
+      <!-- Sidebar code -->
+      <?php include "include/sidesearch.php"; ?>
+      <!-- Page code -->
       <section class="mainView">
         <div class="titleEntry">
           <div class="titleCol leftCol">
             <h1>Search Results</h1>
           </div>
           <div class="titleCol middleCol">
-            <div class="midTopFlex">
+            <!-- <div class="midTopFlex">
               <h2>Price:</h2>
-              <h2>Mileage</h2>
-              <h2>Location:</h2>
-            </div>
+              <h2>Drivetrain:</h2>
+              <h2>Engine:</h2>
+            </div> -->
           </div>
           <!-- <div class="titleCol rightCol">
             <h2>Purchase:</h2>
           </div> -->
         </div>
 
-        <div class="searchEntry">
-          <div class="searchCol leftCol">
-            <div class="thumbContainer">
-              <a href="product.html"><img src="images/bentleyThumb.jpg"></a>
-            </div>
-            <a href="product.html" class="searchLink">2018 Bentley Continental G3</a>
-          </div>
+        <?php
+          error_reporting(E_ALL);
+          include './include/db_credentials.php';
 
-          <div class="searchCol middleCol">
-            <div class="midTopFlex">
-              <div class="searchPrice">
-                <p>$1,000,000</p>
-              </div>
-              <div class="searchMileage">
-                <p>3,457km</p>
-              </div>
-              <div class="searchLocation">
-                <p>London, England</p>
-              </div>
-            </div>
-            <div class="searchDescription">
-              <!-- <h2>Description</h2> -->
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non.
-                Quisque
-                consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus.</p>
-            </div>
-          </div>
+          $connection = mysqli_connect($host, $user, $password, $database);
+          $error      = mysqli_connect_error();
 
-          <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
-            <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">2 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
-            </div>
-          </div>
-        </div>
+          // Get vehicle name to search for
+          $name = "";
+          $hasParameter = false;
+          if (isset($_GET['search'])){
+            $name = $_GET['search'];
+          }
+          $sql = "";
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['make'])){
+            echo ("<h2>Vehicles matching filter: ");
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE ";
+            $used_filter = 0;
+            foreach ($_POST as $name => $val) {
+              if($val!="0"){
+                if($used_filter!=0){
+                  $sql =  $sql . " AND ";
+                  echo ", ";
+                }
+                $used_filter++;
+                $sql = $sql."".$name."='".$val."'";
+                echo $name."=".$val;
+              }
+            }
+            if($used_filter==0){
+              $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID";
+            }
+            $sql = $sql . " GROUP BY vehicleID";
+            echo "</h2>";
+          }
+          else if ($name == "") {
+            echo("<h2>All Vehicles</h2>");
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID ORDER BY make ASC LIMIT 20";
+          } else {
+            echo("<h2>Vehicles containing '" . $name . "'</h2>");
+            $hasParameter = true;
+            $sql = "SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID, transmission FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE (make LIKE '%$name%' OR year LIKE '%$name%' OR model LIKE '%$name%' OR price LIKE '%$name%' OR drivetrain LIKE '%$name%' OR engine LIKE '%$name%' OR transmission LIKE '%$name%')  GROUP BY vehicleID";
+          }
 
-        <div class="searchEntry">
-          <div class="searchCol leftCol">
-            <div class="thumbContainer">
-              <a href="product.html"><img src="images/singerTHumb.jpg"></a>
-            </div>
-            <a href="product.html" class="searchLink">1988 Porsche 911 Carrera Targa</a>
-          </div>
 
-          <div class="searchCol middleCol">
-            <div class="midTopFlex">
-              <div class="searchPrice">
-                <p>$167,000</p>
-              </div>
-              <div class="searchMileage">
-                <!-- <img id="test" src="images/odometer.png"> -->
-                <p>35,859km</p>
-              </div>
-              <div class="searchLocation">
-                <p>Berlin, Germany</p>
-              </div>
-            </div>
-            <div class="searchDescription">
-              <!-- <h2>Description</h2> -->
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non.
-                Quisque
-                consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus.</p>
-            </div>
-          </div>
+          // (year, make, model, drivetrain, engine, transmission)
+          // SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID WHERE make LIKE tacoma GROUP BY vehicleID;
+          // SELECT year, make, model, price, description, productPic, COUNT(CommentsOn.vehicleID), drivetrain, engine, Vehicle.vehicleID FROM Vehicle LEFT OUTER JOIN CommentsOn ON Vehicle.vehicleID=CommentsOn.vehicleID GROUP BY vehicleID;
 
-          <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
-            <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">7 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
-            </div>
-          </div>
-        </div>
 
-        <div class="searchEntry">
-          <div class="searchCol leftCol">
-            <div class="thumbContainer">
-              <a href="product.html"><img src="images/rs5Thumb.jpg"></a>
-            </div>
-            <a href="product.html" class="searchLink">2017 Audi RS5</a>
-          </div>
+          if ($connection -> connect_error) {
+            die("Connection failed: " . $connection -> connect_error);
+          }
+          // echo "Connected to Server.";
+          if ($error != null) {
+            $output = "<p>Unable to connect to database!</p>";
+            exit($output);
+          } else {
 
-          <div class="searchCol middleCol">
-            <div class="midTopFlex">
-              <div class="searchPrice">
-                <p>$70,875</p>
-              </div>
-              <div class="searchMileage">
-                <p>12,589km</p>
-              </div>
-              <div class="searchLocation">
-                <p>Vancouver, Canada</p>
-              </div>
-            </div>
-            <div class="searchDescription">
-              <h2>Description</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non.
-                Quisque
-                consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus.</p>
-            </div>
-          </div>
+            if ($results = mysqli_query($connection, $sql)) {
+              // echo "in results";
+              while ($row = mysqli_fetch_row($results)) {
 
-          <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
-            <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">5 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
-            </div>
-          </div>
-        </div>
+                $year = $row[0];
+                $make = $row[1];
+                $model = $row[2];
+                $price = $row[3];
+                $description = $row[4];
+                $productPic = $row[5];
+                $numComments= $row[6];
+                $drivetrain = $row[7];
+                $engine = $row[8];
+                $vehicleID = $row[9];
+                $vehiclePicStr = $year."-".$make."-".$model;
+                $vehicleName = $year." ".$make." ".$model;
+                $one = 1;
 
-        <div class="searchEntry">
-          <div class="searchCol leftCol">
-            <div class="thumbContainer">
-              <a href="product.html"><img src="images/edoThumb.jpg"></a>
-            </div>
-            <a href="product.html" class="searchLink">2018 Mercedes AMG GTR</a>
-          </div>
-
-          <div class="searchCol middleCol">
-            <div class="midTopFlex">
-              <div class="searchPrice">
-                <p>$228,164</p>
-              </div>
-              <div class="searchMileage">
-                <p>1,867km</p>
-              </div>
-              <div class="searchLocation">
-                <p>Shanghai, China</p>
-              </div>
-            </div>
-            <div class="searchDescription">
-              <h2>Description</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta, diam ut malesuada pellentesque, tellus enim efficitur eros, in pharetra enim tellus id neque. Vestibulum aliquam finibus enim, ut eleifend quam egestas non.
-                Quisque
-                consequat consectetur elit. Vivamus dapibus dolor nec diam posuere, eget ornare nisl faucibus.</p>
-            </div>
-          </div>
-
-          <div class="searchCol rightCol">
-            <a href="cart.html" class="addToCart">ADD TO CARD</a>
-            <div class="numberComments">
-              <a href="product.html#prodComment" class="searchLink">11 Comments<img src="images/comment-bubble.png" class="commentBubble"></a>
-            </div>
-          </div>
-        </div>
-
+                echo '<div class="searchEntry"><div class="searchCol leftCol"><div class="thumbContainer"><a href="product.php?id='.$vehicleID.'">';
+                echo "<img src='./images/$vehiclePicStr.jpg'></a></div>";
+                echo "<a href='product.php?id=".$vehicleID."' class='searchLink'>$vehicleName</a></div>";
+                echo '<div class="searchCol middleCol"><div class="midTopFlex"><div class="searchPrice attribute">';
+                echo "<p>Price:</p><p>$$price</p></div><div class='searchMileage attribute'>"; // price
+                echo "<p>Drivetrain:</p><p>$drivetrain</p></div><div class='searchLocation attribute'>"; // drivetrain
+                echo "<p>Engine:</p><p>$engine</p></div></div>"; // engine
+                echo "<div class='searchDescription'>";
+                echo "<p>$description</p></div></div><div class='searchCol rightCol'>";
+                echo "<a href='action/addToCart.php?id=".$vehicleID."&quantity=".$one."' class='addToCart'>ADD TO CART</a><div class='numberComments'>";
+                echo "<a href='product.php#prodComment?id='$vehicleID' class='searchLink'>";
+                echo "$numComments Comments<img src='images/comment-bubble.png' class='commentBubble'></a></div></div></div>";
+              }
+              mysqli_free_result($results);
+            }
+            mysqli_close($connection);
+          }
+        ?>
       </section>
     </div>
-
-    <?php include "footer.php" ?>
+    <?php include "include/footer.php" ?>
 
   </main>
 

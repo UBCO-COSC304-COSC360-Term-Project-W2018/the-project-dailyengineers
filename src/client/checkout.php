@@ -1,3 +1,9 @@
+<?php session_start();
+if (!isset($_SESSION['username'])) {
+    //not logged in (Guest) GET OUT
+    header("Location: login.php");
+    die();
+}?>
 <!DOCTYPE HTML>
 
 <html>
@@ -10,65 +16,27 @@
   <link rel="stylesheet" href="css/cart.css">
   <link rel="stylesheet" href="css/validation.css">
   <script type="text/javascript" src="js/validation.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-  <?php include 'header.php';?>
+  <?php include 'include/header.php';
+    include "include/money_format_windows.php";?>
 
   <main>
 
     <div class="columnContainer">
+      <?php include 'include/checkoutSidebar.php';
 
-      <section class="cartLeftSidebar">
-        <div class="cartSubtotal">
-          <h1>Total:</h1>
-          <p>$xxx,xxx.00</p>
-          <div class="displaySubtotal">
-          </div>
-        </div>
-
-        <div class="cartItemCount">
-          <h1>Quantity:</h1>
-          <p>x items</p>
-          <div class="displayItemCount">
-          </div>
-        </div>
-
-        <div class="cartCheckout">
-          <a class="checkoutButton" href="checkout.html">Submit Order</a>
-        </div>
-
-        <div class="cartRecentlyViewed">
-          <h1>Recently Viewed:</h1>
-          <div class="thumbContainer">
-            <a href="product.html"><img src="images/bentleyThumb.jpg">
-              <figcaption>2018 Bentley Continental GT3</figcaption>
-              <figcaption>$1,000,000</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
-          </div>
-          <div class="thumbContainer">
-            <a href="product.html"><img src="images/edoThumb.jpg">
-              <figcaption>2018 Mercedes AMG GTR</figcaption>
-              <figcaption>$228,164</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
-          </div>
-          <div class="thumbContainer">
-            <a href="product.html"><img src="images/singerThumb.jpg">
-              <figcaption>1988 Porsche 911 Carrera Targa</figcaption>
-              <figcaption>$167,000</figcaption>
-            </a>
-            <a class="addCartButton" href="cart.html">Add to Cart</a>
-          </div>
-        </div>
-      </section>
+      ?>
 
       <section class="mainView">
         <h1>Checkout</h1>
 
-        <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+        <form method="POST" action="action/checkoutAction.php">
+          <!-- <form method="POST" action="http://www.randyconnolly.com/tests/process.php"> -->
           <div class="shippingBilling">
             <div id="shippingForm">
               <fieldset>
@@ -102,7 +70,7 @@
                 <input type="text" name="billingCountry" class="required">
                 <h2>Postal Code/ZIP:</h2>
                 <input type="text" name="billingPostalCodeZIP" class="required">
-                <label><input type="checkbox" name="sameAsShipping" value="checked"> Same as Shipping</label>
+                <label class="hoverLabel"><input type="checkbox" name="sameAsShipping" value="checked"> Same as Shipping</label>
               </fieldset>
             </div>
           </div>
@@ -110,16 +78,16 @@
           <div id="paymentMethod">
             <fieldset>
               <legend>Payment Method</legend>
-              <label id="savedCardLegend"><input type="radio" name="cardRadio" value="savedCard"> Saved Card (Ending in ####)</label>
+              <label id="savedCardLegend" class="hoverLabel"><input type="radio" name="cardRadio" value="savedCard"> Saved Card (Ending in ####)</label>
               <fieldset>
-                <legend id="radioLegend"><label><input type="radio" name="cardRadio" value="newCard"> New Card</label></legend>
+                <legend id="radioLegend"><label class="hoverLabel"><input type="radio" name="cardRadio" value="newCard"> New Card</label></legend>
                 <h2>Card Number:</h2>
-                <input type="text" name="cardNumber" class="cardNumber" class="required">
+                <input type="text" name="cardNumber" id="cardNumber" class="required">
                 <h2>Expiry Date:</h2>
-                <input type="text" name="cardExpiry" class="cardExpiry" class="required">
+                <input type="text" name="cardExpiry" id="cardExpiry" class="required">
                 <h2>CVV:</h2>
-                <input type="text" name="cardCVV" class="cardCVV" class="required">
-                <label><input type="checkbox" name="savePaymentMethod" value="checked" class="savePaymentCheckbox"> Save Payment Method</label>
+                <input type="text" name="cardCVV" id="cardCVV" class="required">
+                <label class="hoverLabel"><input type="checkbox" name="savePaymentMethod" value="checked" class="savePaymentCheckbox"> Save Payment Method</label>
               </fieldset>
             </fieldset>
           </div>
@@ -127,21 +95,23 @@
           <div id="shippingMethod">
             <fieldset>
               <legend>Shipping Method</legend>
-              <label><input type="radio" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
-              <label><input type="radio" name="shippingMethod" value="airExpress"> Air Express (7 - 24 Days)</label>
+              <label class="hoverLabel"><input type="radio" onclick="myFunction('<?php echo $shipPrice; ?>')" name="shippingMethod" value="cargo"> Cargo Ship (25 - 60 Days)</label>
+              <label class="hoverLabel"><input type="radio" onclick="myFunction('<?php echo $shipPrice; ?>')" name="shippingMethod" value="air"> Air Express (7 - 24 Days)</label>
             </fieldset>
           </div>
           <div id="checkoutTotals">
             <fieldset>
               <legend>Price Breakdown</legend>
               <h2>Subtotal:</h2>
-              <p>$xxx,xxx.00
+                <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
                 <h2>Shipping</h2>
-                <p>$x,xxx.00</p>
+                <p>FREE!</p>
                 <hr>
                 <h2>Total</h2>
-                <p>$xxx,xxx.00</p>
-                <input type="submit" value="Submit Order" class="checkoutButton">
+                <?php echo '<p>$'.str_replace("USD","$",money_format('%i',$subtotal)).'</p>' ?>
+                <input value="<?php echo $subtotal ?>" name="totalPrice" type="hidden">
+                <input value="<?php echo $vehicleID ?>" name="vehicleID" type="hidden">
+                <input type="submit" value="Submit Order" class="checkoutButton submitOrder">
             </fieldset>
           </div>
         </form>
@@ -157,7 +127,7 @@
       </section>
     </div>
 
-    <?php include "footer.php" ?>
+    <?php include "include/footer.php" ?>
 
   </main>
 

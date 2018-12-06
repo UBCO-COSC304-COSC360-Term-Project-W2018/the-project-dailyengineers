@@ -1,6 +1,6 @@
 .mainView form {
     margin: 2em auto;
-    width: 32.5em;
+    width: 16.25em;
 }
 #imgInput {
     float: right;
@@ -9,8 +9,11 @@
 }
 #imgInput img {
     display: block;
-    width: 7.5em;
-    height: 7.5em;
+    width: 13em;
+    height: 13em;
+}
+#imgInput input {
+    width: 13em;
 }
 .mainView form input:not(:last-child) {
     width: 18em;
@@ -25,7 +28,7 @@
 #createButton {
     border: white 2px outset;
     display: block;
-    width: 33%;
+    width: 66%;
     margin: 1em auto;
     background-color: orange;
     color: #454545;

@@ -21,12 +21,48 @@ header, footer {
 
 footer {
   margin-top: auto;
+  height: 8em;
 }
 
 /* .flexHeaderTop img {
   height: 100%;
 } */
+.email   {
+  text-decoration: none;
+  color: grey;
+}
+.footerList {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding-left: 2em;
+  text-align: center;
+}
 
+.columnFooters {
+  display: inline-flex;
+  float: left;
+  width: 33%;
+}
+
+#socials {
+  display: inline-block;
+}
+
+.copyright {
+  padding-top: 2em;
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  font-size: 0.7em;
+  text-align: center;
+  bottom: 0;
+}
+
+.footerLogo {
+  width:50%;
+  float: right;
+}
 .columnContainer {
   display: flex;
   flex-flow: row;
@@ -43,7 +79,7 @@ footer {
 
 .leftSidebar {
   order: 1;
-  width: 16em;
+  width: 10em;
   margin-right: 0;
 }
 
@@ -89,7 +125,7 @@ footer {
 .headerContainer {
   height: inherit;
   margin: auto;
-  width: 80%;
+  width: 95%;
 }
 
 .flexHeaderTop #headerLogo {
@@ -98,6 +134,7 @@ footer {
 }
 
 .searchForm {
+  min-width: 30.5em;
   height: 2.5em;
   background-color: #FF8800;
   border: 1px solid #FF8800;
@@ -160,6 +197,14 @@ form.searchForm button {
   background-color: #D17000;
 }
 
+.sidebarForm div {
+  margin-top: 0.75em;
+}
+
+.sidebarForm div:first-child {
+  margin-top: 0em;
+}
+
 .inlineNav li:first-child {
   border: none;
 }
@@ -186,6 +231,11 @@ select {
   font-weight: bold;
   padding-left: 1em;
   /* padding: 0.5em 0em 0.5em 2em; */
+}
+
+.quantityCount {
+  width: 4em;
+  height: 2em;
 }
 
 /*************************** FORM STYLING **********************/
@@ -215,12 +265,39 @@ label {
  font-weight: bold;
 }
 
+.sidebarLabel {
+  display: inline;
+}
+
+.sidebarDiv {
+  margin-top: 1em;
+}
+
 checkbox {
   height: 2em;
 }
 
-label:hover {
+.hoverLabel:hover {
  background-color: #FF8800;
  color: #353535;
  cursor:pointer;
+}
+
+/***************** BUTTON STYLING ******************/
+.formatButton {
+  font-weight: bold;
+  text-decoration: none;
+  margin: 1em;
+  display: block;
+  border: 1px solid #FF8800;
+  border-radius: 0.75em;
+  padding: 0.5em;
+  background-color: #FF8800;
+  color: #353535;
+  text-align: center;
+  font-size: 1em;
+}
+
+.formatButton:hover  {
+  opacity: 0.7;
 }

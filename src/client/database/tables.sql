@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS CommentsOn (
   depth       tinyint not null,
   commentPath varchar(255),
   commentTime timestamp,
-  content	    varchar(255) not null,
+  content	    varchar(1000) not null,
   primary key (commentID),
   foreign key (userID) REFERENCES User(userID)
     ON UPDATE CASCADE ON DELETE CASCADE,
@@ -84,8 +84,10 @@ CREATE TABLE IF NOT EXISTS CommentsOn (
   ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+/* ALTER TABLE Orders MODIFY COLUMN orderID INT NOT NULL AUTO_INCREMENT; */
+
 CREATE TABLE IF NOT EXISTS Orders (
-  orderID	    int NOT NULL,
+  orderID	    int NOT NULL AUTO_INCREMENT,
   userID      int NOT NULL,
   orderDate	  datetime,
   totalPrice  numeric(10,2),

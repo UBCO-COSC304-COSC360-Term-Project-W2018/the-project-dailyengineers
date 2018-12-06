@@ -5,7 +5,7 @@ window.onload = function() {
   document.addEventListener('input', function(e) {
     var input = document.querySelectorAll('input, textarea');
     for (var i = 0; i < input.length; i++) {
-      if (input[i].value == "" || input[i].value == null) {
+      if ((input[i].value == "" || input[i].value == null) && input[i].id != 'searchField') {
         input[i].classList.add("unfilled");
       } else {
         input[i].classList.remove("unfilled");

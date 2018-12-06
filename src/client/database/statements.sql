@@ -1,4 +1,18 @@
 /************************************\
+**** SIDEBAR PREPARED STATEMENTS *****
+\************************************/
+
+SELECT vehicleID FROM Vehicle WHERE make = ?;
+SELECT vehicleID FROM Vehicle WHERE model = ?;
+SELECT vehicleID FROM Vehicle WHERE year = ?;
+SELECT vehicleID FROM Vehicle WHERE type = ?;
+SELECT vehicleID FROM Vehicle WHERE engine = ?;
+SELECT vehicleID FROM Vehicle WHERE drivetrain = ?;
+SELECT vehicleID FROM Vehicle WHERE transmission = ?;
+SELECT vehicleID FROM Vehicle WHERE exterior = ?;
+SELECT vehicleID FROM Vehicle WHERE seats = ?;
+
+/************************************\
 *********** SQL QUERIES **************
 \************************************/
 
@@ -22,6 +36,11 @@ FROM Vehicle, Warehouse, Inventories
 WHERE Inventories.vehicleID = Vehicle.vehicleID AND Inventories.warehouseID = Warehouse.warehouseID
 ORDER BY amount DESC;
 
+/* Find how many comments each vehicle has */
+SELECT COUNT(CommentsOn.vehicleID) AS numComments, CommentsOn.vehicleID, Vehicle.year, Vehicle.make, Vehicle.model
+FROM CommentsOn, Vehicle
+WHERE CommentsOn.vehicleID = Vehicle.vehicleID;
+
 /************************************\
 ********* PREPARED STATEMENTS ********
 \************************************/
@@ -43,3 +62,5 @@ INSERT INTO Warehouse (location, continentID) VALUES (?, ?);
 
 /* INVENTORY CREATION */
 INSERT INTO Inventories (warehouseID, vehicleID, amount) VALUES (?, ?, ?);
+
+/* COMMENT CREATION */

@@ -1,50 +1,42 @@
-.left {
-    float: left;
-    width: 10em;
-}
-.left button {
-    margin: 1em 0;
-    width: 12em;
-}
-
-button, #saveBt {
-    background-color: orange;
-    height: 2.5em;
-    font-weight: bold;
-}
-
-fieldset {
-    border: none;
-    padding: 0;
-    margin-bottom: 1em;
-    overflow: hidden;
-}
-fieldset:not(#imgInput){
-    height: 4em;
-    width: 18.5em;
-}
-
-#imgInput {
-    width: 10em;
-}
-#imgInput img {
+/********************************** ACCOUNT ***********************/
+#profilePic {
     display: block;
-    width: 10em;
-    height: 10em;
+    width: 12em;
+    height: 12em;
 }
 
-.acRight {
-    margin-left: 14em;
+form input[type=file] {
+  width: 14.4em;
+  height: 1.5em;
+  /* border: black 2px inset; */
 }
-.acRight p, .acRight div {
-    background-color: orange;
-    float:left;
-    border: black 2px solid;
-    color: #454545;
-    padding: 0.5em;
-    height: 1em;
-    min-width: 14em;
+
+.accountP {
+  margin-left: 1em;
+  font-weight: bold;
+  color: #FF8800;
 }
-.acRight input, .passConfirmh3 {
+
+#editProfile {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#saveProfile {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cancelEdit {
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+}
+
+.selectorForm {
+  display: inline-block;
+}
+.hide {
     display: none;
 }
