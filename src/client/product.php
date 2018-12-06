@@ -182,13 +182,50 @@
 
                     <h1 class="commentHeader">Comments</h1>
 
+                    <!-- retrieve and display relevant comments -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                      function postComment(parent) {
+                        // if the parent is null, assume this isn't a reply to anything
+                        if (parent == null) {
+                          parent = $('#commentList');
+                        }
+
+                        // create the comment
+                        var comment = document.createElement('li');
+                        comment.innerHTML = $('#commentTemplate').innerHTML;
+                        parent.append(comment);
+
+                        // set some variables for display and the db
+                        var parentid;
+                        var depth;
+
+                        if (parent == $('#commentList')) {
+                          parentid = null;
+                          depth = 0;
+                        } else {
+                          parentid = Number(parent.commentID);
+                          depth = Number(parent.depth + 1);
+                          comment.style.marginRight = (depth * 5).toString() + " em";
+                        }
+
+                        // make ajax call
+                        $.post("../action/addComment.php", {
+                          title:    comment.children("h3"),
+                          content:  comment.children("p"),
+                          parentID: parentid,
+                          depth:    depth
+                        });
+                      }
+                    </script>
+
                     <?php if (isset($_SESSION['username'])) { ?>
                       <div id="newCommentBox">
                         <h3>New Comment:</h3>
                         <textarea id="newCommentTitle" name="newCommentTitle" rows="1" cols="80"></textarea>
                         <br>
                         <textarea id="newComment" name="newComment" rows="8" cols="80"></textarea>
-                        <button type="button" id="commentSubmit" class="formatButton">Post</button>
+                        <button type="button" id="commentSubmit" class="formatButton" onclick="postComment(null)">Post</button>
                       </div>
                     <?php } else { ?>
                       <i>Please login to post a comment.</i>
@@ -205,11 +242,11 @@
                           echo "Connection failed: " . $connection -> connect_error;
                       }
 
-                      $sql_query = "";
+                      $sql_query = ""; // TODO add query
                     ?>
 
                     </ul>
-                    <script type="text/javascript" src="js/addComment.js"></script>
+
                 </div>
             </section>
         </div>
