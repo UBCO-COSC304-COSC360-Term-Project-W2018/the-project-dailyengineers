@@ -15,7 +15,8 @@
 
 <body>
 
-  <?php include 'include/header.php';?>
+  <?php include 'include/header.php';
+    include "include/money_format_windows.php";?>
 
   <main>
     <div class="columnContainer">

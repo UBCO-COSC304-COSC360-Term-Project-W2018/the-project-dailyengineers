@@ -91,7 +91,6 @@ if (!isset($_SESSION['username'])) {
                 <?php echo $img_src ?>
                 <input class="accMod" type="file" name="profilePic" accept="image/x-png" disabled="disabled">
               </fieldset>
-              <a class="formatButton" href="paymentMethod.php">Payment Method</a>
               <a class="formatButton" href="orderStatus.php">Order History</a>
               <a class="formatButton" href="commentHistory.php">Comment History</a>
             </div>
