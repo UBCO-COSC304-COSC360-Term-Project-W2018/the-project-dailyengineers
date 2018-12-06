@@ -25,16 +25,30 @@
 		  <ul class="headerRightLinks">
 			<li><a href="#" id="trending">Trending</a></li>
 			<li><a href="#" id="deals">Deals</a></li>
+
 			<?php
 			if(isset($_SESSION['username'])) {
 				//Logged in
 				echo '<li><a href="./action/logout.php" id="loginSignup">Logout</a>';
 				echo '<li><a href="account.php" id="account">'.$_SESSION['username'].'</a>';
+			?>
+
+				<script type="text/javascript">
+					var logoutButton = document.querySelector("#loginSignup");
+					logoutButton.addEventListener("click", function(event) {
+						if (!confirm("Are you sure you want to logout?")) {
+							event.preventDefault();
+						}
+					});
+				</script>
+
+			<?php
 			} else {
 				//guest
 				echo '<li><a href="login.php" id="loginSignup">Login/Signup</a></li>';
 			}
 			?>
+
 			<li><a href="cart.php" id="cart">Cart</a></li>
 		  </ul>
 		</div>

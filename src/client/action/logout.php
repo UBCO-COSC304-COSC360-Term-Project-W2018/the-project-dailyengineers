@@ -5,6 +5,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../index.php");
     die();
 } else {
+  
     //Logout
     session_unset();
     header("Location: ../index.php");
