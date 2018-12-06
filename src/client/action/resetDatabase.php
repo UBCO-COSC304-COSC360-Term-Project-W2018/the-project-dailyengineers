@@ -1,10 +1,10 @@
 <?php
 	if (!isset($_SESSION['username'])) {
         //not logged in (Guest) GET OUT
-        header("Location: login.php");
+        header("Location: ../login.php");
         die();
     } else {
-        include 'include/db_credentials.php';
+        include '../include/db_credentials.php';
         $connection = mysqli_connect($host, $user, $password, $database);
         $error = mysqli_connect_error();
         $uid = $_SESSION['userID'];
@@ -24,12 +24,12 @@
             $sqlSource = file_get_contents('database/order_sql.ddl');
 			mysqli_multi_query($connection, $sqlSource);
             mysqli_close($connection);
-			header('Location: admin.php?reset=1');
+			header('Location: ../admin.php?reset=1');
             // header('Location: admin.php');
         } else {
             // echo "Error: " . $sql . "" . mysqli_error($connection);
             // if you aren't
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
     }
 ?>

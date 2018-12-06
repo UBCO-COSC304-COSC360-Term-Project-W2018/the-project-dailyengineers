@@ -26,23 +26,56 @@ if (!isset($_SESSION['username'])) {
                 echo "Connected to Database.";
                 if ($results = mysqli_query($connection, $sql)) {
                     while ($row = mysqli_fetch_row($results)) {
-                        $hashword = md5($_POST['password']);
-                        echo "post pass: " . $_POST['password'] . "  " . $hashword;
-                        echo "<br />row pass: " . $row[2];
-
-                        if ($hashword == $row[2]) {
-                            //Update session Superglobal
-                            $_SESSION['username'] = $_POST['username'];
-                            echo $_SESSION['username'];
-                            $_SESSION['userID'] = $row[0];
-							              $_SESSION['email'] = $row[3];
-                            $_SESSION['recentlyViewedArr'] = array(0, 0, 0);
-                            //Release Values
+                        $enSQL = "SELECT isActive FROM Customer WHERE userID = ".$row[0].";";
+                        $magicRes = mysqli_query($connection, $enSQL);
+                        $magic = mysqli_fetch_row($magicRes);
+                        //check if admin
+                        $sql = "SELECT * FROM Admin WHERE userID='$uid'";
+                        if ($connection -> connect_error) {
+                            die("Connection failed: " . $connection -> connect_error);
+                        }
+                        // echo "Connected to Server.";
+                        if ($error != null) {
+                            $output = "<p>Unable to connect to database!</p>";
+                            exit($output);
+                        } else {
+                            if ($result = mysqli_query($connection, $sql)) {
+                                if (mysqli_fetch_row($result)) {
+                                    mysqli_free_result($results);
+                                    $result = true;
+                                } else {
+                                    mysqli_free_result($results);
+                                }
+                            }
+                        }
+                            
+                        //
+                        if($magic[0] == 0 && !($result == true)) { 
+                            //this user is disabled
                             mysqli_free_result($results);
+                            mysqli_free_result($magicRes);
                             mysqli_close($connection);
-                            //redirect
-                            header("Location: ../index.php");
-                            die();
+                            die("<br />Your account has been disabled <br /><a href='../login.php'>Return to login</a>");
+                        } else {
+                            mysqli_free_result($magicRes);
+                            $hashword = md5($_POST['password']);
+                            echo "post pass: " . $_POST['password'] . "  " . $hashword;
+                            echo "<br />row pass: " . $row[2];
+
+                            if ($hashword == $row[2]) {
+                                //Update session Superglobal
+                                $_SESSION['username'] = $_POST['username'];
+                                echo $_SESSION['username'];
+                                $_SESSION['userID'] = $row[0];
+                                            $_SESSION['email'] = $row[3];
+                                $_SESSION['recentlyViewedArr'] = array(0, 0, 0);
+                                //Release Values
+                                mysqli_free_result($results);
+                                mysqli_close($connection);
+                                //redirect
+                                header("Location: ../index.php");
+                                die();
+                            }
                         }
                     }
                     mysqli_free_result($results);
@@ -51,7 +84,7 @@ if (!isset($_SESSION['username'])) {
             }
         }
         // Data Bad
-        header("Location: ../login.php");
+        // header("Location: ../login.php");
         die();
     } else {
         // Already Logged In

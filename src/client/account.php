@@ -43,7 +43,7 @@ if (!isset($_SESSION['username'])) {
                 $address = $row[3];
                 $username = $_SESSION['username'];
                 $email = $_SESSION['email'];
-                if ($row[4]==null) {
+                if ($row[4] == null) {
                     $img_src = "<img id='profilePic' src='images/profilePlaceholder.png'/>";
                 } else {
                     $img_src = "<img id='profilePic' src='data:image/jpg;base64,".base64_encode($row[4])."'/>";
@@ -91,7 +91,6 @@ if (!isset($_SESSION['username'])) {
                 <?php echo $img_src ?>
                 <input class="accMod" type="file" name="profilePic" accept="image/x-png" disabled="disabled">
               </fieldset>
-              <a class="formatButton" href="paymentMethod.php">Payment Method</a>
               <a class="formatButton" href="orderStatus.php">Order History</a>
               <a class="formatButton" href="commentHistory.php">Comment History</a>
             </div>
